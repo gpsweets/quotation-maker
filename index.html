@@ -133,8 +133,42 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .profilecard b{display:block;font-size:19px}
 .profilecard small{color:var(--muted);font-size:15px}
 
+/* ---------- lists, forms, tabs, sheet (step 2) ---------- */
+.searchbox{display:flex;align-items:center;gap:10px;background:#fff;border-radius:18px;box-shadow:0 1px 8px #0002;margin:14px 16px;padding:0 16px;color:#555}
+.searchbox input{flex:1;border:0;outline:none;background:transparent;font-size:17px;padding:15px 0;min-width:0}
+.items{padding:0 16px 110px}
+.item{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:14px 16px;margin-bottom:10px;width:100%;text-align:left;box-shadow:0 1px 5px #0001}
+.item .tx{flex:1;min-width:0}
+.item b{display:block;font-size:18px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item small{display:block;color:var(--muted);font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item .rt{font-weight:600;white-space:nowrap}
+.empty{text-align:center;color:#444;padding:90px 20px;font-size:17px}
+.fab{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom));right:max(16px,calc(50% - 364px));background:#c4325f;color:#fff;border-radius:50%;width:92px;height:92px;font-size:12.5px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;display:grid;place-items:center;text-align:center;line-height:1.15;padding:10px;box-shadow:0 5px 14px #0004;z-index:15}
+.fab:active{transform:scale(.96)}
+.btn.danger{background:#fff;color:var(--err);border:1.5px solid #e2b3ad}
+.fld textarea{display:block;width:100%;border:0;background:transparent;outline:none;font-size:17px;padding:4px 0;min-height:96px;resize:vertical}
+.cnt{text-align:right;color:var(--muted);font-size:13px;margin:-8px 8px 12px}
+.fld .pick{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:42px;height:42px;display:grid;place-items:center;color:#555;border-radius:12px}
+.fld .pick:active{background:#e6e6e6}
+.fld.hasbtn input{padding-right:46px}
+.sechead{background:#f3f3f3;margin:8px -18px 16px;padding:14px 18px;font-weight:700;font-size:18px}
+.tabs{display:flex;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--line);scrollbar-width:none;position:sticky;top:58px;z-index:10}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:15px 20px;font-size:16.5px;font-weight:600;color:#777;border-bottom:3px solid transparent;white-space:nowrap}
+.tab.on{color:#2c6b82;border-bottom-color:#2c6b82}
+.term{background:#fff;border-radius:16px;padding:14px 14px 10px 16px;margin-bottom:10px;box-shadow:0 1px 5px #0001;display:flex;gap:10px;align-items:flex-start}
+.term p{flex:1;margin:0;white-space:pre-wrap;word-break:break-word;font-size:16.5px}
+.term .acts{display:flex;flex-direction:column;gap:2px}
+.term .acts button{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#555}
+.term .acts button:active{background:#eee}
+.ov{position:fixed;inset:0;background:#0007;z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:#fff;width:100%;max-width:640px;border-radius:26px 26px 0 0;padding:12px 18px calc(20px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
+.sheet .grab{width:56px;height:5px;border-radius:3px;background:#ccc;margin:0 auto 14px}
+.sheet h3{font-size:22px;margin:6px 0 14px}
+.plus-sq{width:44px;height:44px;border-radius:12px;background:#fff;color:var(--dark);display:grid;place-items:center;margin-right:2px}
+
 /* ---------- toast ---------- */
-#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:12px 20px;border-radius:14px;opacity:0;transition:.25s;z-index:99;max-width:90vw;text-align:center;font-size:15px;pointer-events:none}
+#toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:12px 20px;border-radius:14px;opacity:0;transition:.25s;z-index:99;max-width:90vw;text-align:center;font-size:15px;pointer-events:none}
 #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .loading{display:grid;place-items:center;min-height:100vh;color:var(--muted)}
 .spin{width:34px;height:34px;border-radius:50%;border:4px solid #ddd;border-top-color:var(--dark);animation:sp 1s linear infinite;margin:0 auto 12px}
@@ -200,7 +234,14 @@ const T = {
     sc_phone:"Business Phone", sc_phoneD:"Add your business phone number.",
     sc_addr:"Business Address", sc_addrD:"Add your complete business address.",
     account:"Account", profile:"Profile", businessInfo:"Business Info", language:"Language", logout:"Logout", logoutAsk:"Log out from this device?",
-    signedInAs:"Signed in with Google", appVersion:"App Version"
+    signedInAs:"Signed in with Google", appVersion:"App Version",
+    nameLbl:"Name", customersT:"Customers", addCustomer:"Add Customer", editCustomer:"Edit Customer", searchCustomer:"Search by name, company or mobile", noCustomer:"You don't have any customer yet",
+    companyName:"Company Name", mobile:"Mobile", otherInfo:"Other Info", shippingDetails:"Shipping Details", shippingAddress:"Shipping Address",
+    add:"Add", del:"Delete", deleteAsk:"Delete this? It cannot be undone.", pickContact:"Pick from phone contacts", needName:"Please enter a name.", noResult:"Nothing found",
+    productsT:"Products", addProduct:"Add Product", editProduct:"Edit Product", searchProduct:"Search by name", noProduct:"You don't have any product yet",
+    productName:"Product Name", price:"Price", gst:"GST %", description:"Description", unit:"Unit Of Measure (SET, KG etc.)", hsn:"HSN", needPrice:"Please enter a valid price.", badGst:"GST % must be between 0 and 100.",
+    termsT:"Terms & Conditions", addTerm:"Add Terms and Condition", editTerm:"Edit Terms and Condition", noTerm:"You don't have any terms and conditions", termType:"Type", termText:"Terms and condition", needTerm:"Please write the term.",
+    docQuotation:"Quotation", docInvoice:"Invoice", docPO:"Purchase Order", docProforma:"Proforma Invoice", docDelivery:"Delivery Note", docReceipt:"Receipt", cancel:"Cancel"
   },
   hi:{
     appName:"कोटेशन मेकर", chooseLang:"अपनी भाषा चुनें", langHint:"इसे बाद में सेटिंग्स में बदल सकते हैं।",
@@ -239,7 +280,14 @@ const T = {
     sc_phone:"बिज़नेस फ़ोन", sc_phoneD:"अपना बिज़नेस फ़ोन नंबर जोड़ें।",
     sc_addr:"बिज़नेस का पता", sc_addrD:"अपना पूरा बिज़नेस पता जोड़ें।",
     account:"खाता", profile:"प्रोफ़ाइल", businessInfo:"बिज़नेस की जानकारी", language:"भाषा", logout:"लॉग आउट", logoutAsk:"इस डिवाइस से लॉग आउट करें?",
-    signedInAs:"Google से साइन इन", appVersion:"ऐप वर्ज़न"
+    signedInAs:"Google से साइन इन", appVersion:"ऐप वर्ज़न",
+    nameLbl:"नाम", customersT:"ग्राहक", addCustomer:"ग्राहक जोड़ें", editCustomer:"ग्राहक बदलें", searchCustomer:"नाम, कंपनी या मोबाइल से खोजें", noCustomer:"अभी कोई ग्राहक नहीं है",
+    companyName:"कंपनी का नाम", mobile:"मोबाइल", otherInfo:"अन्य जानकारी", shippingDetails:"शिपिंग की जानकारी", shippingAddress:"शिपिंग पता",
+    add:"जोड़ें", del:"हटाएँ", deleteAsk:"इसे हटाएँ? यह वापस नहीं आएगा।", pickContact:"फ़ोन के कॉन्टैक्ट से चुनें", needName:"कृपया नाम लिखिए।", noResult:"कुछ नहीं मिला",
+    productsT:"प्रोडक्ट", addProduct:"प्रोडक्ट जोड़ें", editProduct:"प्रोडक्ट बदलें", searchProduct:"नाम से खोजें", noProduct:"अभी कोई प्रोडक्ट नहीं है",
+    productName:"प्रोडक्ट का नाम", price:"कीमत", gst:"GST %", description:"विवरण", unit:"नाप की इकाई (SET, KG आदि)", hsn:"HSN", needPrice:"कृपया सही कीमत लिखिए।", badGst:"GST % 0 से 100 के बीच होना चाहिए।",
+    termsT:"नियम व शर्तें", addTerm:"शर्त जोड़ें", editTerm:"शर्त बदलें", noTerm:"अभी कोई शर्त नहीं है", termType:"प्रकार", termText:"नियम और शर्त", needTerm:"कृपया शर्त लिखिए।",
+    docQuotation:"कोटेशन", docInvoice:"इनवॉइस", docPO:"परचेज़ ऑर्डर", docProforma:"प्रोफ़ॉर्मा इनवॉइस", docDelivery:"डिलीवरी नोट", docReceipt:"रसीद", cancel:"रद्द करें"
   }
 };
 let LANG = LS.get('qm_lang') || null;
@@ -283,6 +331,11 @@ const I = {
   cloud: s=>ic('<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5H16"/><path d="M12 12v8M9 15l3-3 3 3"/>',s||28),
   cal: s=>ic('<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/>',s||30),
   flag: s=>ic('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',s||30),
+  contact: s=>ic('<rect x="4" y="3" width="15" height="18" rx="2"/><circle cx="11.5" cy="10" r="2.5"/><path d="M7 17c.7-2 2.4-3 4.5-3s3.8 1 4.5 3M21 8v2M21 13v2"/>',s||26),
+  plus: s=>ic('<path d="M12 5v14M5 12h14"/>',s||26),
+  trash: s=>ic('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',s||22),
+  pencil: s=>ic('<path d="M4 20l4-1 11-11a2.1 2.1 0 0 0-3-3L5 16z"/>',s||22),
+  search: s=>ic('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',s||22),
   globe: s=>ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',s||24),
   google: s=>`<svg width="${s||22}" height="${s||22}" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>`
 };
@@ -298,13 +351,17 @@ async function makeBackend(){
   if (DEMO){
     const listeners=[];
     const read = ()=>{ try{ return JSON.parse(LS.get('qm_demo_owner')||'null'); }catch(e){ return null; } };
+    const cols = ()=>{ try{ return JSON.parse(LS.get('qm_demo_cols')||'{}'); }catch(e){ return {}; } };
     backend = {
       demo:true,
       onAuth(cb){ listeners.push(cb); const u = LS.get('qm_demo_user'); setTimeout(()=>cb(u?JSON.parse(u):null),50); },
       async signIn(){ const u={uid:'demo',displayName:'Demo User',email:'demo.user@example.com',photoURL:''}; LS.set('qm_demo_user',JSON.stringify(u)); listeners.forEach(f=>f(u)); },
       async signOut(){ LS.del('qm_demo_user'); listeners.forEach(f=>f(null)); },
       async load(){ return read(); },
-      async save(user, patch){ const cur=read()||{}; LS.set('qm_demo_owner', JSON.stringify(deepMerge(cur, patch))); }
+      async save(user, patch){ const cur=read()||{}; LS.set('qm_demo_owner', JSON.stringify(deepMerge(cur, patch))); },
+      async list(user, col){ return Object.values(cols()[col]||{}); },
+      async put(user, col, id, data){ const c=cols(); (c[col]=c[col]||{})[id]=data; LS.set('qm_demo_cols', JSON.stringify(c)); },
+      async remove(user, col, id){ const c=cols(); if (c[col]) delete c[col][id]; LS.set('qm_demo_cols', JSON.stringify(c)); }
     };
     return;
   }
@@ -329,7 +386,10 @@ async function makeBackend(){
     },
     async signOut(){ await Au.signOut(auth); },
     async load(user){ const s = await Fs.getDoc(Fs.doc(db,'owners',user.uid)); return s.exists() ? s.data() : null; },
-    async save(user, patch){ await Fs.setDoc(Fs.doc(db,'owners',user.uid), patch, {merge:true}); }
+    async save(user, patch){ await Fs.setDoc(Fs.doc(db,'owners',user.uid), patch, {merge:true}); },
+    async list(user, col){ const s = await Fs.getDocs(Fs.collection(db,'owners',user.uid,col)); return s.docs.map(d=>Object.assign({id:d.id}, d.data())); },
+    async put(user, col, id, data){ await Fs.setDoc(Fs.doc(db,'owners',user.uid,col,id), data); },
+    async remove(user, col, id){ await Fs.deleteDoc(Fs.doc(db,'owners',user.uid,col,id)); }
   };
 }
 function deepMerge(a,b){
@@ -344,8 +404,12 @@ function deepMerge(a,b){
 /* =====================================================================
    STATE
    ===================================================================== */
-const S = { user:null, owner:{}, ready:false };
+const S = { user:null, owner:{}, ready:false, cache:{} };
 let WZ = null;   // wizard state
+let FM = null;   // customer / product form state
+let TAB = 0;     // selected tab on Terms screen
+const DS = () => (FM ? FM.d : WZ.d);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 const biz = () => (S.owner && S.owner.business) || {};
 
 function scoreItems(){
@@ -355,8 +419,8 @@ function scoreItems(){
     ['sig',   !!b.signature, 'wizard:2'],
     ['tax',   !!(b.gstin||b.pan), 'wizard:4'],
     ['pay',   !!(b.upi||b.accNo), 'wizard:4'],
-    ['cust',  (c.customers||0)>0, 'soon'],
-    ['prod',  (c.products||0)>0, 'soon'],
+    ['cust',  (c.customers||0)>0, 'go:customer/new'],
+    ['prod',  (c.products||0)>0, 'go:product/new'],
     ['doc',   (c.documents||0)>0, 'soon'],
     ['name',  !!b.name, 'wizard:1'],
     ['email', !!b.email, 'wizard:1'],
@@ -386,12 +450,24 @@ function route(){
   const setupDone = !!(biz().setupDone);
   if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
   if (r.startsWith('wizard')){ if(!WZ) startWizard({}); return viewWizard(); }
+  if (r==='customers') return viewList('customers');
+  if (r==='products') return viewList('products');
+  if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
+  if (r.startsWith('product/')) return viewForm('product', r.split('/')[1]);
+  if (r==='terms') return viewTerms();
   if (r==='score') return viewScore();
   if (r==='settings') return viewSettings();
   if (r==='language') return viewLang(false);
   return viewHome();
 }
-window.addEventListener('hashchange', ()=>{ if (!(currentRoute().startsWith('wizard'))) { if (WZ && !WZ.setup) WZ=null; } route(); });
+window.addEventListener('hashchange', ()=>{
+  const r = currentRoute();
+  if (!r.startsWith('wizard')) { if (WZ && !WZ.setup) WZ=null; }
+  if (!/^(customer|product)\//.test(r)) FM = null;
+  closeSheet();
+  route();
+});
+function goReplace(h){ location.replace('#'+h); }
 
 /* ---------------- bar ---------------- */
 function bar(title, o={}){
@@ -460,8 +536,11 @@ function startWizard(o){
   }, b) };
   if (!WZ.d.contact && S.user) WZ.d.contact = S.user.displayName||'';
 }
-const fld = (k,label,o={}) => `<label class="fld ${o.cls||''}" data-fw="${k}"><span>${esc(label)}</span>
-  <input data-k="${k}" type="${o.type||'text'}" value="${esc(WZ.d[k])}" ${o.inputmode?`inputmode="${o.inputmode}"`:''} ${o.list?`list="${o.list}"`:''} autocomplete="${o.ac||'off'}" ${o.max?`maxlength="${o.max}"`:''} ${o.up?'style="text-transform:uppercase"':''}></label>`;
+const fld = (k,label,o={}) => `<label class="fld ${o.cls||''} ${o.pick?'hasbtn':''}" data-fw="${k}"><span>${esc(label)}</span>
+  ${o.ta
+    ? `<textarea data-k="${k}" rows="${o.rows||3}" ${o.max?`maxlength="${o.max}"`:''}>${esc(DS()[k])}</textarea>`
+    : `<input data-k="${k}" type="${o.type||'text'}" value="${esc(DS()[k])}" ${o.inputmode?`inputmode="${o.inputmode}"`:''} ${o.list?`list="${o.list}"`:''} autocomplete="${o.ac||'off'}" ${o.max?`maxlength="${o.max}"`:''} ${o.up?'style="text-transform:uppercase"':''}>`}
+  ${o.pick?`<button type="button" class="pick" data-act="pickcontact" aria-label="${esc(t('pickContact'))}">${I.contact(26)}</button>`:''}</label>`;
 
 function viewWizard(){
   const w = WZ, d = w.d, s = w.step;
@@ -584,9 +663,9 @@ function viewHome(){
     <div class="manage"><h3>${esc(t('manage'))}</h3>
       <div class="mrow">
         <button class="mbtn" data-act="bizinfo"><span class="sq">${I.building(34)}</span>${esc(t('business'))}</button>
-        <button class="mbtn" data-act="soon"><span class="sq">${I.user(34)}</span>${esc(t('customer'))}</button>
-        <button class="mbtn" data-act="soon"><span class="sq">${I.box(34)}</span>${esc(t('product'))}</button>
-        <button class="mbtn" data-act="soon"><span class="sq">${I.terms(34)}</span>${esc(t('terms'))}</button>
+        <button class="mbtn" data-act="customers"><span class="sq">${I.user(34)}</span>${esc(t('customer'))}</button>
+        <button class="mbtn" data-act="products"><span class="sq">${I.box(34)}</span>${esc(t('product'))}</button>
+        <button class="mbtn" data-act="terms"><span class="sq">${I.terms(34)}</span>${esc(t('terms'))}</button>
       </div></div>
     <div class="panel">
       ${sc.pct<100?`<button class="setup" data-act="score"><div class="tx"><b>${esc(t('setupTitle'))}</b><small>${esc(t('stepsDone',{a:sc.done,b:sc.total}))}</small></div>${ring(sc.pct,66)}${I.chev(22)}</button>`:''}
@@ -604,6 +683,218 @@ function viewHome(){
       </div>
     </div>
   </div>`;
+}
+
+/* =====================================================================
+   STEP 2: customers, products, terms
+   ===================================================================== */
+const UNITS = ['PCS','KG','GM','LTR','ML','BOX','SET','DOZEN','PACK','TRAY','NOS','MTR'];
+const TERM_TYPES = [['quotation','docQuotation'],['invoice','docInvoice'],['po','docPO'],['proforma','docProforma'],['delivery','docDelivery'],['receipt','docReceipt']];
+const COL_META = {
+  customers:{ title:'customersT', search:'searchCustomer', empty:'noCustomer', fab:'addCustomer', one:'customer' },
+  products: { title:'productsT',  search:'searchProduct',  empty:'noProduct',  fab:'addProduct',  one:'product' }
+};
+function loadingView(){ app.innerHTML = `<div class="loading"><div><div class="spin"></div></div></div>`; }
+async function ensure(col){
+  if (S.cache[col]) return S.cache[col];
+  loadingView();
+  try{ S.cache[col] = await backend.list(S.user, col); }
+  catch(e){ console.error(e); S.cache[col] = []; toast(t('saveFail')); }
+  return S.cache[col];
+}
+async function syncCounts(col){
+  const n = (S.cache[col]||[]).length;
+  S.owner.counts = Object.assign({}, S.owner.counts, {[col]:n});
+  try{ await backend.save(S.user, {counts:{[col]:n}}); }catch(e){ console.error(e); }
+}
+const byName = (a,b) => String(a.name||a.text||'').toLowerCase().localeCompare(String(b.name||b.text||'').toLowerCase());
+
+function itemsHtml(col, q){
+  const meta = COL_META[col];
+  q = String(q||'').trim().toLowerCase();
+  let rows = (S.cache[col]||[]).slice().sort(byName);
+  if (q) rows = rows.filter(r => [r.name,r.company,r.mobile,r.hsn].join(' ').toLowerCase().includes(q));
+  if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache[col]||[]).length ? 'noResult' : meta.empty))}</div>`;
+  const cur = biz().currency || 'INR';
+  return rows.map(r => col==='customers'
+    ? `<button class="item" data-open="customer/${esc(r.id)}"><span class="tx"><b>${esc(r.name)}</b>${r.company?`<small>${esc(r.company)}</small>`:''}${r.mobile?`<small>${esc(r.mobile)}</small>`:''}</span>${I.chev(20)}</button>`
+    : `<button class="item" data-open="product/${esc(r.id)}"><span class="tx"><b>${esc(r.name)}</b><small>${r.gst!==''&&r.gst!=null?esc(t('gst').replace('%','')+r.gst+'%'):''}${r.hsn?' · HSN '+esc(r.hsn):''}</small></span><span class="rt">${esc(fmtMoney(+r.price||0,cur))}${r.unit?`<small style="font-weight:400">/ ${esc(r.unit)}</small>`:''}</span>${I.chev(20)}</button>`
+  ).join('');
+}
+async function viewList(col){
+  const meta = COL_META[col];
+  await ensure(col);
+  app.innerHTML = `${bar(t(meta.title),{back:true})}
+  <div class="shell">
+    <div class="searchbox">${I.search(22)}<input id="q" type="search" placeholder="${esc(t(meta.search))}" autocomplete="off" data-col="${col}"></div>
+    <div class="items" id="items">${itemsHtml(col,'')}</div>
+  </div>
+  <button class="fab" data-open="${meta.one}/new">${esc(t(meta.fab))}</button>`;
+}
+
+function formDefaults(kind){
+  return kind==='customer'
+    ? {name:'',company:'',email:'',mobile:'',addr1:'',addr2:'',other:'',gstin:'',state:'',shipping:''}
+    : {name:'',price:'',gst:'',description:'',unit:'',hsn:''};
+}
+async function viewForm(kind, id){
+  const col = kind==='customer' ? 'customers' : 'products';
+  await ensure(col);
+  const isNew = id==='new';
+  const rec = isNew ? null : (S.cache[col]||[]).find(x=>x.id===id);
+  if (!isNew && !rec) return goReplace(col);
+  FM = { kind, col, id: isNew ? uid() : id, isNew, d: Object.assign(formDefaults(kind), rec||{}) };
+  if (FM.d.price===0 || FM.d.price) FM.d.price = String(FM.d.price);
+  if (FM.d.gst===0 || FM.d.gst) FM.d.gst = String(FM.d.gst);
+  const canPick = kind==='customer' && !!(navigator.contacts && navigator.contacts.select);
+  let body = '';
+  if (kind==='customer'){
+    body = `${fld('name',t('nameLbl'),{pick:canPick})}<div id="e_name"></div>
+      ${fld('company',t('companyName'))}
+      ${fld('email',t('email'),{type:'email'})}<div id="e_email"></div>
+      ${fld('mobile',t('mobile'),{type:'tel',inputmode:'tel'})}
+      ${fld('addr1',t('addr1'))}
+      ${fld('addr2',t('addr2'))}
+      ${fld('other',t('otherInfo'))}
+      ${fld('gstin',t('gstin'),{max:15,up:true})}
+      ${fld('state',t('state'),{list:'statelist'})}
+      <datalist id="statelist">${STATES.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
+      <div class="sechead">${esc(t('shippingDetails'))}</div>
+      ${fld('shipping',t('shippingAddress'),{ta:true,rows:3})}`;
+  } else {
+    body = `${fld('name',t('productName'))}<div id="e_name"></div>
+      ${fld('price',t('price'),{inputmode:'decimal'})}<div id="e_price"></div>
+      ${fld('gst',t('gst'),{inputmode:'decimal'})}<div id="e_gst"></div>
+      ${fld('description',t('description'),{ta:true,rows:4,max:2000})}
+      <div class="cnt" id="cnt">${String(FM.d.description||'').length}/2000</div>
+      ${fld('unit',t('unit'),{list:'unitlist'})}
+      <datalist id="unitlist">${UNITS.map(x=>`<option value="${x}">`).join('')}</datalist>
+      ${fld('hsn',t('hsn'))}`;
+  }
+  const title = t(kind==='customer' ? (isNew?'addCustomer':'editCustomer') : (isNew?'addProduct':'editProduct'));
+  app.innerHTML = `${bar(title,{back:true})}
+  <div class="shell page-white">
+    <div class="pad-x" style="padding-top:18px;padding-bottom:10px">${body}</div>
+    <div class="btnrow">
+      ${isNew?'':`<button class="btn danger" data-act="delform" style="flex:.55">${esc(t('del'))}</button>`}
+      <button class="btn" data-act="saveform">${esc(isNew ? t('add') : t('save'))}</button>
+    </div>
+  </div>`;
+}
+function setErr(key, msg){
+  const w = $(`[data-fw=${key}]`), e = $('#e_'+key);
+  if (w) w.classList.add('err');
+  if (e) e.innerHTML = `<div class="err-msg">${esc(msg)}</div>`;
+}
+async function saveForm(){
+  if (!FM) return;
+  document.querySelectorAll('.fld.err').forEach(e=>e.classList.remove('err'));
+  document.querySelectorAll('[id^=e_]').forEach(e=>e.innerHTML='');
+  const d = Object.assign({}, FM.d);
+  Object.keys(d).forEach(k => { if (typeof d[k]==='string') d[k] = d[k].trim(); });
+  let ok = true;
+  if (!d.name){ setErr('name', t('needName')); ok=false; }
+  if (FM.kind==='customer'){
+    if (d.email && !/^\S+@\S+\.\S+$/.test(d.email)){ setErr('email', t('badEmail')); ok=false; }
+    d.gstin = d.gstin.toUpperCase();
+  } else {
+    const p = parseFloat(String(d.price).replace(/,/g,''));
+    if (!(p>=0)){ setErr('price', t('needPrice')); ok=false; } else d.price = p;
+    if (String(d.gst)===''){ d.gst = ''; }
+    else { const g = parseFloat(d.gst); if (!(g>=0 && g<=100)){ setErr('gst', t('badGst')); ok=false; } else d.gst = g; }
+    d.unit = String(d.unit).toUpperCase();
+  }
+  if (!ok){ const f=$('.fld.err'); if (f) f.scrollIntoView({block:'center',behavior:'smooth'}); return; }
+  const btn = $('[data-act=saveform]'); btn.disabled = true;
+  const rec = Object.assign({}, d, { id:FM.id, updatedAt:Date.now() });
+  if (FM.isNew) rec.createdAt = Date.now();
+  try{
+    await backend.put(S.user, FM.col, FM.id, rec);
+    const list = S.cache[FM.col] || (S.cache[FM.col]=[]);
+    const i = list.findIndex(x=>x.id===FM.id);
+    if (i>=0) list[i] = Object.assign({}, list[i], rec); else list.push(rec);
+    await syncCounts(FM.col);
+    const col = FM.col; FM = null;
+    toast(t('saved')); goReplace(col);
+  }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
+}
+async function deleteForm(){
+  if (!FM || FM.isNew) return;
+  if (!confirm(t('deleteAsk'))) return;
+  try{
+    await backend.remove(S.user, FM.col, FM.id);
+    S.cache[FM.col] = (S.cache[FM.col]||[]).filter(x=>x.id!==FM.id);
+    await syncCounts(FM.col);
+    const col = FM.col; FM = null;
+    toast(t('saved')); goReplace(col);
+  }catch(e){ console.error(e); toast(t('saveFail')); }
+}
+async function pickContact(){
+  try{
+    const r = await navigator.contacts.select(['name','tel','email'], {multiple:false});
+    if (!r || !r[0] || !FM) return;
+    const c = r[0], set = (k,v)=>{ if (v){ FM.d[k]=v; const el=$(`[data-k=${k}]`); if (el) el.value=v; } };
+    set('name', c.name && c.name[0]);
+    if (c.tel && c.tel[0]){ let n = String(c.tel[0]).replace(/\D/g,''); if (n.length>10) n = n.slice(-10); set('mobile', n); }
+    set('email', c.email && c.email[0]);
+  }catch(e){ console.error(e); }
+}
+
+/* ---- Terms & Conditions ---- */
+async function viewTerms(){
+  await ensure('terms');
+  const type = TERM_TYPES[TAB][0];
+  const rows = S.cache.terms.filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+  app.innerHTML = `${bar(t('termsT'),{back:true,right:`<button class="ibtn" data-act="addterm" aria-label="${esc(t('addTerm'))}"><span class="plus-sq">${I.plus(24)}</span></button>`})}
+  <div class="shell">
+    <div class="tabs" id="tabs">${TERM_TYPES.map((x,i)=>`<button class="tab ${i===TAB?'on':''}" data-tab="${i}">${esc(t(x[1]))}</button>`).join('')}</div>
+    <div class="items" style="padding-top:14px">${rows.length ? rows.map(r=>`<div class="term"><p>${esc(r.text)}</p><div class="acts"><button data-editterm="${esc(r.id)}" aria-label="Edit">${I.pencil(20)}</button><button data-delterm="${esc(r.id)}" aria-label="${esc(t('del'))}">${I.trash(20)}</button></div></div>`).join('') : `<div class="empty">${esc(t('noTerm'))}</div>`}</div>
+  </div>`;
+  const on = $('.tab.on'); if (on && on.scrollIntoView) on.scrollIntoView({inline:'center',block:'nearest'});
+}
+function setTab(i){ if (i<0 || i>=TERM_TYPES.length) return; TAB = i; viewTerms(); }
+function closeSheet(){ const o=$('#sheet'); if (o) o.remove(); }
+function openTermSheet(rec){
+  closeSheet();
+  const isNew = !rec, type = rec ? rec.type : TERM_TYPES[TAB][0];
+  const ov = document.createElement('div');
+  ov.className = 'ov'; ov.id = 'sheet';
+  ov.innerHTML = `<div class="sheet" role="dialog"><div class="grab"></div>
+    <h3>${esc(t(isNew?'addTerm':'editTerm'))}</h3>
+    <label class="fld"><span>${esc(t('termType'))}</span><select id="termType">${TERM_TYPES.map(x=>`<option value="${x[0]}" ${x[0]===type?'selected':''}>${esc(t(x[1]))}</option>`).join('')}</select></label>
+    <label class="fld" id="termWrap"><span>${esc(t('termText'))}</span><textarea id="termText" rows="4">${esc(rec?rec.text:'')}</textarea></label>
+    <div id="termErr"></div>
+    <div class="btnrow" style="position:static;padding:6px 0 0">
+      <button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button>
+      <button class="btn" data-act="saveterm" data-id="${rec?esc(rec.id):''}">${esc(isNew?t('add'):t('save'))}</button>
+    </div></div>`;
+  ov.addEventListener('click', e=>{ if (e.target===ov) closeSheet(); });
+  document.body.appendChild(ov);
+  setTimeout(()=>{ const el=$('#termText'); if (el) el.focus(); }, 80);
+}
+async function saveTerm(btn){
+  const text = ($('#termText').value||'').trim(), type = $('#termType').value, id = btn.dataset.id;
+  if (!text){ $('#termWrap').classList.add('err'); $('#termErr').innerHTML = `<div class="err-msg">${esc(t('needTerm'))}</div>`; return; }
+  btn.disabled = true;
+  const list = S.cache.terms || (S.cache.terms=[]);
+  const old = id ? list.find(x=>x.id===id) : null;
+  const rec = { id: old ? old.id : uid(), type, text, createdAt: old ? (old.createdAt||Date.now()) : Date.now(), updatedAt: Date.now() };
+  try{
+    await backend.put(S.user, 'terms', rec.id, rec);
+    if (old) Object.assign(old, rec); else list.push(rec);
+    await syncCounts('terms');
+    TAB = Math.max(0, TERM_TYPES.findIndex(x=>x[0]===type));
+    closeSheet(); toast(t('saved')); viewTerms();
+  }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
+}
+async function deleteTerm(id){
+  if (!confirm(t('deleteAsk'))) return;
+  try{
+    await backend.remove(S.user, 'terms', id);
+    S.cache.terms = S.cache.terms.filter(x=>x.id!==id);
+    await syncCounts('terms');
+    toast(t('saved')); viewTerms();
+  }catch(e){ console.error(e); toast(t('saveFail')); }
 }
 
 /* =====================================================================
@@ -635,7 +926,7 @@ function viewSettings(){
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.0 (Step 1)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.1 (Step 2)</div>
   </div>`;
 }
 
@@ -643,8 +934,12 @@ function viewSettings(){
    EVENTS  (one place, works for every screen)
    ===================================================================== */
 document.addEventListener('click', async e=>{
-  const el = e.target.closest('[data-act],[data-lang],[data-goto],[data-pick],[data-clear],[data-to]');
+  const el = e.target.closest('[data-act],[data-lang],[data-goto],[data-pick],[data-clear],[data-to],[data-open],[data-tab],[data-editterm],[data-delterm]');
   if (!el) return;
+  if (el.dataset.open) return go(el.dataset.open);
+  if (el.dataset.tab) return setTab(+el.dataset.tab);
+  if (el.dataset.editterm){ const r=(S.cache.terms||[]).find(x=>x.id===el.dataset.editterm); return r && openTermSheet(r); }
+  if (el.dataset.delterm) return deleteTerm(el.dataset.delterm);
   if (el.dataset.lang) return chooseLang(el.dataset.lang);
   if (el.dataset.goto) return wzGo(+el.dataset.goto);
   if (el.dataset.pick) return pickImage(el.dataset.pick);
@@ -652,6 +947,7 @@ document.addEventListener('click', async e=>{
   if (el.dataset.to){
     const to = el.dataset.to;
     if (to==='soon') return toast(t('soon'));
+    if (to.startsWith('go:')) return go(to.slice(3));
     if (to.startsWith('wizard:')){ startWizard({step:+to.split(':')[1]}); return go('wizard'); }
     return;
   }
@@ -666,12 +962,23 @@ document.addEventListener('click', async e=>{
     case 'score': return go('score');
     case 'language': return go('language');
     case 'bizinfo': startWizard({}); return go('wizard');
+    case 'customers': return go('customers');
+    case 'products': return go('products');
+    case 'terms': return go('terms');
+    case 'saveform': return saveForm();
+    case 'delform': return deleteForm();
+    case 'pickcontact': return pickContact();
+    case 'addterm': return openTermSheet(null);
+    case 'saveterm': return saveTerm(el);
+    case 'sheetclose': return closeSheet();
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
   }
 });
 document.addEventListener('input', e=>{
   const k = e.target.dataset && e.target.dataset.k;
-  if (k && WZ){ WZ.d[k] = e.target.value; }
+  if (k && FM){ FM.d[k] = e.target.value; if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
+  else if (k && WZ){ WZ.d[k] = e.target.value; }
+  if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = itemsHtml(e.target.dataset.col, e.target.value); }
 });
 document.addEventListener('change', async e=>{
   if (e.target.id==='filepick' && e.target.files[0] && WZ){
@@ -684,16 +991,21 @@ document.addEventListener('change', async e=>{
     WZ.d[e.target.dataset.k] = e.target.value;
   }
 });
-/* swipe left / right between the 4 setup sections */
+/* swipe left / right: between the 4 setup sections, and between the Terms tabs */
 (function(){
   let x0=0,y0=0,on=false;
-  document.addEventListener('touchstart',e=>{ if(!WZ||!e.touches[0]) return; if(e.target.closest('input,select,textarea,.btnrow')) {on=false;return;} on=true; x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  const active = () => !!WZ || (currentRoute()==='terms' && !$('#sheet'));
+  document.addEventListener('touchstart',e=>{ if(!active()||!e.touches[0]) return; if(e.target.closest('input,select,textarea,.btnrow,.tabs')) {on=false;return;} on=true; x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
   document.addEventListener('touchend',e=>{
-    if(!on||!WZ||!e.changedTouches[0]) return; on=false;
+    if(!on||!active()||!e.changedTouches[0]) return; on=false;
     const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
     if (Math.abs(dx)<70 || Math.abs(dy)>50) return;
-    if (dx<0 && WZ.step<4){ if (validateStep()) wzGo(WZ.step+1); }
-    else if (dx>0 && WZ.step>1) wzGo(WZ.step-1);
+    if (WZ){
+      if (dx<0 && WZ.step<4){ if (validateStep()) wzGo(WZ.step+1); }
+      else if (dx>0 && WZ.step>1) wzGo(WZ.step-1);
+    } else if (currentRoute()==='terms'){
+      setTab(TAB + (dx<0 ? 1 : -1));
+    }
   },{passive:true});
 })();
 
@@ -709,7 +1021,7 @@ document.addEventListener('change', async e=>{
     return;
   }
   backend.onAuth(async user=>{
-    S.user = user;
+    S.user = user; S.cache = {}; FM = null;
     if (user){
       try{ S.owner = (await backend.load(user)) || {}; }catch(e){ console.error(e); S.owner = {}; }
       if (!LANG && S.owner.language) setLang(S.owner.language);
