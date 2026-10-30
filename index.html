@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#272727">
+<meta name="color-scheme" content="light">
+<title>Quotation Maker</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f3f3; --ink:#262626; --muted:#6b6b6b; --field:#f2f2f2; --line:#e3e3e3;
+  --dark:#272727; --accent:#e8a33d; --ok:#5aa876; --err:#c0392b; --card:#ffffff;
+  --radius:18px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans","Noto Sans Devanagari",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.4;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+input,select,textarea{font:inherit;color:inherit}
+.hide{display:none!important}
+
+/* ---------- top bar ---------- */
+.bar{background:var(--dark);color:#fff;position:sticky;top:0;z-index:20;padding-top:env(safe-area-inset-top)}
+.bar-in{max-width:760px;margin:0 auto;height:58px;display:flex;align-items:center;gap:6px;padding:0 10px 0 6px}
+.bar h1{font-size:20px;font-weight:600;margin:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .ibtn{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;color:#fff}
+.bar .ibtn:active{background:#ffffff22}
+.bar .pad{width:12px}
+.shell{max-width:760px;margin:0 auto;padding:0 0 40px}
+.page-white{background:#fff;min-height:calc(100vh - 58px)}
+.banner{background:#fff3cd;color:#5c4400;font-size:13px;padding:8px 14px;text-align:center}
+
+/* ---------- common ---------- */
+.pad-x{padding:0 18px}
+h2.title{font-size:25px;font-weight:700;margin:22px 0 4px}
+p.sub{color:var(--muted);margin:0 0 18px}
+.fld{display:block;background:var(--field);border-radius:var(--radius);padding:9px 18px 8px;margin:0 0 14px;position:relative}
+.fld>span{display:block;font-size:12.5px;color:var(--muted);letter-spacing:.2px}
+.fld input,.fld select{display:block;width:100%;border:0;background:transparent;outline:none;font-size:17px;padding:3px 0 2px;min-height:28px}
+.fld select{appearance:none;-webkit-appearance:none;padding-right:20px}
+.fld:focus-within{outline:2px solid var(--dark);outline-offset:-2px}
+.fld.err{outline:2px solid var(--err);outline-offset:-2px}
+.fld.ico{display:flex;align-items:center;gap:16px}
+.fld.ico svg{flex:none;color:var(--dark)}
+.fld.ico .col{flex:1;min-width:0}
+.btn{display:block;width:100%;background:var(--dark);color:#fff;border-radius:16px;padding:16px;font-size:17px;font-weight:600;letter-spacing:.4px;text-align:center}
+.btn:active{opacity:.85}
+.btn.ghost{background:#fff;color:var(--dark);border:1.5px solid #c9c9c9}
+.btn:disabled{opacity:.5}
+.btnrow{display:flex;gap:12px;padding:14px 18px calc(18px + env(safe-area-inset-bottom));position:sticky;bottom:0;background:#fff}
+.btnrow .btn{flex:1}
+.err-msg{color:var(--err);font-size:13.5px;margin:-6px 4px 12px}
+
+/* ---------- stepper ---------- */
+.stepper{display:flex;align-items:center;padding:20px 24px 16px;border-bottom:1px solid var(--line)}
+.stepper .line{flex:1;height:3px;background:#dcdcdc;margin:0 2px}
+.stepper .line.on{background:var(--dark)}
+.dot{width:38px;height:38px;border-radius:50%;border:2.5px solid #7a7f87;color:#5e636b;display:grid;place-items:center;font-weight:700;font-size:16px;background:#fff;flex:none}
+.dot.cur,.dot.done{background:var(--dark);border-color:var(--dark);color:#fff}
+.dot.done{cursor:pointer}
+
+/* ---------- uploads ---------- */
+.up{border:2px dashed #cfcfcf;border-radius:22px;padding:22px 14px;text-align:center;margin:10px 0 8px;cursor:pointer;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.up .circle{width:58px;height:58px;border-radius:50%;background:#f0f0f0;display:grid;place-items:center;margin-bottom:6px}
+.up b{color:#17323c;font-size:17px}
+.up small{color:var(--muted);font-size:14px}
+.up img{max-width:100%;max-height:140px;object-fit:contain}
+.uplinks{display:flex;gap:18px;justify-content:center;margin-top:8px}
+.uplinks button{color:#17323c;font-weight:600;font-size:14px;text-decoration:underline}
+.sec{font-size:19px;font-weight:700;margin:20px 0 2px}
+.hr{height:1px;background:var(--line);margin:18px 0}
+
+/* ---------- language / login ---------- */
+.center{min-height:100vh;display:flex;flex-direction:column;justify-content:center;max-width:460px;margin:0 auto;padding:24px 22px}
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.brand img{width:62px;height:62px;border-radius:16px}
+.brand b{font-size:26px;font-weight:700;line-height:1.1}
+.langcard{display:flex;align-items:center;justify-content:space-between;background:#fff;border:2px solid #e1e1e1;border-radius:20px;padding:20px 22px;margin-bottom:14px;width:100%;text-align:left}
+.langcard .big{font-size:22px;font-weight:700}
+.langcard .small{color:var(--muted);font-size:14px}
+.langcard.sel{border-color:var(--dark);background:#fafafa}
+.radio{width:26px;height:26px;border-radius:50%;border:2.5px solid #b8b8b8;display:grid;place-items:center}
+.langcard.sel .radio{border-color:var(--dark);background:var(--dark);color:#fff}
+.gbtn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:#fff;border:1.5px solid #c9c9c9;border-radius:16px;padding:15px;font-size:17px;font-weight:600;margin-top:22px}
+.gbtn:active{background:#f6f6f6}
+.link{color:#17323c;text-decoration:underline;font-weight:600;font-size:15px;display:inline-block;margin-top:18px}
+.muted{color:var(--muted)}
+
+/* ---------- home ---------- */
+.home-top{padding:22px 18px 6px;display:flex;align-items:flex-start;gap:10px}
+.home-top .hello{flex:1;min-width:0}
+.home-top h1{font-size:31px;margin:0;font-weight:700}
+.home-top p{margin:2px 0 0;font-size:19px;color:#444;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gear{width:52px;height:52px;border-radius:16px;background:#fff;box-shadow:0 1px 6px #0002;display:grid;place-items:center}
+.manage{padding:14px 18px 6px}
+.manage h3{font-size:24px;margin:8px 0 14px;font-weight:700}
+.mrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.mbtn{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.3px;font-weight:500;text-transform:uppercase;min-width:0}
+.mbtn .sq{width:72px;height:72px;border-radius:22px;background:#fff;box-shadow:0 2px 8px #0001;display:grid;place-items:center;color:var(--dark)}
+.panel{background:#ececec;border-radius:36px 36px 0 0;margin-top:22px;padding:22px 16px 40px;min-height:50vh}
+.setup{display:flex;align-items:center;gap:10px;background:#fdf7e6;border-radius:22px;padding:18px 18px;margin-bottom:16px;width:100%;text-align:left}
+.setup .tx{flex:1}
+.setup b{font-size:19px;display:block;line-height:1.2}
+.setup small{color:var(--muted);font-size:15px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr)}}
+.tile{background:#fff;border-radius:26px;padding:18px 18px 16px;text-align:left;min-height:170px;box-shadow:0 3px 10px #0001;display:flex;flex-direction:column;justify-content:space-between}
+.tile .c{width:46px;height:46px;border-radius:50%;background:var(--dark);color:#fff;display:grid;place-items:center}
+.tile b{font-size:20px;display:block;line-height:1.15;margin-top:18px;font-weight:600}
+.tile small{color:var(--muted);font-size:14.5px;display:block;margin-top:3px}
+.tile:active{transform:scale(.98)}
+
+/* ---------- lists (score / settings) ---------- */
+.list{background:#fff}
+.row{display:flex;align-items:center;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line);width:100%;text-align:left}
+.row .tx{flex:1;min-width:0}
+.row b{font-weight:600;font-size:18px;display:block}
+.row small{color:var(--muted);font-size:15px;display:block}
+.row.done b,.row.done small{text-decoration:line-through;color:#9a9a9a}
+.chk{width:34px;height:34px;border-radius:50%;border:2px solid #cfcfcf;flex:none;display:grid;place-items:center}
+.row.done .chk{background:var(--ok);border-color:var(--ok);color:#fff}
+.gh{background:#f3f3f3;margin:14px 12px 4px;border-radius:18px;padding:14px 16px;font-weight:700;font-size:18px}
+.srow{padding:17px 24px;font-size:18px;display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;border-bottom:1px solid var(--line)}
+.profilecard{display:flex;align-items:center;gap:14px;padding:18px}
+.profilecard img{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#ddd}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--dark);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:700;flex:none}
+.profilecard b{display:block;font-size:19px}
+.profilecard small{color:var(--muted);font-size:15px}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:12px 20px;border-radius:14px;opacity:0;transition:.25s;z-index:99;max-width:90vw;text-align:center;font-size:15px;pointer-events:none}
+#toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.loading{display:grid;place-items:center;min-height:100vh;color:var(--muted)}
+.spin{width:34px;height:34px;border-radius:50%;border:4px solid #ddd;border-top-color:var(--dark);animation:sp 1s linear infinite;margin:0 auto 12px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="app"><div class="loading"><div><div class="spin"></div>Loading…</div></div></div>
+<div id="toast"></div>
+
+<script src="firebase-config.js"></script>
+<script>
+"use strict";
+/* =====================================================================
+   QUOTATION MAKER  –  Step 1
+   Google sign-in, language, business setup, home, profile score, settings
+   ===================================================================== */
+
+/* ---------------- safe storage (works even if browser blocks it) ---------------- */
+const mem = {};
+const LS = {
+  get(k){ try{ const v = localStorage.getItem(k); return v===null ? (k in mem ? mem[k] : null) : v; }catch(e){ return k in mem ? mem[k] : null; } },
+  set(k,v){ mem[k]=v; try{ localStorage.setItem(k,v); }catch(e){} },
+  del(k){ delete mem[k]; try{ localStorage.removeItem(k); }catch(e){} }
+};
+
+/* ---------------- translations ---------------- */
+const T = {
+  en:{
+    appName:"Quotation Maker", chooseLang:"Choose your language", langHint:"You can change this later in Settings.",
+    cont:"Continue", tagline:"Make quotations and save your customers — on mobile and laptop.",
+    signInGoogle:"Sign in with Google", signInFail:"Sign-in failed. Please try again.", popupClosed:"Sign-in window was closed.",
+    demoBanner:"DEMO mode – data is saved only in this browser.",
+    bizInfo:"Business Information", s1Title:"Tell us about your business", s1Sub:"Fill in your basic business details to get started",
+    bizName:"Business Name", contactName:"Contact Name", email:"Email", phone:"Phone Number", addr1:"Address Line 1", addr2:"Address Line 2",
+    s2Title:"Add your business identity", s2Sub:"Upload your logo and signature to personalize your documents",
+    logo:"Business Logo", logoHint:"Appears at the top of your documents.", signature:"Signature", sigHint:"Appears at the bottom as authorised signature.",
+    tapUpload:"Tap to upload", remove:"Remove", change:"Change", badImage:"Could not read this image. Try another one.",
+    s3Title:"Date & Currency", s3Sub:"Set your preferred date format and currency for your business documents.",
+    dateFormat:"Date Format", currency:"Currency",
+    s4Title:"Tax & Payment details", s4Sub:"Optional for now — you can fill these in later.",
+    gstin:"GSTIN Number", pan:"PAN Number", state:"State", bankName:"Bank Name", accNo:"Account Number", ifsc:"IFSC Code", upi:"UPI ID",
+    next:"Next", back:"Back", finish:"Finish", save:"Save", saved:"Saved",
+    nameReq:"Please enter your business name.", badEmail:"Please enter a valid email.", saveFail:"Could not save. Check internet and try again.",
+    welcome:"Welcome", manage:"Manage", business:"Business", customer:"Customer", product:"Product", terms:"Terms",
+    setupTitle:"Complete Your Business Setup", stepsDone:"{a} of {b} steps completed",
+    makeQuotation:"Make Quotation", makeQuotationSub:"Create a new quotation", quotationList:"Quotation List", quotationListSub:"Manage all quotations",
+    makeInvoice:"Make Invoice", makeInvoiceSub:"Create a new invoice", invoiceList:"Invoice List", invoiceListSub:"Manage all invoices",
+    purchaseOrder:"Purchase Order", purchaseOrderSub:"Manage all purchase orders", proforma:"Proforma Invoice", proformaSub:"Manage all proforma invoices",
+    deliveryNote:"Delivery Note", deliveryNoteSub:"Manage all delivery notes / challans", receipt:"Receipt", receiptSub:"Manage all receipts",
+    settings:"Settings", settingsSub:"Manage app settings", languageTile:"Language", languageSub:"Change app language",
+    soon:"This feature comes in an upcoming step.",
+    profileScore:"Profile Score",
+    sc_logo:"Business Logo", sc_logoD:"Upload your brand logo for professional documents.",
+    sc_sig:"Business Signature", sc_sigD:"Add your signature to authorize documents.",
+    sc_tax:"Tax Information", sc_taxD:"Set up your GST, PAN or other tax numbers.",
+    sc_pay:"Payment Details", sc_payD:"Add your bank account or UPI details.",
+    sc_cust:"First Customer", sc_custD:"Add your first client to start sending documents.",
+    sc_prod:"First Product", sc_prodD:"Add your first product or service.",
+    sc_doc:"First Document", sc_docD:"Create your first professional quotation or invoice.",
+    sc_name:"Business Name", sc_nameD:"Set your company name to personalize your documents.",
+    sc_email:"Business Email", sc_emailD:"Add your business contact email.",
+    sc_phone:"Business Phone", sc_phoneD:"Add your business phone number.",
+    sc_addr:"Business Address", sc_addrD:"Add your complete business address.",
+    account:"Account", profile:"Profile", businessInfo:"Business Info", language:"Language", logout:"Logout", logoutAsk:"Log out from this device?",
+    signedInAs:"Signed in with Google", appVersion:"App Version"
+  },
+  hi:{
+    appName:"कोटेशन मेकर", chooseLang:"अपनी भाषा चुनें", langHint:"इसे बाद में सेटिंग्स में बदल सकते हैं।",
+    cont:"आगे बढ़ें", tagline:"कोटेशन बनाइए और ग्राहक सेव कीजिए — मोबाइल और लैपटॉप दोनों पर।",
+    signInGoogle:"Google से साइन इन करें", signInFail:"साइन इन नहीं हो पाया। फिर से कोशिश करें।", popupClosed:"साइन इन की विंडो बंद हो गई।",
+    demoBanner:"डेमो मोड – डेटा सिर्फ़ इसी ब्राउज़र में सेव है।",
+    bizInfo:"बिज़नेस की जानकारी", s1Title:"अपने बिज़नेस के बारे में बताइए", s1Sub:"शुरू करने के लिए बिज़नेस की बुनियादी जानकारी भरें",
+    bizName:"बिज़नेस का नाम", contactName:"संपर्क व्यक्ति का नाम", email:"ईमेल", phone:"फ़ोन नंबर", addr1:"पता – लाइन 1", addr2:"पता – लाइन 2",
+    s2Title:"अपने बिज़नेस की पहचान जोड़ें", s2Sub:"दस्तावेज़ों को अपना बनाने के लिए लोगो और हस्ताक्षर अपलोड करें",
+    logo:"बिज़नेस लोगो", logoHint:"दस्तावेज़ों में सबसे ऊपर दिखेगा।", signature:"हस्ताक्षर", sigHint:"नीचे अधिकृत हस्ताक्षर के रूप में दिखेगा।",
+    tapUpload:"अपलोड करने के लिए दबाएँ", remove:"हटाएँ", change:"बदलें", badImage:"यह फ़ोटो पढ़ी नहीं जा सकी। दूसरी फ़ोटो चुनें।",
+    s3Title:"तारीख़ और मुद्रा", s3Sub:"अपने बिज़नेस दस्तावेज़ों के लिए तारीख़ का फ़ॉर्मेट और मुद्रा चुनें।",
+    dateFormat:"तारीख़ का फ़ॉर्मेट", currency:"मुद्रा (करेंसी)",
+    s4Title:"टैक्स और भुगतान की जानकारी", s4Sub:"अभी ज़रूरी नहीं — बाद में भी भर सकते हैं।",
+    gstin:"GSTIN नंबर", pan:"PAN नंबर", state:"राज्य", bankName:"बैंक का नाम", accNo:"खाता संख्या", ifsc:"IFSC कोड", upi:"UPI आईडी",
+    next:"आगे", back:"पीछे", finish:"पूरा करें", save:"सेव करें", saved:"सेव हो गया",
+    nameReq:"कृपया बिज़नेस का नाम लिखिए।", badEmail:"कृपया सही ईमेल लिखिए।", saveFail:"सेव नहीं हो पाया। इंटरनेट जाँचकर फिर कोशिश करें।",
+    welcome:"स्वागत है", manage:"प्रबंधन", business:"बिज़नेस", customer:"ग्राहक", product:"प्रोडक्ट", terms:"शर्तें",
+    setupTitle:"अपना बिज़नेस सेटअप पूरा करें", stepsDone:"{b} में से {a} स्टेप पूरे",
+    makeQuotation:"कोटेशन बनाएँ", makeQuotationSub:"नया कोटेशन बनाएँ", quotationList:"कोटेशन सूची", quotationListSub:"सभी कोटेशन देखें",
+    makeInvoice:"इनवॉइस बनाएँ", makeInvoiceSub:"नया इनवॉइस बनाएँ", invoiceList:"इनवॉइस सूची", invoiceListSub:"सभी इनवॉइस देखें",
+    purchaseOrder:"परचेज़ ऑर्डर", purchaseOrderSub:"सभी परचेज़ ऑर्डर देखें", proforma:"प्रोफ़ॉर्मा इनवॉइस", proformaSub:"सभी प्रोफ़ॉर्मा इनवॉइस देखें",
+    deliveryNote:"डिलीवरी नोट", deliveryNoteSub:"सभी डिलीवरी नोट / चालान देखें", receipt:"रसीद", receiptSub:"सभी रसीदें देखें",
+    settings:"सेटिंग्स", settingsSub:"ऐप की सेटिंग्स", languageTile:"भाषा", languageSub:"ऐप की भाषा बदलें",
+    soon:"यह सुविधा अगले स्टेप में आएगी।",
+    profileScore:"प्रोफ़ाइल स्कोर",
+    sc_logo:"बिज़नेस लोगो", sc_logoD:"प्रोफ़ेशनल दस्तावेज़ों के लिए अपना लोगो अपलोड करें।",
+    sc_sig:"बिज़नेस हस्ताक्षर", sc_sigD:"दस्तावेज़ों को अधिकृत करने के लिए हस्ताक्षर जोड़ें।",
+    sc_tax:"टैक्स जानकारी", sc_taxD:"अपना GST, PAN या दूसरे टैक्स नंबर भरें।",
+    sc_pay:"भुगतान की जानकारी", sc_payD:"अपना बैंक खाता या UPI जोड़ें।",
+    sc_cust:"पहला ग्राहक", sc_custD:"दस्तावेज़ भेजना शुरू करने के लिए पहला ग्राहक जोड़ें।",
+    sc_prod:"पहला प्रोडक्ट", sc_prodD:"अपना पहला प्रोडक्ट या सर्विस जोड़ें।",
+    sc_doc:"पहला दस्तावेज़", sc_docD:"अपना पहला कोटेशन या इनवॉइस बनाएँ।",
+    sc_name:"बिज़नेस का नाम", sc_nameD:"दस्तावेज़ों के लिए अपनी कंपनी का नाम भरें।",
+    sc_email:"बिज़नेस ईमेल", sc_emailD:"अपना बिज़नेस ईमेल जोड़ें।",
+    sc_phone:"बिज़नेस फ़ोन", sc_phoneD:"अपना बिज़नेस फ़ोन नंबर जोड़ें।",
+    sc_addr:"बिज़नेस का पता", sc_addrD:"अपना पूरा बिज़नेस पता जोड़ें।",
+    account:"खाता", profile:"प्रोफ़ाइल", businessInfo:"बिज़नेस की जानकारी", language:"भाषा", logout:"लॉग आउट", logoutAsk:"इस डिवाइस से लॉग आउट करें?",
+    signedInAs:"Google से साइन इन", appVersion:"ऐप वर्ज़न"
+  }
+};
+let LANG = LS.get('qm_lang') || null;
+const t = (k, vars) => {
+  let s = (T[LANG||'en'] && T[LANG||'en'][k]) || T.en[k] || k;
+  if (vars) for (const v in vars) s = s.replace('{'+v+'}', vars[v]);
+  return s;
+};
+function setLang(l){ LANG = l; LS.set('qm_lang', l); document.documentElement.lang = l; document.title = t('appName'); }
+
+/* ---------------- helpers ---------------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg){ const el=$('#toast'); el.textContent=msg; el.classList.add('on'); clearTimeout(toast._t); toast._t=setTimeout(()=>el.classList.remove('on'),2600); }
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DATE_FORMATS=['dd/MM/yyyy','MM/dd/yyyy','yyyy-MM-dd','dd-MM-yyyy','dd MMM yyyy'];
+function fmtDate(d, f){
+  const dd=String(d.getDate()).padStart(2,'0'), MM=String(d.getMonth()+1).padStart(2,'0'), yyyy=String(d.getFullYear());
+  return f.replace('yyyy',yyyy).replace('dd',dd).replace('MMM',MONTHS[d.getMonth()]).replace('MM',MM);
+}
+const CURRENCIES=[['INR','en-IN','India'],['USD','en-US','United States'],['EUR','de-DE','Eurozone'],['GBP','en-GB','United Kingdom'],['AED','en-AE','UAE'],['SAR','en-SA','Saudi Arabia'],['NPR','en-NP','Nepal'],['BDT','en-BD','Bangladesh'],['LKR','en-LK','Sri Lanka'],['SGD','en-SG','Singapore'],['AUD','en-AU','Australia'],['CAD','en-CA','Canada']];
+function fmtMoney(n, code){
+  const c = CURRENCIES.find(x=>x[0]===code) || CURRENCIES[0];
+  try{ return new Intl.NumberFormat(c[1],{style:'currency',currency:c[0]}).format(n); }catch(e){ return c[0]+' '+n.toFixed(2); }
+}
+const STATES=['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal','Delhi','Jammu and Kashmir','Ladakh','Chandigarh','Puducherry','Andaman and Nicobar Islands','Dadra and Nagar Haveli and Daman and Diu','Lakshadweep'];
+
+/* ---------------- icons ---------------- */
+const ic = (p,s=24,fill=false)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="${fill?'currentColor':'none'}" stroke="${fill?'none':'currentColor'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const I = {
+  back: s=>ic('<path d="M19 12H5M12 19l-7-7 7-7"/>',s||26),
+  check: s=>ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>',s||18),
+  chev: s=>ic('<path d="M9 6l6 6-6 6"/>',s||22),
+  gear: s=>ic('<circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',s||26),
+  building: s=>ic('<rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/>',s||34),
+  user: s=>ic('<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/>',s||34),
+  box: s=>ic('<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',s||34),
+  terms: s=>ic('<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8M8 12h8M8 16h4"/>',s||34),
+  docPlus: s=>ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14h6"/>',s||24),
+  docEdit: s=>ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 12h4M9 16h2"/>',s||24),
+  cloud: s=>ic('<path d="M7 18a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4 4 0 0 1-.5 8.5H16"/><path d="M12 12v8M9 15l3-3 3 3"/>',s||28),
+  cal: s=>ic('<rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17"/>',s||30),
+  flag: s=>ic('<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',s||30),
+  globe: s=>ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',s||24),
+  google: s=>`<svg width="${s||22}" height="${s||22}" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>`
+};
+
+/* =====================================================================
+   BACKEND  – real Firebase when config is filled, otherwise DEMO mode
+   ===================================================================== */
+const CFG = window.QM_FIREBASE || {};
+const DEMO = !CFG.apiKey || String(CFG.apiKey).startsWith('PASTE');
+let backend;
+
+async function makeBackend(){
+  if (DEMO){
+    const listeners=[];
+    const read = ()=>{ try{ return JSON.parse(LS.get('qm_demo_owner')||'null'); }catch(e){ return null; } };
+    backend = {
+      demo:true,
+      onAuth(cb){ listeners.push(cb); const u = LS.get('qm_demo_user'); setTimeout(()=>cb(u?JSON.parse(u):null),50); },
+      async signIn(){ const u={uid:'demo',displayName:'Demo User',email:'demo.user@example.com',photoURL:''}; LS.set('qm_demo_user',JSON.stringify(u)); listeners.forEach(f=>f(u)); },
+      async signOut(){ LS.del('qm_demo_user'); listeners.forEach(f=>f(null)); },
+      async load(){ return read(); },
+      async save(user, patch){ const cur=read()||{}; LS.set('qm_demo_owner', JSON.stringify(deepMerge(cur, patch))); }
+    };
+    return;
+  }
+  const V='10.12.2', base=`https://www.gstatic.com/firebasejs/${V}/`;
+  const [A, Au, Fs] = await Promise.all([import(base+'firebase-app.js'), import(base+'firebase-auth.js'), import(base+'firebase-firestore.js')]);
+  const app = A.initializeApp(CFG);
+  const auth = Au.getAuth(app);
+  let db;
+  try{ db = Fs.initializeFirestore(app,{ localCache: Fs.persistentLocalCache({ tabManager: Fs.persistentMultipleTabManager() }) }); }
+  catch(e){ db = Fs.getFirestore(app); }
+  const provider = new Au.GoogleAuthProvider();
+  provider.setCustomParameters({prompt:'select_account'});
+  backend = {
+    demo:false,
+    onAuth(cb){ Au.onAuthStateChanged(auth, u => cb(u ? {uid:u.uid,displayName:u.displayName||'',email:u.email||'',photoURL:u.photoURL||''} : null)); },
+    async signIn(){
+      try{ await Au.signInWithPopup(auth, provider); }
+      catch(e){
+        if (e && (e.code==='auth/popup-blocked' || e.code==='auth/operation-not-supported-in-this-environment')) { await Au.signInWithRedirect(auth, provider); return; }
+        throw e;
+      }
+    },
+    async signOut(){ await Au.signOut(auth); },
+    async load(user){ const s = await Fs.getDoc(Fs.doc(db,'owners',user.uid)); return s.exists() ? s.data() : null; },
+    async save(user, patch){ await Fs.setDoc(Fs.doc(db,'owners',user.uid), patch, {merge:true}); }
+  };
+}
+function deepMerge(a,b){
+  const o = Array.isArray(a)? a.slice() : Object.assign({}, a);
+  for (const k in b){
+    if (b[k] && typeof b[k]==='object' && !Array.isArray(b[k])) o[k] = deepMerge(o[k]&&typeof o[k]==='object'?o[k]:{}, b[k]);
+    else o[k] = b[k];
+  }
+  return o;
+}
+
+/* =====================================================================
+   STATE
+   ===================================================================== */
+const S = { user:null, owner:{}, ready:false };
+let WZ = null;   // wizard state
+const biz = () => (S.owner && S.owner.business) || {};
+
+function scoreItems(){
+  const b = biz(), c = (S.owner && S.owner.counts) || {};
+  return [
+    ['logo',  !!b.logo,  'wizard:2'],
+    ['sig',   !!b.signature, 'wizard:2'],
+    ['tax',   !!(b.gstin||b.pan), 'wizard:4'],
+    ['pay',   !!(b.upi||b.accNo), 'wizard:4'],
+    ['cust',  (c.customers||0)>0, 'soon'],
+    ['prod',  (c.products||0)>0, 'soon'],
+    ['doc',   (c.documents||0)>0, 'soon'],
+    ['name',  !!b.name, 'wizard:1'],
+    ['email', !!b.email, 'wizard:1'],
+    ['phone', !!b.phone, 'wizard:1'],
+    ['addr',  !!(b.addr1||b.addr2), 'wizard:1']
+  ];
+}
+function scoreInfo(){ const it=scoreItems(); const done=it.filter(x=>x[1]).length; return {done, total:it.length, pct:Math.round(done*100/it.length)}; }
+function ring(pct, size=64){
+  const r=(size-10)/2, c=2*Math.PI*r;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#d7d7d7" stroke-width="5"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="#e8a33d" stroke-width="5" stroke-linecap="round" stroke-dasharray="${c*pct/100} ${c}" transform="rotate(-90 ${size/2} ${size/2})"/><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="${size*0.24}" font-weight="700" fill="#262626">${pct}%</text></svg>`;
+}
+
+/* =====================================================================
+   ROUTER
+   ===================================================================== */
+const app = $('#app');
+function go(hash){ if (location.hash === '#'+hash) route(); else location.hash = hash; }
+function currentRoute(){ return (location.hash||'').replace(/^#\/?/,'') || 'home'; }
+
+function route(){
+  if (!S.ready){ return; }
+  window.scrollTo(0,0);
+  if (!LANG) return viewLang(true);
+  if (!S.user) return viewLogin();
+  const r = currentRoute();
+  const setupDone = !!(biz().setupDone);
+  if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
+  if (r.startsWith('wizard')){ if(!WZ) startWizard({}); return viewWizard(); }
+  if (r==='score') return viewScore();
+  if (r==='settings') return viewSettings();
+  if (r==='language') return viewLang(false);
+  return viewHome();
+}
+window.addEventListener('hashchange', ()=>{ if (!(currentRoute().startsWith('wizard'))) { if (WZ && !WZ.setup) WZ=null; } route(); });
+
+/* ---------------- bar ---------------- */
+function bar(title, o={}){
+  return `<div class="bar"><div class="bar-in">
+    ${o.back ? `<button class="ibtn" data-act="back" aria-label="${esc(t('back'))}">${I.back()}</button>` : '<span class="pad"></span>'}
+    <h1>${esc(title)}</h1>${o.right||''}
+  </div></div>${DEMO?`<div class="banner">${esc(t('demoBanner'))}</div>`:''}`;
+}
+function goBack(){ if (history.length>1 && currentRoute()!=='home') history.back(); else go('home'); }
+
+/* =====================================================================
+   VIEW: language
+   ===================================================================== */
+function viewLang(first){
+  const cur = LANG || (first ? null : 'en');
+  app.innerHTML = `${first?'':bar(t('language'),{back:true})}
+  <div class="${first?'center':'shell pad-x'}">
+    ${first?`<div class="brand"><img src="icon-192.png" alt=""><b>Quotation Maker<br><span style="font-weight:600;font-size:20px">कोटेशन मेकर</span></b></div>`:'<div style="height:22px"></div>'}
+    <h2 class="title" style="margin-top:0">Choose your language / अपनी भाषा चुनें</h2>
+    <p class="sub">${esc(t('langHint'))}</p>
+    <button class="langcard ${cur==='en'?'sel':''}" data-lang="en"><div><div class="big">English</div><div class="small">Use the app in English</div></div><span class="radio">${cur==='en'?I.check(16):''}</span></button>
+    <button class="langcard ${cur==='hi'?'sel':''}" data-lang="hi"><div><div class="big">हिन्दी</div><div class="small">ऐप हिन्दी में चलाएँ</div></div><span class="radio">${cur==='hi'?I.check(16):''}</span></button>
+  </div>`;
+}
+async function chooseLang(l){
+  const wasFirst = !LANG;
+  setLang(l);
+  if (S.user){ try{ await backend.save(S.user,{language:l}); S.owner.language=l; }catch(e){} }
+  if (wasFirst) { route(); } else { toast(t('saved')); go('settings'); }
+}
+
+/* =====================================================================
+   VIEW: login
+   ===================================================================== */
+function viewLogin(){
+  app.innerHTML = `<div class="center">
+    <div class="brand"><img src="icon-192.png" alt=""><b>${esc(t('appName'))}</b></div>
+    <h2 class="title" style="margin:0 0 8px;font-size:28px">${esc(t('appName'))}</h2>
+    <p class="sub" style="font-size:17px">${esc(t('tagline'))}</p>
+    <button class="gbtn" data-act="signin">${I.google(22)}<span>${esc(t('signInGoogle'))}</span></button>
+    <div id="loginErr" class="err-msg" style="margin-top:14px"></div>
+    <div><button class="link" data-act="chlang">${I.globe(18)} English / हिन्दी</button></div>
+    ${DEMO?`<p class="muted" style="font-size:13px;margin-top:22px">${esc(t('demoBanner'))}</p>`:''}
+  </div>`;
+}
+async function doSignIn(btn){
+  const err = $('#loginErr'); err.textContent='';
+  btn.disabled=true;
+  try{ await backend.signIn(); }
+  catch(e){
+    console.error(e);
+    err.textContent = (e && (e.code==='auth/popup-closed-by-user'||e.code==='auth/cancelled-popup-request')) ? t('popupClosed') : t('signInFail') + (e&&e.code?' ('+e.code+')':'');
+    btn.disabled=false;
+  }
+}
+
+/* =====================================================================
+   VIEW: wizard (business information, 4 steps)
+   ===================================================================== */
+function startWizard(o){
+  const b = biz();
+  WZ = { setup: !!o.setup, step: o.step||1, d: Object.assign({
+    name:'', contact:(S.user&&S.user.displayName)||'', email:(S.user&&S.user.email)||'', phone:'', addr1:'', addr2:'',
+    logo:'', signature:'', dateFormat:'dd/MM/yyyy', currency:'INR',
+    gstin:'', pan:'', state:'', bankName:'', accNo:'', ifsc:'', upi:''
+  }, b) };
+  if (!WZ.d.contact && S.user) WZ.d.contact = S.user.displayName||'';
+}
+const fld = (k,label,o={}) => `<label class="fld ${o.cls||''}" data-fw="${k}"><span>${esc(label)}</span>
+  <input data-k="${k}" type="${o.type||'text'}" value="${esc(WZ.d[k])}" ${o.inputmode?`inputmode="${o.inputmode}"`:''} ${o.list?`list="${o.list}"`:''} autocomplete="${o.ac||'off'}" ${o.max?`maxlength="${o.max}"`:''} ${o.up?'style="text-transform:uppercase"':''}></label>`;
+
+function viewWizard(){
+  const w = WZ, d = w.d, s = w.step;
+  const dots = [1,2,3,4].map((n,i)=>{
+    const cls = n<s ? 'done' : n===s ? 'cur' : '';
+    return (i? `<div class="line ${n<=s?'on':''}"></div>`:'') + `<div class="dot ${cls}" ${n<s?`data-goto="${n}"`:''}>${n<s?I.check(20):n}</div>`;
+  }).join('');
+  let body='';
+  if (s===1){
+    body = `<h2 class="title">${esc(t('s1Title'))}</h2><p class="sub">${esc(t('s1Sub'))}</p>
+      ${fld('name',t('bizName'),{ac:'organization'})}<div id="e_name"></div>
+      ${fld('contact',t('contactName'),{ac:'name'})}
+      ${fld('email',t('email'),{type:'email',ac:'email'})}<div id="e_email"></div>
+      ${fld('phone',t('phone'),{type:'tel',inputmode:'tel',ac:'tel'})}
+      ${fld('addr1',t('addr1'),{ac:'address-line1'})}
+      ${fld('addr2',t('addr2'),{ac:'address-line2'})}`;
+  } else if (s===2){
+    const up = (k,title,hint)=>`<div class="sec">${esc(title)}</div><div class="muted" style="font-size:15px">${esc(hint)}</div>
+      <div class="up" data-pick="${k}">${d[k]
+        ? `<img src="${esc(d[k])}" alt="">`
+        : `<div class="circle">${I.cloud(28)}</div><b>${esc(title)}</b><small>${esc(t('tapUpload'))}</small>`}</div>
+      ${d[k]?`<div class="uplinks"><button data-pick="${k}">${esc(t('change'))}</button><button data-clear="${k}">${esc(t('remove'))}</button></div>`:''}`;
+    body = `<h2 class="title">${esc(t('s2Title'))}</h2><p class="sub">${esc(t('s2Sub'))}</p>
+      ${up('logo',t('logo'),t('logoHint'))}<div class="hr"></div>${up('signature',t('signature'),t('sigHint'))}
+      <input type="file" id="filepick" accept="image/*" class="hide">`;
+  } else if (s===3){
+    const now = new Date();
+    body = `<h2 class="title">${esc(t('s3Title'))}</h2><p class="sub">${esc(t('s3Sub'))}</p>
+      <label class="fld ico">${I.cal(30)}<div class="col"><span>${esc(t('dateFormat'))}</span>
+        <select data-k="dateFormat">${DATE_FORMATS.map(f=>`<option value="${f}" ${d.dateFormat===f?'selected':''}>${f} (${fmtDate(now,f)})</option>`).join('')}</select></div></label>
+      <label class="fld ico">${I.flag(30)}<div class="col"><span>${esc(t('currency'))}</span>
+        <select data-k="currency">${CURRENCIES.map(c=>`<option value="${c[0]}" ${d.currency===c[0]?'selected':''}>${c[0]} (${c[2]} ${fmtMoney(999999.12,c[0])})</option>`).join('')}</select></div></label>`;
+  } else {
+    body = `<h2 class="title">${esc(t('s4Title'))}</h2><p class="sub">${esc(t('s4Sub'))}</p>
+      ${fld('gstin',t('gstin'),{max:15,up:true})}
+      ${fld('pan',t('pan'),{max:10,up:true})}
+      ${fld('state',t('state'),{list:'statelist'})}
+      <datalist id="statelist">${STATES.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
+      <div class="hr"></div>
+      ${fld('bankName',t('bankName'))}
+      ${fld('accNo',t('accNo'),{inputmode:'numeric'})}
+      ${fld('ifsc',t('ifsc'),{max:11,up:true})}
+      ${fld('upi',t('upi'))}`;
+  }
+  const last = s===4;
+  app.innerHTML = `${bar(t('bizInfo'), {back: !w.setup})}
+  <div class="shell page-white" id="wzpage">
+    <div class="stepper">${dots}</div>
+    <div class="pad-x" style="padding-bottom:10px">${body}</div>
+    <div class="btnrow">
+      ${s>1?`<button class="btn ghost" data-act="wzback">${esc(t('back'))}</button>`:''}
+      <button class="btn" data-act="wznext">${esc(last ? (w.setup ? t('finish') : t('save')) : t('next'))}</button>
+    </div>
+  </div>`;
+}
+function validateStep(){
+  const d = WZ.d;
+  if (WZ.step===1){
+    let ok = true;
+    $('#e_name').innerHTML=''; $('#e_email').innerHTML='';
+    document.querySelectorAll('.fld.err').forEach(e=>e.classList.remove('err'));
+    if (!String(d.name).trim()){ $('[data-fw=name]').classList.add('err'); $('#e_name').innerHTML=`<div class="err-msg">${esc(t('nameReq'))}</div>`; ok=false; }
+    if (d.email && !/^\S+@\S+\.\S+$/.test(String(d.email).trim())){ $('[data-fw=email]').classList.add('err'); $('#e_email').innerHTML=`<div class="err-msg">${esc(t('badEmail'))}</div>`; ok=false; }
+    return ok;
+  }
+  return true;
+}
+function wzGo(n){ if (n<1||n>4) return; WZ.step=n; viewWizard(); window.scrollTo(0,0); }
+async function wzNext(){
+  if (!validateStep()) return;
+  if (WZ.step<4) return wzGo(WZ.step+1);
+  const btn = $('[data-act=wznext]'); btn.disabled=true;
+  const d = Object.assign({}, WZ.d);
+  ['name','contact','email','phone','addr1','addr2','gstin','pan','state','bankName','accNo','ifsc','upi'].forEach(k=>d[k]=String(d[k]||'').trim());
+  d.gstin=d.gstin.toUpperCase(); d.pan=d.pan.toUpperCase(); d.ifsc=d.ifsc.toUpperCase();
+  d.setupDone = true;
+  try{
+    await backend.save(S.user, { business:d, language:LANG, updatedAt:Date.now() });
+    S.owner = deepMerge(S.owner||{}, { business:d, language:LANG });
+    const wasSetup = WZ.setup; WZ=null;
+    toast(t('saved'));
+    go(wasSetup ? 'home' : 'settings');
+    route();
+  }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled=false; }
+}
+function resizeImage(file, maxW, maxH){
+  return new Promise((res,rej)=>{
+    const fr = new FileReader();
+    fr.onerror = ()=>rej(new Error('read'));
+    fr.onload = ()=>{
+      const img = new Image();
+      img.onerror = ()=>rej(new Error('img'));
+      img.onload = ()=>{
+        const r = Math.min(1, maxW/img.width, maxH/img.height);
+        const c = document.createElement('canvas');
+        c.width = Math.max(1,Math.round(img.width*r)); c.height = Math.max(1,Math.round(img.height*r));
+        c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        let out = c.toDataURL('image/png');
+        if (out.length > 600000) out = c.toDataURL('image/jpeg', .85);
+        res(out);
+      };
+      img.src = fr.result;
+    };
+    fr.readAsDataURL(file);
+  });
+}
+let pickKey = null;
+function pickImage(k){ pickKey=k; const f=$('#filepick'); f.value=''; f.click(); }
+
+/* =====================================================================
+   VIEW: home
+   ===================================================================== */
+function viewHome(){
+  const b = biz(), sc = scoreInfo();
+  const tile = (icon, title, sub, act)=>`<button class="tile" data-act="${act}"><div class="c">${icon}</div><div><b>${esc(t(title))}</b><small>${esc(t(sub))}</small></div></button>`;
+  app.innerHTML = `${DEMO?`<div class="banner">${esc(t('demoBanner'))}</div>`:''}
+  <div class="shell">
+    <div class="home-top"><div class="hello"><h1>${esc(t('welcome'))}</h1><p>${esc(b.name||'')}</p></div>
+      <button class="gear" data-act="settings" aria-label="${esc(t('settings'))}">${I.gear(28)}</button></div>
+    <div class="manage"><h3>${esc(t('manage'))}</h3>
+      <div class="mrow">
+        <button class="mbtn" data-act="bizinfo"><span class="sq">${I.building(34)}</span>${esc(t('business'))}</button>
+        <button class="mbtn" data-act="soon"><span class="sq">${I.user(34)}</span>${esc(t('customer'))}</button>
+        <button class="mbtn" data-act="soon"><span class="sq">${I.box(34)}</span>${esc(t('product'))}</button>
+        <button class="mbtn" data-act="soon"><span class="sq">${I.terms(34)}</span>${esc(t('terms'))}</button>
+      </div></div>
+    <div class="panel">
+      ${sc.pct<100?`<button class="setup" data-act="score"><div class="tx"><b>${esc(t('setupTitle'))}</b><small>${esc(t('stepsDone',{a:sc.done,b:sc.total}))}</small></div>${ring(sc.pct,66)}${I.chev(22)}</button>`:''}
+      <div class="grid">
+        ${tile(I.docPlus(24),'makeQuotation','makeQuotationSub','soon')}
+        ${tile(I.docEdit(24),'quotationList','quotationListSub','soon')}
+        ${tile(I.docPlus(24),'makeInvoice','makeInvoiceSub','soon')}
+        ${tile(I.docEdit(24),'invoiceList','invoiceListSub','soon')}
+        ${tile(I.docEdit(24),'purchaseOrder','purchaseOrderSub','soon')}
+        ${tile(I.docEdit(24),'proforma','proformaSub','soon')}
+        ${tile(I.docEdit(24),'deliveryNote','deliveryNoteSub','soon')}
+        ${tile(I.docEdit(24),'receipt','receiptSub','soon')}
+        ${tile(I.globe(24),'languageTile','languageSub','language')}
+        ${tile(I.gear(22),'settings','settingsSub','settings')}
+      </div>
+    </div>
+  </div>`;
+}
+
+/* =====================================================================
+   VIEW: profile score
+   ===================================================================== */
+function viewScore(){
+  const sc = scoreInfo(), items = scoreItems();
+  const sorted = items.filter(x=>!x[1]).concat(items.filter(x=>x[1]));
+  app.innerHTML = `${bar(t('profileScore'),{back:true,right:`<span style="margin-right:8px;background:#fff;border-radius:50%;display:grid;place-items:center">${ring(sc.pct,50)}</span>`})}
+  <div class="shell list">
+    ${sorted.map(([k,done,to])=>`<button class="row ${done?'done':''}" data-to="${to}">
+      <span class="chk">${done?I.check(18):''}</span>
+      <span class="tx"><b>${esc(t('sc_'+k))}</b><small>${esc(t('sc_'+k+'D'))}</small></span>
+      ${done?'':I.chev(22)}</button>`).join('')}
+  </div>`;
+}
+
+/* =====================================================================
+   VIEW: settings
+   ===================================================================== */
+function viewSettings(){
+  const sc = scoreInfo(), u = S.user||{};
+  app.innerHTML = `${bar(t('settings'),{back:true})}
+  <div class="shell page-white">
+    ${sc.pct<100?`<div style="padding:14px 14px 0"><button class="setup" data-act="score"><div class="tx"><b>${esc(t('setupTitle'))}</b><small>${esc(t('stepsDone',{a:sc.done,b:sc.total}))}</small></div>${ring(sc.pct,66)}${I.chev(22)}</button></div>`:''}
+    <div class="gh">${esc(t('account'))}</div>
+    <div class="profilecard">${u.photoURL?`<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<div class="avatar">${esc(((u.displayName||u.email||'?').trim()[0]||'?').toUpperCase())}</div>`}
+      <div><b>${esc(u.displayName||'')}</b><small>${esc(u.email||'')}</small><br><small>${esc(t('signedInAs'))}</small></div></div>
+    <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${I.chev()}</button>
+    <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
+    <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.0 (Step 1)</div>
+  </div>`;
+}
+
+/* =====================================================================
+   EVENTS  (one place, works for every screen)
+   ===================================================================== */
+document.addEventListener('click', async e=>{
+  const el = e.target.closest('[data-act],[data-lang],[data-goto],[data-pick],[data-clear],[data-to]');
+  if (!el) return;
+  if (el.dataset.lang) return chooseLang(el.dataset.lang);
+  if (el.dataset.goto) return wzGo(+el.dataset.goto);
+  if (el.dataset.pick) return pickImage(el.dataset.pick);
+  if (el.dataset.clear){ WZ.d[el.dataset.clear]=''; return viewWizard(); }
+  if (el.dataset.to){
+    const to = el.dataset.to;
+    if (to==='soon') return toast(t('soon'));
+    if (to.startsWith('wizard:')){ startWizard({step:+to.split(':')[1]}); return go('wizard'); }
+    return;
+  }
+  switch (el.dataset.act){
+    case 'signin': return doSignIn(el);
+    case 'chlang': { LS.del('qm_lang'); LANG=null; return viewLang(true); }
+    case 'back': return goBack();
+    case 'wznext': return wzNext();
+    case 'wzback': return wzGo(WZ.step-1);
+    case 'soon': return toast(t('soon'));
+    case 'settings': return go('settings');
+    case 'score': return go('score');
+    case 'language': return go('language');
+    case 'bizinfo': startWizard({}); return go('wizard');
+    case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
+  }
+});
+document.addEventListener('input', e=>{
+  const k = e.target.dataset && e.target.dataset.k;
+  if (k && WZ){ WZ.d[k] = e.target.value; }
+});
+document.addEventListener('change', async e=>{
+  if (e.target.id==='filepick' && e.target.files[0] && WZ){
+    try{
+      const k = pickKey;
+      WZ.d[k] = await resizeImage(e.target.files[0], k==='logo'?500:420, k==='logo'?500:200);
+      viewWizard();
+    }catch(err){ toast(t('badImage')); }
+  } else if (e.target.dataset && e.target.dataset.k && WZ){
+    WZ.d[e.target.dataset.k] = e.target.value;
+  }
+});
+/* swipe left / right between the 4 setup sections */
+(function(){
+  let x0=0,y0=0,on=false;
+  document.addEventListener('touchstart',e=>{ if(!WZ||!e.touches[0]) return; if(e.target.closest('input,select,textarea,.btnrow')) {on=false;return;} on=true; x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(!on||!WZ||!e.changedTouches[0]) return; on=false;
+    const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if (Math.abs(dx)<70 || Math.abs(dy)>50) return;
+    if (dx<0 && WZ.step<4){ if (validateStep()) wzGo(WZ.step+1); }
+    else if (dx>0 && WZ.step>1) wzGo(WZ.step-1);
+  },{passive:true});
+})();
+
+/* =====================================================================
+   BOOT
+   ===================================================================== */
+(async function boot(){
+  if (LANG) document.documentElement.lang = LANG;
+  try{ await makeBackend(); }
+  catch(e){
+    console.error(e);
+    app.innerHTML = `<div class="center"><h2 class="title">Could not start</h2><p class="sub">Internet check karein aur page dobara kholein. / Please check your internet and reload.</p></div>`;
+    return;
+  }
+  backend.onAuth(async user=>{
+    S.user = user;
+    if (user){
+      try{ S.owner = (await backend.load(user)) || {}; }catch(e){ console.error(e); S.owner = {}; }
+      if (!LANG && S.owner.language) setLang(S.owner.language);
+      else if (LANG && S.owner.language !== LANG){ try{ await backend.save(user,{language:LANG}); S.owner.language=LANG; }catch(e){} }
+    } else { S.owner = {}; WZ = null; }
+    S.ready = true;
+    document.title = t('appName');
+    route();
+  });
+  if ('serviceWorker' in navigator && /^https?:/.test(location.protocol)){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
