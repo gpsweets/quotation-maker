@@ -235,6 +235,7 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .loading{display:grid;place-items:center;min-height:100vh;color:var(--muted)}
 .spin{width:34px;height:34px;border-radius:50%;border:4px solid #ddd;border-top-color:var(--dark);animation:sp 1s linear infinite;margin:0 auto 12px}
 @keyframes sp{to{transform:rotate(360deg)}}
+.lkinfo{font-size:14px;margin:-6px 4px 12px;line-height:1.4}.lkinfo.ok{color:#15803d}.lkinfo.bad{color:var(--err)}.lkinfo.wait{color:#666}.lkbtn{display:inline-block;margin:-4px 4px 14px;padding:8px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;font-size:14px;color:inherit;cursor:pointer}
 #printArea{display:none}
 @media print{@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
@@ -313,7 +314,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -390,7 +391,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -671,7 +672,7 @@ function startWizard(o){
   WZ = { setup: !!o.setup, step: o.step||1, d: Object.assign({
     name:'', contact:(S.user&&S.user.displayName)||'', email:(S.user&&S.user.email)||'', phone:'', addr1:'', addr2:'',
     logo:'', signature:'', dateFormat:'dd/MM/yyyy', currency:'INR',
-    gstin:'', pan:'', state:'', bankName:'', accNo:'', ifsc:'', upi:''
+    gstin:'', pan:'', state:'', bankName:'', bankBranch:'', bankAddr:'', accNo:'', ifsc:'', upi:''
   }, b) };
   if (!WZ.d.contact && S.user) WZ.d.contact = S.user.displayName||'';
 }
@@ -681,6 +682,56 @@ const fld = (k,label,o={}) => `<label class="fld ${o.cls||''} ${o.pick?'hasbtn':
     : `<input data-k="${k}" type="${o.type||'text'}" value="${esc(DS()[k])}" ${o.inputmode?`inputmode="${o.inputmode}"`:''} ${o.list?`list="${o.list}"`:''} autocomplete="${o.ac||'off'}" ${o.max?`maxlength="${o.max}"`:''} ${o.up?'style="text-transform:uppercase"':''}>`}
   ${o.pick?`<button type="button" class="pick" data-act="pickcontact" aria-label="${esc(t('pickContact'))}">${I.contact(26)}</button>`:''}</label>`;
 
+/* ---------- GSTIN check + IFSC lookup ---------- */
+const GST_STATES = {'01':'Jammu and Kashmir','02':'Himachal Pradesh','03':'Punjab','04':'Chandigarh','05':'Uttarakhand','06':'Haryana','07':'Delhi','08':'Rajasthan','09':'Uttar Pradesh','10':'Bihar','11':'Sikkim','12':'Arunachal Pradesh','13':'Nagaland','14':'Manipur','15':'Mizoram','16':'Tripura','17':'Meghalaya','18':'Assam','19':'West Bengal','20':'Jharkhand','21':'Odisha','22':'Chhattisgarh','23':'Madhya Pradesh','24':'Gujarat','25':'Dadra and Nagar Haveli and Daman and Diu','26':'Dadra and Nagar Haveli and Daman and Diu','27':'Maharashtra','29':'Karnataka','30':'Goa','31':'Lakshadweep','32':'Kerala','33':'Tamil Nadu','34':'Puducherry','35':'Andaman and Nicobar Islands','36':'Telangana','37':'Andhra Pradesh','38':'Ladakh'};
+function gstinCheck(g){
+  g = String(g||'').toUpperCase();
+  if (!/^\d{2}[A-Z]{5}\d{4}[A-Z][1-9A-Z]Z[0-9A-Z]$/.test(g) || !GST_STATES[g.slice(0,2)]) return null;
+  const cs = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'; let sum = 0;
+  for (let i=0;i<14;i++){ let v = cs.indexOf(g[i]) * (i%2 ? 2 : 1); sum += Math.floor(v/36) + v%36; }
+  if (cs[(36 - sum%36) % 36] !== g[14]) return null;
+  return { state: GST_STATES[g.slice(0,2)], pan: g.slice(2,12) };
+}
+function setLk(id, cls, txt){ const el = document.getElementById(id); if (el){ el.className = 'lkinfo '+cls; el.textContent = txt; } }
+function setField(k, v){ const d = DS(); d[k] = v; const el = document.querySelector('[data-k="'+k+'"]'); if (el) el.value = v; }
+function gstShow(){
+  const g = String(DS().gstin||'').toUpperCase();
+  if (!g){ setLk('gstinfo','',''); return; }
+  const r = gstinCheck(g);
+  if (r) setLk('gstinfo','ok','✓ '+t('gstOk')+' · '+t('gstState')+': '+r.state+' · PAN: '+r.pan);
+  else if (g.length>=15) setLk('gstinfo','bad',t('gstBad'));
+  else setLk('gstinfo','','');
+}
+function gstLookup(inp){
+  const g = String(inp.value||'').toUpperCase();
+  if (g.length < 15){ gstShow(); return; }
+  const r = gstinCheck(g);
+  if (r){ setField('state', r.state); if (document.querySelector('[data-k="pan"]')) setField('pan', r.pan); }
+  gstShow();
+}
+function gstPortal(){
+  const g = String(DS().gstin||'').toUpperCase();
+  window.open('https://services.gst.gov.in/services/searchtp', '_blank');
+  try{ if (g && navigator.clipboard) navigator.clipboard.writeText(g).catch(()=>{}); }catch(e){}
+  toast(t('gstCopied'));
+}
+let ifscSeq = 0;
+async function ifscLookup(inp){
+  const c = String(inp.value||'').toUpperCase().trim();
+  if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(c)){ setLk('ifscinfo','',''); return; }
+  const my = ++ifscSeq; setLk('ifscinfo','wait',t('ifscWait'));
+  try{
+    const r = await fetch('https://ifsc.razorpay.com/'+encodeURIComponent(c));
+    if (my !== ifscSeq || !WZ) return;
+    if (r.status === 404){ setLk('ifscinfo','bad',t('ifscNo')); return; }
+    if (!r.ok) throw new Error('http '+r.status);
+    const j = await r.json(); if (my !== ifscSeq || !WZ) return;
+    setField('bankName', j.BANK || '');
+    setField('bankBranch', j.BRANCH || '');
+    setField('bankAddr', [j.ADDRESS, j.CITY && j.CITY!==j.DISTRICT ? j.CITY : '', j.DISTRICT, j.STATE].filter((x,i,a)=>x && a.indexOf(x)===i).join(', '));
+    setLk('ifscinfo','ok','✓ '+t('ifscOk'));
+  }catch(e){ if (my === ifscSeq) setLk('ifscinfo','bad',t('ifscOff')); }
+}
 function viewWizard(){
   const w = WZ, d = w.d, s = w.step;
   const dots = [1,2,3,4].map((n,i)=>{
@@ -714,14 +765,16 @@ function viewWizard(){
         <select data-k="currency">${CURRENCIES.map(c=>`<option value="${c[0]}" ${d.currency===c[0]?'selected':''}>${c[0]} (${c[2]} ${fmtMoney(999999.12,c[0])})</option>`).join('')}</select></div></label>`;
   } else {
     body = `<h2 class="title">${esc(t('s4Title'))}</h2><p class="sub">${esc(t('s4Sub'))}</p>
-      ${fld('gstin',t('gstin'),{max:15,up:true})}
+      ${fld('gstin',t('gstin'),{max:15,up:true})}<div class="lkinfo" id="gstinfo"></div><button type="button" class="lkbtn" data-act="gstportal">${esc(t('gstPortal'))} ↗</button>
       ${fld('pan',t('pan'),{max:10,up:true})}
       ${fld('state',t('state'),{list:'statelist'})}
       <datalist id="statelist">${STATES.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
       <div class="hr"></div>
       ${fld('bankName',t('bankName'))}
       ${fld('accNo',t('accNo'),{inputmode:'numeric'})}
-      ${fld('ifsc',t('ifsc'),{max:11,up:true})}
+      ${fld('ifsc',t('ifsc'),{max:11,up:true})}<div class="lkinfo" id="ifscinfo"></div>
+      ${fld('bankBranch',t('bankBranch'))}
+      ${fld('bankAddr',t('bankAddr'),{ta:true,rows:2})}
       ${fld('upi',t('upi'))}`;
   }
   const last = s===4;
@@ -734,6 +787,7 @@ function viewWizard(){
       <button class="btn" data-act="wznext">${esc(last ? (w.setup ? t('finish') : t('save')) : t('next'))}</button>
     </div>
   </div>`;
+  if (s===4) gstShow();
 }
 function validateStep(){
   const d = WZ.d;
@@ -753,7 +807,7 @@ async function wzNext(){
   if (WZ.step<4) return wzGo(WZ.step+1);
   const btn = $('[data-act=wznext]'); btn.disabled=true;
   const d = Object.assign({}, WZ.d);
-  ['name','contact','email','phone','addr1','addr2','gstin','pan','state','bankName','accNo','ifsc','upi'].forEach(k=>d[k]=String(d[k]||'').trim());
+  ['name','contact','email','phone','addr1','addr2','gstin','pan','state','bankName','bankBranch','bankAddr','accNo','ifsc','upi'].forEach(k=>d[k]=String(d[k]||'').trim());
   d.gstin=d.gstin.toUpperCase(); d.pan=d.pan.toUpperCase(); d.ifsc=d.ifsc.toUpperCase();
   d.setupDone = true;
   try{
@@ -899,7 +953,7 @@ async function viewForm(kind, id){
       ${fld('addr1',t('addr1'))}
       ${fld('addr2',t('addr2'))}
       ${fld('other',t('otherInfo'))}
-      ${fld('gstin',t('gstin'),{max:15,up:true})}
+      ${fld('gstin',t('gstin'),{max:15,up:true})}<div class="lkinfo" id="gstinfo"></div><button type="button" class="lkbtn" data-act="gstportal">${esc(t('gstPortal'))} ↗</button>
       ${fld('state',t('state'),{list:'statelist'})}
       <datalist id="statelist">${STATES.map(x=>`<option value="${esc(x)}">`).join('')}</datalist>
       <div class="sechead">${esc(t('shippingDetails'))}</div>
@@ -923,6 +977,7 @@ async function viewForm(kind, id){
       <button class="btn" data-act="saveform">${esc(isNew ? t('add') : t('save'))}</button>
     </div>
   </div>`;
+  if (kind==='customer') gstShow();
 }
 function setErr(key, msg){
   const w = $(`[data-fw=${key}]`), e = $('#e_'+key);
@@ -1200,7 +1255,7 @@ function docHtml(q, opt){
   const firmAddr = [b.addr1, b.addr2].filter(Boolean);
   const ids = [b.gstin?('GSTIN: '+b.gstin):'', b.pan?('PAN: '+b.pan):''].filter(Boolean).join('   ');
   const contact = [b.phone?(t('dPhone')+': '+b.phone):'', b.email||''].filter(Boolean).join('   |   ');
-  const bank = [b.bankName, b.accNo?('A/c: '+b.accNo):'', b.ifsc?('IFSC: '+b.ifsc):'', b.upi?('UPI: '+b.upi):''].filter(Boolean);
+  const bank = [b.bankName, b.bankBranch?(t('bankBranch')+': '+b.bankBranch):'', b.bankAddr||'', b.accNo?('A/c: '+b.accNo):'', b.ifsc?('IFSC: '+b.ifsc):'', b.upi?('UPI: '+b.upi):''].filter(Boolean);
   const rows = items.map((it,i)=>{
     const L = c.lines[i];
     return `<tr><td class="n">${i+1}</td><td><b>${esc(it.name)}</b>${it.desc?`<div class="sm">${esc(it.desc)}</div>`:''}${+it.disc?`<div class="sm">${esc(t('dDiscount',{n:nf(it.disc)}))}</div>`:''}</td>
@@ -1969,6 +2024,7 @@ document.addEventListener('click', async e=>{
     case 'chlang': { LS.del('qm_lang'); LANG=null; return viewLang(true); }
     case 'back': return goBack();
     case 'wznext': return wzNext();
+    case 'gstportal': return gstPortal();
     case 'wzback': return wzGo(WZ.step-1);
     case 'soon': return toast(t('soon'));
     case 'settings': return go('settings');
@@ -2013,6 +2069,7 @@ document.addEventListener('input', e=>{
   if (e.target.dataset && e.target.dataset.qk) onQInput(e);
   if (e.target.dataset && e.target.dataset.tk && e.target.type!=='checkbox' && e.target.tagName!=='SELECT') onTplInput(e);
   if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
+  if (k==='gstin' && (FM||WZ)) gstLookup(e.target); else if (k==='ifsc' && WZ) ifscLookup(e.target);
 });
 document.addEventListener('change', async e=>{
   if (e.target.id==='pyStatus'){ const w=$('#pyAmtW'); if (w) w.classList.toggle('hide', e.target.value!=='partial'); return; }
