@@ -319,7 +319,7 @@ const T = {
     tplCols:"Column headings", tplColsHint:"Leave empty to use the normal name.", tplShowHsn:"Show HSN column (when products have HSN)", tplShowGst:"Show GST column",
     tplLetter:"Letterhead", tplLetterHint:"Your printed letterhead image. It is used as the page background and the firm name block at the top is hidden.", tplUseLetter:"Use letterhead",
     tplUpload:"Upload letterhead", tplChange:"Change letterhead", tplRemove:"Remove", tplTop:"Top space (px)", tplBottom:"Bottom space (px)",
-    tplNumber:"Quotation number", tplPrefix:"Prefix", tplNext:"Next number", tplNextHint:"The next new quotation gets prefix + this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
+    tplNumber:"Quotation number", tplPrefix:"Prefix", tplNext:"First number for a customer", tplNextHint:"Every customer has their own numbering, shown as CustomerName-Prefix+Number. A new customer's first document gets this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
     numUsed:"This quotation number is already used", needNo:"Enter a quotation number", moreTemplate:"Template & Numbering",
     editInvoice:"Edit Invoice", noInvoice:"You don't have any invoice yet", iDate:"Invoice Date", iNo:"Invoice No", iDetail:"Invoice Detail", delIAsk:"Delete this invoice? It cannot be undone.",
     secInv:"Payment", dueDate:"Due Date", payStatus:"Payment status", stUnpaid:"Unpaid", stPartial:"Partly paid", stPaid:"Paid", amtPaid:"Amount received", payBtn:"Payment",
@@ -396,7 +396,7 @@ const T = {
     tplCols:"कॉलम के नाम", tplColsHint:"खाली छोड़ेंगे तो सामान्य नाम रहेगा।", tplShowHsn:"HSN कॉलम दिखाएँ (जब प्रोडक्ट में HSN हो)", tplShowGst:"GST कॉलम दिखाएँ",
     tplLetter:"लेटरहेड", tplLetterHint:"आपके छपे लेटरहेड की इमेज। यह पेज के पीछे लगेगी और ऊपर का फ़र्म नाम वाला हिस्सा छिप जाएगा।", tplUseLetter:"लेटरहेड इस्तेमाल करें",
     tplUpload:"लेटरहेड अपलोड करें", tplChange:"लेटरहेड बदलें", tplRemove:"हटाएँ", tplTop:"ऊपर की खाली जगह (px)", tplBottom:"नीचे की खाली जगह (px)",
-    tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स)", tplNext:"अगला नंबर", tplNextHint:"अगला नया कोटेशन प्रिफ़िक्स + यह नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
+    tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स)", tplNext:"ग्राहक का पहला नंबर", tplNextHint:"हर ग्राहक की अपनी अलग नंबरिंग होती है, जैसे ग्राहक-नाम-प्रिफ़िक्स+नंबर। नए ग्राहक का पहला दस्तावेज़ यही नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
     numUsed:"यह कोटेशन नंबर पहले से इस्तेमाल हो चुका है", needNo:"कोटेशन नंबर डालें", moreTemplate:"टेम्पलेट व नंबरिंग",
     editInvoice:"इनवॉइस बदलें", noInvoice:"अभी कोई इनवॉइस नहीं है", iDate:"इनवॉइस की तारीख़", iNo:"इनवॉइस नंबर", iDetail:"इनवॉइस विवरण", delIAsk:"यह इनवॉइस हटाएँ? यह वापस नहीं आएगा।",
     secInv:"भुगतान", dueDate:"देय तारीख़", payStatus:"भुगतान की स्थिति", stUnpaid:"बाक़ी", stPartial:"आंशिक भुगतान", stPaid:"भुगतान हो गया", amtPaid:"मिली हुई राशि", payBtn:"भुगतान",
@@ -1165,6 +1165,18 @@ const findDoc = id => { for (const c of DOC_COLS){ const r = (S.cache[c]||[]).fi
 const kindOfRoute = r => SEG_KIND[String(r||currentRoute()).split('/')[0]] || 'quotation';
 const addDays = (iso, n) => { const p = String(iso).split('-').map(Number); const d = new Date(p[0], p[1]-1, p[2]+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 function paidOf(q, total){ if (q.payStatus==='paid') return total; if (q.payStatus==='partial') return Math.min(total, Math.max(0, +q.paid||0)); return 0; }
+function termLines(list){
+  const out = [];
+  list.forEach(txt=>{
+    String(txt).split(/\n+/).forEach(line=>{
+      line = line.trim(); if (!line) return;
+      if (/^\d{1,2}\s*[-–.)]/.test(line)){
+        line.split(/\s+(?=\d{1,2}\s*[-–.)]\s*\S)/).forEach(part=>{ part = part.trim(); if (part) out.push({t:part, n:true}); });
+      } else out.push({t:line, n:false});
+    });
+  });
+  return out;
+}
 function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
 function getLetterhead(){ const d = (S.cache.settings||[]).find(x=>x.id==='letterhead'); return d ? d.data : ''; }
 function docHtml(q, opt){
@@ -1257,6 +1269,11 @@ function docHtml(q, opt){
     .qd .sign img{max-height:62px;max-width:200px;object-fit:contain;display:block;margin:6px 0 0 auto}
     .qd .sign .au{font-size:12px;margin-top:6px}
     .qd .bank{margin-top:14px;font-size:12px;color:#333}
+    .qd .tb{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+    .qd .tl{flex:1;min-width:0}
+    .qd .bk{flex:none;width:262px;font-size:12.5px;line-height:1.5;word-break:break-word}
+    .qd .bk h4{margin:22px 0 4px}
+    .qd li.nb{list-style:none;margin-left:-18px}
     .qd table.rc{width:100%;border-collapse:collapse;margin-top:10px}
     .qd table.rc td{padding:10px 8px;border-bottom:1px dotted #aaa;vertical-align:top}
     .qd table.rc td:first-child{width:36%;font-weight:600}
@@ -1272,15 +1289,15 @@ function docHtml(q, opt){
       ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
       <table class="meta"><tr><td><b>${esc(t(K.no))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${kind==='invoice'&&q.due?`<tr><td><b>${esc(t('dDue'))}</b></td><td>${esc(fmtIso(q.due, df))}</td></tr>`:''}${q.refNo?`<tr><td><b>${esc(t('dRef'))}</b></td><td>${esc(q.refNo)}</td></tr>`:''}${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
     ${mainBody}
-    ${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${terms.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
-    ${bank.length && !noMoney && !isRc?`<div class="bank"><b>${esc(t('dBank'))}:</b> ${esc(bank.join('  |  '))}</div>`:''}
+    ${(terms.length || (bank.length && !noMoney && !isRc)) ? `<div class="tb"><div class="tl">${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${termLines(terms).map(x=>`<li${x.n?' class="nb"':''}>${esc(x.t)}</li>`).join('')}</ul>`:''}</div>
+      ${bank.length && !noMoney && !isRc?`<div class="bk"><h4>${esc(t('dBank'))}:</h4>${bank.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`:''}</div>` : ''}
     ${noMoney?`<div class="recv"><div class="ln"></div>${esc(t('dRecvd'))}</div>`:''}
     <div class="sign"><b>${esc(t('dFor'))} ${esc(String(b.name||'').toUpperCase())}</b>${b.signature?`<img src="${esc(b.signature)}" alt="">`:'<div style="height:56px"></div>'}<div class="au">${esc(t('dAuth'))}</div></div>
   </div>`;
 }
 
 /* ---------- Make / edit quotation ---------- */
-function initQD(mode, id, key){
+function initQD0(mode, id, key){
   const kind = kindOfRoute(key), K = DK[kind];
   const list = S.cache[K.col] || [];
   let base = null;
@@ -1319,6 +1336,25 @@ function initQD(mode, id, key){
   QD.key = key;
   return true;
 }
+function initQD(mode, id, key){
+  if (!initQD0(mode, id, key)) return false;
+  applyAutoNo();
+  return true;
+}
+function nextNo(kind, cust){
+  const K = DK[kind], list = S.cache[K.col] || [];
+  const same = cust ? list.filter(x=>x.customer && (x.customer.id && cust.id ? x.customer.id===cust.id : (x.customer.name||'')===(cust.name||''))) : [];
+  const start = Math.max(1, parseInt(S.owner.starts && S.owner.starts[kind], 10) || 1);
+  const seq = same.length ? Math.max(...same.map(x=>+x.seq||0)) + 1 : start;
+  const pre = (S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def;
+  const nm = cust ? String(cust.company||cust.name||'').trim() : '';
+  return { seq, no: (nm ? nm+'-' : '') + pre + seq };
+}
+function applyAutoNo(){
+  if (!QD || !QD.isNew || QD.noManual) return;
+  const r = nextNo(QD.kind||'quotation', QD.customer);
+  QD.seq = r.seq; QD.no = r.no;
+}
 function autoTax(){
   if (!QD || QD.taxTypeManual || !QD.customer) return;
   const a = norm(biz().state), c = norm(QD.customer.state);
@@ -1327,6 +1363,7 @@ function autoTax(){
 function setQCustomer(r){
   QD.customer = { id:r.id, name:r.name, company:r.company||'', email:r.email||'', mobile:r.mobile||'', addr1:r.addr1||'', addr2:r.addr2||'', gstin:r.gstin||'', state:r.state||'' };
   autoTax();
+  applyAutoNo();
 }
 function addQItem(p){
   QD.items.push({ pid:p.id, name:p.name, desc:p.description||'', unit:p.unit||'', hsn:p.hsn||'', qty:1, rate:+p.price||0, gst:(p.gst===''||p.gst==null)?0:+p.gst, disc:0 });
@@ -1380,6 +1417,7 @@ function renderQForm(){
 function onQInput(e){
   const k = e.target.dataset.qk; if (!k || !QD) return;
   let v = e.target.value;
+  if (k==='no') QD.noManual = true;
   if (k==='gstMode') v = e.target.checked ? 'incl' : 'excl';
   QD[k] = v;
   if (k==='taxType') QD.taxTypeManual = true;
@@ -1505,7 +1543,6 @@ async function generateReceipt(btn){
     const list = S.cache[K.col] || (S.cache[K.col]=[]);
     const k = list.findIndex(x=>x.id===rec.id);
     if (k>=0) list[k] = rec; else list.push(rec);
-    if (QD.isNew){ S.owner.counters = Object.assign({}, S.owner.counters, {[K.cnt]: rec.seq}); await backend.save(S.user, {counters:S.owner.counters}); }
     await syncCounts(K.col);
     QD = null;
     toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
@@ -1520,10 +1557,10 @@ function qAction(act, el){
     case 'qselprod': { const r=S.cache.products.find(x=>x.id===el.dataset.id); if (r){ addQItem(r); closeSheet(); renderQForm(); } return; }
     case 'qnewcust': RETURN = {hash:QD.key}; closeSheet(); return go('customer/new');
     case 'qnewprod': RETURN = {hash:QD.key}; closeSheet(); return go('product/new');
-    case 'qcustdel': QD.customer = null; return renderQForm();
+    case 'qcustdel': QD.customer = null; applyAutoNo(); return renderQForm();
     case 'rinv': return openInvoicePicker();
     case 'rinvdel': QD.invoiceId = ''; QD.invoiceNo = ''; return renderQForm();
-    case 'rselinv': { const inv=(S.cache.invoices||[]).find(x=>x.id===el.dataset.id); if (inv){ const tot=calcQ(inv).total, bal=Math.max(0,r2(tot-paidOf(inv,tot))); QD.invoiceId=inv.id; QD.invoiceNo=inv.no; if (inv.customer && !QD.customer) QD.customer=inv.customer; if (!(parseFloat(QD.amount)>0)) QD.amount=String(bal); closeSheet(); renderQForm(); } return; }
+    case 'rselinv': { const inv=(S.cache.invoices||[]).find(x=>x.id===el.dataset.id); if (inv){ const tot=calcQ(inv).total, bal=Math.max(0,r2(tot-paidOf(inv,tot))); QD.invoiceId=inv.id; QD.invoiceNo=inv.no; if (inv.customer && !QD.customer){ QD.customer=inv.customer; applyAutoNo(); } if (!(parseFloat(QD.amount)>0)) QD.amount=String(bal); closeSheet(); renderQForm(); } return; }
     case 'qitem': return openItemSheet(i);
     case 'qitemdel': QD.items.splice(i,1); return renderQForm();
     case 'qitemsave': {
@@ -1575,9 +1612,8 @@ async function generateQuotation(btn){
     const list = S.cache[K.col] || (S.cache[K.col]=[]);
     const k = list.findIndex(x=>x.id===rec.id);
     if (k>=0) list[k] = rec; else list.push(rec);
-    if (QD.isNew) S.owner.counters = Object.assign({}, S.owner.counters, {[K.cnt]: rec.seq});
     S.owner.prefs = Object.assign({}, S.owner.prefs, {gstMode: rec.gstMode});
-    await backend.save(S.user, {counters:S.owner.counters, prefs:{gstMode:rec.gstMode}});
+    await backend.save(S.user, {prefs:{gstMode:rec.gstMode}});
     await syncCounts(K.col);
     QD = null;
     toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
@@ -1590,7 +1626,7 @@ function qItemsHtml(q, kind){
   kind = kind || 'quotation'; const K = DK[kind];
   q = norm(q);
   const df = biz().dateFormat || 'dd/MM/yyyy', cur = biz().currency || 'INR';
-  let rows = (S.cache[K.col]||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
+  let rows = (S.cache[K.col]||[]).slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
   if (q) rows = rows.filter(r => [r.no, r.customer&&r.customer.name, r.customer&&r.customer.company].join(' ').toLowerCase().includes(q));
   if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache[K.col]||[]).length ? 'noResult' : K.empty))}</div>`;
   return rows.map(r=>`<button class="item" data-open="${K.route}/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}${payChip(r)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,df))}</small></span><span class="rt">${esc(fmtMoney(r.total||0,cur))}</span>${I.chev(20)}</button>`).join('');
@@ -1791,9 +1827,8 @@ async function viewTemplate(){
     const mx = (cnt!=null && cnt!=='') ? +cnt||0 : Math.max(0, ...(S.cache.quotations||[]).map(x=>x.seq||0));
     await Promise.all(DOC_COLS.map(c=>ensure(c)));
     const nums = {};
-    DOC_KINDS.forEach(k=>{ const K = DK[k], c = S.owner.counters && S.owner.counters[K.cnt];
-      const m = (c!=null && c!=='') ? (+c||0) : Math.max(0, ...(S.cache[K.col]||[]).map(x=>x.seq||0));
-      nums[k] = { pre: t0[K.pre]!=null ? t0[K.pre] : K.def, next: m+1 }; });
+    DOC_KINDS.forEach(k=>{ const K = DK[k];
+      nums[k] = { pre: t0[K.pre]!=null ? t0[K.pre] : K.def, next: Math.max(1, parseInt(S.owner.starts && S.owner.starts[k],10) || 1) }; });
     TP = { t:t0, lh:getLetterhead(), lhChanged:false, nums,
            dateFormat: biz().dateFormat || 'dd/MM/yyyy', currency: biz().currency || 'INR' };
   }
@@ -1850,7 +1885,7 @@ async function tplSave(btn){
   for (const k of DOC_KINDS){
     const n = parseInt(String(TP.nums[k].next).trim(),10);
     if (!(n>=1)){ $('#next_'+k).classList.add('err'); toast(t('tplBadNext')); return; }
-    newCounters[DK[k].cnt] = n-1;
+    newCounters[k] = n;
   }
   btn.disabled = true;
   try{
@@ -1867,9 +1902,8 @@ async function tplSave(btn){
       S.cache.settings = list;
     }
     const business = Object.assign({}, biz(), { dateFormat: TP.dateFormat, currency: TP.currency });
-    const counters = Object.assign({}, S.owner.counters, newCounters);
-    await backend.save(S.user, { template: tpl, business, counters, updatedAt: Date.now() });
-    S.owner = deepMerge(S.owner||{}, { template: tpl, business, counters });
+    await backend.save(S.user, { template: tpl, business, starts: newCounters, updatedAt: Date.now() });
+    S.owner = deepMerge(S.owner||{}, { template: tpl, business, starts: newCounters });
     TP = null; toast(t('saved')); goBack();
   }catch(err){ console.error(err); toast(t('saveFail')); btn.disabled = false; }
 }
