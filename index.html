@@ -185,6 +185,9 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .tpl h3{font-size:18px;margin:20px 4px 8px}
 .tpl .hint{color:var(--muted);font-size:14px;margin:-2px 4px 10px}
 .tplbar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:#fff;box-shadow:0 -2px 10px #0002;z-index:20}
+.chip{display:inline-block;font-size:12.5px;font-weight:600;padding:2px 9px;border-radius:10px;margin-left:8px;vertical-align:middle}
+.chip.paid{background:#dff3e4;color:#1d7a3a}.chip.partial{background:#fff0d6;color:#9a6200}.chip.unpaid{background:#fde2e2;color:#b42318}
+.qpay{background:#fff;border-radius:18px;margin:10px 14px 0;padding:6px 16px 4px;box-shadow:0 1px 6px #0002}
 .qother{width:100%;border:0;background:transparent;outline:none;font-size:16px;padding:10px 0 2px;border-top:1px solid #e4e4e4;margin-top:10px}
 .qsec{display:flex;align-items:center;justify-content:space-between;background:#f3f3f3;border-radius:18px;padding:12px 12px 12px 20px;margin:14px 14px 0;font-weight:700;font-size:18px;text-transform:uppercase;width:calc(100% - 28px);text-align:left}
 .qsec .add{width:58px;height:46px;border-radius:14px;background:var(--dark);color:#fff;display:grid;place-items:center;flex:none}
@@ -196,9 +199,9 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .qcard .ibt{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#222;flex:none}
 .qcard .ibt:active{background:#eee}
 .qgst{background:#fff;border-radius:18px;margin:10px 14px 0;padding:6px 16px 4px;box-shadow:0 1px 6px #0002}
-.qgst .r{display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:17px;border-bottom:1px solid #eee}
-.qgst .r:last-child{border-bottom:0}
-.qgst select{border:0;background:#f2f2f2;border-radius:12px;padding:10px 12px;font-size:16px;max-width:60%}
+.qgst .r,.qpay .r{display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:17px;border-bottom:1px solid #eee}
+.qgst .r:last-child,.qpay .r:last-child{border-bottom:0}
+.qgst select,.qpay select{border:0;background:#f2f2f2;border-radius:12px;padding:10px 12px;font-size:16px;max-width:60%}
 .sw{position:relative;width:54px;height:30px;flex:none}
 .sw input{opacity:0;position:absolute;inset:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
 .sw i{position:absolute;inset:0;border-radius:15px;background:#c8c8c8;transition:.2s}
@@ -318,6 +321,10 @@ const T = {
     tplUpload:"Upload letterhead", tplChange:"Change letterhead", tplRemove:"Remove", tplTop:"Top space (px)", tplBottom:"Bottom space (px)",
     tplNumber:"Quotation number", tplPrefix:"Prefix", tplNext:"Next number", tplNextHint:"The next new quotation gets prefix + this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
     numUsed:"This quotation number is already used", needNo:"Enter a quotation number", moreTemplate:"Template & Numbering",
+    editInvoice:"Edit Invoice", noInvoice:"You don't have any invoice yet", iDate:"Invoice Date", iNo:"Invoice No", iDetail:"Invoice Detail", delIAsk:"Delete this invoice? It cannot be undone.",
+    secInv:"Payment", dueDate:"Due Date", payStatus:"Payment status", stUnpaid:"Unpaid", stPartial:"Partly paid", stPaid:"Paid", amtPaid:"Amount received", payBtn:"Payment",
+    dPaid:"Amount paid", dBalance:"Balance due", dDue:"Due date:", dRef:"Ref:", dThanksI:"Thank you for your business. Please find the invoice details below.", dHopeI:"Thank you for your business.",
+    waTextI:"Invoice {no} from {firm}. Amount: {amt}", tplIPrefix:"Invoice prefix", tplINext:"Next invoice number", badPaid:"Enter the amount received",
     dDiscount:"{n}% discount", dInclNote:"All prices are inclusive of GST.", dBank:"Bank details", dDate:"Date:", dPhone:"Ph", waText:"Quotation {no} from {firm}. Amount: {amt}"
   },
   hi:{
@@ -382,6 +389,10 @@ const T = {
     tplUpload:"लेटरहेड अपलोड करें", tplChange:"लेटरहेड बदलें", tplRemove:"हटाएँ", tplTop:"ऊपर की खाली जगह (px)", tplBottom:"नीचे की खाली जगह (px)",
     tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स)", tplNext:"अगला नंबर", tplNextHint:"अगला नया कोटेशन प्रिफ़िक्स + यह नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
     numUsed:"यह कोटेशन नंबर पहले से इस्तेमाल हो चुका है", needNo:"कोटेशन नंबर डालें", moreTemplate:"टेम्पलेट व नंबरिंग",
+    editInvoice:"इनवॉइस बदलें", noInvoice:"अभी कोई इनवॉइस नहीं है", iDate:"इनवॉइस की तारीख़", iNo:"इनवॉइस नंबर", iDetail:"इनवॉइस विवरण", delIAsk:"यह इनवॉइस हटाएँ? यह वापस नहीं आएगा।",
+    secInv:"भुगतान", dueDate:"देय तारीख़", payStatus:"भुगतान की स्थिति", stUnpaid:"बाक़ी", stPartial:"आंशिक भुगतान", stPaid:"भुगतान हो गया", amtPaid:"मिली हुई राशि", payBtn:"भुगतान",
+    dPaid:"प्राप्त राशि", dBalance:"बाक़ी राशि", dDue:"देय तारीख़:", dRef:"संदर्भ:", dThanksI:"आपके व्यापार के लिए धन्यवाद। इनवॉइस का विवरण नीचे है।", dHopeI:"आपके व्यापार के लिए धन्यवाद।",
+    waTextI:"{firm} की ओर से इनवॉइस {no}। राशि: {amt}", tplIPrefix:"इनवॉइस प्रिफ़िक्स", tplINext:"अगला इनवॉइस नंबर", badPaid:"मिली हुई राशि डालें",
     dDiscount:"{n}% छूट", dInclNote:"सभी कीमतें GST सहित हैं।", dBank:"बैंक की जानकारी", dDate:"तारीख़:", dPhone:"फ़ोन", waText:"{firm} की ओर से कोटेशन {no}। राशि: {amt}"
   }
 };
@@ -548,7 +559,13 @@ function route(){
   const setupDone = !!(biz().setupDone);
   if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
   if (r.startsWith('wizard')){ if(!WZ) startWizard({}); return viewWizard(); }
-  if (r==='quotations') return viewQuotations();
+  if (r==='quotations') return viewQuotations('quotation');
+  if (r==='invoices') return viewQuotations('invoice');
+  if (r==='invoice/new') return viewQForm('new');
+  if (r.startsWith('invoice/edit/')) return viewQForm('edit', r.split('/')[2]);
+  if (r.startsWith('invoice/dup/')) return viewQForm('dup', r.split('/')[2]);
+  if (r.startsWith('invoice/from/')) return viewQForm('from', r.split('/')[2]);
+  if (r.startsWith('invoice/view/')) return viewQView(r.split('/')[2]);
   if (r==='quotation/new') return viewQForm('new');
   if (r.startsWith('quotation/edit/')) return viewQForm('edit', r.split('/')[2]);
   if (r.startsWith('quotation/dup/')) return viewQForm('dup', r.split('/')[2]);
@@ -568,7 +585,7 @@ window.addEventListener('hashchange', ()=>{
   const r = currentRoute();
   if (!r.startsWith('wizard')) { if (WZ && !WZ.setup) WZ=null; }
   if (!/^(customer|product)\//.test(r)) FM = null;
-  if (!/^(quotation\/(new|edit|dup)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
+  if (!/^((quotation|invoice)\/(new|edit|dup|from)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
   if (r!=='template') TP = null;
   closeSheet();
   route();
@@ -780,8 +797,8 @@ function viewHome(){
       <div class="grid">
         ${tile(I.docPlus(24),'makeQuotation','makeQuotationSub','newq')}
         ${tile(I.docEdit(24),'quotationList','quotationListSub','quotations')}
-        ${tile(I.docPlus(24),'makeInvoice','makeInvoiceSub','soon')}
-        ${tile(I.docEdit(24),'invoiceList','invoiceListSub','soon')}
+        ${tile(I.docPlus(24),'makeInvoice','makeInvoiceSub','newi')}
+        ${tile(I.docEdit(24),'invoiceList','invoiceListSub','invoices')}
         ${tile(I.docEdit(24),'purchaseOrder','purchaseOrderSub','soon')}
         ${tile(I.docEdit(24),'proforma','proformaSub','soon')}
         ${tile(I.docEdit(24),'deliveryNote','deliveryNoteSub','soon')}
@@ -813,7 +830,7 @@ async function ensure(col){
 async function syncCounts(col){
   const n = (S.cache[col]||[]).length;
   const patch = {[col]:n};
-  if (col==='quotations') patch.documents = n;   // later steps add invoices etc. to this total
+  if (col==='quotations' || col==='invoices'){ const other = col==='quotations' ? 'invoices' : 'quotations'; patch.documents = n + (S.cache[other] ? S.cache[other].length : ((S.owner.counts && S.owner.counts[other])||0)); }
   S.owner.counts = Object.assign({}, S.owner.counts, patch);
   try{ await backend.save(S.user, {counts:patch}); }catch(e){ console.error(e); }
 }
@@ -1094,6 +1111,13 @@ function calcQ(q){
 }
 
 /* ---------- the printed document ---------- */
+const DK = {
+  quotation:{ col:'quotations', route:'quotation', list:'quotations', cnt:'quotation', pre:'qPrefix', def:'Quote-', mk:'makeQuotation', ed:'editQuotation', ln:'quotationList', empty:'noQuotation', date:'qDate', no:'qNo', det:'qDetail', del:'delQAsk', doc:'docQuotation', pdf:'Quotation-', wa:'waText', term:'quotation', dear:'dThanks', hope:'dHope' },
+  invoice:{ col:'invoices', route:'invoice', list:'invoices', cnt:'invoice', pre:'iPrefix', def:'Invoice-', mk:'makeInvoice', ed:'editInvoice', ln:'invoiceList', empty:'noInvoice', date:'iDate', no:'iNo', det:'iDetail', del:'delIAsk', doc:'docInvoice', pdf:'Invoice-', wa:'waTextI', term:'invoice', dear:'dThanksI', hope:'dHopeI' }
+};
+const kindOfRoute = r => String(r||currentRoute()).startsWith('invoice') ? 'invoice' : 'quotation';
+const addDays = (iso, n) => { const p = String(iso).split('-').map(Number); const d = new Date(p[0], p[1]-1, p[2]+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+function paidOf(q, total){ if (q.payStatus==='paid') return total; if (q.payStatus==='partial') return Math.min(total, Math.max(0, +q.paid||0)); return 0; }
 function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
 function getLetterhead(){ const d = (S.cache.settings||[]).find(x=>x.id==='letterhead'); return d ? d.data : ''; }
 function docHtml(q, opt){
@@ -1104,7 +1128,10 @@ function docHtml(q, opt){
   const col = /^#[0-9a-f]{6}$/i.test(tp.color||'') ? tp.color : '#14213d', sty = tp.style || 'classic';
   const hd = tp.h || {}, H = (k, def) => (String(hd[k]||'').trim() || def);
   const b = biz(), cur = opt.currency || b.currency || 'INR', c = calcQ(q), df = opt.dateFormat || b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
+  const kind = q.kind==='invoice' ? 'invoice' : 'quotation', K = DK[kind];
   const money = n => fmtMoney(n, cur);
+  const paidAmt = kind==='invoice' ? paidOf(q, c.total) : 0;
+  const payRows = paidAmt>0 ? `<tr><td>${esc(t('dPaid'))}</td><td class="r">${money(paidAmt)}</td></tr><tr><td><b>${esc(t('dBalance'))}</b></td><td class="r"><b>${money(Math.max(0, r2(c.total-paidAmt)))}</b></td></tr>` : '';
   const items = q.items || [];
   const hasHsn = tp.showHsn!==false && items.some(i=>i.hsn);
   const showTax = tp.showGst!==false && q.taxType!=='none' && items.some(i=>+i.gst>0);
@@ -1175,15 +1202,15 @@ function docHtml(q, opt){
   </style>
     <div class="hd"><div class="firm">${b.logo?`<img src="${esc(b.logo)}" alt="">`:''}<div><h1>${esc(b.name||'')}</h1>
       ${b.contact?`<div>${esc(b.contact)}</div>`:''}${firmAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${ids?`<div>${esc(ids)}</div>`:''}${contact?`<div>${esc(contact)}</div>`:''}</div></div>
-      <div class="ttl">${esc(t('docQuotation'))}</div></div>
+      <div class="ttl">${esc(t(K.doc))}</div></div>
     <div class="to"><div><div><b>${esc(t('dTo'))}</b></div>${cu.company?`<div><b>${esc(cu.company)}</b></div>`:''}<div${cu.company?'':' style="font-weight:700"'}>${esc(cu.name||'')}</div>
       ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
-      <table class="meta"><tr><td><b>${esc(t('qNo'))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
-    <p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t('dThanks'))}</p>
+      <table class="meta"><tr><td><b>${esc(t(K.no))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${kind==='invoice'&&q.due?`<tr><td><b>${esc(t('dDue'))}</b></td><td>${esc(fmtIso(q.due, df))}</td></tr>`:''}${kind==='invoice'&&q.refNo?`<tr><td><b>${esc(t('dRef'))}</b></td><td>${esc(q.refNo)}</td></tr>`:''}${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
+    <p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t(K.dear))}</p>
     <table class="it"><thead><tr><th>#</th><th>${esc(H('desc',t('dDesc')))}</th>${hasHsn?`<th class="r">${esc(H('hsn','HSN'))}</th>`:''}<th class="r">${esc(H('qty',t('dQty')))}</th><th class="r">${esc(H('price',t('dPrice')))}</th>${showTax?`<th class="r">${esc(H('gst','GST'))}</th>`:''}<th class="r">${esc(H('total',t('dTotal')))}</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr></table></div>
+    <div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr>${payRows}</table></div>
     ${q.gstMode==='incl' && showTax ? `<div class="note">${esc(t('dInclNote'))}</div>`:''}
-    <p style="margin-top:18px">${esc(t('dHope'))}</p>
+    <p style="margin-top:18px">${esc(t(K.hope))}</p>
     ${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${terms.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
     ${bank.length?`<div class="bank"><b>${esc(t('dBank'))}:</b> ${esc(bank.join('  |  '))}</div>`:''}
     <div class="sign"><b>${esc(t('dFor'))} ${esc(String(b.name||'').toUpperCase())}</b>${b.signature?`<img src="${esc(b.signature)}" alt="">`:'<div style="height:56px"></div>'}<div class="au">${esc(t('dAuth'))}</div></div>
@@ -1192,21 +1219,26 @@ function docHtml(q, opt){
 
 /* ---------- Make / edit quotation ---------- */
 function initQD(mode, id, key){
-  const list = S.cache.quotations || [];
+  const kind = kindOfRoute(key), K = DK[kind];
+  const list = S.cache[K.col] || [];
   let base = null;
-  if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace('quotations'); return false; } }
-  const cnt = S.owner.counters && S.owner.counters.quotation;
+  if (mode==='from'){ base = (S.cache.quotations||[]).find(x=>x.id===id); if (!base){ QD = null; goReplace('quotations'); return false; } }
+  else if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace(K.list); return false; } }
+  const cnt = S.owner.counters && S.owner.counters[K.cnt];
   const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
-  const savedTerms = (S.cache.terms||[]).filter(x=>x.type==='quotation').sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
+  const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
   if (mode==='edit'){
-    QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true;
+    QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true; QD.kind = kind;
   } else {
-    QD = { id: uid(), isNew: true, seq: maxSeq+1, date: isoToday(), other:'', customer:null, items:[], charges:[], terms: savedTerms,
+    QD = { id: uid(), kind, isNew: true, seq: maxSeq+1, date: isoToday(), other:'', customer:null, items:[], charges:[], terms: savedTerms,
            gstMode: (S.owner.prefs && S.owner.prefs.gstMode) || 'excl', taxType:'cgst_sgst', taxTypeManual:false };
-    QD.no = ((S.owner.template && S.owner.template.qPrefix!=null) ? S.owner.template.qPrefix : 'Quote-') + QD.seq;
-    if (mode==='dup'){
+    QD.no = ((S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def) + QD.seq;
+    if (kind==='invoice'){ QD.due = addDays(QD.date, 7); QD.payStatus = 'unpaid'; QD.paid = ''; }
+    if (mode==='dup' || mode==='from'){
       const c = JSON.parse(JSON.stringify(base));
-      Object.assign(QD, { other:c.other||'', customer:c.customer, items:c.items, charges:c.charges, terms:c.terms||[], gstMode:c.gstMode, taxType:c.taxType, taxTypeManual:true });
+      Object.assign(QD, { other:c.other||'', customer:c.customer, items:c.items, charges:c.charges, gstMode:c.gstMode, taxType:c.taxType, taxTypeManual:true });
+      if (mode==='dup') QD.terms = c.terms||[];
+      if (mode==='from'){ QD.refNo = base.no; QD.refId = base.id; }
     }
   }
   QD.key = key;
@@ -1225,7 +1257,8 @@ function addQItem(p){
   QD.items.push({ pid:p.id, name:p.name, desc:p.description||'', unit:p.unit||'', hsn:p.hsn||'', qty:1, rate:+p.price||0, gst:(p.gst===''||p.gst==null)?0:+p.gst, disc:0 });
 }
 async function viewQForm(mode, id){
-  await Promise.all([ensure('customers'), ensure('products'), ensureTerms(), ensure('quotations')]);
+  const K = DK[kindOfRoute()];
+  await Promise.all([ensure('customers'), ensure('products'), ensureTerms(), ensure(K.col), ensure('quotations')]);
   const key = currentRoute();
   if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
   renderQForm();
@@ -1241,11 +1274,17 @@ function renderQForm(){
   }).join('');
   const charges = QD.charges.map((c,i)=>`<div class="qcard" data-act="qchargeedit" data-i="${i}"><div class="tx"><b>${esc(c.label)}</b><small>${esc(fmtMoney(+c.amount||0,cur))}${c.taxable?' · GST '+nf(c.gst)+'%':''}</small></div><button class="ibt" data-act="qchargedel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
   const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
-  app.innerHTML = `${bar(t(QD.isNew?'makeQuotation':'editQuotation'),{back:true})}
+  const K = DK[QD.kind||'quotation'], isInv = QD.kind==='invoice';
+  const invBlock = !isInv ? '' : `${sec(t('secInv'),'qnone').replace('data-act="qnone"','style="cursor:default"').replace(/<span class="add">.*?<\/span>/,'')}<div class="qpay">
+      <div class="r"><span>${esc(t('dueDate'))}</span><label class="qdate"><b id="dueTxt">${esc(fmtIso(QD.due, df)||'—')}</b><input type="date" data-qk="due" value="${esc(QD.due||'')}"></label></div>
+      <div class="r"><span>${esc(t('payStatus'))}</span><select data-qk="payStatus"><option value="unpaid" ${QD.payStatus==='unpaid'?'selected':''}>${esc(t('stUnpaid'))}</option><option value="partial" ${QD.payStatus==='partial'?'selected':''}>${esc(t('stPartial'))}</option><option value="paid" ${QD.payStatus==='paid'?'selected':''}>${esc(t('stPaid'))}</option></select></div>
+      ${QD.payStatus==='partial'?`<div class="r"><span>${esc(t('amtPaid'))}</span><input class="qno" data-qk="paid" inputmode="decimal" value="${esc(QD.paid)}" style="width:140px"></div>`:''}
+    </div>`;
+  app.innerHTML = `${bar(t(QD.isNew?K.mk:K.ed),{back:true})}
   <div class="shell" style="padding-bottom:130px">
     <div class="qtop"><div class="qrow">
-      <div><small>${esc(t('qDate'))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
-      <div style="text-align:right"><small>${esc(t('qNo'))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
+      <div><small>${esc(t(K.date))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
+      <div style="text-align:right"><small>${esc(t(K.no))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
       <input class="qother" data-qk="other" placeholder="${esc(t('otherInfo'))}:" value="${esc(QD.other)}"></div>
     ${sec(t('secCustomer'),'qcust')}${cust}
     ${sec(t('secProducts'),'qprod')}${items}
@@ -1255,6 +1294,7 @@ function renderQForm(){
       <div class="r"><span>${esc(t('gstType'))}</span><select data-qk="taxType"><option value="cgst_sgst" ${QD.taxType==='cgst_sgst'?'selected':''}>${esc(t('ttCgst'))}</option><option value="igst" ${QD.taxType==='igst'?'selected':''}>${esc(t('ttIgst'))}</option><option value="none" ${QD.taxType==='none'?'selected':''}>${esc(t('ttNone'))}</option></select></div>
     </div>
     ${sec(t('secCharges'),'qcharge')}${charges}
+    ${invBlock}
     ${sec(t('secTerms'),'qterms')}${terms}
   </div>
   <div class="qbar"><div><small>${esc(t('amountDue'))}</small><b id="qTotal">${esc(qTotalText())}</b></div><button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
@@ -1266,6 +1306,8 @@ function onQInput(e){
   if (k==='gstMode') v = e.target.checked ? 'incl' : 'excl';
   QD[k] = v;
   if (k==='taxType') QD.taxTypeManual = true;
+  if (k==='due'){ const el = $('#dueTxt'); if (el) el.textContent = fmtIso(v, biz().dateFormat||'dd/MM/yyyy') || '—'; }
+  if (k==='payStatus'){ renderQForm(); return; }
   if (k==='date'){ const el = $('#dateTxt'); if (el) el.textContent = fmtIso(v, biz().dateFormat||'dd/MM/yyyy'); }
   const tot = $('#qTotal'); if (tot) tot.textContent = qTotalText();
 }
@@ -1315,7 +1357,7 @@ function openItemSheet(i){
     <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qitemsave" data-i="${i}">${esc(t('save'))}</button></div>`, 'tall');
 }
 function openTermsPicker(){
-  const saved = (S.cache.terms||[]).filter(x=>x.type==='quotation').sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+  const saved = (S.cache.terms||[]).filter(x=>x.type===DK[QD.kind||'quotation'].term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
   openSheet(`<h3>${esc(t('selTerms'))}</h3>
     <div class="scroll" id="tplist">${saved.length ? saved.map(x=>`<label class="tpick"><input type="checkbox" data-term="${esc(x.text)}" ${QD.terms.includes(x.text)?'checked':''}><span>${esc(x.text)}</span></label>`).join('') : `<div class="empty" style="padding:30px 10px">${esc(t('noTermsSaved'))}</div>`}
       <label class="fld" style="margin-top:14px"><span>${esc(t('customTerm'))}</span><textarea id="tpCustom" rows="2"></textarea></label></div>
@@ -1354,7 +1396,7 @@ function qAction(act, el){
     case 'qtermsdone': {
       const picked = [...document.querySelectorAll('#sheet input[data-term]')].filter(x=>x.checked).map(x=>x.dataset.term);
       const custom = ($('#tpCustom').value||'').trim();
-      const savedAll = new Set((S.cache.terms||[]).filter(x=>x.type==='quotation').map(x=>x.text));
+      const savedAll = new Set((S.cache.terms||[]).filter(x=>x.type===DK[QD.kind||'quotation'].term).map(x=>x.text));
       const manual = QD.terms.filter(x=>!savedAll.has(x));          // terms typed only for this quotation stay
       QD.terms = [...picked, ...manual]; if (custom) QD.terms.push(custom);
       closeSheet(); return renderQForm();
@@ -1364,46 +1406,52 @@ function qAction(act, el){
   }
 }
 async function generateQuotation(btn){
+  const K = DK[QD.kind||'quotation'], isInv = QD.kind==='invoice';
   if (!QD.customer){ toast(t('needCustomer')); return; }
   if (!QD.items.length){ toast(t('needProduct')); return; }
   QD.no = String(QD.no||'').trim();
   if (!QD.no){ toast(t('needNo')); return; }
-  if ((S.cache.quotations||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
-  btn.disabled = true;
+  if ((S.cache[K.col]||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
   const c = calcQ(QD);
-  const rec = { id:QD.id, no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
+  if (isInv && QD.payStatus==='partial' && !(parseFloat(QD.paid)>0)){ toast(t('badPaid')); return; }
+  btn.disabled = true;
+  const rec = { id:QD.id, kind:QD.kind||'quotation', no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
     terms:QD.terms, gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
+  if (isInv){ rec.due = QD.due||''; rec.payStatus = QD.payStatus||'unpaid'; rec.paid = rec.payStatus==='partial' ? (parseFloat(QD.paid)||0) : 0; if (QD.refNo){ rec.refNo = QD.refNo; rec.refId = QD.refId||''; } }
   try{
-    await backend.put(S.user, 'quotations', rec.id, rec);
-    const list = S.cache.quotations || (S.cache.quotations=[]);
+    await backend.put(S.user, K.col, rec.id, rec);
+    const list = S.cache[K.col] || (S.cache[K.col]=[]);
     const k = list.findIndex(x=>x.id===rec.id);
     if (k>=0) list[k] = rec; else list.push(rec);
-    if (QD.isNew) S.owner.counters = Object.assign({}, S.owner.counters, {quotation: rec.seq});
+    if (QD.isNew) S.owner.counters = Object.assign({}, S.owner.counters, {[K.cnt]: rec.seq});
     S.owner.prefs = Object.assign({}, S.owner.prefs, {gstMode: rec.gstMode});
     await backend.save(S.user, {counters:S.owner.counters, prefs:{gstMode:rec.gstMode}});
-    await syncCounts('quotations');
+    await syncCounts(K.col);
     QD = null;
-    toast(t('saved')); goReplace('quotation/view/'+rec.id);
+    toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
   }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
 }
 
 /* ---------- list ---------- */
-function qItemsHtml(q){
+function payChip(r){ if (r.kind!=='invoice') return ''; const st = r.payStatus||'unpaid'; return `<span class="chip ${st}">${esc(t(st==='paid'?'stPaid':st==='partial'?'stPartial':'stUnpaid'))}</span>`; }
+function qItemsHtml(q, kind){
+  kind = kind || 'quotation'; const K = DK[kind];
   q = norm(q);
   const df = biz().dateFormat || 'dd/MM/yyyy', cur = biz().currency || 'INR';
-  let rows = (S.cache.quotations||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
+  let rows = (S.cache[K.col]||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
   if (q) rows = rows.filter(r => [r.no, r.customer&&r.customer.name, r.customer&&r.customer.company].join(' ').toLowerCase().includes(q));
-  if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache.quotations||[]).length ? 'noResult' : 'noQuotation'))}</div>`;
-  return rows.map(r=>`<button class="item" data-open="quotation/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,df))}</small></span><span class="rt">${esc(fmtMoney(r.total||0,cur))}</span>${I.chev(20)}</button>`).join('');
+  if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache[K.col]||[]).length ? 'noResult' : K.empty))}</div>`;
+  return rows.map(r=>`<button class="item" data-open="${K.route}/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}${payChip(r)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,df))}</small></span><span class="rt">${esc(fmtMoney(r.total||0,cur))}</span>${I.chev(20)}</button>`).join('');
 }
-async function viewQuotations(){
-  await ensure('quotations');
-  app.innerHTML = `${bar(t('quotationList'),{back:true})}
+async function viewQuotations(kind){
+  kind = kind || 'quotation'; const K = DK[kind];
+  await ensure(K.col);
+  app.innerHTML = `${bar(t(K.ln),{back:true})}
   <div class="shell">
-    <div class="searchbox">${I.search(22)}<input id="q" type="search" placeholder="${esc(t('searchQ'))}" autocomplete="off" data-col="quotations"></div>
-    <div class="items" id="items">${qItemsHtml('')}</div>
+    <div class="searchbox">${I.search(22)}<input id="q" type="search" placeholder="${esc(t('searchQ'))}" autocomplete="off" data-col="${K.col}"></div>
+    <div class="items" id="items">${qItemsHtml('', kind)}</div>
   </div>
-  <button class="fab" data-open="quotation/new">${esc(t('makeQuotation'))}</button>`;
+  <button class="fab" data-open="${K.route}/new">${esc(t(K.mk))}</button>`;
 }
 
 /* ---------- detail view ---------- */
@@ -1412,17 +1460,22 @@ const SHARE_ICON = ic('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3
 const COPY_ICON = ic('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>', 26);
 const INV_ICON = ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>', 26);
 const MORE_ICON = ic('<circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/>', 26);
-function curQuotation(){ const id = currentRoute().split('/')[2]; return (S.cache.quotations||[]).find(x=>x.id===id); }
+function curQuotation(){ const K = DK[kindOfRoute()]; const id = currentRoute().split('/')[2]; return (S.cache[K.col]||[]).find(x=>x.id===id); }
 async function viewQView(id){
-  await ensure('quotations'); await ensure('settings');
-  const q = (S.cache.quotations||[]).find(x=>x.id===id);
-  if (!q) return goReplace('quotations');
-  app.innerHTML = `${bar(t('qDetail'),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
+  const kind = kindOfRoute(), K = DK[kind];
+  await ensure(K.col); await ensure('settings');
+  const q = (S.cache[K.col]||[]).find(x=>x.id===id);
+  if (!q) return goReplace(K.list);
+  if (!q.kind) q.kind = kind;
+  const third = kind==='quotation'
+    ? `<button data-act="qinv">${INV_ICON}<span>${esc(t('invoiceBtn'))}</span></button>`
+    : `<button data-act="qpay">${INV_ICON}<span>${esc(t('payBtn'))}</span></button>`;
+  app.innerHTML = `${bar(t(K.det),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
   <div class="paperwrap" id="pw"><div class="paper" id="paper">${docHtml(q)}</div></div>
   <div class="actbar"><div class="in">
     <button data-act="qdup">${COPY_ICON}<span>${esc(t('duplicate'))}</span></button>
     <button data-act="qedit">${I.pencil(26)}<span>${esc(t('edit'))}</span></button>
-    <button data-act="qinv">${INV_ICON}<span>${esc(t('invoiceBtn'))}</span></button>
+    ${third}
     <button data-act="qshare">${SHARE_ICON}<span>${esc(t('share'))}</span></button>
     <button data-act="qmore">${MORE_ICON}<span>${esc(t('more'))}</span></button></div></div>`;
   fitPaper();
@@ -1478,7 +1531,7 @@ async function makePdf(q){
     return pdf.output('blob');
   } finally { holder.remove(); }
 }
-const pdfName = q => 'Quotation-' + String(q.no).replace(/[^\w-]+/g,'_') + '.pdf';
+const pdfName = q => { const K = DK[q.kind==='invoice'?'invoice':'quotation'], n = String(q.no).replace(/[^\w-]+/g,'_'); return (new RegExp('^'+K.pdf.replace('-',''),'i').test(n) ? n : K.pdf+n) + '.pdf'; };
 function downloadBlob(blob, name){
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
   document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 4000);
@@ -1489,23 +1542,41 @@ async function sharePdf(q, downloadOnly){
   try{ blob = await makePdf(q); }catch(e){ console.error(e); toast(t('pdfFail')); return; }
   const name = pdfName(q), file = new File([blob], name, {type:'application/pdf'});
   if (!downloadOnly && navigator.canShare && navigator.canShare({files:[file]})){
-    try{ await navigator.share({ files:[file], title:name, text: t('waText',{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
+    try{ await navigator.share({ files:[file], title:name, text: t(DK[q.kind==='invoice'?'invoice':'quotation'].wa,{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
     catch(e){ if (e && e.name==='AbortError') return; console.error(e); }
   }
   downloadBlob(blob, name);
 }
 function whatsappLink(q){
-  const text = t('waText',{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
+  const text = t(DK[q.kind==='invoice'?'invoice':'quotation'].wa,{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
   let n = String((q.customer&&q.customer.mobile)||'').replace(/\D/g,'');
   if (n.length===10) n = '91'+n;
   return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
 }
 async function qViewAction(act){
   const q = curQuotation(); if (!q) return;
+  const kind = q.kind==='invoice' ? 'invoice' : 'quotation', K = DK[kind];
   switch (act){
-    case 'qdup': return go('quotation/dup/'+q.id);
-    case 'qedit': return go('quotation/edit/'+q.id);
-    case 'qinv': return toast(t('soon'));
+    case 'qdup': return go(K.route+'/dup/'+q.id);
+    case 'qedit': return go(K.route+'/edit/'+q.id);
+    case 'qinv': return go('invoice/from/'+q.id);
+    case 'qpay': {
+      const total = calcQ(q).total, cur = biz().currency||'INR';
+      return openSheet(`<h3>${esc(t('payBtn'))} · ${esc(fmtMoney(total,cur))}</h3>
+        <label class="fld"><span>${esc(t('payStatus'))}</span><select id="pyStatus"><option value="unpaid" ${q.payStatus!=='paid'&&q.payStatus!=='partial'?'selected':''}>${esc(t('stUnpaid'))}</option><option value="partial" ${q.payStatus==='partial'?'selected':''}>${esc(t('stPartial'))}</option><option value="paid" ${q.payStatus==='paid'?'selected':''}>${esc(t('stPaid'))}</option></select></label>
+        <label class="fld ${q.payStatus==='partial'?'':'hide'}" id="pyAmtW"><span>${esc(t('amtPaid'))}</span><input id="pyAmt" inputmode="decimal" value="${esc(q.paid||'')}"></label>
+        <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qpaysave">${esc(t('save'))}</button></div>`);
+    }
+    case 'qpaysave': {
+      const st = $('#pyStatus').value, amt = numVal('pyAmt');
+      if (st==='partial' && !(amt>0)){ $('#pyAmtW').classList.add('err'); return; }
+      const rec = Object.assign({}, q, { payStatus:st, paid: st==='partial'?amt:0, updatedAt:Date.now() });
+      try{
+        await backend.put(S.user, K.col, rec.id, rec);
+        const i = S.cache[K.col].findIndex(x=>x.id===rec.id); if (i>=0) S.cache[K.col][i] = rec;
+        closeSheet(); toast(t('saved')); return viewQView(rec.id);
+      }catch(e){ console.error(e); toast(t('saveFail')); return; }
+    }
     case 'qshare': return sharePdf(q, false);
     case 'qwa': return window.open(whatsappLink(q), '_blank');
     case 'qmore':
@@ -1513,12 +1584,12 @@ async function qViewAction(act){
     case 'qpdf': closeSheet(); return sharePdf(q, true);
     case 'qdelete': {
       closeSheet();
-      if (!confirm(t('delQAsk'))) return;
+      if (!confirm(t(K.del))) return;
       try{
-        await backend.remove(S.user, 'quotations', q.id);
-        S.cache.quotations = S.cache.quotations.filter(x=>x.id!==q.id);
-        await syncCounts('quotations');
-        toast(t('saved')); goReplace('quotations');
+        await backend.remove(S.user, K.col, q.id);
+        S.cache[K.col] = S.cache[K.col].filter(x=>x.id!==q.id);
+        await syncCounts(K.col);
+        toast(t('saved')); goReplace(K.list);
       }catch(e){ console.error(e); toast(t('saveFail')); }
     }
   }
@@ -1563,7 +1634,11 @@ async function viewTemplate(){
     t0.h = t0.h || {};
     const cnt = S.owner.counters && S.owner.counters.quotation;
     const mx = (cnt!=null && cnt!=='') ? +cnt||0 : Math.max(0, ...(S.cache.quotations||[]).map(x=>x.seq||0));
+    await ensure('invoices');
+    const ic = S.owner.counters && S.owner.counters.invoice;
+    const imx = (ic!=null && ic!=='') ? +ic||0 : Math.max(0, ...(S.cache.invoices||[]).map(x=>x.seq||0));
     TP = { t:t0, lh:getLetterhead(), lhChanged:false, qPrefix: t0.qPrefix!=null ? t0.qPrefix : 'Quote-', next: mx+1,
+           iPrefix: t0.iPrefix!=null ? t0.iPrefix : 'Invoice-', iNext: imx+1,
            dateFormat: biz().dateFormat || 'dd/MM/yyyy', currency: biz().currency || 'INR' };
   }
   renderTemplate();
@@ -1595,6 +1670,8 @@ function renderTemplate(){
     <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="qPrefix" value="${esc(TP.qPrefix)}"></label>
     <label class="fld" id="nextW"><span>${esc(t('tplNext'))}</span><input data-tk="next" inputmode="numeric" value="${esc(TP.next)}"></label>
     <div class="hint">${esc(t('tplNextHint'))}</div>
+    <label class="fld"><span>${esc(t('tplIPrefix'))}</span><input data-tk="iPrefix" value="${esc(TP.iPrefix)}"></label>
+    <label class="fld" id="inextW"><span>${esc(t('tplINext'))}</span><input data-tk="iNext" inputmode="numeric" value="${esc(TP.iNext)}"></label>
     <h3>${esc(t('tplHdrDate'))}</h3>
     <label class="fld ico">${I.cal(30)}<div class="col"><span>${esc(t('dateFormat'))}</span><select data-tk="dateFormat">${DATE_FORMATS.map(f=>`<option value="${f}" ${TP.dateFormat===f?'selected':''}>${f} (${fmtDate(now,f)})</option>`).join('')}</select></div></label>
     <label class="fld ico">${I.flag(30)}<div class="col"><span>${esc(t('currency'))}</span><select data-tk="currency">${CURRENCIES.map(c=>`<option value="${c[0]}" ${TP.currency===c[0]?'selected':''}>${c[0]} (${c[2]} ${fmtMoney(999999.12,c[0])})</option>`).join('')}</select></div></label>
@@ -1607,19 +1684,21 @@ function onTplInput(e){
   const k = e.target.dataset.tk; if (!k || !TP) return;
   const isCb = e.target.type==='checkbox', v = isCb ? e.target.checked : e.target.value;
   if (k.startsWith('h.')) TP.t.h[k.slice(2)] = v;
-  else if (k==='qPrefix' || k==='next' || k==='dateFormat' || k==='currency') TP[k] = v;
+  else if (k==='qPrefix' || k==='next' || k==='iPrefix' || k==='iNext' || k==='dateFormat' || k==='currency') TP[k] = v;
   else TP.t[k] = (k==='lhTop'||k==='lhBottom') ? (String(v).trim()===''?'':Math.max(0,parseInt(v,10)||0)) : v;
   refreshTplPreview();
 }
 async function tplSave(btn){
   const n = parseInt(String(TP.next).trim(),10);
   if (!(n>=1)){ $('#nextW').classList.add('err'); toast(t('tplBadNext')); return; }
+  const n2 = parseInt(String(TP.iNext).trim(),10);
+  if (!(n2>=1)){ $('#inextW').classList.add('err'); toast(t('tplBadNext')); return; }
   btn.disabled = true;
   try{
     const tp = TP.t, h = {};
     ['desc','hsn','qty','price','gst','total'].forEach(k=>h[k]=String(tp.h[k]||'').trim());
     const tpl = { color: tp.color||'#14213d', style: tp.style||'classic', h, showHsn: tp.showHsn!==false, showGst: tp.showGst!==false,
-      useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, qPrefix: String(TP.qPrefix) };
+      useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, qPrefix: String(TP.qPrefix), iPrefix: String(TP.iPrefix) };
     if (TP.lhChanged){
       if (TP.lh) await backend.put(S.user, 'settings', 'letterhead', { data: TP.lh });
       else await backend.remove(S.user, 'settings', 'letterhead');
@@ -1628,7 +1707,7 @@ async function tplSave(btn){
       S.cache.settings = list;
     }
     const business = Object.assign({}, biz(), { dateFormat: TP.dateFormat, currency: TP.currency });
-    const counters = Object.assign({}, S.owner.counters, { quotation: n-1 });
+    const counters = Object.assign({}, S.owner.counters, { quotation: n-1, invoice: n2-1 });
     await backend.save(S.user, { template: tpl, business, counters, updatedAt: Date.now() });
     S.owner = deepMerge(S.owner||{}, { template: tpl, business, counters });
     TP = null; toast(t('saved')); goBack();
@@ -1650,7 +1729,7 @@ function viewSettings(){
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.3 (Step 4)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.4 (Step 5)</div>
   </div>`;
 }
 
@@ -1703,7 +1782,9 @@ document.addEventListener('click', async e=>{
     case 'tplsave': return tplSave(el);
     case 'newq': return go('quotation/new');
     case 'quotations': return go('quotations');
-    case 'qdup': case 'qedit': case 'qinv': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete':
+    case 'newi': return go('invoice/new');
+    case 'invoices': return go('invoices');
+    case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete':
       return qViewAction(el.dataset.act);
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
     default: return qAction(el.dataset.act, el);
@@ -1713,13 +1794,14 @@ document.addEventListener('input', e=>{
   const k = e.target.dataset && e.target.dataset.k;
   if (k && FM){ FM.d[k] = e.target.value; if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
   else if (k && WZ){ WZ.d[k] = e.target.value; }
-  if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = e.target.dataset.col==='quotations' ? qItemsHtml(e.target.value) : itemsHtml(e.target.dataset.col, e.target.value); }
+  if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = (e.target.dataset.col==='quotations'||e.target.dataset.col==='invoices') ? qItemsHtml(e.target.value, e.target.dataset.col==='invoices'?'invoice':'quotation') : itemsHtml(e.target.dataset.col, e.target.value); }
   if (e.target.id==='psearch'){ const box=$('#plist'); if (box) box.innerHTML = pickListHtml(e.target.dataset.kind, e.target.value); }
   if (e.target.dataset && e.target.dataset.qk) onQInput(e);
   if (e.target.dataset && e.target.dataset.tk && e.target.type!=='checkbox' && e.target.tagName!=='SELECT') onTplInput(e);
   if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
 });
 document.addEventListener('change', async e=>{
+  if (e.target.id==='pyStatus'){ const w=$('#pyAmtW'); if (w) w.classList.toggle('hide', e.target.value!=='partial'); return; }
   if (e.target.dataset && e.target.dataset.tk && TP && (e.target.type==='checkbox' || e.target.tagName==='SELECT')){ onTplInput(e); if (e.target.dataset.tk==='useLh') renderTemplate(); return; }
   if (e.target.id==='lhpick' && e.target.files[0] && TP){
     try{ TP.lh = await resizeImage(e.target.files[0], 1000, 1414, 'jpeg'); TP.lhChanged = true; TP.t.useLh = true; renderTemplate(); }
