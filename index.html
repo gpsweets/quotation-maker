@@ -235,6 +235,8 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .loading{display:grid;place-items:center;min-height:100vh;color:var(--muted)}
 .spin{width:34px;height:34px;border-radius:50%;border:4px solid #ddd;border-top-color:var(--dark);animation:sp 1s linear infinite;margin:0 auto 12px}
 @keyframes sp{to{transform:rotate(360deg)}}
+#printArea{display:none}
+@media print{@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -311,7 +313,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -388,7 +390,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -1644,6 +1646,7 @@ async function viewQuotations(kind){
 
 /* ---------- detail view ---------- */
 const WA_ICON = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.7 1.100 1.500 1.900 2.700 2.500.3.100.5.100.6-.1l.8-1c.2-.2.400-.2.600-.1l1.900.9c.2.100.4.200.4.300.1.200.1.800-.1 1.400z"/></svg>`;
+const PRINT_ICON = ic('<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="9" rx="2"/><path d="M7 14h10v7H7z"/>', 24);
 const SHARE_ICON = ic('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.600 13.500l6.800 4M15.400 6.500l-6.800 4"/>', 24);
 const COPY_ICON = ic('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>', 26);
 const INV_ICON = ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>', 26);
@@ -1659,7 +1662,7 @@ async function viewQView(id){
     ? `<button data-act="qinv">${INV_ICON}<span>${esc(t('invoiceBtn'))}</span></button>`
     : kind==='invoice' ? `<button data-act="qpay">${INV_ICON}<span>${esc(t('payBtn'))}</span></button>` : '';
   const cols = third ? 5 : 4;
-  app.innerHTML = `${bar(t(K.det),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
+  app.innerHTML = `${bar(t(K.det),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qprint" aria-label="${esc(t('printBtn'))}">${PRINT_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
   <div class="paperwrap" id="pw"><div class="paper" id="paper">${docHtml(q)}</div></div>
   <div class="actbar"><div class="in" style="grid-template-columns:repeat(${cols},1fr)">
     <button data-act="qdup">${COPY_ICON}<span>${esc(t('duplicate'))}</span></button>
@@ -1736,6 +1739,18 @@ async function sharePdf(q, downloadOnly){
   }
   downloadBlob(blob, name);
 }
+async function printDoc(q){
+  let holder = document.getElementById('printArea'); if (holder) holder.remove();
+  holder = document.createElement('div'); holder.id = 'printArea'; holder.innerHTML = docHtml(q);
+  document.body.appendChild(holder);
+  const prevTitle = document.title; document.title = pdfName(q).replace(/\.pdf$/,'');
+  const done = () => { document.body.classList.remove('printing'); holder.remove(); document.title = prevTitle; window.removeEventListener('afterprint', done); };
+  window.addEventListener('afterprint', done);
+  try{ if (document.fonts && document.fonts.ready) await document.fonts.ready; }catch(e){}
+  await Promise.all([...holder.querySelectorAll('img')].map(im => im.complete ? 0 : new Promise(r=>{ im.onload = im.onerror = r; })));
+  document.body.classList.add('printing');
+  setTimeout(()=>{ try{ window.print(); }catch(e){ console.error(e); done(); } }, 50);
+}
 function whatsappLink(q){
   const text = t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
   let n = String((q.customer&&q.customer.mobile)||'').replace(/\D/g,'');
@@ -1770,8 +1785,9 @@ async function qViewAction(act, el){
     case 'qshare': return sharePdf(q, false);
     case 'qwa': return window.open(whatsappLink(q), '_blank');
     case 'qmore':
-      return openSheet(`${K.conv.map(k=>`<button class="mrow2" data-act="qconv" data-k="${k}">${INV_ICON} ${esc(t(DK[k].mk))}</button>`).join('')}<button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
+      return openSheet(`${K.conv.map(k=>`<button class="mrow2" data-act="qconv" data-k="${k}">${INV_ICON} ${esc(t(DK[k].mk))}</button>`).join('')}<button class="mrow2" data-act="qprint">${PRINT_ICON} ${esc(t('printBtn'))}</button><button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
     case 'qpdf': closeSheet(); return sharePdf(q, true);
+    case 'qprint': closeSheet(); return printDoc(q);
     case 'qdelete': {
       closeSheet();
       if (!confirm(t(K.del))) return;
@@ -1982,7 +1998,7 @@ document.addEventListener('click', async e=>{
     case 'dns': return go('dns');
     case 'receipts': return go('receipts');
     case 'invoices': return go('invoices');
-    case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete': case 'qconv':
+    case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qprint': case 'qdelete': case 'qconv':
       return qViewAction(el.dataset.act, el);
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
     default: return qAction(el.dataset.act, el);
