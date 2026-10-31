@@ -174,6 +174,17 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .qrow b{font-size:19px;font-weight:600}
 .qdate{position:relative;display:block}
 .qdate input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.qno{border:0;border-bottom:1px dashed #aaa;background:transparent;font:inherit;font-size:19px;font-weight:600;text-align:right;width:150px;outline:none;padding:0 0 1px}
+.swatches{display:flex;gap:12px;flex-wrap:wrap;padding:4px 0 10px}
+.swatch{width:40px;height:40px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px #bbb}
+.swatch.on{box-shadow:0 0 0 3px var(--dark)}
+.stylerow{display:flex;gap:10px;padding-bottom:12px}
+.stylerow button{flex:1;padding:12px 4px;border-radius:14px;background:var(--field);font-size:16px;font-weight:600;border:2px solid transparent}
+.stylerow button.on{border-color:var(--dark);background:#fff}
+.tpl{padding:4px 16px 120px}
+.tpl h3{font-size:18px;margin:20px 4px 8px}
+.tpl .hint{color:var(--muted);font-size:14px;margin:-2px 4px 10px}
+.tplbar{position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:#fff;box-shadow:0 -2px 10px #0002;z-index:20}
 .qother{width:100%;border:0;background:transparent;outline:none;font-size:16px;padding:10px 0 2px;border-top:1px solid #e4e4e4;margin-top:10px}
 .qsec{display:flex;align-items:center;justify-content:space-between;background:#f3f3f3;border-radius:18px;padding:12px 12px 12px 20px;margin:14px 14px 0;font-weight:700;font-size:18px;text-transform:uppercase;width:calc(100% - 28px);text-align:left}
 .qsec .add{width:58px;height:46px;border-radius:14px;background:var(--dark);color:#fff;display:grid;place-items:center;flex:none}
@@ -301,6 +312,12 @@ const T = {
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
+    tplTitle:"Template & Numbering", tplPreview:"Preview", tplColor:"Colour", tplStyle:"Style", stClassic:"Classic", stModern:"Modern", stSimple:"Simple",
+    tplCols:"Column headings", tplColsHint:"Leave empty to use the normal name.", tplShowHsn:"Show HSN column (when products have HSN)", tplShowGst:"Show GST column",
+    tplLetter:"Letterhead", tplLetterHint:"Your printed letterhead image. It is used as the page background and the firm name block at the top is hidden.", tplUseLetter:"Use letterhead",
+    tplUpload:"Upload letterhead", tplChange:"Change letterhead", tplRemove:"Remove", tplTop:"Top space (px)", tplBottom:"Bottom space (px)",
+    tplNumber:"Quotation number", tplPrefix:"Prefix", tplNext:"Next number", tplNextHint:"The next new quotation gets prefix + this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
+    numUsed:"This quotation number is already used", needNo:"Enter a quotation number", moreTemplate:"Template & Numbering",
     dDiscount:"{n}% discount", dInclNote:"All prices are inclusive of GST.", dBank:"Bank details", dDate:"Date:", dPhone:"Ph", waText:"Quotation {no} from {firm}. Amount: {amt}"
   },
   hi:{
@@ -359,6 +376,12 @@ const T = {
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
+    tplTitle:"टेम्पलेट व नंबरिंग", tplPreview:"प्रीव्यू", tplColor:"रंग", tplStyle:"स्टाइल", stClassic:"क्लासिक", stModern:"मॉडर्न", stSimple:"सिंपल",
+    tplCols:"कॉलम के नाम", tplColsHint:"खाली छोड़ेंगे तो सामान्य नाम रहेगा।", tplShowHsn:"HSN कॉलम दिखाएँ (जब प्रोडक्ट में HSN हो)", tplShowGst:"GST कॉलम दिखाएँ",
+    tplLetter:"लेटरहेड", tplLetterHint:"आपके छपे लेटरहेड की इमेज। यह पेज के पीछे लगेगी और ऊपर का फ़र्म नाम वाला हिस्सा छिप जाएगा।", tplUseLetter:"लेटरहेड इस्तेमाल करें",
+    tplUpload:"लेटरहेड अपलोड करें", tplChange:"लेटरहेड बदलें", tplRemove:"हटाएँ", tplTop:"ऊपर की खाली जगह (px)", tplBottom:"नीचे की खाली जगह (px)",
+    tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स)", tplNext:"अगला नंबर", tplNextHint:"अगला नया कोटेशन प्रिफ़िक्स + यह नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
+    numUsed:"यह कोटेशन नंबर पहले से इस्तेमाल हो चुका है", needNo:"कोटेशन नंबर डालें", moreTemplate:"टेम्पलेट व नंबरिंग",
     dDiscount:"{n}% छूट", dInclNote:"सभी कीमतें GST सहित हैं।", dBank:"बैंक की जानकारी", dDate:"तारीख़:", dPhone:"फ़ोन", waText:"{firm} की ओर से कोटेशन {no}। राशि: {amt}"
   }
 };
@@ -481,6 +504,7 @@ let WZ = null;   // wizard state
 let FM = null;   // customer / product form state
 let TAB = 0;     // selected tab on Terms screen
 let QD = null;   // quotation being made / edited
+let TP = null;   // template screen working copy
 let RETURN = null; // after adding a customer/product, come back to the quotation
 const DS = () => (FM ? FM.d : WZ.d);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
@@ -534,6 +558,7 @@ function route(){
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
   if (r.startsWith('product/')) return viewForm('product', r.split('/')[1]);
   if (r==='terms') return viewTerms();
+  if (r==='template') return viewTemplate();
   if (r==='score') return viewScore();
   if (r==='settings') return viewSettings();
   if (r==='language') return viewLang(false);
@@ -544,6 +569,7 @@ window.addEventListener('hashchange', ()=>{
   if (!r.startsWith('wizard')) { if (WZ && !WZ.setup) WZ=null; }
   if (!/^(customer|product)\//.test(r)) FM = null;
   if (!/^(quotation\/(new|edit|dup)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
+  if (r!=='template') TP = null;
   closeSheet();
   route();
 });
@@ -706,7 +732,7 @@ async function wzNext(){
     route();
   }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled=false; }
 }
-function resizeImage(file, maxW, maxH){
+function resizeImage(file, maxW, maxH, fmt){
   return new Promise((res,rej)=>{
     const fr = new FileReader();
     fr.onerror = ()=>rej(new Error('read'));
@@ -717,7 +743,9 @@ function resizeImage(file, maxW, maxH){
         const r = Math.min(1, maxW/img.width, maxH/img.height);
         const c = document.createElement('canvas');
         c.width = Math.max(1,Math.round(img.width*r)); c.height = Math.max(1,Math.round(img.height*r));
-        c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        const cx = c.getContext('2d'); if (fmt==='jpeg'){ cx.fillStyle='#fff'; cx.fillRect(0,0,c.width,c.height); }
+        cx.drawImage(img,0,0,c.width,c.height);
+        if (fmt==='jpeg'){ res(c.toDataURL('image/jpeg', .8)); return; }
         let out = c.toDataURL('image/png');
         if (out.length > 600000) out = c.toDataURL('image/jpeg', .85);
         res(out);
@@ -1066,12 +1094,20 @@ function calcQ(q){
 }
 
 /* ---------- the printed document ---------- */
-function docHtml(q){
-  const b = biz(), cur = b.currency || 'INR', c = calcQ(q), df = b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
+function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
+function getLetterhead(){ const d = (S.cache.settings||[]).find(x=>x.id==='letterhead'); return d ? d.data : ''; }
+function docHtml(q, opt){
+  opt = opt || {};
+  const tp = opt.tpl || (S.owner && S.owner.template) || {};
+  const lh = opt.lh !== undefined ? opt.lh : getLetterhead();
+  const useLh = !!(tp.useLh && lh);
+  const col = /^#[0-9a-f]{6}$/i.test(tp.color||'') ? tp.color : '#14213d', sty = tp.style || 'classic';
+  const hd = tp.h || {}, H = (k, def) => (String(hd[k]||'').trim() || def);
+  const b = biz(), cur = opt.currency || b.currency || 'INR', c = calcQ(q), df = opt.dateFormat || b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
   const money = n => fmtMoney(n, cur);
   const items = q.items || [];
-  const hasHsn = items.some(i=>i.hsn);
-  const showTax = q.taxType!=='none' && items.some(i=>+i.gst>0);
+  const hasHsn = tp.showHsn!==false && items.some(i=>i.hsn);
+  const showTax = tp.showGst!==false && q.taxType!=='none' && items.some(i=>+i.gst>0);
   const custAddr = [cu.addr1, cu.addr2].filter(Boolean);
   const firmAddr = [b.addr1, b.addr2].filter(Boolean);
   const ids = [b.gstin?('GSTIN: '+b.gstin):'', b.pan?('PAN: '+b.pan):''].filter(Boolean).join('   ');
@@ -1091,10 +1127,23 @@ function docHtml(q){
   c.ch.forEach(x=>tot.push(`<tr><td>${esc(x.label)}</td><td class="r">${money(x.base)}</td></tr>`));
   c.taxLines.forEach(x=>tot.push(`<tr><td>${x.label} @ ${nf(x.rate)}%</td><td class="r">${money(x.amount)}</td></tr>`));
   const terms = (q.terms||[]).filter(Boolean);
-  return `<div class="qd"><style>
-    .qd{font-family:"Noto Sans","Noto Sans Devanagari",system-ui,sans-serif;color:#14213d;background:#fff;width:794px;min-height:1123px;padding:44px 48px 60px;box-sizing:border-box;font-size:13.5px;line-height:1.4;position:relative}
+  const styleCss = sty==='modern' ? `
+    .qd .hd{border-bottom:4px solid ${col}}
+    .qd .ttl{color:${col}}
+    .qd table.it th{background:${col};color:#fff;border:0}
+    .qd .tots tr.g td{background:${hexTint(col,.1)};border-top:0;border-bottom:2px solid ${col}}
+    .qd h4{color:${col}}` : sty==='simple' ? `
+    .qd .hd{border-bottom:1px solid #cfcfcf}
+    .qd .ttl{font-weight:600;letter-spacing:2px;font-size:20px;color:${col}}
+    .qd table.it th{background:transparent;border-top:0;border-bottom:1.5px solid ${col}}
+    .qd table.it td{border-bottom:1px solid #ececec}
+    .qd .tots tr.g td{border-top:1px solid ${col};border-bottom:1px solid ${col}}` : '';
+  const lhCss = useLh ? `.qd .firm{display:none}.qd .hd{justify-content:flex-end;border-bottom:0;padding-bottom:0}` : '';
+  const qdStyle = `padding-top:${useLh?Math.max(0,+tp.lhTop||150):44}px;padding-bottom:${useLh?Math.max(20,+tp.lhBottom||80):60}px;`+(useLh?`background:#fff url('${lh}') 0 0/794px 1123px repeat-y;`:'');
+  return `<div class="qd" style="${qdStyle}"><style>
+    .qd{font-family:"Noto Sans","Noto Sans Devanagari",system-ui,sans-serif;color:${col};background:#fff;width:794px;min-height:1123px;padding:44px 48px 60px;box-sizing:border-box;font-size:13.5px;line-height:1.4;position:relative}
     .qd *{box-sizing:border-box}
-    .qd .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:12px;border-bottom:1.5px solid #14213d}
+    .qd .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:12px;border-bottom:1.5px solid ${col}}
     .qd .firm{display:flex;gap:14px;align-items:flex-start}
     .qd .firm img{max-height:74px;max-width:150px;object-fit:contain}
     .qd .firm h1{margin:0 0 2px;font-size:23px;font-weight:700}
@@ -1105,7 +1154,7 @@ function docHtml(q){
     .qd .meta td{padding:1px 0 1px 14px;font-size:13px}
     .qd p{margin:14px 0 8px}
     .qd table.it{width:100%;border-collapse:collapse;margin-top:6px}
-    .qd table.it th{background:#f4f5f8;text-align:left;font-size:11.5px;letter-spacing:.4px;padding:8px 8px;border-top:1.5px solid #14213d;border-bottom:1.5px solid #14213d}
+    .qd table.it th{background:${hexTint(col,.07)};text-align:left;font-size:11.5px;letter-spacing:.4px;padding:8px 8px;border-top:1.5px solid ${col};border-bottom:1.5px solid ${col}}
     .qd table.it th.r,.qd table.it td.r{text-align:right}
     .qd table.it td{padding:8px 8px;vertical-align:top;border-bottom:1px dotted #aaa}
     .qd table.it td.n{width:28px}
@@ -1113,7 +1162,7 @@ function docHtml(q){
     .qd .tots{display:flex;justify-content:flex-end;margin-top:6px}
     .qd .tots table{width:320px;border-collapse:collapse}
     .qd .tots td{padding:5px 8px;font-size:13px}
-    .qd .tots tr.g td{font-weight:700;font-size:14.5px;border-top:1.5px solid #14213d;border-bottom:3px double #14213d}
+    .qd .tots tr.g td{font-weight:700;font-size:14.5px;border-top:1.5px solid ${col};border-bottom:3px double ${col}}
     .qd .note{font-size:12px;color:#555;margin:6px 0 0;text-align:right}
     .qd h4{margin:22px 0 4px;font-size:13px;letter-spacing:.3px}
     .qd ul{margin:0;padding-left:18px}
@@ -1122,6 +1171,7 @@ function docHtml(q){
     .qd .sign img{max-height:62px;max-width:200px;object-fit:contain;display:block;margin:6px 0 0 auto}
     .qd .sign .au{font-size:12px;margin-top:6px}
     .qd .bank{margin-top:14px;font-size:12px;color:#333}
+    ${styleCss}${lhCss}
   </style>
     <div class="hd"><div class="firm">${b.logo?`<img src="${esc(b.logo)}" alt="">`:''}<div><h1>${esc(b.name||'')}</h1>
       ${b.contact?`<div>${esc(b.contact)}</div>`:''}${firmAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${ids?`<div>${esc(ids)}</div>`:''}${contact?`<div>${esc(contact)}</div>`:''}</div></div>
@@ -1130,7 +1180,7 @@ function docHtml(q){
       ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
       <table class="meta"><tr><td><b>${esc(t('qNo'))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
     <p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t('dThanks'))}</p>
-    <table class="it"><thead><tr><th>#</th><th>${esc(t('dDesc'))}</th>${hasHsn?'<th class="r">HSN</th>':''}<th class="r">${esc(t('dQty'))}</th><th class="r">${esc(t('dPrice'))}</th>${showTax?'<th class="r">GST</th>':''}<th class="r">${esc(t('dTotal'))}</th></tr></thead><tbody>${rows}</tbody></table>
+    <table class="it"><thead><tr><th>#</th><th>${esc(H('desc',t('dDesc')))}</th>${hasHsn?`<th class="r">${esc(H('hsn','HSN'))}</th>`:''}<th class="r">${esc(H('qty',t('dQty')))}</th><th class="r">${esc(H('price',t('dPrice')))}</th>${showTax?`<th class="r">${esc(H('gst','GST'))}</th>`:''}<th class="r">${esc(H('total',t('dTotal')))}</th></tr></thead><tbody>${rows}</tbody></table>
     <div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr></table></div>
     ${q.gstMode==='incl' && showTax ? `<div class="note">${esc(t('dInclNote'))}</div>`:''}
     <p style="margin-top:18px">${esc(t('dHope'))}</p>
@@ -1145,14 +1195,15 @@ function initQD(mode, id, key){
   const list = S.cache.quotations || [];
   let base = null;
   if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace('quotations'); return false; } }
-  const maxSeq = Math.max(0, ...list.map(x=>x.seq||0), (S.owner.counters && S.owner.counters.quotation) || 0);
+  const cnt = S.owner.counters && S.owner.counters.quotation;
+  const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
   const savedTerms = (S.cache.terms||[]).filter(x=>x.type==='quotation').sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
   if (mode==='edit'){
     QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true;
   } else {
     QD = { id: uid(), isNew: true, seq: maxSeq+1, date: isoToday(), other:'', customer:null, items:[], charges:[], terms: savedTerms,
            gstMode: (S.owner.prefs && S.owner.prefs.gstMode) || 'excl', taxType:'cgst_sgst', taxTypeManual:false };
-    QD.no = 'Quote-' + QD.seq;
+    QD.no = ((S.owner.template && S.owner.template.qPrefix!=null) ? S.owner.template.qPrefix : 'Quote-') + QD.seq;
     if (mode==='dup'){
       const c = JSON.parse(JSON.stringify(base));
       Object.assign(QD, { other:c.other||'', customer:c.customer, items:c.items, charges:c.charges, terms:c.terms||[], gstMode:c.gstMode, taxType:c.taxType, taxTypeManual:true });
@@ -1194,7 +1245,7 @@ function renderQForm(){
   <div class="shell" style="padding-bottom:130px">
     <div class="qtop"><div class="qrow">
       <div><small>${esc(t('qDate'))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
-      <div style="text-align:right"><small>${esc(t('qNo'))}</small><b>${esc(QD.no)}</b></div></div>
+      <div style="text-align:right"><small>${esc(t('qNo'))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
       <input class="qother" data-qk="other" placeholder="${esc(t('otherInfo'))}:" value="${esc(QD.other)}"></div>
     ${sec(t('secCustomer'),'qcust')}${cust}
     ${sec(t('secProducts'),'qprod')}${items}
@@ -1315,6 +1366,9 @@ function qAction(act, el){
 async function generateQuotation(btn){
   if (!QD.customer){ toast(t('needCustomer')); return; }
   if (!QD.items.length){ toast(t('needProduct')); return; }
+  QD.no = String(QD.no||'').trim();
+  if (!QD.no){ toast(t('needNo')); return; }
+  if ((S.cache.quotations||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
   btn.disabled = true;
   const c = calcQ(QD);
   const rec = { id:QD.id, no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
@@ -1324,7 +1378,7 @@ async function generateQuotation(btn){
     const list = S.cache.quotations || (S.cache.quotations=[]);
     const k = list.findIndex(x=>x.id===rec.id);
     if (k>=0) list[k] = rec; else list.push(rec);
-    S.owner.counters = Object.assign({}, S.owner.counters, {quotation: Math.max(rec.seq, (S.owner.counters&&S.owner.counters.quotation)||0)});
+    if (QD.isNew) S.owner.counters = Object.assign({}, S.owner.counters, {quotation: rec.seq});
     S.owner.prefs = Object.assign({}, S.owner.prefs, {gstMode: rec.gstMode});
     await backend.save(S.user, {counters:S.owner.counters, prefs:{gstMode:rec.gstMode}});
     await syncCounts('quotations');
@@ -1360,7 +1414,7 @@ const INV_ICON = ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 
 const MORE_ICON = ic('<circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/>', 26);
 function curQuotation(){ const id = currentRoute().split('/')[2]; return (S.cache.quotations||[]).find(x=>x.id===id); }
 async function viewQView(id){
-  await ensure('quotations');
+  await ensure('quotations'); await ensure('settings');
   const q = (S.cache.quotations||[]).find(x=>x.id===id);
   if (!q) return goReplace('quotations');
   app.innerHTML = `${bar(t('qDetail'),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
@@ -1373,11 +1427,11 @@ async function viewQView(id){
     <button data-act="qmore">${MORE_ICON}<span>${esc(t('more'))}</span></button></div></div>`;
   fitPaper();
 }
-function fitPaper(){
+function fitPaper(extra){
   const pw = $('#pw'), paper = $('#paper'); if (!pw || !paper) return;
   const s = Math.min(1, (pw.clientWidth - 16) / 794);
   paper.style.transform = `scale(${s})`;
-  pw.style.height = (paper.offsetHeight * s + 130) + 'px';
+  pw.style.height = (paper.offsetHeight * s + (typeof extra==='number'?extra:130)) + 'px';
 }
 window.addEventListener('resize', fitPaper);
 
@@ -1486,6 +1540,102 @@ function viewScore(){
 }
 
 /* =====================================================================
+   VIEW: template & numbering  (Step 4)
+   ===================================================================== */
+const TPL_COLORS = ['#14213d','#0b6e4f','#7a1f2b','#1d4ed8','#b45309','#4b2e83','#111111','#0f766e'];
+function tplSample(){
+  const list = (S.cache.quotations||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
+  if (list.length) return list[0];
+  return { no:'Quote-1', date:isoToday(), other:'', gstMode:'excl', taxType:'cgst_sgst',
+    customer:{name:'Customer Name', company:'Sample Company', mobile:'9876543210', addr1:'Address line', addr2:'', state:'', email:'', gstin:''},
+    items:[{name:'Sample Product', desc:'', unit:'PCS', hsn:'1234', qty:2, rate:500, gst:18, disc:0}], charges:[],
+    terms:['Rates are valid for 15 days.','GST and other taxes as applicable.'] };
+}
+function tplOpt(){ return { tpl:TP.t, lh:TP.lh, dateFormat:TP.dateFormat, currency:TP.currency }; }
+function refreshTplPreview(){
+  const paper = $('#paper'); if (!paper || !TP) return;
+  paper.innerHTML = docHtml(tplSample(), tplOpt()); fitPaper(20);
+}
+async function viewTemplate(){
+  await Promise.all([ensure('quotations'), ensure('settings')]);
+  if (!TP){
+    const t0 = JSON.parse(JSON.stringify((S.owner && S.owner.template) || {}));
+    t0.h = t0.h || {};
+    const cnt = S.owner.counters && S.owner.counters.quotation;
+    const mx = (cnt!=null && cnt!=='') ? +cnt||0 : Math.max(0, ...(S.cache.quotations||[]).map(x=>x.seq||0));
+    TP = { t:t0, lh:getLetterhead(), lhChanged:false, qPrefix: t0.qPrefix!=null ? t0.qPrefix : 'Quote-', next: mx+1,
+           dateFormat: biz().dateFormat || 'dd/MM/yyyy', currency: biz().currency || 'INR' };
+  }
+  renderTemplate();
+}
+function renderTemplate(){
+  const y = window.scrollY, T0 = TP.t, h = T0.h, now = new Date();
+  const hf = (k, ph) => `<label class="fld"><span>${esc(ph)}</span><input data-tk="h.${k}" value="${esc(h[k]||'')}" placeholder="${esc(ph)}"></label>`;
+  const sty = (k, lbl) => `<button data-act="tplstyle" data-s="${k}" class="${(T0.style||'classic')===k?'on':''}">${esc(t(lbl))}</button>`;
+  const colNow = T0.color || '#14213d';
+  app.innerHTML = `${bar(t('tplTitle'),{back:true})}
+  <div class="shell page-white tpl">
+    <h3>${esc(t('tplPreview'))}</h3>
+    <div class="paperwrap" id="pw" style="padding:0;background:#eee;border-radius:12px"><div class="paper" id="paper">${docHtml(tplSample(), tplOpt())}</div></div>
+    <h3>${esc(t('tplColor'))}</h3>
+    <div class="swatches">${TPL_COLORS.map(c=>`<button class="swatch ${c.toLowerCase()===colNow.toLowerCase()?'on':''}" style="background:${c}" data-act="tplcolor" data-c="${c}" aria-label="${c}"></button>`).join('')}</div>
+    <h3>${esc(t('tplStyle'))}</h3>
+    <div class="stylerow">${sty('classic','stClassic')}${sty('modern','stModern')}${sty('simple','stSimple')}</div>
+    <h3>${esc(t('tplCols'))}</h3><div class="hint">${esc(t('tplColsHint'))}</div>
+    ${hf('desc',t('dDesc'))}${hf('hsn','HSN')}${hf('qty',t('dQty'))}${hf('price',t('dPrice'))}${hf('gst','GST')}${hf('total',t('dTotal'))}
+    <label class="chk-row"><span>${esc(t('tplShowHsn'))}</span><input type="checkbox" data-tk="showHsn" ${T0.showHsn!==false?'checked':''}></label>
+    <label class="chk-row"><span>${esc(t('tplShowGst'))}</span><input type="checkbox" data-tk="showGst" ${T0.showGst!==false?'checked':''}></label>
+    <h3>${esc(t('tplLetter'))}</h3><div class="hint">${esc(t('tplLetterHint'))}</div>
+    <div class="btnrow" style="position:static;padding:0 0 12px;gap:10px"><button class="btn ghost" data-act="tplupload">${esc(t(TP.lh?'tplChange':'tplUpload'))}</button>${TP.lh?`<button class="btn ghost" data-act="tplrmlh" style="flex:.6">${esc(t('tplRemove'))}</button>`:''}</div>
+    <input type="file" id="lhpick" accept="image/*" class="hide">
+    ${TP.lh?`<label class="chk-row"><span>${esc(t('tplUseLetter'))}</span><input type="checkbox" data-tk="useLh" ${T0.useLh?'checked':''}></label>
+    <label class="fld"><span>${esc(t('tplTop'))}</span><input data-tk="lhTop" inputmode="numeric" value="${esc(T0.lhTop!=null?T0.lhTop:150)}"></label>
+    <label class="fld"><span>${esc(t('tplBottom'))}</span><input data-tk="lhBottom" inputmode="numeric" value="${esc(T0.lhBottom!=null?T0.lhBottom:80)}"></label>`:''}
+    <h3>${esc(t('tplNumber'))}</h3>
+    <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="qPrefix" value="${esc(TP.qPrefix)}"></label>
+    <label class="fld" id="nextW"><span>${esc(t('tplNext'))}</span><input data-tk="next" inputmode="numeric" value="${esc(TP.next)}"></label>
+    <div class="hint">${esc(t('tplNextHint'))}</div>
+    <h3>${esc(t('tplHdrDate'))}</h3>
+    <label class="fld ico">${I.cal(30)}<div class="col"><span>${esc(t('dateFormat'))}</span><select data-tk="dateFormat">${DATE_FORMATS.map(f=>`<option value="${f}" ${TP.dateFormat===f?'selected':''}>${f} (${fmtDate(now,f)})</option>`).join('')}</select></div></label>
+    <label class="fld ico">${I.flag(30)}<div class="col"><span>${esc(t('currency'))}</span><select data-tk="currency">${CURRENCIES.map(c=>`<option value="${c[0]}" ${TP.currency===c[0]?'selected':''}>${c[0]} (${c[2]} ${fmtMoney(999999.12,c[0])})</option>`).join('')}</select></div></label>
+  </div>
+  <div class="tplbar"><button class="btn" data-act="tplsave">${esc(t('save'))}</button></div>`;
+  fitPaper(20);
+  window.scrollTo(0, y);
+}
+function onTplInput(e){
+  const k = e.target.dataset.tk; if (!k || !TP) return;
+  const isCb = e.target.type==='checkbox', v = isCb ? e.target.checked : e.target.value;
+  if (k.startsWith('h.')) TP.t.h[k.slice(2)] = v;
+  else if (k==='qPrefix' || k==='next' || k==='dateFormat' || k==='currency') TP[k] = v;
+  else TP.t[k] = (k==='lhTop'||k==='lhBottom') ? (String(v).trim()===''?'':Math.max(0,parseInt(v,10)||0)) : v;
+  refreshTplPreview();
+}
+async function tplSave(btn){
+  const n = parseInt(String(TP.next).trim(),10);
+  if (!(n>=1)){ $('#nextW').classList.add('err'); toast(t('tplBadNext')); return; }
+  btn.disabled = true;
+  try{
+    const tp = TP.t, h = {};
+    ['desc','hsn','qty','price','gst','total'].forEach(k=>h[k]=String(tp.h[k]||'').trim());
+    const tpl = { color: tp.color||'#14213d', style: tp.style||'classic', h, showHsn: tp.showHsn!==false, showGst: tp.showGst!==false,
+      useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, qPrefix: String(TP.qPrefix) };
+    if (TP.lhChanged){
+      if (TP.lh) await backend.put(S.user, 'settings', 'letterhead', { data: TP.lh });
+      else await backend.remove(S.user, 'settings', 'letterhead');
+      const list = (S.cache.settings||[]).filter(x=>x.id!=='letterhead');
+      if (TP.lh) list.push({ id:'letterhead', data:TP.lh });
+      S.cache.settings = list;
+    }
+    const business = Object.assign({}, biz(), { dateFormat: TP.dateFormat, currency: TP.currency });
+    const counters = Object.assign({}, S.owner.counters, { quotation: n-1 });
+    await backend.save(S.user, { template: tpl, business, counters, updatedAt: Date.now() });
+    S.owner = deepMerge(S.owner||{}, { template: tpl, business, counters });
+    TP = null; toast(t('saved')); goBack();
+  }catch(err){ console.error(err); toast(t('saveFail')); btn.disabled = false; }
+}
+
+/* =====================================================================
    VIEW: settings
    ===================================================================== */
 function viewSettings(){
@@ -1497,9 +1647,10 @@ function viewSettings(){
     <div class="profilecard">${u.photoURL?`<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<div class="avatar">${esc(((u.displayName||u.email||'?').trim()[0]||'?').toUpperCase())}</div>`}
       <div><b>${esc(u.displayName||'')}</b><small>${esc(u.email||'')}</small><br><small>${esc(t('signedInAs'))}</small></div></div>
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${I.chev()}</button>
+    <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.2 (Step 3)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.3 (Step 4)</div>
   </div>`;
 }
 
@@ -1544,6 +1695,12 @@ document.addEventListener('click', async e=>{
     case 'addterm': return openTermSheet(null);
     case 'saveterm': return saveTerm(el);
     case 'sheetclose': return closeSheet();
+    case 'template': return go('template');
+    case 'tplcolor': TP.t.color = el.dataset.c; return renderTemplate();
+    case 'tplstyle': TP.t.style = el.dataset.s; return renderTemplate();
+    case 'tplupload': return $('#lhpick').click();
+    case 'tplrmlh': TP.lh = ''; TP.lhChanged = true; TP.t.useLh = false; return renderTemplate();
+    case 'tplsave': return tplSave(el);
     case 'newq': return go('quotation/new');
     case 'quotations': return go('quotations');
     case 'qdup': case 'qedit': case 'qinv': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete':
@@ -1559,9 +1716,16 @@ document.addEventListener('input', e=>{
   if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = e.target.dataset.col==='quotations' ? qItemsHtml(e.target.value) : itemsHtml(e.target.dataset.col, e.target.value); }
   if (e.target.id==='psearch'){ const box=$('#plist'); if (box) box.innerHTML = pickListHtml(e.target.dataset.kind, e.target.value); }
   if (e.target.dataset && e.target.dataset.qk) onQInput(e);
+  if (e.target.dataset && e.target.dataset.tk && e.target.type!=='checkbox' && e.target.tagName!=='SELECT') onTplInput(e);
   if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
 });
 document.addEventListener('change', async e=>{
+  if (e.target.dataset && e.target.dataset.tk && TP && (e.target.type==='checkbox' || e.target.tagName==='SELECT')){ onTplInput(e); if (e.target.dataset.tk==='useLh') renderTemplate(); return; }
+  if (e.target.id==='lhpick' && e.target.files[0] && TP){
+    try{ TP.lh = await resizeImage(e.target.files[0], 1000, 1414, 'jpeg'); TP.lhChanged = true; TP.t.useLh = true; renderTemplate(); }
+    catch(err){ toast(t('badImage')); }
+    return;
+  }
   if (e.target.dataset && e.target.dataset.qk) onQInput(e);
   if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
   if (e.target.id==='filepick' && e.target.files[0] && WZ){
