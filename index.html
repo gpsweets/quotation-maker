@@ -325,6 +325,15 @@ const T = {
     secInv:"Payment", dueDate:"Due Date", payStatus:"Payment status", stUnpaid:"Unpaid", stPartial:"Partly paid", stPaid:"Paid", amtPaid:"Amount received", payBtn:"Payment",
     dPaid:"Amount paid", dBalance:"Balance due", dDue:"Due date:", dRef:"Ref:", dThanksI:"Thank you for your business. Please find the invoice details below.", dHopeI:"Thank you for your business.",
     waTextI:"Invoice {no} from {firm}. Amount: {amt}", tplIPrefix:"Invoice prefix", tplINext:"Next invoice number", badPaid:"Enter the amount received",
+    makePO:"Make Purchase Order", editPO:"Edit Purchase Order", poList:"Purchase Order List", noPO:"You don't have any purchase order yet", poDate:"PO Date", poNo:"PO No", poDetail:"Purchase Order Detail", delPAsk:"Delete this purchase order? It cannot be undone.", secSupplier:"To (Supplier)",
+    makeProforma:"Make Proforma Invoice", editProforma:"Edit Proforma Invoice", proformaList:"Proforma Invoice List", noProforma:"You don't have any proforma invoice yet", pfDate:"Proforma Date", pfNo:"Proforma No", pfDetail:"Proforma Detail", delPFAsk:"Delete this proforma invoice? It cannot be undone.",
+    makeDN:"Make Delivery Note", editDN:"Edit Delivery Note", dnList:"Delivery Note List", noDN:"You don't have any delivery note yet", dnDate:"Delivery Date", dnNo:"Delivery Note No", dnDetail:"Delivery Note Detail", delDNAsk:"Delete this delivery note? It cannot be undone.",
+    makeReceipt:"Make Receipt", editReceipt:"Edit Receipt", receiptList:"Receipt List", noReceipt:"You don't have any receipt yet", rDate:"Receipt Date", rNo:"Receipt No", rDetail:"Receipt Detail", delRAsk:"Delete this receipt? If it was linked to an invoice, that invoice's received amount will be reduced.",
+    rAmount:"Amount received", rMode:"Payment mode", mCash:"Cash", mUpi:"UPI", mBank:"Bank transfer", mCheque:"Cheque", mOther:"Other", rRef:"Reference / cheque no.", rAgainst:"Against invoice", rNoneInv:"No invoice", selInvoice:"Select invoice", noUnpaid:"No unpaid invoice found", needAmount:"Enter the amount received",
+    dRecFrom:"Received with thanks from {n}:", dInWords:"Amount in words", dMode:"Payment mode", dRefNo:"Reference", dAgainst:"Against invoice", dRecvd:"Received by", dRecvSign:"Receiver's signature", dQtyOnly:"QTY",
+    dThanksP:"Please supply the following items as per the terms below.", dHopeP:"Kindly confirm receipt of this order.", dThanksPF:"Please find our proforma invoice below.", dHopePF:"Thank you for your interest.",
+    dThanksD:"Please find the goods delivered as listed below.", dHopeD:"Please check the goods at the time of delivery.", waDoc:"{doc} {no} from {firm}. Amount: {amt}",
+    wRupees:"Rupees", wPaise:"Paise", wOnly:"Only", wAnd:"and", moreMake:"Create from this",
     dDiscount:"{n}% discount", dInclNote:"All prices are inclusive of GST.", dBank:"Bank details", dDate:"Date:", dPhone:"Ph", waText:"Quotation {no} from {firm}. Amount: {amt}"
   },
   hi:{
@@ -393,6 +402,15 @@ const T = {
     secInv:"भुगतान", dueDate:"देय तारीख़", payStatus:"भुगतान की स्थिति", stUnpaid:"बाक़ी", stPartial:"आंशिक भुगतान", stPaid:"भुगतान हो गया", amtPaid:"मिली हुई राशि", payBtn:"भुगतान",
     dPaid:"प्राप्त राशि", dBalance:"बाक़ी राशि", dDue:"देय तारीख़:", dRef:"संदर्भ:", dThanksI:"आपके व्यापार के लिए धन्यवाद। इनवॉइस का विवरण नीचे है।", dHopeI:"आपके व्यापार के लिए धन्यवाद।",
     waTextI:"{firm} की ओर से इनवॉइस {no}। राशि: {amt}", tplIPrefix:"इनवॉइस प्रिफ़िक्स", tplINext:"अगला इनवॉइस नंबर", badPaid:"मिली हुई राशि डालें",
+    makePO:"परचेज़ ऑर्डर बनाएँ", editPO:"परचेज़ ऑर्डर बदलें", poList:"परचेज़ ऑर्डर सूची", noPO:"अभी कोई परचेज़ ऑर्डर नहीं है", poDate:"PO की तारीख़", poNo:"PO नंबर", poDetail:"परचेज़ ऑर्डर विवरण", delPAsk:"यह परचेज़ ऑर्डर हटाएँ? यह वापस नहीं आएगा।", secSupplier:"सप्लायर",
+    makeProforma:"प्रोफ़ॉर्मा इनवॉइस बनाएँ", editProforma:"प्रोफ़ॉर्मा इनवॉइस बदलें", proformaList:"प्रोफ़ॉर्मा इनवॉइस सूची", noProforma:"अभी कोई प्रोफ़ॉर्मा इनवॉइस नहीं है", pfDate:"प्रोफ़ॉर्मा की तारीख़", pfNo:"प्रोफ़ॉर्मा नंबर", pfDetail:"प्रोफ़ॉर्मा विवरण", delPFAsk:"यह प्रोफ़ॉर्मा इनवॉइस हटाएँ? यह वापस नहीं आएगा।",
+    makeDN:"डिलीवरी नोट बनाएँ", editDN:"डिलीवरी नोट बदलें", dnList:"डिलीवरी नोट सूची", noDN:"अभी कोई डिलीवरी नोट नहीं है", dnDate:"डिलीवरी की तारीख़", dnNo:"डिलीवरी नोट नंबर", dnDetail:"डिलीवरी नोट विवरण", delDNAsk:"यह डिलीवरी नोट हटाएँ? यह वापस नहीं आएगा।",
+    makeReceipt:"रसीद बनाएँ", editReceipt:"रसीद बदलें", receiptList:"रसीद सूची", noReceipt:"अभी कोई रसीद नहीं है", rDate:"रसीद की तारीख़", rNo:"रसीद नंबर", rDetail:"रसीद विवरण", delRAsk:"यह रसीद हटाएँ? अगर यह किसी इनवॉइस से जुड़ी है तो उस इनवॉइस की मिली राशि घट जाएगी।",
+    rAmount:"मिली हुई राशि", rMode:"भुगतान का तरीक़ा", mCash:"नक़द", mUpi:"UPI", mBank:"बैंक ट्रांसफ़र", mCheque:"चेक", mOther:"अन्य", rRef:"रेफ़रेंस / चेक नंबर", rAgainst:"किस इनवॉइस के विरुद्ध", rNoneInv:"कोई इनवॉइस नहीं", selInvoice:"इनवॉइस चुनें", noUnpaid:"कोई बाक़ी इनवॉइस नहीं मिला", needAmount:"मिली हुई राशि डालें",
+    dRecFrom:"{n} से धन्यवाद सहित प्राप्त:", dInWords:"राशि शब्दों में", dMode:"भुगतान का तरीक़ा", dRefNo:"रेफ़रेंस", dAgainst:"इनवॉइस के विरुद्ध", dRecvd:"प्राप्तकर्ता", dRecvSign:"प्राप्तकर्ता के हस्ताक्षर", dQtyOnly:"मात्रा",
+    dThanksP:"कृपया नीचे दी गई शर्तों के अनुसार ये सामान भेजें।", dHopeP:"कृपया इस ऑर्डर की प्राप्ति की पुष्टि करें।", dThanksPF:"हमारा प्रोफ़ॉर्मा इनवॉइस नीचे है।", dHopePF:"आपकी रुचि के लिए धन्यवाद।",
+    dThanksD:"नीचे सूची के अनुसार माल भेजा गया है।", dHopeD:"कृपया डिलीवरी के समय माल की जाँच कर लें।", waDoc:"{firm} की ओर से {doc} {no}। राशि: {amt}",
+    wRupees:"रुपये", wPaise:"पैसे", wOnly:"मात्र", wAnd:"और", moreMake:"इससे बनाएँ",
     dDiscount:"{n}% छूट", dInclNote:"सभी कीमतें GST सहित हैं।", dBank:"बैंक की जानकारी", dDate:"तारीख़:", dPhone:"फ़ोन", waText:"{firm} की ओर से कोटेशन {no}। राशि: {amt}"
   }
 };
@@ -559,17 +577,13 @@ function route(){
   const setupDone = !!(biz().setupDone);
   if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
   if (r.startsWith('wizard')){ if(!WZ) startWizard({}); return viewWizard(); }
-  if (r==='quotations') return viewQuotations('quotation');
-  if (r==='invoices') return viewQuotations('invoice');
-  if (r==='invoice/new') return viewQForm('new');
-  if (r.startsWith('invoice/edit/')) return viewQForm('edit', r.split('/')[2]);
-  if (r.startsWith('invoice/dup/')) return viewQForm('dup', r.split('/')[2]);
-  if (r.startsWith('invoice/from/')) return viewQForm('from', r.split('/')[2]);
-  if (r.startsWith('invoice/view/')) return viewQView(r.split('/')[2]);
-  if (r==='quotation/new') return viewQForm('new');
-  if (r.startsWith('quotation/edit/')) return viewQForm('edit', r.split('/')[2]);
-  if (r.startsWith('quotation/dup/')) return viewQForm('dup', r.split('/')[2]);
-  if (r.startsWith('quotation/view/')) return viewQView(r.split('/')[2]);
+  const seg0 = r.split('/')[0], act0 = r.split('/')[1];
+  if (SEG_KIND[r] && DK[SEG_KIND[r]].list===r) return viewQuotations(SEG_KIND[r]);
+  if (SEG_KIND[seg0] && DK[SEG_KIND[seg0]].route===seg0){
+    if (act0==='new') return viewQForm('new');
+    if (act0==='edit'||act0==='dup'||act0==='from') return viewQForm(act0, r.split('/')[2]);
+    if (act0==='view') return viewQView(r.split('/')[2]);
+  }
   if (r==='customers') return viewList('customers');
   if (r==='products') return viewList('products');
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
@@ -585,7 +599,7 @@ window.addEventListener('hashchange', ()=>{
   const r = currentRoute();
   if (!r.startsWith('wizard')) { if (WZ && !WZ.setup) WZ=null; }
   if (!/^(customer|product)\//.test(r)) FM = null;
-  if (!/^((quotation|invoice)\/(new|edit|dup|from)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
+  if (!/^((quotation|invoice|po|proforma|dn|receipt)\/(new|edit|dup|from)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
   if (r!=='template') TP = null;
   closeSheet();
   route();
@@ -799,10 +813,10 @@ function viewHome(){
         ${tile(I.docEdit(24),'quotationList','quotationListSub','quotations')}
         ${tile(I.docPlus(24),'makeInvoice','makeInvoiceSub','newi')}
         ${tile(I.docEdit(24),'invoiceList','invoiceListSub','invoices')}
-        ${tile(I.docEdit(24),'purchaseOrder','purchaseOrderSub','soon')}
-        ${tile(I.docEdit(24),'proforma','proformaSub','soon')}
-        ${tile(I.docEdit(24),'deliveryNote','deliveryNoteSub','soon')}
-        ${tile(I.docEdit(24),'receipt','receiptSub','soon')}
+        ${tile(I.docEdit(24),'purchaseOrder','purchaseOrderSub','pos')}
+        ${tile(I.docEdit(24),'proforma','proformaSub','proformas')}
+        ${tile(I.docEdit(24),'deliveryNote','deliveryNoteSub','dns')}
+        ${tile(I.docEdit(24),'receipt','receiptSub','receipts')}
         ${tile(I.globe(24),'languageTile','languageSub','language')}
         ${tile(I.gear(22),'settings','settingsSub','settings')}
       </div>
@@ -830,7 +844,7 @@ async function ensure(col){
 async function syncCounts(col){
   const n = (S.cache[col]||[]).length;
   const patch = {[col]:n};
-  if (col==='quotations' || col==='invoices'){ const other = col==='quotations' ? 'invoices' : 'quotations'; patch.documents = n + (S.cache[other] ? S.cache[other].length : ((S.owner.counts && S.owner.counts[other])||0)); }
+  if (DOC_COLS.includes(col)){ patch.documents = DOC_COLS.reduce((sum,c)=> sum + (c===col ? n : (S.cache[c] ? S.cache[c].length : ((S.owner.counts && S.owner.counts[c])||0))), 0); }
   S.owner.counts = Object.assign({}, S.owner.counts, patch);
   try{ await backend.save(S.user, {counts:patch}); }catch(e){ console.error(e); }
 }
@@ -1112,10 +1126,43 @@ function calcQ(q){
 
 /* ---------- the printed document ---------- */
 const DK = {
-  quotation:{ col:'quotations', route:'quotation', list:'quotations', cnt:'quotation', pre:'qPrefix', def:'Quote-', mk:'makeQuotation', ed:'editQuotation', ln:'quotationList', empty:'noQuotation', date:'qDate', no:'qNo', det:'qDetail', del:'delQAsk', doc:'docQuotation', pdf:'Quotation-', wa:'waText', term:'quotation', dear:'dThanks', hope:'dHope' },
-  invoice:{ col:'invoices', route:'invoice', list:'invoices', cnt:'invoice', pre:'iPrefix', def:'Invoice-', mk:'makeInvoice', ed:'editInvoice', ln:'invoiceList', empty:'noInvoice', date:'iDate', no:'iNo', det:'iDetail', del:'delIAsk', doc:'docInvoice', pdf:'Invoice-', wa:'waTextI', term:'invoice', dear:'dThanksI', hope:'dHopeI' }
+  quotation:{ col:'quotations', route:'quotation', list:'quotations', cnt:'quotation', pre:'qPrefix', def:'Quote-', mk:'makeQuotation', ed:'editQuotation', ln:'quotationList', empty:'noQuotation', date:'qDate', no:'qNo', det:'qDetail', del:'delQAsk', doc:'docQuotation', pdf:'Quotation-', wa:'waText', term:'quotation', dear:'dThanks', hope:'dHope', money:true, cust:'secCustomer', conv:['proforma','invoice','delivery'] },
+  invoice:{ col:'invoices', route:'invoice', list:'invoices', cnt:'invoice', pre:'iPrefix', def:'Invoice-', mk:'makeInvoice', ed:'editInvoice', ln:'invoiceList', empty:'noInvoice', date:'iDate', no:'iNo', det:'iDetail', del:'delIAsk', doc:'docInvoice', pdf:'Invoice-', wa:'waTextI', term:'invoice', dear:'dThanksI', hope:'dHopeI', money:true, cust:'secCustomer', conv:['receipt','delivery'] },
+  po:{ col:'purchaseorders', route:'po', list:'pos', cnt:'po', pre:'poPrefix', def:'PO-', mk:'makePO', ed:'editPO', ln:'poList', empty:'noPO', date:'poDate', no:'poNo', det:'poDetail', del:'delPAsk', doc:'docPO', pdf:'PO-', wa:'waDoc', term:'po', dear:'dThanksP', hope:'dHopeP', money:true, cust:'secSupplier', conv:[] },
+  proforma:{ col:'proformas', route:'proforma', list:'proformas', cnt:'proforma', pre:'pfPrefix', def:'Proforma-', mk:'makeProforma', ed:'editProforma', ln:'proformaList', empty:'noProforma', date:'pfDate', no:'pfNo', det:'pfDetail', del:'delPFAsk', doc:'docProforma', pdf:'Proforma-', wa:'waDoc', term:'proforma', dear:'dThanksPF', hope:'dHopePF', money:true, cust:'secCustomer', conv:['invoice','delivery'] },
+  delivery:{ col:'deliverynotes', route:'dn', list:'dns', cnt:'delivery', pre:'dnPrefix', def:'DN-', mk:'makeDN', ed:'editDN', ln:'dnList', empty:'noDN', date:'dnDate', no:'dnNo', det:'dnDetail', del:'delDNAsk', doc:'docDelivery', pdf:'DeliveryNote-', wa:'waDoc', term:'delivery', dear:'dThanksD', hope:'dHopeD', money:false, cust:'secCustomer', conv:[] },
+  receipt:{ col:'receipts', route:'receipt', list:'receipts', cnt:'receipt', pre:'rPrefix', def:'Receipt-', mk:'makeReceipt', ed:'editReceipt', ln:'receiptList', empty:'noReceipt', date:'rDate', no:'rNo', det:'rDetail', del:'delRAsk', doc:'docReceipt', pdf:'Receipt-', wa:'waDoc', term:'receipt', dear:'', hope:'', money:true, cust:'secCustomer', conv:[] }
 };
-const kindOfRoute = r => String(r||currentRoute()).startsWith('invoice') ? 'invoice' : 'quotation';
+const EN1 = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
+const EN10 = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+const HI100 = 'शून्य,एक,दो,तीन,चार,पाँच,छह,सात,आठ,नौ,दस,ग्यारह,बारह,तेरह,चौदह,पंद्रह,सोलह,सत्रह,अठारह,उन्नीस,बीस,इक्कीस,बाईस,तेईस,चौबीस,पच्चीस,छब्बीस,सत्ताईस,अट्ठाईस,उनतीस,तीस,इकतीस,बत्तीस,तैंतीस,चौंतीस,पैंतीस,छत्तीस,सैंतीस,अड़तीस,उनतालीस,चालीस,इकतालीस,बयालीस,तैंतालीस,चवालीस,पैंतालीस,छियालीस,सैंतालीस,अड़तालीस,उनचास,पचास,इक्यावन,बावन,तिरेपन,चौवन,पचपन,छप्पन,सत्तावन,अट्ठावन,उनसठ,साठ,इकसठ,बासठ,तिरेसठ,चौंसठ,पैंसठ,छियासठ,सड़सठ,अड़सठ,उनहत्तर,सत्तर,इकहत्तर,बहत्तर,तिहत्तर,चौहत्तर,पचहत्तर,छिहत्तर,सतहत्तर,अठहत्तर,उन्यासी,अस्सी,इक्यासी,बयासी,तिरासी,चौरासी,पचासी,छियासी,सत्तासी,अट्ठासी,नवासी,नब्बे,इक्यानवे,बानवे,तिरानवे,चौरानवे,पचानवे,छियानवे,सत्तानवे,अट्ठानवे,निन्यानवे'.split(',');
+function enBelow100(n){ return n<20 ? EN1[n] : EN10[Math.floor(n/10)] + (n%10 ? ' '+EN1[n%10] : ''); }
+function enBelow1000(n){ const h = Math.floor(n/100), r = n%100; return (h ? EN1[h]+' Hundred'+(r?' ':'') : '') + (r ? enBelow100(r) : ''); }
+function enWords(n){
+  if (n===0) return 'Zero';
+  const parts = [], cr = Math.floor(n/1e7); n %= 1e7; const lk = Math.floor(n/1e5); n %= 1e5; const th = Math.floor(n/1e3); n %= 1e3;
+  if (cr) parts.push(enWords(cr)+' Crore'); if (lk) parts.push(enBelow100(lk)+' Lakh'); if (th) parts.push(enBelow100(th)+' Thousand'); if (n) parts.push(enBelow1000(n));
+  return parts.join(' ');
+}
+function hiWords(n){
+  if (n===0) return HI100[0];
+  const parts = [], cr = Math.floor(n/1e7); n %= 1e7; const lk = Math.floor(n/1e5); n %= 1e5; const th = Math.floor(n/1e3); n %= 1e3;
+  const h = Math.floor(n/100), r = n%100;
+  if (cr) parts.push(hiWords(cr)+' करोड़'); if (lk) parts.push(HI100[lk]+' लाख'); if (th) parts.push(HI100[th]+' हज़ार'); if (h) parts.push(HI100[h]+' सौ'); if (r) parts.push(HI100[r]);
+  return parts.join(' ');
+}
+function amountWords(amount, cur){
+  amount = Math.max(0, r2(+amount||0));
+  const rs = Math.floor(amount), ps = Math.round((amount-rs)*100), hi = LANG==='hi', W = hi ? hiWords : enWords;
+  const unit = cur==='INR' ? t('wRupees') : cur, sub = cur==='INR' ? t('wPaise') : '';
+  if (hi) return W(rs)+' '+unit+(ps ? ' '+t('wAnd')+' '+W(ps)+' '+(sub||'/100') : '')+' '+t('wOnly');
+  return unit+' '+W(rs)+(ps ? ' '+t('wAnd')+' '+W(ps)+' '+(sub||'/100') : '')+' '+t('wOnly');
+}
+const DOC_KINDS = ['quotation','invoice','po','proforma','delivery','receipt'];
+const DOC_COLS = DOC_KINDS.map(k=>DK[k].col);
+const SEG_KIND = {quotation:'quotation',quotations:'quotation',invoice:'invoice',invoices:'invoice',po:'po',pos:'po',proforma:'proforma',proformas:'proforma',dn:'delivery',dns:'delivery',receipt:'receipt',receipts:'receipt'};
+const findDoc = id => { for (const c of DOC_COLS){ const r = (S.cache[c]||[]).find(x=>x.id===id); if (r) return r; } return null; };
+const kindOfRoute = r => SEG_KIND[String(r||currentRoute()).split('/')[0]] || 'quotation';
 const addDays = (iso, n) => { const p = String(iso).split('-').map(Number); const d = new Date(p[0], p[1]-1, p[2]+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 function paidOf(q, total){ if (q.payStatus==='paid') return total; if (q.payStatus==='partial') return Math.min(total, Math.max(0, +q.paid||0)); return 0; }
 function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
@@ -1128,7 +1175,7 @@ function docHtml(q, opt){
   const col = /^#[0-9a-f]{6}$/i.test(tp.color||'') ? tp.color : '#14213d', sty = tp.style || 'classic';
   const hd = tp.h || {}, H = (k, def) => (String(hd[k]||'').trim() || def);
   const b = biz(), cur = opt.currency || b.currency || 'INR', c = calcQ(q), df = opt.dateFormat || b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
-  const kind = q.kind==='invoice' ? 'invoice' : 'quotation', K = DK[kind];
+  const kind = DK[q.kind] ? q.kind : 'quotation', K = DK[kind], noMoney = kind==='delivery', isRc = kind==='receipt';
   const money = n => fmtMoney(n, cur);
   const paidAmt = kind==='invoice' ? paidOf(q, c.total) : 0;
   const payRows = paidAmt>0 ? `<tr><td>${esc(t('dPaid'))}</td><td class="r">${money(paidAmt)}</td></tr><tr><td><b>${esc(t('dBalance'))}</b></td><td class="r"><b>${money(Math.max(0, r2(c.total-paidAmt)))}</b></td></tr>` : '';
@@ -1145,15 +1192,27 @@ function docHtml(q, opt){
     return `<tr><td class="n">${i+1}</td><td><b>${esc(it.name)}</b>${it.desc?`<div class="sm">${esc(it.desc)}</div>`:''}${+it.disc?`<div class="sm">${esc(t('dDiscount',{n:nf(it.disc)}))}</div>`:''}</td>
       ${hasHsn?`<td class="r">${esc(it.hsn||'')}</td>`:''}
       <td class="r">${nf(it.qty)}${it.unit?`<div class="sm">${esc(it.unit)}</div>`:''}</td>
-      <td class="r">${money(+it.rate||0)}</td>
+      ${noMoney?'':`<td class="r">${money(+it.rate||0)}</td>
       ${showTax?`<td class="r">${nf(it.gst||0)}%</td>`:''}
-      <td class="r">${money(L.show)}</td></tr>`;
+      <td class="r">${money(L.show)}</td>`}</tr>`;
   }).join('');
   const tot = [];
   tot.push(`<tr><td>${esc(t('dSub'))}</td><td class="r">${money(c.sub)}</td></tr>`);
   c.ch.forEach(x=>tot.push(`<tr><td>${esc(x.label)}</td><td class="r">${money(x.base)}</td></tr>`));
   c.taxLines.forEach(x=>tot.push(`<tr><td>${x.label} @ ${nf(x.rate)}%</td><td class="r">${money(x.amount)}</td></tr>`));
   const terms = (q.terms||[]).filter(Boolean);
+  const rcMode = {cash:t('mCash'), upi:t('mUpi'), bank:t('mBank'), cheque:t('mCheque'), other:t('mOther')}[q.mode] || '';
+  const mainBody = isRc ? `<p>${esc(t('dRecFrom',{n:cu.company||cu.name||''}))}</p>
+    <div class="bigamt" style="margin:2px 0 6px">${money(+q.amount||0)}</div>
+    <table class="rc"><tr><td>${esc(t('dInWords'))}</td><td>${esc(amountWords(q.amount, cur))}</td></tr>
+      ${rcMode?`<tr><td>${esc(t('dMode'))}</td><td>${esc(rcMode)}</td></tr>`:''}
+      ${q.ref?`<tr><td>${esc(t('dRefNo'))}</td><td>${esc(q.ref)}</td></tr>`:''}
+      ${q.invoiceNo?`<tr><td>${esc(t('dAgainst'))}</td><td>${esc(q.invoiceNo)}</td></tr>`:''}</table>`
+  : `<p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t(K.dear))}</p>
+    <table class="it"><thead><tr><th>#</th><th>${esc(H('desc',t('dDesc')))}</th>${hasHsn?`<th class="r">${esc(H('hsn','HSN'))}</th>`:''}<th class="r">${esc(H('qty',t('dQty')))}</th>${noMoney?'':`<th class="r">${esc(H('price',t('dPrice')))}</th>${showTax?`<th class="r">${esc(H('gst','GST'))}</th>`:''}<th class="r">${esc(H('total',t('dTotal')))}</th>`}</tr></thead><tbody>${rows}</tbody></table>
+    ${noMoney?'':`<div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr>${payRows}</table></div>
+    ${q.gstMode==='incl' && showTax ? `<div class="note">${esc(t('dInclNote'))}</div>`:''}`}
+    <p style="margin-top:18px">${esc(t(K.hope))}</p>`;
   const styleCss = sty==='modern' ? `
     .qd .hd{border-bottom:4px solid ${col}}
     .qd .ttl{color:${col}}
@@ -1198,6 +1257,12 @@ function docHtml(q, opt){
     .qd .sign img{max-height:62px;max-width:200px;object-fit:contain;display:block;margin:6px 0 0 auto}
     .qd .sign .au{font-size:12px;margin-top:6px}
     .qd .bank{margin-top:14px;font-size:12px;color:#333}
+    .qd table.rc{width:100%;border-collapse:collapse;margin-top:10px}
+    .qd table.rc td{padding:10px 8px;border-bottom:1px dotted #aaa;vertical-align:top}
+    .qd table.rc td:first-child{width:36%;font-weight:600}
+    .qd .bigamt{font-size:22px;font-weight:700}
+    .qd .recv{margin-top:26px;float:left;font-size:12px;width:240px}
+    .qd .recv .ln{border-bottom:1px solid #555;height:56px}
     ${styleCss}${lhCss}
   </style>
     <div class="hd"><div class="firm">${b.logo?`<img src="${esc(b.logo)}" alt="">`:''}<div><h1>${esc(b.name||'')}</h1>
@@ -1205,14 +1270,11 @@ function docHtml(q, opt){
       <div class="ttl">${esc(t(K.doc))}</div></div>
     <div class="to"><div><div><b>${esc(t('dTo'))}</b></div>${cu.company?`<div><b>${esc(cu.company)}</b></div>`:''}<div${cu.company?'':' style="font-weight:700"'}>${esc(cu.name||'')}</div>
       ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
-      <table class="meta"><tr><td><b>${esc(t(K.no))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${kind==='invoice'&&q.due?`<tr><td><b>${esc(t('dDue'))}</b></td><td>${esc(fmtIso(q.due, df))}</td></tr>`:''}${kind==='invoice'&&q.refNo?`<tr><td><b>${esc(t('dRef'))}</b></td><td>${esc(q.refNo)}</td></tr>`:''}${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
-    <p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t(K.dear))}</p>
-    <table class="it"><thead><tr><th>#</th><th>${esc(H('desc',t('dDesc')))}</th>${hasHsn?`<th class="r">${esc(H('hsn','HSN'))}</th>`:''}<th class="r">${esc(H('qty',t('dQty')))}</th><th class="r">${esc(H('price',t('dPrice')))}</th>${showTax?`<th class="r">${esc(H('gst','GST'))}</th>`:''}<th class="r">${esc(H('total',t('dTotal')))}</th></tr></thead><tbody>${rows}</tbody></table>
-    <div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr>${payRows}</table></div>
-    ${q.gstMode==='incl' && showTax ? `<div class="note">${esc(t('dInclNote'))}</div>`:''}
-    <p style="margin-top:18px">${esc(t(K.hope))}</p>
+      <table class="meta"><tr><td><b>${esc(t(K.no))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${kind==='invoice'&&q.due?`<tr><td><b>${esc(t('dDue'))}</b></td><td>${esc(fmtIso(q.due, df))}</td></tr>`:''}${q.refNo?`<tr><td><b>${esc(t('dRef'))}</b></td><td>${esc(q.refNo)}</td></tr>`:''}${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
+    ${mainBody}
     ${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${terms.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
-    ${bank.length?`<div class="bank"><b>${esc(t('dBank'))}:</b> ${esc(bank.join('  |  '))}</div>`:''}
+    ${bank.length && !noMoney && !isRc?`<div class="bank"><b>${esc(t('dBank'))}:</b> ${esc(bank.join('  |  '))}</div>`:''}
+    ${noMoney?`<div class="recv"><div class="ln"></div>${esc(t('dRecvd'))}</div>`:''}
     <div class="sign"><b>${esc(t('dFor'))} ${esc(String(b.name||'').toUpperCase())}</b>${b.signature?`<img src="${esc(b.signature)}" alt="">`:'<div style="height:56px"></div>'}<div class="au">${esc(t('dAuth'))}</div></div>
   </div>`;
 }
@@ -1222,17 +1284,30 @@ function initQD(mode, id, key){
   const kind = kindOfRoute(key), K = DK[kind];
   const list = S.cache[K.col] || [];
   let base = null;
-  if (mode==='from'){ base = (S.cache.quotations||[]).find(x=>x.id===id); if (!base){ QD = null; goReplace('quotations'); return false; } }
+  if (mode==='from'){ base = findDoc(id); if (!base){ QD = null; goReplace('quotations'); return false; } }
   else if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace(K.list); return false; } }
   const cnt = S.owner.counters && S.owner.counters[K.cnt];
   const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
   const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
+  const mkNo = seq => ((S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def) + seq;
+  if (kind==='receipt'){
+    if (mode==='edit'){ QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.kind = kind; QD.oldAmount = +base.amount||0; QD.oldInvoiceId = base.invoiceId||''; }
+    else {
+      QD = { id: uid(), kind, isNew: true, seq: maxSeq+1, date: isoToday(), no: mkNo(maxSeq+1), customer:null, amount:'', mode:'cash', ref:'', invoiceId:'', invoiceNo:'', other:'', terms: savedTerms };
+      if (mode==='dup'){ const c = JSON.parse(JSON.stringify(base)); Object.assign(QD, { customer:c.customer, amount:c.amount, mode:c.mode, ref:'', other:c.other||'', terms:c.terms||[] }); }
+      if (mode==='from' && base.kind==='invoice'){
+        const bal = Math.max(0, r2(calcQ(base).total - paidOf(base, calcQ(base).total)));
+        QD.customer = base.customer; QD.invoiceId = base.id; QD.invoiceNo = base.no; QD.amount = bal>0 ? String(bal) : '';
+      }
+    }
+    QD.key = key; return true;
+  }
   if (mode==='edit'){
     QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true; QD.kind = kind;
   } else {
     QD = { id: uid(), kind, isNew: true, seq: maxSeq+1, date: isoToday(), other:'', customer:null, items:[], charges:[], terms: savedTerms,
            gstMode: (S.owner.prefs && S.owner.prefs.gstMode) || 'excl', taxType:'cgst_sgst', taxTypeManual:false };
-    QD.no = ((S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def) + QD.seq;
+    QD.no = mkNo(QD.seq);
     if (kind==='invoice'){ QD.due = addDays(QD.date, 7); QD.payStatus = 'unpaid'; QD.paid = ''; }
     if (mode==='dup' || mode==='from'){
       const c = JSON.parse(JSON.stringify(base));
@@ -1258,19 +1333,21 @@ function addQItem(p){
 }
 async function viewQForm(mode, id){
   const K = DK[kindOfRoute()];
-  await Promise.all([ensure('customers'), ensure('products'), ensureTerms(), ensure(K.col), ensure('quotations')]);
+  await Promise.all([ensure('customers'), ensure('products'), ensureTerms(), ...DOC_COLS.map(c=>ensure(c))]);
   const key = currentRoute();
   if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
   renderQForm();
 }
-function qTotalText(){ return fmtMoney(calcQ(QD).total, biz().currency||'INR'); }
+function qTotalText(){ return fmtMoney(QD.kind==='receipt' ? (parseFloat(QD.amount)||0) : calcQ(QD).total, biz().currency||'INR'); }
 function renderQForm(){
+  if (QD.kind==='receipt') return renderRForm();
   const y = window.scrollY, cur = biz().currency || 'INR', df = biz().dateFormat || 'dd/MM/yyyy';
   const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
   const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
+  const money = DK[QD.kind||'quotation'].money;
   const items = QD.items.map((it,i)=>{
     const amt = r2((+it.qty||0)*(+it.rate||0)*(1-(+it.disc||0)/100));
-    return `<div class="qcard" data-act="qitem" data-i="${i}"><div class="tx"><b>${esc(it.name)}</b><div class="sp"><small>${esc(nf(it.qty))}${it.unit?' '+esc(it.unit):''} × ${esc(fmtMoney(+it.rate||0,cur))}${+it.disc?' − '+nf(it.disc)+'%':''}</small><small style="color:#222;font-weight:600">${esc(fmtMoney(amt,cur))}</small></div></div><button class="ibt" data-act="qitemdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`;
+    return `<div class="qcard" data-act="qitem" data-i="${i}"><div class="tx"><b>${esc(it.name)}</b><div class="sp"><small>${esc(nf(it.qty))}${it.unit?' '+esc(it.unit):''}${money?` × ${esc(fmtMoney(+it.rate||0,cur))}${+it.disc?' − '+nf(it.disc)+'%':''}`:''}</small>${money?`<small style="color:#222;font-weight:600">${esc(fmtMoney(amt,cur))}</small>`:''}</div></div><button class="ibt" data-act="qitemdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`;
   }).join('');
   const charges = QD.charges.map((c,i)=>`<div class="qcard" data-act="qchargeedit" data-i="${i}"><div class="tx"><b>${esc(c.label)}</b><small>${esc(fmtMoney(+c.amount||0,cur))}${c.taxable?' · GST '+nf(c.gst)+'%':''}</small></div><button class="ibt" data-act="qchargedel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
   const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
@@ -1286,18 +1363,18 @@ function renderQForm(){
       <div><small>${esc(t(K.date))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
       <div style="text-align:right"><small>${esc(t(K.no))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
       <input class="qother" data-qk="other" placeholder="${esc(t('otherInfo'))}:" value="${esc(QD.other)}"></div>
-    ${sec(t('secCustomer'),'qcust')}${cust}
+    ${sec(t(K.cust),'qcust')}${cust}
     ${sec(t('secProducts'),'qprod')}${items}
-    <div class="qsec" style="cursor:default"><span>${esc(t('secGst'))}</span><span></span></div>
-    <div class="qgst">
+    ${!K.money?'':`<div class="qsec" style="cursor:default"><span>${esc(t('secGst'))}</span><span></span></div>`}
+    ${!K.money?'':`<div class="qgst">
       <div class="r"><span>${esc(t('gstIncl'))}</span><label class="sw"><input type="checkbox" data-qk="gstMode" ${QD.gstMode==='incl'?'checked':''}><i></i></label></div>
       <div class="r"><span>${esc(t('gstType'))}</span><select data-qk="taxType"><option value="cgst_sgst" ${QD.taxType==='cgst_sgst'?'selected':''}>${esc(t('ttCgst'))}</option><option value="igst" ${QD.taxType==='igst'?'selected':''}>${esc(t('ttIgst'))}</option><option value="none" ${QD.taxType==='none'?'selected':''}>${esc(t('ttNone'))}</option></select></div>
-    </div>
-    ${sec(t('secCharges'),'qcharge')}${charges}
+    </div>`}
+    ${!K.money?'':sec(t('secCharges'),'qcharge')+charges}
     ${invBlock}
     ${sec(t('secTerms'),'qterms')}${terms}
   </div>
-  <div class="qbar"><div><small>${esc(t('amountDue'))}</small><b id="qTotal">${esc(qTotalText())}</b></div><button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
+  <div class="qbar">${K.money?`<div><small>${esc(t('amountDue'))}</small><b id="qTotal">${esc(qTotalText())}</b></div>`:'<div></div>'}<button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
   window.scrollTo(0, y);
 }
 function onQInput(e){
@@ -1353,7 +1430,7 @@ function openItemSheet(i){
   const it = QD.items[i];
   const f = (id,label,val,mode)=>`<label class="fld"><span>${esc(label)}</span><input id="${id}" ${mode?`inputmode="${mode}"`:''} value="${esc(val)}"></label>`;
   openSheet(`<h3>${esc(it.name)}</h3>
-    ${f('itQty',t('qty'),nf(it.qty),'decimal')}${f('itRate',t('rate'),it.rate,'decimal')}${f('itUnit',t('unit'),it.unit)}${f('itDisc',t('disc'),nf(it.disc||0),'decimal')}${f('itGst',t('gst'),nf(it.gst||0),'decimal')}${f('itDesc',t('description'),it.desc)}
+    ${DK[QD.kind||'quotation'].money ? f('itQty',t('qty'),nf(it.qty),'decimal')+f('itRate',t('rate'),it.rate,'decimal')+f('itUnit',t('unit'),it.unit)+f('itDisc',t('disc'),nf(it.disc||0),'decimal')+f('itGst',t('gst'),nf(it.gst||0),'decimal')+f('itDesc',t('description'),it.desc) : f('itQty',t('qty'),nf(it.qty),'decimal')+f('itUnit',t('unit'),it.unit)+f('itDesc',t('description'),it.desc)}
     <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qitemsave" data-i="${i}">${esc(t('save'))}</button></div>`, 'tall');
 }
 function openTermsPicker(){
@@ -1364,21 +1441,95 @@ function openTermsPicker(){
     <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn" data-act="qtermsdone">${esc(t('done'))}</button></div>`, 'tall');
 }
 function numVal(id){ return parseFloat(String(($('#'+id)||{}).value||'').replace(/,/g,'')); }
+/* ---------- Receipt ---------- */
+const PAY_MODES = [['cash','mCash'],['upi','mUpi'],['bank','mBank'],['cheque','mCheque'],['other','mOther']];
+function renderRForm(){
+  const y = window.scrollY, cur = biz().currency || 'INR', df = biz().dateFormat || 'dd/MM/yyyy', K = DK.receipt;
+  const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
+  const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
+  const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
+  const inv = QD.invoiceId ? `<div class="qcard" data-act="rinv"><div class="tx"><b>${esc(QD.invoiceNo)}</b></div><button class="ibt" data-act="rinvdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
+  app.innerHTML = `${bar(t(QD.isNew?K.mk:K.ed),{back:true})}
+  <div class="shell" style="padding-bottom:130px">
+    <div class="qtop"><div class="qrow">
+      <div><small>${esc(t(K.date))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
+      <div style="text-align:right"><small>${esc(t(K.no))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
+      <input class="qother" data-qk="other" placeholder="${esc(t('otherInfo'))}:" value="${esc(QD.other)}"></div>
+    ${sec(t('secCustomer'),'qcust')}${cust}
+    ${sec(t('rAgainst'),'rinv')}${inv}
+    <div class="qsec" style="cursor:default"><span>${esc(t('rAmount'))}</span><span></span></div>
+    <div class="qpay">
+      <div class="r"><span>${esc(t('rAmount'))}</span><input class="qno" data-qk="amount" inputmode="decimal" value="${esc(QD.amount)}" style="width:150px"></div>
+      <div class="r"><span>${esc(t('rMode'))}</span><select data-qk="mode">${PAY_MODES.map(([k,l])=>`<option value="${k}" ${QD.mode===k?'selected':''}>${esc(t(l))}</option>`).join('')}</select></div>
+      <div class="r"><span>${esc(t('rRef'))}</span><input class="qno" data-qk="ref" value="${esc(QD.ref)}" style="width:150px"></div>
+    </div>
+    ${sec(t('secTerms'),'qterms')}${terms}
+  </div>
+  <div class="qbar"><div><small>${esc(t('rAmount'))}</small><b id="qTotal">${esc(qTotalText())}</b></div><button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
+  window.scrollTo(0, y);
+}
+function unpaidInvoices(){
+  return (S.cache.invoices||[]).map(inv=>{ const tot = calcQ(inv).total; return { inv, bal: Math.max(0, r2(tot - paidOf(inv, tot))) }; })
+    .filter(x=>x.bal>0 && (!QD.customer || !x.inv.customer || x.inv.customer.id===QD.customer.id || x.inv.id===QD.invoiceId))
+    .sort((a,b)=>(b.inv.seq||0)-(a.inv.seq||0));
+}
+function openInvoicePicker(){
+  const cur = biz().currency||'INR', rows = unpaidInvoices();
+  openSheet(`<h3>${esc(t('selInvoice'))}</h3><div class="scroll">${rows.length ? rows.map(({inv,bal})=>`<button class="item" data-act="rselinv" data-id="${esc(inv.id)}"><span class="tx"><b>${esc(inv.no)}</b><small>${esc((inv.customer&&(inv.customer.company||inv.customer.name))||'')}</small></span><span class="rt">${esc(fmtMoney(bal,cur))}</span></button>`).join('') : `<div class="empty" style="padding:40px 10px">${esc(t('noUnpaid'))}</div>`}</div>`, 'tall');
+}
+async function adjustInvoicePaid(invId, delta){
+  if (!invId || !delta) return;
+  await ensure('invoices');
+  const inv = (S.cache.invoices||[]).find(x=>x.id===invId); if (!inv) return;
+  const total = calcQ(inv).total, now = paidOf(inv, total);
+  const np = Math.min(total, Math.max(0, r2(now + delta)));
+  const status = np >= total - 0.005 ? 'paid' : (np > 0 ? 'partial' : 'unpaid');
+  const rec = Object.assign({}, inv, { payStatus:status, paid: status==='partial' ? np : 0, updatedAt: Date.now() });
+  await backend.put(S.user, 'invoices', rec.id, rec);
+  const i = S.cache.invoices.findIndex(x=>x.id===rec.id); if (i>=0) S.cache.invoices[i] = rec;
+}
+async function generateReceipt(btn){
+  const K = DK.receipt, amt = parseFloat(String(QD.amount).replace(/,/g,''));
+  if (!QD.customer){ toast(t('needCustomer')); return; }
+  if (!(amt>0)){ toast(t('needAmount')); return; }
+  QD.no = String(QD.no||'').trim();
+  if (!QD.no){ toast(t('needNo')); return; }
+  if ((S.cache[K.col]||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
+  btn.disabled = true;
+  const rec = { id:QD.id, kind:'receipt', no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, amount:amt, mode:QD.mode||'cash', ref:(QD.ref||'').trim(),
+    invoiceId:QD.invoiceId||'', invoiceNo:QD.invoiceNo||'', terms:QD.terms, total:amt, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
+  try{
+    if (!QD.isNew && QD.oldInvoiceId) await adjustInvoicePaid(QD.oldInvoiceId, -(QD.oldAmount||0));
+    if (rec.invoiceId) await adjustInvoicePaid(rec.invoiceId, amt);
+    await backend.put(S.user, K.col, rec.id, rec);
+    const list = S.cache[K.col] || (S.cache[K.col]=[]);
+    const k = list.findIndex(x=>x.id===rec.id);
+    if (k>=0) list[k] = rec; else list.push(rec);
+    if (QD.isNew){ S.owner.counters = Object.assign({}, S.owner.counters, {[K.cnt]: rec.seq}); await backend.save(S.user, {counters:S.owner.counters}); }
+    await syncCounts(K.col);
+    QD = null;
+    toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
+  }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
+}
 function qAction(act, el){
   const i = +el.dataset.i;
   switch (act){
     case 'qcust': return openPicker('customers');
     case 'qprod': return openPicker('products');
-    case 'qselcust': { const r=S.cache.customers.find(x=>x.id===el.dataset.id); if (r){ setQCustomer(r); closeSheet(); renderQForm(); } return; }
+    case 'qselcust': { const r=S.cache.customers.find(x=>x.id===el.dataset.id); if (r){ setQCustomer(r); if (QD.kind==='receipt' && QD.invoiceId){ const inv=(S.cache.invoices||[]).find(x=>x.id===QD.invoiceId); if (inv && inv.customer && inv.customer.id!==r.id){ QD.invoiceId=''; QD.invoiceNo=''; } } closeSheet(); renderQForm(); } return; }
     case 'qselprod': { const r=S.cache.products.find(x=>x.id===el.dataset.id); if (r){ addQItem(r); closeSheet(); renderQForm(); } return; }
     case 'qnewcust': RETURN = {hash:QD.key}; closeSheet(); return go('customer/new');
     case 'qnewprod': RETURN = {hash:QD.key}; closeSheet(); return go('product/new');
     case 'qcustdel': QD.customer = null; return renderQForm();
+    case 'rinv': return openInvoicePicker();
+    case 'rinvdel': QD.invoiceId = ''; QD.invoiceNo = ''; return renderQForm();
+    case 'rselinv': { const inv=(S.cache.invoices||[]).find(x=>x.id===el.dataset.id); if (inv){ const tot=calcQ(inv).total, bal=Math.max(0,r2(tot-paidOf(inv,tot))); QD.invoiceId=inv.id; QD.invoiceNo=inv.no; if (inv.customer && !QD.customer) QD.customer=inv.customer; if (!(parseFloat(QD.amount)>0)) QD.amount=String(bal); closeSheet(); renderQForm(); } return; }
     case 'qitem': return openItemSheet(i);
     case 'qitemdel': QD.items.splice(i,1); return renderQForm();
     case 'qitemsave': {
-      const it = QD.items[i], q = numVal('itQty'), r = numVal('itRate'), d = numVal('itDisc'), g = numVal('itGst');
-      it.qty = q>=0 ? q : 1; it.rate = r>=0 ? r : 0; it.disc = d>=0&&d<=100 ? d : 0; it.gst = g>=0&&g<=100 ? g : 0;
+      const it = QD.items[i], q = numVal('itQty'), full = !!$('#itRate');
+      it.qty = q>=0 ? q : 1;
+      if (full){ const r = numVal('itRate'), d = numVal('itDisc'), g = numVal('itGst'); it.rate = r>=0 ? r : 0; it.disc = d>=0&&d<=100 ? d : 0; it.gst = g>=0&&g<=100 ? g : 0; }
       it.unit = ($('#itUnit').value||'').trim().toUpperCase(); it.desc = ($('#itDesc').value||'').trim();
       closeSheet(); return renderQForm();
     }
@@ -1402,7 +1553,7 @@ function qAction(act, el){
       closeSheet(); return renderQForm();
     }
     case 'qtermdel': QD.terms.splice(i,1); return renderQForm();
-    case 'qgenerate': return generateQuotation(el);
+    case 'qgenerate': return QD.kind==='receipt' ? generateReceipt(el) : generateQuotation(el);
   }
 }
 async function generateQuotation(btn){
@@ -1417,7 +1568,8 @@ async function generateQuotation(btn){
   btn.disabled = true;
   const rec = { id:QD.id, kind:QD.kind||'quotation', no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
     terms:QD.terms, gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
-  if (isInv){ rec.due = QD.due||''; rec.payStatus = QD.payStatus||'unpaid'; rec.paid = rec.payStatus==='partial' ? (parseFloat(QD.paid)||0) : 0; if (QD.refNo){ rec.refNo = QD.refNo; rec.refId = QD.refId||''; } }
+  if (isInv){ rec.due = QD.due||''; rec.payStatus = QD.payStatus||'unpaid'; rec.paid = rec.payStatus==='partial' ? (parseFloat(QD.paid)||0) : 0; }
+  if (QD.refNo){ rec.refNo = QD.refNo; rec.refId = QD.refId||''; }
   try{
     await backend.put(S.user, K.col, rec.id, rec);
     const list = S.cache[K.col] || (S.cache[K.col]=[]);
@@ -1467,12 +1619,13 @@ async function viewQView(id){
   const q = (S.cache[K.col]||[]).find(x=>x.id===id);
   if (!q) return goReplace(K.list);
   if (!q.kind) q.kind = kind;
-  const third = kind==='quotation'
+  const third = (kind==='quotation' || kind==='proforma')
     ? `<button data-act="qinv">${INV_ICON}<span>${esc(t('invoiceBtn'))}</span></button>`
-    : `<button data-act="qpay">${INV_ICON}<span>${esc(t('payBtn'))}</span></button>`;
+    : kind==='invoice' ? `<button data-act="qpay">${INV_ICON}<span>${esc(t('payBtn'))}</span></button>` : '';
+  const cols = third ? 5 : 4;
   app.innerHTML = `${bar(t(K.det),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
   <div class="paperwrap" id="pw"><div class="paper" id="paper">${docHtml(q)}</div></div>
-  <div class="actbar"><div class="in">
+  <div class="actbar"><div class="in" style="grid-template-columns:repeat(${cols},1fr)">
     <button data-act="qdup">${COPY_ICON}<span>${esc(t('duplicate'))}</span></button>
     <button data-act="qedit">${I.pencil(26)}<span>${esc(t('edit'))}</span></button>
     ${third}
@@ -1531,7 +1684,7 @@ async function makePdf(q){
     return pdf.output('blob');
   } finally { holder.remove(); }
 }
-const pdfName = q => { const K = DK[q.kind==='invoice'?'invoice':'quotation'], n = String(q.no).replace(/[^\w-]+/g,'_'); return (new RegExp('^'+K.pdf.replace('-',''),'i').test(n) ? n : K.pdf+n) + '.pdf'; };
+const pdfName = q => { const K = DK[DK[q.kind]?q.kind:'quotation'], n = String(q.no).replace(/[^\w-]+/g,'_'); return (new RegExp('^'+K.pdf.replace('-',''),'i').test(n) ? n : K.pdf+n) + '.pdf'; };
 function downloadBlob(blob, name){
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
   document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 4000);
@@ -1542,21 +1695,22 @@ async function sharePdf(q, downloadOnly){
   try{ blob = await makePdf(q); }catch(e){ console.error(e); toast(t('pdfFail')); return; }
   const name = pdfName(q), file = new File([blob], name, {type:'application/pdf'});
   if (!downloadOnly && navigator.canShare && navigator.canShare({files:[file]})){
-    try{ await navigator.share({ files:[file], title:name, text: t(DK[q.kind==='invoice'?'invoice':'quotation'].wa,{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
+    try{ await navigator.share({ files:[file], title:name, text: t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
     catch(e){ if (e && e.name==='AbortError') return; console.error(e); }
   }
   downloadBlob(blob, name);
 }
 function whatsappLink(q){
-  const text = t(DK[q.kind==='invoice'?'invoice':'quotation'].wa,{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
+  const text = t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
   let n = String((q.customer&&q.customer.mobile)||'').replace(/\D/g,'');
   if (n.length===10) n = '91'+n;
   return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
 }
-async function qViewAction(act){
+async function qViewAction(act, el){
   const q = curQuotation(); if (!q) return;
-  const kind = q.kind==='invoice' ? 'invoice' : 'quotation', K = DK[kind];
+  const kind = DK[q.kind] ? q.kind : 'quotation', K = DK[kind];
   switch (act){
+    case 'qconv': return go(DK[el.dataset.k].route+'/from/'+q.id);
     case 'qdup': return go(K.route+'/dup/'+q.id);
     case 'qedit': return go(K.route+'/edit/'+q.id);
     case 'qinv': return go('invoice/from/'+q.id);
@@ -1580,12 +1734,13 @@ async function qViewAction(act){
     case 'qshare': return sharePdf(q, false);
     case 'qwa': return window.open(whatsappLink(q), '_blank');
     case 'qmore':
-      return openSheet(`<button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
+      return openSheet(`${K.conv.map(k=>`<button class="mrow2" data-act="qconv" data-k="${k}">${INV_ICON} ${esc(t(DK[k].mk))}</button>`).join('')}<button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
     case 'qpdf': closeSheet(); return sharePdf(q, true);
     case 'qdelete': {
       closeSheet();
       if (!confirm(t(K.del))) return;
       try{
+        if (kind==='receipt' && q.invoiceId) await adjustInvoicePaid(q.invoiceId, -(+q.amount||0));
         await backend.remove(S.user, K.col, q.id);
         S.cache[K.col] = S.cache[K.col].filter(x=>x.id!==q.id);
         await syncCounts(K.col);
@@ -1634,11 +1789,12 @@ async function viewTemplate(){
     t0.h = t0.h || {};
     const cnt = S.owner.counters && S.owner.counters.quotation;
     const mx = (cnt!=null && cnt!=='') ? +cnt||0 : Math.max(0, ...(S.cache.quotations||[]).map(x=>x.seq||0));
-    await ensure('invoices');
-    const ic = S.owner.counters && S.owner.counters.invoice;
-    const imx = (ic!=null && ic!=='') ? +ic||0 : Math.max(0, ...(S.cache.invoices||[]).map(x=>x.seq||0));
-    TP = { t:t0, lh:getLetterhead(), lhChanged:false, qPrefix: t0.qPrefix!=null ? t0.qPrefix : 'Quote-', next: mx+1,
-           iPrefix: t0.iPrefix!=null ? t0.iPrefix : 'Invoice-', iNext: imx+1,
+    await Promise.all(DOC_COLS.map(c=>ensure(c)));
+    const nums = {};
+    DOC_KINDS.forEach(k=>{ const K = DK[k], c = S.owner.counters && S.owner.counters[K.cnt];
+      const m = (c!=null && c!=='') ? (+c||0) : Math.max(0, ...(S.cache[K.col]||[]).map(x=>x.seq||0));
+      nums[k] = { pre: t0[K.pre]!=null ? t0[K.pre] : K.def, next: m+1 }; });
+    TP = { t:t0, lh:getLetterhead(), lhChanged:false, nums,
            dateFormat: biz().dateFormat || 'dd/MM/yyyy', currency: biz().currency || 'INR' };
   }
   renderTemplate();
@@ -1667,11 +1823,10 @@ function renderTemplate(){
     <label class="fld"><span>${esc(t('tplTop'))}</span><input data-tk="lhTop" inputmode="numeric" value="${esc(T0.lhTop!=null?T0.lhTop:150)}"></label>
     <label class="fld"><span>${esc(t('tplBottom'))}</span><input data-tk="lhBottom" inputmode="numeric" value="${esc(T0.lhBottom!=null?T0.lhBottom:80)}"></label>`:''}
     <h3>${esc(t('tplNumber'))}</h3>
-    <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="qPrefix" value="${esc(TP.qPrefix)}"></label>
-    <label class="fld" id="nextW"><span>${esc(t('tplNext'))}</span><input data-tk="next" inputmode="numeric" value="${esc(TP.next)}"></label>
     <div class="hint">${esc(t('tplNextHint'))}</div>
-    <label class="fld"><span>${esc(t('tplIPrefix'))}</span><input data-tk="iPrefix" value="${esc(TP.iPrefix)}"></label>
-    <label class="fld" id="inextW"><span>${esc(t('tplINext'))}</span><input data-tk="iNext" inputmode="numeric" value="${esc(TP.iNext)}"></label>
+    ${DOC_KINDS.map(k=>`<div class="gh" style="margin:10px 0 6px;font-size:16px">${esc(t(DK[k].doc))}</div>
+    <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="pre.${k}" value="${esc(TP.nums[k].pre)}"></label>
+    <label class="fld" id="next_${k}"><span>${esc(t('tplNext'))}</span><input data-tk="next.${k}" inputmode="numeric" value="${esc(TP.nums[k].next)}"></label>`).join('')}
     <h3>${esc(t('tplHdrDate'))}</h3>
     <label class="fld ico">${I.cal(30)}<div class="col"><span>${esc(t('dateFormat'))}</span><select data-tk="dateFormat">${DATE_FORMATS.map(f=>`<option value="${f}" ${TP.dateFormat===f?'selected':''}>${f} (${fmtDate(now,f)})</option>`).join('')}</select></div></label>
     <label class="fld ico">${I.flag(30)}<div class="col"><span>${esc(t('currency'))}</span><select data-tk="currency">${CURRENCIES.map(c=>`<option value="${c[0]}" ${TP.currency===c[0]?'selected':''}>${c[0]} (${c[2]} ${fmtMoney(999999.12,c[0])})</option>`).join('')}</select></div></label>
@@ -1684,21 +1839,26 @@ function onTplInput(e){
   const k = e.target.dataset.tk; if (!k || !TP) return;
   const isCb = e.target.type==='checkbox', v = isCb ? e.target.checked : e.target.value;
   if (k.startsWith('h.')) TP.t.h[k.slice(2)] = v;
-  else if (k==='qPrefix' || k==='next' || k==='iPrefix' || k==='iNext' || k==='dateFormat' || k==='currency') TP[k] = v;
+  else if (k.startsWith('pre.')) TP.nums[k.slice(4)].pre = v;
+  else if (k.startsWith('next.')) TP.nums[k.slice(5)].next = v;
+  else if (k==='dateFormat' || k==='currency') TP[k] = v;
   else TP.t[k] = (k==='lhTop'||k==='lhBottom') ? (String(v).trim()===''?'':Math.max(0,parseInt(v,10)||0)) : v;
   refreshTplPreview();
 }
 async function tplSave(btn){
-  const n = parseInt(String(TP.next).trim(),10);
-  if (!(n>=1)){ $('#nextW').classList.add('err'); toast(t('tplBadNext')); return; }
-  const n2 = parseInt(String(TP.iNext).trim(),10);
-  if (!(n2>=1)){ $('#inextW').classList.add('err'); toast(t('tplBadNext')); return; }
+  const newCounters = {};
+  for (const k of DOC_KINDS){
+    const n = parseInt(String(TP.nums[k].next).trim(),10);
+    if (!(n>=1)){ $('#next_'+k).classList.add('err'); toast(t('tplBadNext')); return; }
+    newCounters[DK[k].cnt] = n-1;
+  }
   btn.disabled = true;
   try{
     const tp = TP.t, h = {};
     ['desc','hsn','qty','price','gst','total'].forEach(k=>h[k]=String(tp.h[k]||'').trim());
     const tpl = { color: tp.color||'#14213d', style: tp.style||'classic', h, showHsn: tp.showHsn!==false, showGst: tp.showGst!==false,
-      useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, qPrefix: String(TP.qPrefix), iPrefix: String(TP.iPrefix) };
+      useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, };
+    DOC_KINDS.forEach(k=>{ tpl[DK[k].pre] = String(TP.nums[k].pre); });
     if (TP.lhChanged){
       if (TP.lh) await backend.put(S.user, 'settings', 'letterhead', { data: TP.lh });
       else await backend.remove(S.user, 'settings', 'letterhead');
@@ -1707,7 +1867,7 @@ async function tplSave(btn){
       S.cache.settings = list;
     }
     const business = Object.assign({}, biz(), { dateFormat: TP.dateFormat, currency: TP.currency });
-    const counters = Object.assign({}, S.owner.counters, { quotation: n-1, invoice: n2-1 });
+    const counters = Object.assign({}, S.owner.counters, newCounters);
     await backend.save(S.user, { template: tpl, business, counters, updatedAt: Date.now() });
     S.owner = deepMerge(S.owner||{}, { template: tpl, business, counters });
     TP = null; toast(t('saved')); goBack();
@@ -1729,7 +1889,7 @@ function viewSettings(){
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.4 (Step 5)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.5 (Step 6)</div>
   </div>`;
 }
 
@@ -1783,9 +1943,13 @@ document.addEventListener('click', async e=>{
     case 'newq': return go('quotation/new');
     case 'quotations': return go('quotations');
     case 'newi': return go('invoice/new');
+    case 'pos': return go('pos');
+    case 'proformas': return go('proformas');
+    case 'dns': return go('dns');
+    case 'receipts': return go('receipts');
     case 'invoices': return go('invoices');
-    case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete':
-      return qViewAction(el.dataset.act);
+    case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete': case 'qconv':
+      return qViewAction(el.dataset.act, el);
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
     default: return qAction(el.dataset.act, el);
   }
