@@ -167,6 +167,54 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .sheet h3{font-size:22px;margin:6px 0 14px}
 .plus-sq{width:44px;height:44px;border-radius:12px;background:#fff;color:var(--dark);display:grid;place-items:center;margin-right:2px}
 
+/* ---------- quotation (step 3) ---------- */
+.qtop{background:#f3f3f3;padding:14px 16px 12px;border-radius:0 0 18px 18px}
+.qrow{display:flex;justify-content:space-between;gap:12px}
+.qrow small{display:block;color:#444;font-size:14px}
+.qrow b{font-size:19px;font-weight:600}
+.qdate{position:relative;display:block}
+.qdate input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.qother{width:100%;border:0;background:transparent;outline:none;font-size:16px;padding:10px 0 2px;border-top:1px solid #e4e4e4;margin-top:10px}
+.qsec{display:flex;align-items:center;justify-content:space-between;background:#f3f3f3;border-radius:18px;padding:12px 12px 12px 20px;margin:14px 14px 0;font-weight:700;font-size:18px;text-transform:uppercase;width:calc(100% - 28px);text-align:left}
+.qsec .add{width:58px;height:46px;border-radius:14px;background:var(--dark);color:#fff;display:grid;place-items:center;flex:none}
+.qcard{background:#fff;border-radius:18px;margin:10px 14px 0;padding:14px 8px 14px 18px;box-shadow:0 1px 6px #0002;display:flex;gap:6px;align-items:center;text-align:left;width:calc(100% - 28px)}
+.qcard .tx{flex:1;min-width:0}
+.qcard b{display:block;font-size:19px;font-weight:600}
+.qcard small{display:block;color:var(--muted);font-size:15px}
+.qcard .sp{display:flex;justify-content:space-between;gap:10px}
+.qcard .ibt{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#222;flex:none}
+.qcard .ibt:active{background:#eee}
+.qgst{background:#fff;border-radius:18px;margin:10px 14px 0;padding:6px 16px 4px;box-shadow:0 1px 6px #0002}
+.qgst .r{display:flex;align-items:center;justify-content:space-between;padding:12px 0;font-size:17px;border-bottom:1px solid #eee}
+.qgst .r:last-child{border-bottom:0}
+.qgst select{border:0;background:#f2f2f2;border-radius:12px;padding:10px 12px;font-size:16px;max-width:60%}
+.sw{position:relative;width:54px;height:30px;flex:none}
+.sw input{opacity:0;position:absolute;inset:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:2}
+.sw i{position:absolute;inset:0;border-radius:15px;background:#c8c8c8;transition:.2s}
+.sw i::after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px #0004}
+.sw input:checked+i{background:var(--dark)}
+.sw input:checked+i::after{left:27px}
+.qbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(620px,calc(100% - 24px));background:var(--dark);color:#fff;border-radius:36px;display:flex;align-items:center;justify-content:space-between;padding:10px 10px 10px 24px;z-index:20;box-shadow:0 6px 18px #0004}
+.qbar small{display:block;font-size:14px;color:#ddd}
+.qbar b{font-size:27px;font-weight:700}
+.qbar .gen{background:#fff;color:var(--dark);border-radius:28px;padding:16px 40px;font-weight:600;font-size:18px;letter-spacing:1px}
+.qbar .gen:disabled{opacity:.6}
+.chk-row{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;font-size:17px}
+.chk-row input[type=checkbox]{width:26px;height:26px;accent-color:var(--dark)}
+.tpick{display:flex;gap:12px;align-items:flex-start;padding:12px 4px;border-bottom:1px solid #eee;font-size:16px;width:100%;text-align:left}
+.tpick input{width:24px;height:24px;margin-top:2px;accent-color:var(--dark);flex:none}
+.sheet.tall{height:88vh;display:flex;flex-direction:column}
+.sheet.tall .scroll{flex:1;overflow:auto;margin:0 -6px;padding:0 6px}
+.sheet .searchbox{margin:0 0 10px}
+.paperwrap{padding:12px 8px 110px;overflow:hidden}
+.paper{width:794px;background:#fff;transform-origin:top left;box-shadow:0 2px 12px #0003}
+.actbar{position:fixed;left:0;right:0;bottom:0;background:#f7f7f7;border-top:1px solid #e1e1e1;z-index:20;padding-bottom:env(safe-area-inset-bottom)}
+.actbar .in{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.actbar button{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 2px 8px;font-size:15px;font-weight:500;color:#222}
+.actbar button:active{background:#eee}
+.wa-btn{background:#25d366;color:#fff!important;border-radius:50%;width:40px;height:40px;display:grid;place-items:center;margin-right:4px}
+.mrow2{display:flex;align-items:center;gap:14px;padding:16px 6px;font-size:18px;width:100%;text-align:left;border-bottom:1px solid #eee}
+
 /* ---------- toast ---------- */
 #toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%) translateY(30px);background:#111;color:#fff;padding:12px 20px;border-radius:14px;opacity:0;transition:.25s;z-index:99;max-width:90vw;text-align:center;font-size:15px;pointer-events:none}
 #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -241,7 +289,19 @@ const T = {
     productsT:"Products", addProduct:"Add Product", editProduct:"Edit Product", searchProduct:"Search by name", noProduct:"You don't have any product yet",
     productName:"Product Name", price:"Price", gst:"GST %", description:"Description", unit:"Unit Of Measure (SET, KG etc.)", hsn:"HSN", needPrice:"Please enter a valid price.", badGst:"GST % must be between 0 and 100.",
     termsT:"Terms & Conditions", addTerm:"Add Terms and Condition", editTerm:"Edit Terms and Condition", noTerm:"You don't have any terms and conditions", termType:"Type", termText:"Terms and condition", needTerm:"Please write the term.",
-    docQuotation:"Quotation", docInvoice:"Invoice", docPO:"Purchase Order", docProforma:"Proforma Invoice", docDelivery:"Delivery Note", docReceipt:"Receipt", cancel:"Cancel"
+    docQuotation:"Quotation", docInvoice:"Invoice", docPO:"Purchase Order", docProforma:"Proforma Invoice", docDelivery:"Delivery Note", docReceipt:"Receipt", cancel:"Cancel",
+    qDate:"Quotation Date", qNo:"Quotation No", secCustomer:"To (Customer)", secProducts:"Products", secCharges:"Other Charge", secTerms:"Terms & Conditions", secGst:"GST",
+    gstIncl:"Price includes GST", gstType:"GST type", ttCgst:"CGST + SGST", ttIgst:"IGST", ttNone:"No GST",
+    amountDue:"Amount Due", generate:"Generate", selCustomer:"Select Customer", selProduct:"Select Product", addNew:"Add new",
+    qty:"Quantity", rate:"Rate", disc:"Discount %", itemEdit:"Edit item",
+    chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
+    selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
+    needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF",
+    making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
+    dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
+    dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
+    dDiscount:"{n}% discount", dInclNote:"All prices are inclusive of GST.", dBank:"Bank details", dDate:"Date:", dPhone:"Ph", waText:"Quotation {no} from {firm}. Amount: {amt}"
   },
   hi:{
     appName:"कोटेशन मेकर", chooseLang:"अपनी भाषा चुनें", langHint:"इसे बाद में सेटिंग्स में बदल सकते हैं।",
@@ -287,7 +347,19 @@ const T = {
     productsT:"प्रोडक्ट", addProduct:"प्रोडक्ट जोड़ें", editProduct:"प्रोडक्ट बदलें", searchProduct:"नाम से खोजें", noProduct:"अभी कोई प्रोडक्ट नहीं है",
     productName:"प्रोडक्ट का नाम", price:"कीमत", gst:"GST %", description:"विवरण", unit:"नाप की इकाई (SET, KG आदि)", hsn:"HSN", needPrice:"कृपया सही कीमत लिखिए।", badGst:"GST % 0 से 100 के बीच होना चाहिए।",
     termsT:"नियम व शर्तें", addTerm:"शर्त जोड़ें", editTerm:"शर्त बदलें", noTerm:"अभी कोई शर्त नहीं है", termType:"प्रकार", termText:"नियम और शर्त", needTerm:"कृपया शर्त लिखिए।",
-    docQuotation:"कोटेशन", docInvoice:"इनवॉइस", docPO:"परचेज़ ऑर्डर", docProforma:"प्रोफ़ॉर्मा इनवॉइस", docDelivery:"डिलीवरी नोट", docReceipt:"रसीद", cancel:"रद्द करें"
+    docQuotation:"कोटेशन", docInvoice:"इनवॉइस", docPO:"परचेज़ ऑर्डर", docProforma:"प्रोफ़ॉर्मा इनवॉइस", docDelivery:"डिलीवरी नोट", docReceipt:"रसीद", cancel:"रद्द करें",
+    qDate:"कोटेशन की तारीख़", qNo:"कोटेशन नंबर", secCustomer:"ग्राहक", secProducts:"प्रोडक्ट", secCharges:"अन्य खर्च", secTerms:"नियम व शर्तें", secGst:"GST",
+    gstIncl:"कीमत में GST शामिल है", gstType:"GST का प्रकार", ttCgst:"CGST + SGST", ttIgst:"IGST", ttNone:"GST नहीं",
+    amountDue:"कुल देय राशि", generate:"बनाएँ", selCustomer:"ग्राहक चुनें", selProduct:"प्रोडक्ट चुनें", addNew:"नया जोड़ें",
+    qty:"मात्रा", rate:"दर", disc:"छूट %", itemEdit:"आइटम बदलें",
+    chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
+    selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
+    needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड",
+    making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
+    dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
+    dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
+    dDiscount:"{n}% छूट", dInclNote:"सभी कीमतें GST सहित हैं।", dBank:"बैंक की जानकारी", dDate:"तारीख़:", dPhone:"फ़ोन", waText:"{firm} की ओर से कोटेशन {no}। राशि: {amt}"
   }
 };
 let LANG = LS.get('qm_lang') || null;
@@ -408,6 +480,8 @@ const S = { user:null, owner:{}, ready:false, cache:{} };
 let WZ = null;   // wizard state
 let FM = null;   // customer / product form state
 let TAB = 0;     // selected tab on Terms screen
+let QD = null;   // quotation being made / edited
+let RETURN = null; // after adding a customer/product, come back to the quotation
 const DS = () => (FM ? FM.d : WZ.d);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 const biz = () => (S.owner && S.owner.business) || {};
@@ -421,7 +495,7 @@ function scoreItems(){
     ['pay',   !!(b.upi||b.accNo), 'wizard:4'],
     ['cust',  (c.customers||0)>0, 'go:customer/new'],
     ['prod',  (c.products||0)>0, 'go:product/new'],
-    ['doc',   (c.documents||0)>0, 'soon'],
+    ['doc',   (c.documents||0)>0, 'go:quotation/new'],
     ['name',  !!b.name, 'wizard:1'],
     ['email', !!b.email, 'wizard:1'],
     ['phone', !!b.phone, 'wizard:1'],
@@ -450,6 +524,11 @@ function route(){
   const setupDone = !!(biz().setupDone);
   if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
   if (r.startsWith('wizard')){ if(!WZ) startWizard({}); return viewWizard(); }
+  if (r==='quotations') return viewQuotations();
+  if (r==='quotation/new') return viewQForm('new');
+  if (r.startsWith('quotation/edit/')) return viewQForm('edit', r.split('/')[2]);
+  if (r.startsWith('quotation/dup/')) return viewQForm('dup', r.split('/')[2]);
+  if (r.startsWith('quotation/view/')) return viewQView(r.split('/')[2]);
   if (r==='customers') return viewList('customers');
   if (r==='products') return viewList('products');
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
@@ -464,6 +543,7 @@ window.addEventListener('hashchange', ()=>{
   const r = currentRoute();
   if (!r.startsWith('wizard')) { if (WZ && !WZ.setup) WZ=null; }
   if (!/^(customer|product)\//.test(r)) FM = null;
+  if (!/^(quotation\/(new|edit|dup)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
   closeSheet();
   route();
 });
@@ -670,8 +750,8 @@ function viewHome(){
     <div class="panel">
       ${sc.pct<100?`<button class="setup" data-act="score"><div class="tx"><b>${esc(t('setupTitle'))}</b><small>${esc(t('stepsDone',{a:sc.done,b:sc.total}))}</small></div>${ring(sc.pct,66)}${I.chev(22)}</button>`:''}
       <div class="grid">
-        ${tile(I.docPlus(24),'makeQuotation','makeQuotationSub','soon')}
-        ${tile(I.docEdit(24),'quotationList','quotationListSub','soon')}
+        ${tile(I.docPlus(24),'makeQuotation','makeQuotationSub','newq')}
+        ${tile(I.docEdit(24),'quotationList','quotationListSub','quotations')}
         ${tile(I.docPlus(24),'makeInvoice','makeInvoiceSub','soon')}
         ${tile(I.docEdit(24),'invoiceList','invoiceListSub','soon')}
         ${tile(I.docEdit(24),'purchaseOrder','purchaseOrderSub','soon')}
@@ -704,8 +784,10 @@ async function ensure(col){
 }
 async function syncCounts(col){
   const n = (S.cache[col]||[]).length;
-  S.owner.counts = Object.assign({}, S.owner.counts, {[col]:n});
-  try{ await backend.save(S.user, {counts:{[col]:n}}); }catch(e){ console.error(e); }
+  const patch = {[col]:n};
+  if (col==='quotations') patch.documents = n;   // later steps add invoices etc. to this total
+  S.owner.counts = Object.assign({}, S.owner.counts, patch);
+  try{ await backend.save(S.user, {counts:patch}); }catch(e){ console.error(e); }
 }
 const byName = (a,b) => String(a.name||a.text||'').toLowerCase().localeCompare(String(b.name||b.text||'').toLowerCase());
 
@@ -814,8 +896,13 @@ async function saveForm(){
     const i = list.findIndex(x=>x.id===FM.id);
     if (i>=0) list[i] = Object.assign({}, list[i], rec); else list.push(rec);
     await syncCounts(FM.col);
-    const col = FM.col; FM = null;
-    toast(t('saved')); goReplace(col);
+    const col = FM.col, kind = FM.kind, wasNew = FM.isNew, back = RETURN; FM = null;
+    toast(t('saved'));
+    if (back && wasNew && QD){
+      RETURN = null;
+      if (kind==='customer') setQCustomer(rec); else addQItem(rec);
+      goReplace(back.hash);
+    } else goReplace(col);
   }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
 }
 async function deleteForm(){
@@ -841,8 +928,42 @@ async function pickContact(){
 }
 
 /* ---- Terms & Conditions ---- */
-async function viewTerms(){
+const DEFAULT_TERMS = {
+  en:{
+    quotation:["Rates are valid for 15 days from the date of this quotation.","50% advance payment with the order; balance before delivery.","Delivery within 7 days of confirmed order.","GST and other taxes as applicable.","Goods once sold will not be taken back or exchanged."],
+    invoice:["Payment is due within 7 days of the invoice date.","Goods once sold will not be taken back or exchanged.","Any dispute is subject to local jurisdiction only.","E. & O.E."],
+    po:["Goods must be delivered on the agreed date.","Goods must match the approved sample or specification, otherwise they will be returned.","Payment within 30 days of receiving the goods."],
+    proforma:["This is a proforma invoice and not a tax invoice.","Valid for 7 days from the date of issue.","Goods will be dispatched after receipt of payment."],
+    delivery:["Goods received in good condition.","Please check the goods at the time of delivery.","Shortage or damage must be reported within 24 hours."],
+    receipt:["Payment received with thanks.","Cheque payments are subject to realisation.","Amount once paid is non-refundable."]
+  },
+  hi:{
+    quotation:["यह कोटेशन की तारीख़ से 15 दिन तक मान्य है।","ऑर्डर के साथ 50% अग्रिम भुगतान, शेष डिलीवरी से पहले।","ऑर्डर पक्का होने के 7 दिन के अंदर डिलीवरी।","GST एवं अन्य कर लागू दर से अतिरिक्त।","बिका हुआ माल वापस या बदला नहीं जाएगा।"],
+    invoice:["भुगतान इनवॉइस की तारीख़ से 7 दिन के अंदर देय है।","बिका हुआ माल वापस या बदला नहीं जाएगा।","किसी भी विवाद का निपटारा केवल स्थानीय न्यायालय में होगा।","भूल-चूक लेनी देनी।"],
+    po:["माल तय तारीख़ पर पहुँचाना होगा।","माल मंज़ूर नमूने या विनिर्देश के अनुसार हो, अन्यथा वापस किया जाएगा।","माल प्राप्त होने के 30 दिन के अंदर भुगतान।"],
+    proforma:["यह प्रोफ़ॉर्मा इनवॉइस है, टैक्स इनवॉइस नहीं।","जारी होने की तारीख़ से 7 दिन तक मान्य।","भुगतान मिलने के बाद माल भेजा जाएगा।"],
+    delivery:["माल अच्छी हालत में प्राप्त हुआ।","कृपया डिलीवरी के समय माल की जाँच कर लें।","कमी या टूट-फूट की सूचना 24 घंटे के अंदर दें।"],
+    receipt:["भुगतान धन्यवाद सहित प्राप्त हुआ।","चेक से भुगतान चेक जमा होने पर ही मान्य।","एक बार दी गई राशि वापस नहीं होगी।"]
+  }
+};
+/* loads saved terms; the very first time (and only if the user has none) fills in common ones */
+async function ensureTerms(){
   await ensure('terms');
+  if (S.owner.termsSeeded) return;
+  try{
+    if (!S.cache.terms.length){
+      const set = DEFAULT_TERMS[LANG==='hi'?'hi':'en'], now = Date.now(), recs = [];
+      TERM_TYPES.forEach(([type])=>{ (set[type]||[]).forEach((text,i)=>recs.push({id:uid(), type, text, createdAt:now+i, updatedAt:now})); });
+      await Promise.all(recs.map(r=>backend.put(S.user,'terms',r.id,r)));
+      S.cache.terms.push(...recs);
+      await syncCounts('terms');
+    }
+    await backend.save(S.user,{termsSeeded:true});
+    S.owner.termsSeeded = true;
+  }catch(e){ console.error(e); }
+}
+async function viewTerms(){
+  await ensureTerms();
   const type = TERM_TYPES[TAB][0];
   const rows = S.cache.terms.filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
   app.innerHTML = `${bar(t('termsT'),{back:true,right:`<button class="ibtn" data-act="addterm" aria-label="${esc(t('addTerm'))}"><span class="plus-sq">${I.plus(24)}</span></button>`})}
@@ -898,6 +1019,458 @@ async function deleteTerm(id){
 }
 
 /* =====================================================================
+   STEP 3: quotations  (maths, form, document, PDF, share)
+   ===================================================================== */
+const r2 = n => Math.round((+n + Number.EPSILON) * 100) / 100;
+const nf = n => String(+(+n || 0).toFixed(3));
+const isoToday = () => new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);
+function fmtIso(iso, f){ const p = String(iso||'').split('-').map(Number); if (p.length<3 || !p[0]) return ''; return fmtDate(new Date(p[0], p[1]-1, p[2]), f||'dd/MM/yyyy'); }
+const norm = s => String(s||'').trim().toLowerCase();
+
+/* the one place where every amount is worked out */
+function calcQ(q){
+  const mode = q.gstMode, tt = q.taxType, useTax = tt !== 'none';
+  const lines = [], ch = [], groups = {};
+  let sub = 0, chargeSum = 0;
+  (q.items||[]).forEach(it=>{
+    const qty = +it.qty||0, rate = +it.rate||0, disc = +it.disc||0, g = useTax ? (+it.gst||0) : 0;
+    const gross = r2(qty*rate), dAmt = r2(gross*disc/100), net = r2(gross-dAmt);
+    let base = net, tax = 0;
+    if (g > 0){
+      if (mode==='incl'){ base = r2(net/(1+g/100)); tax = r2(net-base); }
+      else { tax = r2(net*g/100); }
+    }
+    lines.push({gross, dAmt, net, base, tax, g, show: mode==='incl' ? net : base});
+    sub = r2(sub+base);
+    if (tax) groups[g] = r2((groups[g]||0)+tax);
+  });
+  (q.charges||[]).forEach(c=>{
+    const amt = r2(+c.amount||0), g = (useTax && c.taxable) ? (+c.gst||0) : 0;
+    let base = amt, tax = 0;
+    if (g > 0){
+      if (mode==='incl'){ base = r2(amt/(1+g/100)); tax = r2(amt-base); }
+      else { tax = r2(amt*g/100); }
+    }
+    ch.push({label:c.label, base, tax, g});
+    chargeSum = r2(chargeSum+base);
+    if (tax) groups[g] = r2((groups[g]||0)+tax);
+  });
+  const taxLines = [];
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(g=>{
+    const tx = groups[g];
+    if (tt==='igst') taxLines.push({label:'IGST', rate:g, amount:tx});
+    else { const h = r2(tx/2); taxLines.push({label:'CGST', rate:g/2, amount:h}); taxLines.push({label:'SGST', rate:g/2, amount:r2(tx-h)}); }
+  });
+  const taxTotal = taxLines.reduce((s,x)=>r2(s+x.amount), 0);
+  return { lines, ch, sub, taxLines, taxTotal, total: r2(sub + chargeSum + taxTotal) };
+}
+
+/* ---------- the printed document ---------- */
+function docHtml(q){
+  const b = biz(), cur = b.currency || 'INR', c = calcQ(q), df = b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
+  const money = n => fmtMoney(n, cur);
+  const items = q.items || [];
+  const hasHsn = items.some(i=>i.hsn);
+  const showTax = q.taxType!=='none' && items.some(i=>+i.gst>0);
+  const custAddr = [cu.addr1, cu.addr2].filter(Boolean);
+  const firmAddr = [b.addr1, b.addr2].filter(Boolean);
+  const ids = [b.gstin?('GSTIN: '+b.gstin):'', b.pan?('PAN: '+b.pan):''].filter(Boolean).join('   ');
+  const contact = [b.phone?(t('dPhone')+': '+b.phone):'', b.email||''].filter(Boolean).join('   |   ');
+  const bank = [b.bankName, b.accNo?('A/c: '+b.accNo):'', b.ifsc?('IFSC: '+b.ifsc):'', b.upi?('UPI: '+b.upi):''].filter(Boolean);
+  const rows = items.map((it,i)=>{
+    const L = c.lines[i];
+    return `<tr><td class="n">${i+1}</td><td><b>${esc(it.name)}</b>${it.desc?`<div class="sm">${esc(it.desc)}</div>`:''}${+it.disc?`<div class="sm">${esc(t('dDiscount',{n:nf(it.disc)}))}</div>`:''}</td>
+      ${hasHsn?`<td class="r">${esc(it.hsn||'')}</td>`:''}
+      <td class="r">${nf(it.qty)}${it.unit?`<div class="sm">${esc(it.unit)}</div>`:''}</td>
+      <td class="r">${money(+it.rate||0)}</td>
+      ${showTax?`<td class="r">${nf(it.gst||0)}%</td>`:''}
+      <td class="r">${money(L.show)}</td></tr>`;
+  }).join('');
+  const tot = [];
+  tot.push(`<tr><td>${esc(t('dSub'))}</td><td class="r">${money(c.sub)}</td></tr>`);
+  c.ch.forEach(x=>tot.push(`<tr><td>${esc(x.label)}</td><td class="r">${money(x.base)}</td></tr>`));
+  c.taxLines.forEach(x=>tot.push(`<tr><td>${x.label} @ ${nf(x.rate)}%</td><td class="r">${money(x.amount)}</td></tr>`));
+  const terms = (q.terms||[]).filter(Boolean);
+  return `<div class="qd"><style>
+    .qd{font-family:"Noto Sans","Noto Sans Devanagari",system-ui,sans-serif;color:#14213d;background:#fff;width:794px;min-height:1123px;padding:44px 48px 60px;box-sizing:border-box;font-size:13.5px;line-height:1.4;position:relative}
+    .qd *{box-sizing:border-box}
+    .qd .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding-bottom:12px;border-bottom:1.5px solid #14213d}
+    .qd .firm{display:flex;gap:14px;align-items:flex-start}
+    .qd .firm img{max-height:74px;max-width:150px;object-fit:contain}
+    .qd .firm h1{margin:0 0 2px;font-size:23px;font-weight:700}
+    .qd .firm div{font-size:12.5px}
+    .qd .ttl{font-size:23px;font-weight:700;letter-spacing:1px;padding-top:6px;white-space:nowrap}
+    .qd .to{display:flex;justify-content:space-between;gap:20px;margin-top:14px}
+    .qd .to b{font-size:14.5px}
+    .qd .meta td{padding:1px 0 1px 14px;font-size:13px}
+    .qd p{margin:14px 0 8px}
+    .qd table.it{width:100%;border-collapse:collapse;margin-top:6px}
+    .qd table.it th{background:#f4f5f8;text-align:left;font-size:11.5px;letter-spacing:.4px;padding:8px 8px;border-top:1.5px solid #14213d;border-bottom:1.5px solid #14213d}
+    .qd table.it th.r,.qd table.it td.r{text-align:right}
+    .qd table.it td{padding:8px 8px;vertical-align:top;border-bottom:1px dotted #aaa}
+    .qd table.it td.n{width:28px}
+    .qd .sm{font-size:11.5px;color:#555;font-weight:400}
+    .qd .tots{display:flex;justify-content:flex-end;margin-top:6px}
+    .qd .tots table{width:320px;border-collapse:collapse}
+    .qd .tots td{padding:5px 8px;font-size:13px}
+    .qd .tots tr.g td{font-weight:700;font-size:14.5px;border-top:1.5px solid #14213d;border-bottom:3px double #14213d}
+    .qd .note{font-size:12px;color:#555;margin:6px 0 0;text-align:right}
+    .qd h4{margin:22px 0 4px;font-size:13px;letter-spacing:.3px}
+    .qd ul{margin:0;padding-left:18px}
+    .qd li{margin:1px 0;font-size:12.5px}
+    .qd .sign{margin-top:26px;text-align:right}
+    .qd .sign img{max-height:62px;max-width:200px;object-fit:contain;display:block;margin:6px 0 0 auto}
+    .qd .sign .au{font-size:12px;margin-top:6px}
+    .qd .bank{margin-top:14px;font-size:12px;color:#333}
+  </style>
+    <div class="hd"><div class="firm">${b.logo?`<img src="${esc(b.logo)}" alt="">`:''}<div><h1>${esc(b.name||'')}</h1>
+      ${b.contact?`<div>${esc(b.contact)}</div>`:''}${firmAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${ids?`<div>${esc(ids)}</div>`:''}${contact?`<div>${esc(contact)}</div>`:''}</div></div>
+      <div class="ttl">${esc(t('docQuotation'))}</div></div>
+    <div class="to"><div><div><b>${esc(t('dTo'))}</b></div>${cu.company?`<div><b>${esc(cu.company)}</b></div>`:''}<div${cu.company?'':' style="font-weight:700"'}>${esc(cu.name||'')}</div>
+      ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
+      <table class="meta"><tr><td><b>${esc(t('qNo'))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
+    <p>${esc(t('dDear'))}</p><p style="margin-top:0">${esc(t('dThanks'))}</p>
+    <table class="it"><thead><tr><th>#</th><th>${esc(t('dDesc'))}</th>${hasHsn?'<th class="r">HSN</th>':''}<th class="r">${esc(t('dQty'))}</th><th class="r">${esc(t('dPrice'))}</th>${showTax?'<th class="r">GST</th>':''}<th class="r">${esc(t('dTotal'))}</th></tr></thead><tbody>${rows}</tbody></table>
+    <div class="tots"><table>${tot.join('')}<tr class="g"><td>${esc(t('dGrand'))}</td><td class="r">${money(c.total)}</td></tr></table></div>
+    ${q.gstMode==='incl' && showTax ? `<div class="note">${esc(t('dInclNote'))}</div>`:''}
+    <p style="margin-top:18px">${esc(t('dHope'))}</p>
+    ${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${terms.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+    ${bank.length?`<div class="bank"><b>${esc(t('dBank'))}:</b> ${esc(bank.join('  |  '))}</div>`:''}
+    <div class="sign"><b>${esc(t('dFor'))} ${esc(String(b.name||'').toUpperCase())}</b>${b.signature?`<img src="${esc(b.signature)}" alt="">`:'<div style="height:56px"></div>'}<div class="au">${esc(t('dAuth'))}</div></div>
+  </div>`;
+}
+
+/* ---------- Make / edit quotation ---------- */
+function initQD(mode, id, key){
+  const list = S.cache.quotations || [];
+  let base = null;
+  if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace('quotations'); return false; } }
+  const maxSeq = Math.max(0, ...list.map(x=>x.seq||0), (S.owner.counters && S.owner.counters.quotation) || 0);
+  const savedTerms = (S.cache.terms||[]).filter(x=>x.type==='quotation').sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
+  if (mode==='edit'){
+    QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true;
+  } else {
+    QD = { id: uid(), isNew: true, seq: maxSeq+1, date: isoToday(), other:'', customer:null, items:[], charges:[], terms: savedTerms,
+           gstMode: (S.owner.prefs && S.owner.prefs.gstMode) || 'excl', taxType:'cgst_sgst', taxTypeManual:false };
+    QD.no = 'Quote-' + QD.seq;
+    if (mode==='dup'){
+      const c = JSON.parse(JSON.stringify(base));
+      Object.assign(QD, { other:c.other||'', customer:c.customer, items:c.items, charges:c.charges, terms:c.terms||[], gstMode:c.gstMode, taxType:c.taxType, taxTypeManual:true });
+    }
+  }
+  QD.key = key;
+  return true;
+}
+function autoTax(){
+  if (!QD || QD.taxTypeManual || !QD.customer) return;
+  const a = norm(biz().state), c = norm(QD.customer.state);
+  QD.taxType = (a && c && a !== c) ? 'igst' : 'cgst_sgst';
+}
+function setQCustomer(r){
+  QD.customer = { id:r.id, name:r.name, company:r.company||'', email:r.email||'', mobile:r.mobile||'', addr1:r.addr1||'', addr2:r.addr2||'', gstin:r.gstin||'', state:r.state||'' };
+  autoTax();
+}
+function addQItem(p){
+  QD.items.push({ pid:p.id, name:p.name, desc:p.description||'', unit:p.unit||'', hsn:p.hsn||'', qty:1, rate:+p.price||0, gst:(p.gst===''||p.gst==null)?0:+p.gst, disc:0 });
+}
+async function viewQForm(mode, id){
+  await Promise.all([ensure('customers'), ensure('products'), ensureTerms(), ensure('quotations')]);
+  const key = currentRoute();
+  if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
+  renderQForm();
+}
+function qTotalText(){ return fmtMoney(calcQ(QD).total, biz().currency||'INR'); }
+function renderQForm(){
+  const y = window.scrollY, cur = biz().currency || 'INR', df = biz().dateFormat || 'dd/MM/yyyy';
+  const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
+  const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
+  const items = QD.items.map((it,i)=>{
+    const amt = r2((+it.qty||0)*(+it.rate||0)*(1-(+it.disc||0)/100));
+    return `<div class="qcard" data-act="qitem" data-i="${i}"><div class="tx"><b>${esc(it.name)}</b><div class="sp"><small>${esc(nf(it.qty))}${it.unit?' '+esc(it.unit):''} × ${esc(fmtMoney(+it.rate||0,cur))}${+it.disc?' − '+nf(it.disc)+'%':''}</small><small style="color:#222;font-weight:600">${esc(fmtMoney(amt,cur))}</small></div></div><button class="ibt" data-act="qitemdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`;
+  }).join('');
+  const charges = QD.charges.map((c,i)=>`<div class="qcard" data-act="qchargeedit" data-i="${i}"><div class="tx"><b>${esc(c.label)}</b><small>${esc(fmtMoney(+c.amount||0,cur))}${c.taxable?' · GST '+nf(c.gst)+'%':''}</small></div><button class="ibt" data-act="qchargedel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
+  const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
+  app.innerHTML = `${bar(t(QD.isNew?'makeQuotation':'editQuotation'),{back:true})}
+  <div class="shell" style="padding-bottom:130px">
+    <div class="qtop"><div class="qrow">
+      <div><small>${esc(t('qDate'))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
+      <div style="text-align:right"><small>${esc(t('qNo'))}</small><b>${esc(QD.no)}</b></div></div>
+      <input class="qother" data-qk="other" placeholder="${esc(t('otherInfo'))}:" value="${esc(QD.other)}"></div>
+    ${sec(t('secCustomer'),'qcust')}${cust}
+    ${sec(t('secProducts'),'qprod')}${items}
+    <div class="qsec" style="cursor:default"><span>${esc(t('secGst'))}</span><span></span></div>
+    <div class="qgst">
+      <div class="r"><span>${esc(t('gstIncl'))}</span><label class="sw"><input type="checkbox" data-qk="gstMode" ${QD.gstMode==='incl'?'checked':''}><i></i></label></div>
+      <div class="r"><span>${esc(t('gstType'))}</span><select data-qk="taxType"><option value="cgst_sgst" ${QD.taxType==='cgst_sgst'?'selected':''}>${esc(t('ttCgst'))}</option><option value="igst" ${QD.taxType==='igst'?'selected':''}>${esc(t('ttIgst'))}</option><option value="none" ${QD.taxType==='none'?'selected':''}>${esc(t('ttNone'))}</option></select></div>
+    </div>
+    ${sec(t('secCharges'),'qcharge')}${charges}
+    ${sec(t('secTerms'),'qterms')}${terms}
+  </div>
+  <div class="qbar"><div><small>${esc(t('amountDue'))}</small><b id="qTotal">${esc(qTotalText())}</b></div><button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
+  window.scrollTo(0, y);
+}
+function onQInput(e){
+  const k = e.target.dataset.qk; if (!k || !QD) return;
+  let v = e.target.value;
+  if (k==='gstMode') v = e.target.checked ? 'incl' : 'excl';
+  QD[k] = v;
+  if (k==='taxType') QD.taxTypeManual = true;
+  if (k==='date'){ const el = $('#dateTxt'); if (el) el.textContent = fmtIso(v, biz().dateFormat||'dd/MM/yyyy'); }
+  const tot = $('#qTotal'); if (tot) tot.textContent = qTotalText();
+}
+
+/* pickers (bottom sheets) */
+function openSheet(html, cls){
+  closeSheet();
+  const ov = document.createElement('div');
+  ov.className = 'ov'; ov.id = 'sheet';
+  ov.innerHTML = `<div class="sheet ${cls||''}" role="dialog"><div class="grab"></div>${html}</div>`;
+  ov.addEventListener('click', e=>{ if (e.target===ov) closeSheet(); });
+  document.body.appendChild(ov);
+  return ov;
+}
+function pickListHtml(kind, q){
+  q = norm(q);
+  const cur = biz().currency || 'INR';
+  let rows = (S.cache[kind]||[]).slice().sort(byName);
+  if (q) rows = rows.filter(r => [r.name,r.company,r.mobile,r.hsn].join(' ').toLowerCase().includes(q));
+  if (!rows.length) return `<div class="empty" style="padding:50px 10px">${esc(t(q?'noResult':(kind==='customers'?'noCustomer':'noProduct')))}</div>`;
+  return rows.map(r => kind==='customers'
+    ? `<button class="item" data-act="qselcust" data-id="${esc(r.id)}"><span class="tx"><b>${esc(r.name)}</b>${r.company?`<small>${esc(r.company)}</small>`:''}${r.mobile?`<small>${esc(r.mobile)}</small>`:''}</span></button>`
+    : `<button class="item" data-act="qselprod" data-id="${esc(r.id)}"><span class="tx"><b>${esc(r.name)}</b><small>${r.hsn?'HSN '+esc(r.hsn):''}</small></span><span class="rt">${esc(fmtMoney(+r.price||0,cur))}${r.unit?`<small style="font-weight:400">/ ${esc(r.unit)}</small>`:''}</span></button>`
+  ).join('');
+}
+function openPicker(kind){
+  const isC = kind==='customers';
+  openSheet(`<h3>${esc(t(isC?'selCustomer':'selProduct'))}</h3>
+    <div class="searchbox">${I.search(20)}<input id="psearch" type="search" data-kind="${kind}" placeholder="${esc(t(isC?'searchCustomer':'searchProduct'))}" autocomplete="off"></div>
+    <div class="scroll" id="plist">${pickListHtml(kind,'')}</div>
+    <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn ghost" data-act="${isC?'qnewcust':'qnewprod'}">${I.plus(18)} ${esc(t('addNew'))}</button></div>`, 'tall');
+}
+function openChargeSheet(i){
+  const c = i>=0 ? QD.charges[i] : null;
+  openSheet(`<h3>${esc(t('chargeTitle'))}</h3>
+    <label class="fld"><span>${esc(t('chargeLabel'))}</span><input id="chLabel" value="${esc(c?c.label:t('defCharge'))}"></label>
+    <label class="fld" id="chAmtW"><span>${esc(t('chargeAmount'))}</span><input id="chAmt" inputmode="decimal" value="${esc(c?c.amount:'')}"></label>
+    <label class="chk-row"><span>${esc(t('isTaxable'))}</span><input type="checkbox" id="chTax" ${c&&c.taxable?'checked':''}></label>
+    <label class="fld ${c&&c.taxable?'':'hide'}" id="chGstW"><span>${esc(t('gst'))}</span><input id="chGst" inputmode="decimal" value="${esc(c?c.gst:18)}"></label>
+    <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qchargesave" data-i="${i}">${esc(t('save'))}</button></div>`);
+}
+function openItemSheet(i){
+  const it = QD.items[i];
+  const f = (id,label,val,mode)=>`<label class="fld"><span>${esc(label)}</span><input id="${id}" ${mode?`inputmode="${mode}"`:''} value="${esc(val)}"></label>`;
+  openSheet(`<h3>${esc(it.name)}</h3>
+    ${f('itQty',t('qty'),nf(it.qty),'decimal')}${f('itRate',t('rate'),it.rate,'decimal')}${f('itUnit',t('unit'),it.unit)}${f('itDisc',t('disc'),nf(it.disc||0),'decimal')}${f('itGst',t('gst'),nf(it.gst||0),'decimal')}${f('itDesc',t('description'),it.desc)}
+    <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qitemsave" data-i="${i}">${esc(t('save'))}</button></div>`, 'tall');
+}
+function openTermsPicker(){
+  const saved = (S.cache.terms||[]).filter(x=>x.type==='quotation').sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+  openSheet(`<h3>${esc(t('selTerms'))}</h3>
+    <div class="scroll" id="tplist">${saved.length ? saved.map(x=>`<label class="tpick"><input type="checkbox" data-term="${esc(x.text)}" ${QD.terms.includes(x.text)?'checked':''}><span>${esc(x.text)}</span></label>`).join('') : `<div class="empty" style="padding:30px 10px">${esc(t('noTermsSaved'))}</div>`}
+      <label class="fld" style="margin-top:14px"><span>${esc(t('customTerm'))}</span><textarea id="tpCustom" rows="2"></textarea></label></div>
+    <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn" data-act="qtermsdone">${esc(t('done'))}</button></div>`, 'tall');
+}
+function numVal(id){ return parseFloat(String(($('#'+id)||{}).value||'').replace(/,/g,'')); }
+function qAction(act, el){
+  const i = +el.dataset.i;
+  switch (act){
+    case 'qcust': return openPicker('customers');
+    case 'qprod': return openPicker('products');
+    case 'qselcust': { const r=S.cache.customers.find(x=>x.id===el.dataset.id); if (r){ setQCustomer(r); closeSheet(); renderQForm(); } return; }
+    case 'qselprod': { const r=S.cache.products.find(x=>x.id===el.dataset.id); if (r){ addQItem(r); closeSheet(); renderQForm(); } return; }
+    case 'qnewcust': RETURN = {hash:QD.key}; closeSheet(); return go('customer/new');
+    case 'qnewprod': RETURN = {hash:QD.key}; closeSheet(); return go('product/new');
+    case 'qcustdel': QD.customer = null; return renderQForm();
+    case 'qitem': return openItemSheet(i);
+    case 'qitemdel': QD.items.splice(i,1); return renderQForm();
+    case 'qitemsave': {
+      const it = QD.items[i], q = numVal('itQty'), r = numVal('itRate'), d = numVal('itDisc'), g = numVal('itGst');
+      it.qty = q>=0 ? q : 1; it.rate = r>=0 ? r : 0; it.disc = d>=0&&d<=100 ? d : 0; it.gst = g>=0&&g<=100 ? g : 0;
+      it.unit = ($('#itUnit').value||'').trim().toUpperCase(); it.desc = ($('#itDesc').value||'').trim();
+      closeSheet(); return renderQForm();
+    }
+    case 'qcharge': return openChargeSheet(-1);
+    case 'qchargeedit': return openChargeSheet(i);
+    case 'qchargedel': QD.charges.splice(i,1); return renderQForm();
+    case 'qchargesave': {
+      const label = ($('#chLabel').value||'').trim() || t('defCharge'), amt = numVal('chAmt'), taxable = $('#chTax').checked, g = numVal('chGst');
+      if (!(amt>=0)){ $('#chAmtW').classList.add('err'); return; }
+      const rec = { label, amount:amt, taxable, gst: taxable ? (g>=0&&g<=100?g:18) : 0 };
+      if (i>=0) QD.charges[i] = rec; else QD.charges.push(rec);
+      closeSheet(); return renderQForm();
+    }
+    case 'qterms': return openTermsPicker();
+    case 'qtermsdone': {
+      const picked = [...document.querySelectorAll('#sheet input[data-term]')].filter(x=>x.checked).map(x=>x.dataset.term);
+      const custom = ($('#tpCustom').value||'').trim();
+      const savedAll = new Set((S.cache.terms||[]).filter(x=>x.type==='quotation').map(x=>x.text));
+      const manual = QD.terms.filter(x=>!savedAll.has(x));          // terms typed only for this quotation stay
+      QD.terms = [...picked, ...manual]; if (custom) QD.terms.push(custom);
+      closeSheet(); return renderQForm();
+    }
+    case 'qtermdel': QD.terms.splice(i,1); return renderQForm();
+    case 'qgenerate': return generateQuotation(el);
+  }
+}
+async function generateQuotation(btn){
+  if (!QD.customer){ toast(t('needCustomer')); return; }
+  if (!QD.items.length){ toast(t('needProduct')); return; }
+  btn.disabled = true;
+  const c = calcQ(QD);
+  const rec = { id:QD.id, no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
+    terms:QD.terms, gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
+  try{
+    await backend.put(S.user, 'quotations', rec.id, rec);
+    const list = S.cache.quotations || (S.cache.quotations=[]);
+    const k = list.findIndex(x=>x.id===rec.id);
+    if (k>=0) list[k] = rec; else list.push(rec);
+    S.owner.counters = Object.assign({}, S.owner.counters, {quotation: Math.max(rec.seq, (S.owner.counters&&S.owner.counters.quotation)||0)});
+    S.owner.prefs = Object.assign({}, S.owner.prefs, {gstMode: rec.gstMode});
+    await backend.save(S.user, {counters:S.owner.counters, prefs:{gstMode:rec.gstMode}});
+    await syncCounts('quotations');
+    QD = null;
+    toast(t('saved')); goReplace('quotation/view/'+rec.id);
+  }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
+}
+
+/* ---------- list ---------- */
+function qItemsHtml(q){
+  q = norm(q);
+  const df = biz().dateFormat || 'dd/MM/yyyy', cur = biz().currency || 'INR';
+  let rows = (S.cache.quotations||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
+  if (q) rows = rows.filter(r => [r.no, r.customer&&r.customer.name, r.customer&&r.customer.company].join(' ').toLowerCase().includes(q));
+  if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache.quotations||[]).length ? 'noResult' : 'noQuotation'))}</div>`;
+  return rows.map(r=>`<button class="item" data-open="quotation/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,df))}</small></span><span class="rt">${esc(fmtMoney(r.total||0,cur))}</span>${I.chev(20)}</button>`).join('');
+}
+async function viewQuotations(){
+  await ensure('quotations');
+  app.innerHTML = `${bar(t('quotationList'),{back:true})}
+  <div class="shell">
+    <div class="searchbox">${I.search(22)}<input id="q" type="search" placeholder="${esc(t('searchQ'))}" autocomplete="off" data-col="quotations"></div>
+    <div class="items" id="items">${qItemsHtml('')}</div>
+  </div>
+  <button class="fab" data-open="quotation/new">${esc(t('makeQuotation'))}</button>`;
+}
+
+/* ---------- detail view ---------- */
+const WA_ICON = `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.200-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.400 0 .5l-.4.600c-.1.200-.3.300-.1.600.7 1.100 1.500 1.900 2.700 2.500.3.100.5.100.6-.1l.8-1c.2-.2.400-.2.600-.1l1.900.9c.2.100.4.200.4.300.1.200.1.800-.1 1.400z"/></svg>`;
+const SHARE_ICON = ic('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.600 13.500l6.800 4M15.400 6.500l-6.800 4"/>', 24);
+const COPY_ICON = ic('<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>', 26);
+const INV_ICON = ic('<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>', 26);
+const MORE_ICON = ic('<circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/>', 26);
+function curQuotation(){ const id = currentRoute().split('/')[2]; return (S.cache.quotations||[]).find(x=>x.id===id); }
+async function viewQView(id){
+  await ensure('quotations');
+  const q = (S.cache.quotations||[]).find(x=>x.id===id);
+  if (!q) return goReplace('quotations');
+  app.innerHTML = `${bar(t('qDetail'),{back:true,right:`<button class="ibtn wa-btn" data-act="qwa" aria-label="WhatsApp">${WA_ICON}</button><button class="ibtn" data-act="qshare" aria-label="${esc(t('share'))}">${SHARE_ICON}</button>`})}
+  <div class="paperwrap" id="pw"><div class="paper" id="paper">${docHtml(q)}</div></div>
+  <div class="actbar"><div class="in">
+    <button data-act="qdup">${COPY_ICON}<span>${esc(t('duplicate'))}</span></button>
+    <button data-act="qedit">${I.pencil(26)}<span>${esc(t('edit'))}</span></button>
+    <button data-act="qinv">${INV_ICON}<span>${esc(t('invoiceBtn'))}</span></button>
+    <button data-act="qshare">${SHARE_ICON}<span>${esc(t('share'))}</span></button>
+    <button data-act="qmore">${MORE_ICON}<span>${esc(t('more'))}</span></button></div></div>`;
+  fitPaper();
+}
+function fitPaper(){
+  const pw = $('#pw'), paper = $('#paper'); if (!pw || !paper) return;
+  const s = Math.min(1, (pw.clientWidth - 16) / 794);
+  paper.style.transform = `scale(${s})`;
+  pw.style.height = (paper.offsetHeight * s + 130) + 'px';
+}
+window.addEventListener('resize', fitPaper);
+
+/* ---------- PDF ---------- */
+function loadScript(urls){
+  return new Promise((res, rej)=>{
+    const tryNext = i => {
+      if (i >= urls.length) return rej(new Error('script'));
+      const s = document.createElement('script'); s.src = urls[i];
+      s.onload = () => res(); s.onerror = () => { s.remove(); tryNext(i+1); };
+      document.head.appendChild(s);
+    };
+    tryNext(0);
+  });
+}
+async function pdfLibs(){
+  if (!window.html2canvas) await loadScript(['https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js','https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js']);
+  if (!(window.jspdf && window.jspdf.jsPDF)) await loadScript(['https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js','https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js']);
+}
+async function makePdf(q){
+  await pdfLibs();
+  const holder = document.createElement('div');
+  holder.style.cssText = 'position:fixed;left:-12000px;top:0;width:794px;background:#fff;z-index:-1';
+  holder.innerHTML = docHtml(q);
+  document.body.appendChild(holder);
+  try{
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    await new Promise(r=>setTimeout(r,150));
+    const canvas = await window.html2canvas(holder.firstElementChild, { scale:2, backgroundColor:'#ffffff', useCORS:true, logging:false });
+    const pdf = new window.jspdf.jsPDF({ unit:'pt', format:'a4' });
+    const W = pdf.internal.pageSize.getWidth(), H = pdf.internal.pageSize.getHeight();
+    const pxPage = Math.floor(canvas.width * H / W);
+    const pages = Math.max(1, Math.ceil((canvas.height - 6) / pxPage));
+    for (let p=0; p<pages; p++){
+      const c = document.createElement('canvas');
+      c.width = canvas.width; c.height = Math.min(pxPage, canvas.height - p*pxPage);
+      const ctx = c.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0,0,c.width,c.height);
+      ctx.drawImage(canvas, 0, p*pxPage, canvas.width, c.height, 0, 0, c.width, c.height);
+      if (p>0) pdf.addPage();
+      pdf.addImage(c.toDataURL('image/jpeg', .92), 'JPEG', 0, 0, W, c.height * W / canvas.width);
+      pdf.setFontSize(8); pdf.setTextColor(130);
+      pdf.text('Page '+(p+1)+' of '+pages, W-36, H-16, {align:'right'});
+    }
+    return pdf.output('blob');
+  } finally { holder.remove(); }
+}
+const pdfName = q => 'Quotation-' + String(q.no).replace(/[^\w-]+/g,'_') + '.pdf';
+function downloadBlob(blob, name){
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 4000);
+}
+async function sharePdf(q, downloadOnly){
+  toast(t('making'));
+  let blob;
+  try{ blob = await makePdf(q); }catch(e){ console.error(e); toast(t('pdfFail')); return; }
+  const name = pdfName(q), file = new File([blob], name, {type:'application/pdf'});
+  if (!downloadOnly && navigator.canShare && navigator.canShare({files:[file]})){
+    try{ await navigator.share({ files:[file], title:name, text: t('waText',{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
+    catch(e){ if (e && e.name==='AbortError') return; console.error(e); }
+  }
+  downloadBlob(blob, name);
+}
+function whatsappLink(q){
+  const text = t('waText',{no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
+  let n = String((q.customer&&q.customer.mobile)||'').replace(/\D/g,'');
+  if (n.length===10) n = '91'+n;
+  return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
+}
+async function qViewAction(act){
+  const q = curQuotation(); if (!q) return;
+  switch (act){
+    case 'qdup': return go('quotation/dup/'+q.id);
+    case 'qedit': return go('quotation/edit/'+q.id);
+    case 'qinv': return toast(t('soon'));
+    case 'qshare': return sharePdf(q, false);
+    case 'qwa': return window.open(whatsappLink(q), '_blank');
+    case 'qmore':
+      return openSheet(`<button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
+    case 'qpdf': closeSheet(); return sharePdf(q, true);
+    case 'qdelete': {
+      closeSheet();
+      if (!confirm(t('delQAsk'))) return;
+      try{
+        await backend.remove(S.user, 'quotations', q.id);
+        S.cache.quotations = S.cache.quotations.filter(x=>x.id!==q.id);
+        await syncCounts('quotations');
+        toast(t('saved')); goReplace('quotations');
+      }catch(e){ console.error(e); toast(t('saveFail')); }
+    }
+  }
+}
+
+/* =====================================================================
    VIEW: profile score
    ===================================================================== */
 function viewScore(){
@@ -926,7 +1499,7 @@ function viewSettings(){
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.1 (Step 2)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.2 (Step 3)</div>
   </div>`;
 }
 
@@ -971,16 +1544,26 @@ document.addEventListener('click', async e=>{
     case 'addterm': return openTermSheet(null);
     case 'saveterm': return saveTerm(el);
     case 'sheetclose': return closeSheet();
+    case 'newq': return go('quotation/new');
+    case 'quotations': return go('quotations');
+    case 'qdup': case 'qedit': case 'qinv': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qdelete':
+      return qViewAction(el.dataset.act);
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
+    default: return qAction(el.dataset.act, el);
   }
 });
 document.addEventListener('input', e=>{
   const k = e.target.dataset && e.target.dataset.k;
   if (k && FM){ FM.d[k] = e.target.value; if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
   else if (k && WZ){ WZ.d[k] = e.target.value; }
-  if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = itemsHtml(e.target.dataset.col, e.target.value); }
+  if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = e.target.dataset.col==='quotations' ? qItemsHtml(e.target.value) : itemsHtml(e.target.dataset.col, e.target.value); }
+  if (e.target.id==='psearch'){ const box=$('#plist'); if (box) box.innerHTML = pickListHtml(e.target.dataset.kind, e.target.value); }
+  if (e.target.dataset && e.target.dataset.qk) onQInput(e);
+  if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
 });
 document.addEventListener('change', async e=>{
+  if (e.target.dataset && e.target.dataset.qk) onQInput(e);
+  if (e.target.id==='chTax'){ const w=$('#chGstW'); if (w) w.classList.toggle('hide', !e.target.checked); }
   if (e.target.id==='filepick' && e.target.files[0] && WZ){
     try{
       const k = pickKey;
