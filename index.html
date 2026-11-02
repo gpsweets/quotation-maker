@@ -236,6 +236,10 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .spin{width:34px;height:34px;border-radius:50%;border:4px solid #ddd;border-top-color:var(--dark);animation:sp 1s linear infinite;margin:0 auto 12px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .lkinfo{font-size:14px;margin:-6px 4px 12px;line-height:1.4}.lkinfo.ok{color:#15803d}.lkinfo.bad{color:var(--err)}.lkinfo.wait{color:#666}.lkbtn{display:inline-block;margin:-4px 4px 14px;padding:8px 14px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;font-size:14px;color:inherit;cursor:pointer}
+.firmchip{display:inline-flex;align-items:center;gap:6px;margin-top:4px;padding:6px 14px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;font-size:16px;font-weight:600;color:inherit;cursor:pointer;max-width:100%}.firmchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.firmrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0 0;padding:10px 14px;background:#f3f4f6;border-radius:12px}.firmrow small{color:#555;font-size:14px}.firmrow select,.firmrow b{font-size:16px;font-weight:700;background:transparent;border:0;color:inherit;max-width:60%;text-align:right}
+.fchips{display:flex;gap:8px;margin:0 0 10px}.fchips button{flex:1;padding:9px 10px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;font-size:15px;color:inherit;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fchips button.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.frow{display:flex;align-items:center;border-bottom:1px solid #eee}.frow .m{flex:1;text-align:left;padding:14px 16px;background:none;border:0;font-size:17px;color:inherit;cursor:pointer}.frow .m small{display:block;color:#666;font-size:14px;margin-top:2px}.frow .badge{font-size:12px;background:#dcfce7;color:#166534;border-radius:999px;padding:2px 8px;margin-left:6px}.frow .x{background:none;border:0;padding:12px;color:var(--err);cursor:pointer}
 #printArea{display:none}
 @media print{@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
@@ -314,7 +318,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -391,7 +395,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -541,6 +545,56 @@ let RETURN = null; // after adding a customer/product, come back to the quotatio
 const DS = () => (FM ? FM.d : WZ.d);
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
 const biz = () => (S.owner && S.owner.business) || {};
+/* ---- multi-firm: the first firm ("main") lives in the old top-level fields, other firms in owner.firms ---- */
+const MAIN = 'main';
+const firmIds = () => Object.keys(S.firms||{}).sort((a,b)=> a===MAIN?-1 : b===MAIN?1 : ((S.firms[a].createdAt||0)-(S.firms[b].createdAt||0)));
+const firmOf = id => (S.firms && (S.firms[id]||S.firms[MAIN])) || {business:{},template:{},starts:{}};
+const docFirm = q => (q && q.firmId && S.firms && S.firms[q.firmId]) ? q.firmId : MAIN;
+const bizOf = q => firmOf(docFirm(q)).business || {};
+const qb = () => (typeof QD!=='undefined' && QD) ? bizOf(QD) : biz();
+const firmName = id => String((firmOf(id).business||{}).name||'').trim() || t('firmUnnamed');
+const lhId = fid => fid===MAIN ? 'letterhead' : 'letterhead_'+fid;
+function applyActive(){ const f = firmOf(S.activeFirm); S.owner.business = f.business; S.owner.template = f.template; S.owner.starts = f.starts; }
+function firmsInit(){
+  const o = S.owner = S.owner || {};
+  S.firms = {}; S.firms[MAIN] = { id:MAIN, business:o.business||{}, template:o.template||{}, starts:o.starts||{}, createdAt:0 };
+  Object.values(o.firms||{}).forEach(f=>{ if (f && f.id && !f.deleted) S.firms[f.id] = { id:f.id, business:f.business||{}, template:f.template||{}, starts:f.starts||{}, createdAt:f.createdAt||0 }; });
+  S.activeFirm = S.firms[o.activeFirm] ? o.activeFirm : MAIN;
+  applyActive();
+}
+async function saveFirmData(fid, parts, extra){
+  const patch = Object.assign({}, extra||{}, { updatedAt: Date.now() });
+  if (fid===MAIN) Object.assign(patch, parts); else patch.firms = { [fid]: Object.assign({ id:fid }, parts) };
+  await backend.save(S.user, patch);
+  const f = S.firms[fid]; if (!f) return;
+  Object.keys(parts).forEach(k => { f[k] = deepMerge(f[k]||{}, parts[k]); });
+  if (fid===S.activeFirm) applyActive();
+  if (extra && extra.language) S.owner.language = extra.language;
+}
+async function setActiveFirm(id){
+  if (!S.firms[id]) return;
+  S.activeFirm = id; applyActive(); S.listAll = false;
+  try{ await backend.save(S.user, { activeFirm:id }); }catch(e){ console.error(e); }
+}
+function autoShort(name){
+  const w = String(name||'').replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
+  let sh = w.length>1 ? w.map(x=>x[0]).join('').slice(0,4) : (w[0]||'F').slice(0,3);
+  return sh.toUpperCase();
+}
+function uniqueShort(sh, skipId){
+  const used = new Set(firmIds().filter(id=>id!==skipId).map(id=>String(firmOf(id).business.short||'').toLowerCase()));
+  let c = sh, n = 2; while (used.has(c.toLowerCase())) c = sh + (n++);
+  return c;
+}
+function firmScope(col, rows, fid){
+  const sep = col==='customers' ? S.owner.sepCust : col==='products' ? S.owner.sepProd : false;
+  return (!sep || firmIds().length<2) ? rows : rows.filter(r=>docFirm(r)===fid);
+}
+function firmPickHtml(){
+  const ids = firmIds(); if (ids.length<2) return '';
+  if (!QD.isNew) return `<div class="firmrow"><small>${esc(t('firmLbl'))}</small><b>${esc(firmName(docFirm(QD)))}</b></div>`;
+  return `<label class="firmrow"><small>${esc(t('firmLbl'))}</small><select data-qk="firmId">${ids.map(id=>`<option value="${esc(id)}" ${docFirm(QD)===id?'selected':''}>${esc(firmName(id))}</option>`).join('')}</select></label>`;
+}
 
 function scoreItems(){
   const b = biz(), c = (S.owner && S.owner.counts) || {};
@@ -591,6 +645,7 @@ function route(){
   if (r==='products') return viewList('products');
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
   if (r.startsWith('product/')) return viewForm('product', r.split('/')[1]);
+  if (r==='firms') return viewFirms();
   if (r==='terms') return viewTerms();
   if (r==='template') return viewTemplate();
   if (r==='score') return viewScore();
@@ -668,8 +723,9 @@ async function doSignIn(btn){
    VIEW: wizard (business information, 4 steps)
    ===================================================================== */
 function startWizard(o){
-  const b = biz();
-  WZ = { setup: !!o.setup, step: o.step||1, d: Object.assign({
+  const b = o.newFirm ? {} : biz();
+  WZ = { setup: !!o.setup, newFirm: !!o.newFirm, step: o.step||1, d: Object.assign({
+    short:'',
     name:'', contact:(S.user&&S.user.displayName)||'', email:(S.user&&S.user.email)||'', phone:'', addr1:'', addr2:'',
     logo:'', signature:'', dateFormat:'dd/MM/yyyy', currency:'INR',
     gstin:'', pan:'', state:'', bankName:'', bankBranch:'', bankAddr:'', accNo:'', ifsc:'', upi:''
@@ -742,6 +798,7 @@ function viewWizard(){
   if (s===1){
     body = `<h2 class="title">${esc(t('s1Title'))}</h2><p class="sub">${esc(t('s1Sub'))}</p>
       ${fld('name',t('bizName'),{ac:'organization'})}<div id="e_name"></div>
+      ${fld('short',t('firmShort'),{max:8})}
       ${fld('contact',t('contactName'),{ac:'name'})}
       ${fld('email',t('email'),{type:'email',ac:'email'})}<div id="e_email"></div>
       ${fld('phone',t('phone'),{type:'tel',inputmode:'tel',ac:'tel'})}
@@ -778,7 +835,7 @@ function viewWizard(){
       ${fld('upi',t('upi'))}`;
   }
   const last = s===4;
-  app.innerHTML = `${bar(t('bizInfo'), {back: !w.setup})}
+  app.innerHTML = `${bar(w.newFirm ? t('newFirm') : t('bizInfo')+(firmIds().length>1?' · '+firmName(S.activeFirm):''), {back: !w.setup})}
   <div class="shell page-white" id="wzpage">
     <div class="stepper">${dots}</div>
     <div class="pad-x" style="padding-bottom:10px">${body}</div>
@@ -810,12 +867,28 @@ async function wzNext(){
   ['name','contact','email','phone','addr1','addr2','gstin','pan','state','bankName','bankBranch','bankAddr','accNo','ifsc','upi'].forEach(k=>d[k]=String(d[k]||'').trim());
   d.gstin=d.gstin.toUpperCase(); d.pan=d.pan.toUpperCase(); d.ifsc=d.ifsc.toUpperCase();
   d.setupDone = true;
+  const isNewFirm = !!WZ.newFirm, selfId = isNewFirm ? null : S.activeFirm;
+  d.short = String(d.short||'').replace(/[^A-Za-z0-9]/g,'').slice(0,8);
+  if (!d.short && (isNewFirm || firmIds().length>1)) d.short = uniqueShort(autoShort(d.name), selfId);
+  if (d.short && firmIds().some(id=>id!==selfId && String(firmOf(id).business.short||'').toLowerCase()===d.short.toLowerCase())){
+    WZ.d.short = d.short; toast(t('shortUsed')); btn.disabled=false; wzGo(1); return;
+  }
   try{
-    await backend.save(S.user, { business:d, language:LANG, updatedAt:Date.now() });
-    S.owner = deepMerge(S.owner||{}, { business:d, language:LANG });
+    if (isNewFirm){
+      const fid = uid(), now = Date.now();
+      const patch = { firms:{ [fid]:{ id:fid, createdAt:now, business:d, template:{}, starts:{} } }, activeFirm:fid, language:LANG, updatedAt:now };
+      const mainB = S.firms[MAIN].business;
+      if (!String(mainB.short||'').trim()) patch.business = { short: uniqueShort(autoShort(mainB.name||'Main'), MAIN) };
+      await backend.save(S.user, patch);
+      if (patch.business) S.firms[MAIN].business = Object.assign({}, mainB, patch.business);
+      S.firms[fid] = { id:fid, createdAt:now, business:d, template:{}, starts:{} };
+      S.activeFirm = fid; S.listAll = false; applyActive();
+    } else {
+      await saveFirmData(S.activeFirm, { business:d }, { language:LANG });
+    }
     const wasSetup = WZ.setup; WZ=null;
     toast(t('saved'));
-    go(wasSetup ? 'home' : 'settings');
+    go((wasSetup || isNewFirm) ? 'home' : 'settings');
     route();
   }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled=false; }
 }
@@ -853,7 +926,7 @@ function viewHome(){
   const tile = (icon, title, sub, act)=>`<button class="tile" data-act="${act}"><div class="c">${icon}</div><div><b>${esc(t(title))}</b><small>${esc(t(sub))}</small></div></button>`;
   app.innerHTML = `${DEMO?`<div class="banner">${esc(t('demoBanner'))}</div>`:''}
   <div class="shell">
-    <div class="home-top"><div class="hello"><h1>${esc(t('welcome'))}</h1><p>${esc(b.name||'')}</p></div>
+    <div class="home-top"><div class="hello"><h1>${esc(t('welcome'))}</h1><button class="firmchip" data-act="firmsheet"><span>${esc(b.name||t('firmUnnamed'))}</span> ▾</button></div>
       <button class="gear" data-act="settings" aria-label="${esc(t('settings'))}">${I.gear(28)}</button></div>
     <div class="manage"><h3>${esc(t('manage'))}</h3>
       <div class="mrow">
@@ -909,7 +982,7 @@ const byName = (a,b) => String(a.name||a.text||'').toLowerCase().localeCompare(S
 function itemsHtml(col, q){
   const meta = COL_META[col];
   q = String(q||'').trim().toLowerCase();
-  let rows = (S.cache[col]||[]).slice().sort(byName);
+  let rows = firmScope(col, (S.cache[col]||[]), S.activeFirm).slice().sort(byName);
   if (q) rows = rows.filter(r => [r.name,r.company,r.mobile,r.hsn].join(' ').toLowerCase().includes(q));
   if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache[col]||[]).length ? 'noResult' : meta.empty))}</div>`;
   const cur = biz().currency || 'INR';
@@ -1005,7 +1078,7 @@ async function saveForm(){
   if (!ok){ const f=$('.fld.err'); if (f) f.scrollIntoView({block:'center',behavior:'smooth'}); return; }
   const btn = $('[data-act=saveform]'); btn.disabled = true;
   const rec = Object.assign({}, d, { id:FM.id, updatedAt:Date.now() });
-  if (FM.isNew) rec.createdAt = Date.now();
+  if (FM.isNew){ rec.createdAt = Date.now(); rec.firmId = (RETURN && QD) ? docFirm(QD) : S.activeFirm; }
   try{
     await backend.put(S.user, FM.col, FM.id, rec);
     const list = S.cache[FM.col] || (S.cache[FM.col]=[]);
@@ -1235,15 +1308,16 @@ function termLines(list){
   return out;
 }
 function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
-function getLetterhead(){ const d = (S.cache.settings||[]).find(x=>x.id==='letterhead'); return d ? d.data : ''; }
+function getLetterhead(fid){ const d = (S.cache.settings||[]).find(x=>x.id===lhId(fid||S.activeFirm)); return d ? d.data : ''; }
 function docHtml(q, opt){
   opt = opt || {};
-  const tp = opt.tpl || (S.owner && S.owner.template) || {};
-  const lh = opt.lh !== undefined ? opt.lh : getLetterhead();
+  const fid = opt.firmId || docFirm(q);
+  const tp = opt.tpl || firmOf(fid).template || {};
+  const lh = opt.lh !== undefined ? opt.lh : getLetterhead(fid);
   const useLh = !!(tp.useLh && lh);
   const col = /^#[0-9a-f]{6}$/i.test(tp.color||'') ? tp.color : '#14213d', sty = tp.style || 'classic';
   const hd = tp.h || {}, H = (k, def) => (String(hd[k]||'').trim() || def);
-  const b = biz(), cur = opt.currency || b.currency || 'INR', c = calcQ(q), df = opt.dateFormat || b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
+  const b = firmOf(fid).business || {}, cur = opt.currency || b.currency || 'INR', c = calcQ(q), df = opt.dateFormat || b.dateFormat || 'dd/MM/yyyy', cu = q.customer || {};
   const kind = DK[q.kind] ? q.kind : 'quotation', K = DK[kind], noMoney = kind==='delivery', isRc = kind==='receipt';
   const money = n => fmtMoney(n, cur);
   const paidAmt = kind==='invoice' ? paidOf(q, c.total) : 0;
@@ -1360,6 +1434,7 @@ function initQD0(mode, id, key){
   let base = null;
   if (mode==='from'){ base = findDoc(id); if (!base){ QD = null; goReplace('quotations'); return false; } }
   else if (mode !== 'new'){ base = list.find(x=>x.id===id); if (!base){ QD = null; goReplace(K.list); return false; } }
+  const fidFor = mode==='new' ? S.activeFirm : docFirm(base);
   const cnt = S.owner.counters && S.owner.counters[K.cnt];
   const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
   const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
@@ -1374,7 +1449,7 @@ function initQD0(mode, id, key){
         QD.customer = base.customer; QD.invoiceId = base.id; QD.invoiceNo = base.no; QD.amount = bal>0 ? String(bal) : '';
       }
     }
-    QD.key = key; return true;
+    QD.firmId = fidFor; QD.key = key; return true;
   }
   if (mode==='edit'){
     QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.taxTypeManual = true; QD.kind = kind;
@@ -1390,7 +1465,7 @@ function initQD0(mode, id, key){
       if (mode==='from'){ QD.refNo = base.no; QD.refId = base.id; }
     }
   }
-  QD.key = key;
+  QD.firmId = fidFor; QD.key = key;
   return true;
 }
 function initQD(mode, id, key){
@@ -1398,23 +1473,25 @@ function initQD(mode, id, key){
   applyAutoNo();
   return true;
 }
-function nextNo(kind, cust){
-  const K = DK[kind], list = S.cache[K.col] || [];
+function nextNo(kind, cust, fid){
+  fid = fid || S.activeFirm; const F = firmOf(fid);
+  const K = DK[kind], list = (S.cache[K.col] || []).filter(x=>docFirm(x)===fid);
   const same = cust ? list.filter(x=>x.customer && (x.customer.id && cust.id ? x.customer.id===cust.id : (x.customer.name||'')===(cust.name||''))) : [];
-  const start = Math.max(1, parseInt(S.owner.starts && S.owner.starts[kind], 10) || 1);
+  const start = Math.max(1, parseInt(F.starts && F.starts[kind], 10) || 1);
   const seq = same.length ? Math.max(...same.map(x=>+x.seq||0)) + 1 : start;
-  const pre = (S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def;
+  const pre = (F.template && F.template[K.pre]!=null) ? F.template[K.pre] : K.def;
   const nm = cust ? String(cust.company||cust.name||'').trim() : '';
-  return { seq, no: (nm ? nm+'-' : '') + pre + seq };
+  const sh = String((F.business&&F.business.short)||'').trim();
+  return { seq, no: [sh, nm, pre + seq].filter(Boolean).join('-') };
 }
 function applyAutoNo(){
   if (!QD || !QD.isNew || QD.noManual) return;
-  const r = nextNo(QD.kind||'quotation', QD.customer);
+  const r = nextNo(QD.kind||'quotation', QD.customer, docFirm(QD));
   QD.seq = r.seq; QD.no = r.no;
 }
 function autoTax(){
   if (!QD || QD.taxTypeManual || !QD.customer) return;
-  const a = norm(biz().state), c = norm(QD.customer.state);
+  const a = norm(qb().state), c = norm(QD.customer.state);
   QD.taxType = (a && c && a !== c) ? 'igst' : 'cgst_sgst';
 }
 function setQCustomer(r){
@@ -1432,10 +1509,10 @@ async function viewQForm(mode, id){
   if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
   renderQForm();
 }
-function qTotalText(){ return fmtMoney(QD.kind==='receipt' ? (parseFloat(QD.amount)||0) : calcQ(QD).total, biz().currency||'INR'); }
+function qTotalText(){ return fmtMoney(QD.kind==='receipt' ? (parseFloat(QD.amount)||0) : calcQ(QD).total, qb().currency||'INR'); }
 function renderQForm(){
   if (QD.kind==='receipt') return renderRForm();
-  const y = window.scrollY, cur = biz().currency || 'INR', df = biz().dateFormat || 'dd/MM/yyyy';
+  const y = window.scrollY, cur = qb().currency || 'INR', df = qb().dateFormat || 'dd/MM/yyyy';
   const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
   const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
   const money = DK[QD.kind||'quotation'].money;
@@ -1453,6 +1530,7 @@ function renderQForm(){
     </div>`;
   app.innerHTML = `${bar(t(QD.isNew?K.mk:K.ed),{back:true})}
   <div class="shell" style="padding-bottom:130px">
+    ${firmPickHtml()}
     <div class="qtop"><div class="qrow">
       <div><small>${esc(t(K.date))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
       <div style="text-align:right"><small>${esc(t(K.no))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
@@ -1477,10 +1555,11 @@ function onQInput(e){
   if (k==='no') QD.noManual = true;
   if (k==='gstMode') v = e.target.checked ? 'incl' : 'excl';
   QD[k] = v;
+  if (k==='firmId'){ autoTax(); applyAutoNo(); renderQForm(); return; }
   if (k==='taxType') QD.taxTypeManual = true;
-  if (k==='due'){ const el = $('#dueTxt'); if (el) el.textContent = fmtIso(v, biz().dateFormat||'dd/MM/yyyy') || '—'; }
+  if (k==='due'){ const el = $('#dueTxt'); if (el) el.textContent = fmtIso(v, qb().dateFormat||'dd/MM/yyyy') || '—'; }
   if (k==='payStatus'){ renderQForm(); return; }
-  if (k==='date'){ const el = $('#dateTxt'); if (el) el.textContent = fmtIso(v, biz().dateFormat||'dd/MM/yyyy'); }
+  if (k==='date'){ const el = $('#dateTxt'); if (el) el.textContent = fmtIso(v, qb().dateFormat||'dd/MM/yyyy'); }
   const tot = $('#qTotal'); if (tot) tot.textContent = qTotalText();
 }
 
@@ -1496,8 +1575,8 @@ function openSheet(html, cls){
 }
 function pickListHtml(kind, q){
   q = norm(q);
-  const cur = biz().currency || 'INR';
-  let rows = (S.cache[kind]||[]).slice().sort(byName);
+  const cur = qb().currency || 'INR';
+  let rows = firmScope(kind, (S.cache[kind]||[]), QD ? docFirm(QD) : S.activeFirm).slice().sort(byName);
   if (q) rows = rows.filter(r => [r.name,r.company,r.mobile,r.hsn].join(' ').toLowerCase().includes(q));
   if (!rows.length) return `<div class="empty" style="padding:50px 10px">${esc(t(q?'noResult':(kind==='customers'?'noCustomer':'noProduct')))}</div>`;
   return rows.map(r => kind==='customers'
@@ -1539,13 +1618,14 @@ function numVal(id){ return parseFloat(String(($('#'+id)||{}).value||'').replace
 /* ---------- Receipt ---------- */
 const PAY_MODES = [['cash','mCash'],['upi','mUpi'],['bank','mBank'],['cheque','mCheque'],['other','mOther']];
 function renderRForm(){
-  const y = window.scrollY, cur = biz().currency || 'INR', df = biz().dateFormat || 'dd/MM/yyyy', K = DK.receipt;
+  const y = window.scrollY, cur = qb().currency || 'INR', df = qb().dateFormat || 'dd/MM/yyyy', K = DK.receipt;
   const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
   const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
   const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
   const inv = QD.invoiceId ? `<div class="qcard" data-act="rinv"><div class="tx"><b>${esc(QD.invoiceNo)}</b></div><button class="ibt" data-act="rinvdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
   app.innerHTML = `${bar(t(QD.isNew?K.mk:K.ed),{back:true})}
   <div class="shell" style="padding-bottom:130px">
+    ${firmPickHtml()}
     <div class="qtop"><div class="qrow">
       <div><small>${esc(t(K.date))}</small><label class="qdate"><b id="dateTxt">${esc(fmtIso(QD.date, df))}</b><input type="date" data-qk="date" value="${esc(QD.date)}"></label></div>
       <div style="text-align:right"><small>${esc(t(K.no))}</small><input class="qno" data-qk="no" value="${esc(QD.no)}" autocomplete="off"></div></div>
@@ -1565,11 +1645,11 @@ function renderRForm(){
 }
 function unpaidInvoices(){
   return (S.cache.invoices||[]).map(inv=>{ const tot = calcQ(inv).total; return { inv, bal: Math.max(0, r2(tot - paidOf(inv, tot))) }; })
-    .filter(x=>x.bal>0 && (!QD.customer || !x.inv.customer || x.inv.customer.id===QD.customer.id || x.inv.id===QD.invoiceId))
+    .filter(x=>x.bal>0 && docFirm(x.inv)===docFirm(QD) && (!QD.customer || !x.inv.customer || x.inv.customer.id===QD.customer.id || x.inv.id===QD.invoiceId))
     .sort((a,b)=>(b.inv.seq||0)-(a.inv.seq||0));
 }
 function openInvoicePicker(){
-  const cur = biz().currency||'INR', rows = unpaidInvoices();
+  const cur = qb().currency||'INR', rows = unpaidInvoices();
   openSheet(`<h3>${esc(t('selInvoice'))}</h3><div class="scroll">${rows.length ? rows.map(({inv,bal})=>`<button class="item" data-act="rselinv" data-id="${esc(inv.id)}"><span class="tx"><b>${esc(inv.no)}</b><small>${esc((inv.customer&&(inv.customer.company||inv.customer.name))||'')}</small></span><span class="rt">${esc(fmtMoney(bal,cur))}</span></button>`).join('') : `<div class="empty" style="padding:40px 10px">${esc(t('noUnpaid'))}</div>`}</div>`, 'tall');
 }
 async function adjustInvoicePaid(invId, delta){
@@ -1591,7 +1671,7 @@ async function generateReceipt(btn){
   if (!QD.no){ toast(t('needNo')); return; }
   if ((S.cache[K.col]||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
   btn.disabled = true;
-  const rec = { id:QD.id, kind:'receipt', no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, amount:amt, mode:QD.mode||'cash', ref:(QD.ref||'').trim(),
+  const rec = { id:QD.id, kind:'receipt', firmId:docFirm(QD), no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, amount:amt, mode:QD.mode||'cash', ref:(QD.ref||'').trim(),
     invoiceId:QD.invoiceId||'', invoiceNo:QD.invoiceNo||'', terms:QD.terms, total:amt, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
   try{
     if (!QD.isNew && QD.oldInvoiceId) await adjustInvoicePaid(QD.oldInvoiceId, -(QD.oldAmount||0));
@@ -1660,7 +1740,7 @@ async function generateQuotation(btn){
   const c = calcQ(QD);
   if (isInv && QD.payStatus==='partial' && !(parseFloat(QD.paid)>0)){ toast(t('badPaid')); return; }
   btn.disabled = true;
-  const rec = { id:QD.id, kind:QD.kind||'quotation', no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
+  const rec = { id:QD.id, kind:QD.kind||'quotation', firmId:docFirm(QD), no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
     terms:QD.terms, gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
   if (isInv){ rec.due = QD.due||''; rec.payStatus = QD.payStatus||'unpaid'; rec.paid = rec.payStatus==='partial' ? (parseFloat(QD.paid)||0) : 0; }
   if (QD.refNo){ rec.refNo = QD.refNo; rec.refId = QD.refId||''; }
@@ -1682,11 +1762,12 @@ function payChip(r){ if (r.kind!=='invoice') return ''; const st = r.payStatus||
 function qItemsHtml(q, kind){
   kind = kind || 'quotation'; const K = DK[kind];
   q = norm(q);
-  const df = biz().dateFormat || 'dd/MM/yyyy', cur = biz().currency || 'INR';
+  const multi = firmIds().length>1;
   let rows = (S.cache[K.col]||[]).slice().sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+  if (multi && !S.listAll) rows = rows.filter(r=>docFirm(r)===S.activeFirm);
   if (q) rows = rows.filter(r => [r.no, r.customer&&r.customer.name, r.customer&&r.customer.company].join(' ').toLowerCase().includes(q));
   if (!rows.length) return `<div class="empty">${esc(t(q && (S.cache[K.col]||[]).length ? 'noResult' : K.empty))}</div>`;
-  return rows.map(r=>`<button class="item" data-open="${K.route}/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}${payChip(r)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,df))}</small></span><span class="rt">${esc(fmtMoney(r.total||0,cur))}</span>${I.chev(20)}</button>`).join('');
+  return rows.map(r=>`<button class="item" data-open="${K.route}/view/${esc(r.id)}"><span class="tx"><b>${esc(r.no)}${payChip(r)}</b><small>${esc((r.customer&&(r.customer.company||r.customer.name))||'')}</small><small>${esc(fmtIso(r.date,bizOf(r).dateFormat||'dd/MM/yyyy'))}${multi&&S.listAll?' · '+esc(firmName(docFirm(r))):''}</small></span><span class="rt">${esc(fmtMoney(r.total||0,bizOf(r).currency||'INR'))}</span>${I.chev(20)}</button>`).join('');
 }
 async function viewQuotations(kind){
   kind = kind || 'quotation'; const K = DK[kind];
@@ -1694,6 +1775,7 @@ async function viewQuotations(kind){
   app.innerHTML = `${bar(t(K.ln),{back:true})}
   <div class="shell">
     <div class="searchbox">${I.search(22)}<input id="q" type="search" placeholder="${esc(t('searchQ'))}" autocomplete="off" data-col="${K.col}"></div>
+    ${firmIds().length>1?`<div class="fchips"><button data-act="firmall" data-v="0" class="${S.listAll?'':'on'}">${esc(firmName(S.activeFirm))}</button><button data-act="firmall" data-v="1" class="${S.listAll?'on':''}">${esc(t('allFirms'))}</button></div>`:''}
     <div class="items" id="items">${qItemsHtml('', kind)}</div>
   </div>
   <button class="fab" data-open="${K.route}/new">${esc(t(K.mk))}</button>`;
@@ -1789,7 +1871,7 @@ async function sharePdf(q, downloadOnly){
   try{ blob = await makePdf(q); }catch(e){ console.error(e); toast(t('pdfFail')); return; }
   const name = pdfName(q), file = new File([blob], name, {type:'application/pdf'});
   if (!downloadOnly && navigator.canShare && navigator.canShare({files:[file]})){
-    try{ await navigator.share({ files:[file], title:name, text: t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')}) }); return; }
+    try{ await navigator.share({ files:[file], title:name, text: t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:bizOf(q).name||'', amt:fmtMoney(q.total||0, bizOf(q).currency||'INR')}) }); return; }
     catch(e){ if (e && e.name==='AbortError') return; console.error(e); }
   }
   downloadBlob(blob, name);
@@ -1807,7 +1889,7 @@ async function printDoc(q){
   setTimeout(()=>{ try{ window.print(); }catch(e){ console.error(e); done(); } }, 50);
 }
 function whatsappLink(q){
-  const text = t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:biz().name||'', amt:fmtMoney(q.total||0, biz().currency||'INR')});
+  const text = t(DK[DK[q.kind]?q.kind:'quotation'].wa,{doc:t(DK[DK[q.kind]?q.kind:'quotation'].doc), no:q.no, firm:bizOf(q).name||'', amt:fmtMoney(q.total||0, bizOf(q).currency||'INR')});
   let n = String((q.customer&&q.customer.mobile)||'').replace(/\D/g,'');
   if (n.length===10) n = '91'+n;
   return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
@@ -1821,7 +1903,7 @@ async function qViewAction(act, el){
     case 'qedit': return go(K.route+'/edit/'+q.id);
     case 'qinv': return go('invoice/from/'+q.id);
     case 'qpay': {
-      const total = calcQ(q).total, cur = biz().currency||'INR';
+      const total = calcQ(q).total, cur = bizOf(q).currency||'INR';
       return openSheet(`<h3>${esc(t('payBtn'))} · ${esc(fmtMoney(total,cur))}</h3>
         <label class="fld"><span>${esc(t('payStatus'))}</span><select id="pyStatus"><option value="unpaid" ${q.payStatus!=='paid'&&q.payStatus!=='partial'?'selected':''}>${esc(t('stUnpaid'))}</option><option value="partial" ${q.payStatus==='partial'?'selected':''}>${esc(t('stPartial'))}</option><option value="paid" ${q.payStatus==='paid'?'selected':''}>${esc(t('stPaid'))}</option></select></label>
         <label class="fld ${q.payStatus==='partial'?'':'hide'}" id="pyAmtW"><span>${esc(t('amtPaid'))}</span><input id="pyAmt" inputmode="decimal" value="${esc(q.paid||'')}"></label>
@@ -1877,14 +1959,14 @@ function viewScore(){
    ===================================================================== */
 const TPL_COLORS = ['#14213d','#0b6e4f','#7a1f2b','#1d4ed8','#b45309','#4b2e83','#111111','#0f766e'];
 function tplSample(){
-  const list = (S.cache.quotations||[]).slice().sort((a,b)=>(b.seq||0)-(a.seq||0));
+  const list = (S.cache.quotations||[]).filter(x=>docFirm(x)===S.activeFirm).sort((a,b)=>(b.seq||0)-(a.seq||0));
   if (list.length) return list[0];
   return { no:'Quote-1', date:isoToday(), other:'', gstMode:'excl', taxType:'cgst_sgst',
     customer:{name:'Customer Name', company:'Sample Company', mobile:'9876543210', addr1:'Address line', addr2:'', state:'', email:'', gstin:''},
     items:[{name:'Sample Product', desc:'', unit:'PCS', hsn:'1234', qty:2, rate:500, gst:18, disc:0}], charges:[],
     terms:['Rates are valid for 15 days.','GST and other taxes as applicable.'] };
 }
-function tplOpt(){ return { tpl:TP.t, lh:TP.lh, dateFormat:TP.dateFormat, currency:TP.currency }; }
+function tplOpt(){ return { firmId:S.activeFirm, tpl:TP.t, lh:TP.lh, dateFormat:TP.dateFormat, currency:TP.currency }; }
 function refreshTplPreview(){
   const paper = $('#paper'); if (!paper || !TP) return;
   paper.innerHTML = docHtml(tplSample(), tplOpt()); fitPaper(20);
@@ -1910,7 +1992,7 @@ function renderTemplate(){
   const hf = (k, ph) => `<label class="fld"><span>${esc(ph)}</span><input data-tk="h.${k}" value="${esc(h[k]||'')}" placeholder="${esc(ph)}"></label>`;
   const sty = (k, lbl) => `<button data-act="tplstyle" data-s="${k}" class="${(T0.style||'classic')===k?'on':''}">${esc(t(lbl))}</button>`;
   const colNow = T0.color || '#14213d';
-  app.innerHTML = `${bar(t('tplTitle'),{back:true})}
+  app.innerHTML = `${bar(t('tplTitle')+(firmIds().length>1?' · '+firmName(S.activeFirm):''),{back:true})}
   <div class="shell page-white tpl">
     <h3>${esc(t('tplPreview'))}</h3>
     <div class="paperwrap" id="pw" style="padding:0;background:#eee;border-radius:12px"><div class="paper" id="paper">${docHtml(tplSample(), tplOpt())}</div></div>
@@ -1966,17 +2048,48 @@ async function tplSave(btn){
       useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, };
     DOC_KINDS.forEach(k=>{ tpl[DK[k].pre] = String(TP.nums[k].pre); });
     if (TP.lhChanged){
-      if (TP.lh) await backend.put(S.user, 'settings', 'letterhead', { data: TP.lh });
-      else await backend.remove(S.user, 'settings', 'letterhead');
-      const list = (S.cache.settings||[]).filter(x=>x.id!=='letterhead');
-      if (TP.lh) list.push({ id:'letterhead', data:TP.lh });
+      if (TP.lh) await backend.put(S.user, 'settings', lhId(S.activeFirm), { data: TP.lh });
+      else await backend.remove(S.user, 'settings', lhId(S.activeFirm));
+      const list = (S.cache.settings||[]).filter(x=>x.id!==lhId(S.activeFirm));
+      if (TP.lh) list.push({ id:lhId(S.activeFirm), data:TP.lh });
       S.cache.settings = list;
     }
     const business = Object.assign({}, biz(), { dateFormat: TP.dateFormat, currency: TP.currency });
-    await backend.save(S.user, { template: tpl, business, starts: newCounters, updatedAt: Date.now() });
-    S.owner = deepMerge(S.owner||{}, { template: tpl, business, starts: newCounters });
+    await saveFirmData(S.activeFirm, { template: tpl, business, starts: newCounters });
     TP = null; toast(t('saved')); goBack();
   }catch(err){ console.error(err); toast(t('saveFail')); btn.disabled = false; }
+}
+
+function firmSheet(){
+  const ids = firmIds();
+  openSheet(`<h3>${esc(t('switchFirm'))}</h3><div class="scroll">${ids.map(id=>`<button class="item" data-act="firmpick" data-f="${esc(id)}"><span class="tx"><b>${esc(firmName(id))}</b><small>${esc(firmOf(id).business.short||'')}</small></span>${id===S.activeFirm?I.check(22):''}</button>`).join('')}</div>
+    <button class="mrow2" data-act="firmnew">${esc(t('addFirm'))}</button><button class="mrow2" data-act="firms" style="border-bottom:0">${esc(t('manageFirms'))}</button>`);
+}
+async function viewFirms(){
+  await Promise.all(DOC_COLS.map(c=>ensure(c)));
+  const ids = firmIds();
+  app.innerHTML = `${bar(t('firmsT'),{back:true})}
+  <div class="shell page-white">
+    ${ids.map(id=>{ const b = firmOf(id).business; return `<div class="frow"><button class="m" data-act="firmedit" data-f="${esc(id)}"><b>${esc(firmName(id))}</b>${id===S.activeFirm?`<span class="badge">${esc(t('firmActive'))}</span>`:''}<small>${esc([b.short, b.gstin].filter(Boolean).join(' · '))}</small></button>${id!==MAIN?`<button class="x" data-act="firmdel" data-f="${esc(id)}" aria-label="${esc(t('del'))}">${I.trash(22)}</button>`:''}</div>`; }).join('')}
+    <div style="padding:16px"><button class="btn" data-act="firmnew" style="width:100%">${esc(t('addFirm'))}</button></div>
+    <div class="qpay" style="margin:0 12px 14px">
+      <div class="r"><span>${esc(t('sepCust'))}<br><small class="muted">${esc(t('sepCustH'))}</small></span><label class="sw"><input type="checkbox" data-fs="sepCust" ${S.owner.sepCust?'checked':''}><i></i></label></div>
+      <div class="r"><span>${esc(t('sepProd'))}<br><small class="muted">${esc(t('sepProdH'))}</small></span><label class="sw"><input type="checkbox" data-fs="sepProd" ${S.owner.sepProd?'checked':''}><i></i></label></div>
+    </div>
+  </div>`;
+}
+async function deleteFirm(id){
+  if (id===MAIN || !S.firms[id]) return;
+  if (DOC_COLS.some(c=>(S.cache[c]||[]).some(x=>docFirm(x)===id))){ toast(t('firmHasDocs')); return; }
+  if (!confirm(t('delFirmAsk'))) return;
+  try{
+    await backend.save(S.user, { firms:{ [id]:{ deleted:true, business:{ logo:'', signature:'' } } }, updatedAt:Date.now() });
+    try{ await backend.remove(S.user, 'settings', lhId(id)); }catch(e){}
+    S.cache.settings = (S.cache.settings||[]).filter(x=>x.id!==lhId(id));
+    delete S.firms[id];
+    if (S.activeFirm===id) await setActiveFirm(MAIN);
+    toast(t('saved')); route();
+  }catch(e){ console.error(e); toast(t('saveFail')); }
 }
 
 /* =====================================================================
@@ -1990,11 +2103,12 @@ function viewSettings(){
     <div class="gh">${esc(t('account'))}</div>
     <div class="profilecard">${u.photoURL?`<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<div class="avatar">${esc(((u.displayName||u.email||'?').trim()[0]||'?').toUpperCase())}</div>`}
       <div><b>${esc(u.displayName||'')}</b><small>${esc(u.email||'')}</small><br><small>${esc(t('signedInAs'))}</small></div></div>
-    <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${I.chev()}</button>
+    <button class="srow" data-act="firms"><span>${esc(t('firmsRow'))} <span class="muted">· ${firmIds().length}</span></span>${I.chev()}</button>
+    <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${firmIds().length>1?' <span class="muted">· '+esc(firmName(S.activeFirm))+'</span>':''}${I.chev()}</button>
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.5 (Step 6)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.6 (Multi-firm)</div>
   </div>`;
 }
 
@@ -2031,6 +2145,13 @@ document.addEventListener('click', async e=>{
     case 'score': return go('score');
     case 'language': return go('language');
     case 'bizinfo': startWizard({}); return go('wizard');
+    case 'firmsheet': return firmSheet();
+    case 'firmpick': await setActiveFirm(el.dataset.f); closeSheet(); return route();
+    case 'firmnew': closeSheet(); startWizard({newFirm:true}); return go('wizard');
+    case 'firms': closeSheet(); return go('firms');
+    case 'firmedit': await setActiveFirm(el.dataset.f); startWizard({}); return go('wizard');
+    case 'firmdel': return deleteFirm(el.dataset.f);
+    case 'firmall': S.listAll = el.dataset.v==='1'; return route();
     case 'customers': return go('customers');
     case 'products': return go('products');
     case 'terms': return go('terms');
@@ -2072,6 +2193,11 @@ document.addEventListener('input', e=>{
   if (k==='gstin' && (FM||WZ)) gstLookup(e.target); else if (k==='ifsc' && WZ) ifscLookup(e.target);
 });
 document.addEventListener('change', async e=>{
+  if (e.target.dataset && e.target.dataset.fs){
+    const k = e.target.dataset.fs, v = !!e.target.checked; S.owner[k] = v;
+    try{ await backend.save(S.user, {[k]:v}); toast(t('saved')); }catch(err){ console.error(err); toast(t('saveFail')); }
+    return;
+  }
   if (e.target.id==='pyStatus'){ const w=$('#pyAmtW'); if (w) w.classList.toggle('hide', e.target.value!=='partial'); return; }
   if (e.target.dataset && e.target.dataset.tk && TP && (e.target.type==='checkbox' || e.target.tagName==='SELECT')){ onTplInput(e); if (e.target.dataset.tk==='useLh') renderTemplate(); return; }
   if (e.target.id==='lhpick' && e.target.files[0] && TP){
@@ -2127,6 +2253,7 @@ document.addEventListener('change', async e=>{
       if (!LANG && S.owner.language) setLang(S.owner.language);
       else if (LANG && S.owner.language !== LANG){ try{ await backend.save(user,{language:LANG}); S.owner.language=LANG; }catch(e){} }
     } else { S.owner = {}; WZ = null; }
+    firmsInit();
     S.ready = true;
     document.title = t('appName');
     route();
