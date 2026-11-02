@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Cinzel:wght@400;700&family=Merriweather:wght@400;700&family=Pacifico&family=Tiro+Devanagari+Hindi&family=Yatra+One&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f3f3f3; --ink:#262626; --muted:#6b6b6b; --field:#f2f2f2; --line:#e3e3e3;
@@ -242,8 +242,25 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .frow{display:flex;align-items:center;border-bottom:1px solid #eee}.frow .m{flex:1;text-align:left;padding:14px 16px;background:none;border:0;font-size:17px;color:inherit;cursor:pointer}.frow .m small{display:block;color:#666;font-size:14px;margin-top:2px}.frow .badge{font-size:12px;background:#dcfce7;color:#166534;border-radius:999px;padding:2px 8px;margin-left:6px}.frow .x{background:none;border:0;padding:12px;color:var(--err);cursor:pointer}
 .tick{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin:8px 0;background:#fff;border-radius:12px;border:1px solid #e5e7eb;cursor:pointer}.tick input{width:24px;height:24px;margin-top:1px;accent-color:var(--dark);flex:none}.tick span{flex:1;font-size:15.5px;white-space:pre-wrap;word-break:break-word;color:#222}.tick .ibt{flex:none}
 .term .df{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13.5px;color:#555}
+.lhshell{padding-bottom:90px}.lhlay{display:block}#lhwrap{position:relative;overflow:hidden;background:#e5e7eb;margin:8px 0}#lhpg{transform-origin:top left;width:794px;height:1123px}
+.lhedit .lhe{cursor:move;touch-action:none;pointer-events:auto}.lhedit .lhe.lhsel{outline:2px dashed #2563eb;outline-offset:2px}
+.lhg{position:absolute;touch-action:none;cursor:move;z-index:5}.lhg .lbl{position:absolute;left:4px;top:2px;font:600 13px 'Noto Sans',sans-serif;color:#e11d48;background:#fff8;padding:0 4px;border-radius:4px}
+.lhbox{border:2px dashed #e11d48;background:rgba(225,29,72,.07)}.lhbox.on{background:rgba(225,29,72,.15)}.lhline b{position:absolute;left:12px;top:0;bottom:0;width:0;border-left:3px dashed #e11d48}.lhline.on b{border-left-color:#be123c}
+.lhh{position:absolute;right:-6px;bottom:-6px;width:40px;height:40px;border-radius:50%;background:#e11d48;opacity:.85;touch-action:none;cursor:nwse-resize}.lhline .lhh{right:auto;left:-6px;bottom:-12px}
+.lhbody{position:absolute;left:0;right:0;border-top:2px dashed #2563eb;height:0;pointer-events:none;z-index:4}.lhbody span{position:absolute;right:6px;top:2px;font:600 12px 'Noto Sans',sans-serif;color:#2563eb;background:#fff9;padding:0 4px}
+.lhpanel{background:#fff;border-radius:16px;box-shadow:0 1px 6px #0002;margin:8px 10px 16px;overflow:hidden}.lhtabs{display:flex;overflow-x:auto;border-bottom:1px solid #eee;background:#f8fafc}.lhtabs button{flex:1;min-width:76px;padding:13px 8px;font-size:15px;font-weight:600;color:#666;border-bottom:3px solid transparent;background:none}.lhtabs button.on{color:#111;border-bottom-color:var(--dark)}
+.lhbody2{padding:12px 12px 16px}.lhhint{color:#666;font-size:14px;margin:0 0 10px}.lhsub{font-weight:700;margin:12px 0 8px;font-size:15px}.lhedh{font-weight:700;font-size:17px;margin-bottom:8px}
+.lhrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.lhl{font-size:14px;color:#555;min-width:56px}.lhb{padding:9px 13px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;font-size:15px;color:inherit;cursor:pointer}.lhb.s{padding:6px 9px;font-size:13px}.lhb.on{background:var(--dark);color:#fff;border-color:var(--dark)}.lhb.dng{color:var(--err);border-color:var(--err)}
+.lhnum{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:#555}.lhnum input{width:84px;padding:9px 8px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px}.lhnum input[type=color]{padding:2px;height:40px}.lhchk{display:flex;gap:8px;align-items:center;font-size:15px}.lhchk input{width:22px;height:22px;accent-color:var(--dark)}
+.lhsw{width:30px;height:30px;border-radius:50%;border:2px solid #ccc;cursor:pointer}.lhsw.on{border-color:#111;box-shadow:0 0 0 2px #fff inset}.lhcp{width:40px;height:34px;padding:0;border:0;background:none}.lhpal{width:46px;height:30px;border-radius:8px;border:1px solid #ccc;cursor:pointer}
+.lhbody2 select{padding:9px 10px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;background:#fff;max-width:100%}.lhbody2 .fld{margin:6px 0}
+.lhli{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px solid #eee}.lhli.sel{background:#eff6ff}.lhli .nm{flex:1;text-align:left;font-size:16px;background:none;border:0;color:inherit}.lhli .nm small{display:block;color:#777;font-size:13px}.lhli .x{background:none;border:0;color:var(--err);font-size:18px;padding:6px 10px}
+.lhgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}.lhcell{display:flex;flex-direction:column;gap:4px;content-visibility:auto;contain-intrinsic-size:260px}.lhcell.cur .lhtile{outline:3px solid var(--dark)}.lhtile{display:block;border:1px solid #d1d5db;border-radius:8px;overflow:hidden;background:#fff;padding:0;cursor:pointer}
+.lhthw{width:151px;height:213px;overflow:hidden;position:relative;margin:0 auto}.lhcell .cap{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:#444;gap:4px}.lhcell .cap span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lhcell .cap .x{background:none;border:0;color:#888;font-size:16px;padding:2px 6px}
+.lhprev{position:fixed;inset:0;background:#cfd4da;z-index:90;display:flex;flex-direction:column}.lhpbar{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#111;color:#fff;flex-wrap:wrap}.lhpbar .sp{flex:1}.lhpbar button{color:#fff;background:#333;border-radius:10px;padding:9px 12px;font-size:14px;display:inline-flex;gap:6px;align-items:center}.lhpbody{flex:1;overflow:auto}#lhpv{box-shadow:0 2px 14px #0005;background:#fff}
+@media(min-width:1000px){.lhshell{max-width:1180px}.lhlay{display:grid;grid-template-columns:minmax(0,800px) 1fr;gap:16px;align-items:start}.lhpanel{position:sticky;top:70px;max-height:calc(100vh - 150px);overflow:auto;margin:8px 0}}
 #printArea{display:none}
-@media print{@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
+@media print{#printArea .lhpage{height:1122px!important}@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -648,6 +665,7 @@ function route(){
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
   if (r.startsWith('product/')) return viewForm('product', r.split('/')[1]);
   if (r==='firms') return viewFirms();
+  if (r==='lhstudio') return viewLhStudio();
   if (r==='terms') return viewTerms();
   if (r==='template') return viewTemplate();
   if (r==='score') return viewScore();
@@ -661,6 +679,7 @@ window.addEventListener('hashchange', ()=>{
   if (!/^(customer|product)\//.test(r)) FM = null;
   if (!/^((quotation|invoice|po|proforma|dn|receipt)\/(new|edit|dup|from)|customer\/|product\/)/.test(r)) { QD = null; RETURN = null; }
   if (r!=='template') TP = null;
+  if (r!=='lhstudio') LHS = null;
   closeSheet();
   route();
 });
@@ -1902,11 +1921,12 @@ async function sharePdf(q, downloadOnly){
   }
   downloadBlob(blob, name);
 }
-async function printDoc(q){
+function printDoc(q){ return printHtml(docHtml(q), pdfName(q).replace(/\.pdf$/,'')); }
+async function printHtml(html, title){
   let holder = document.getElementById('printArea'); if (holder) holder.remove();
-  holder = document.createElement('div'); holder.id = 'printArea'; holder.innerHTML = docHtml(q);
+  holder = document.createElement('div'); holder.id = 'printArea'; holder.innerHTML = html;
   document.body.appendChild(holder);
-  const prevTitle = document.title; document.title = pdfName(q).replace(/\.pdf$/,'');
+  const prevTitle = document.title; if (title) document.title = title;
   const done = () => { document.body.classList.remove('printing'); holder.remove(); document.title = prevTitle; window.removeEventListener('afterprint', done); };
   window.addEventListener('afterprint', done);
   try{ if (document.fonts && document.fonts.ready) await document.fonts.ready; }catch(e){}
@@ -2118,6 +2138,445 @@ async function deleteFirm(id){
   }catch(e){ console.error(e); toast(t('saveFail')); }
 }
 
+const LHT = {
+ en:{ lhTitle:"Letterhead Studio", lhPreview:"Preview", lhSave:"Save & use on documents", lhSaved:"Letterhead saved", lhBodyStart:"Document starts here", lhBodyEnd:"Document ends here",
+  lhT_design:"Designs", lhT_lines:"Lines", lhT_edit:"Edit", lhT_guides:"Guides", lhT_style:"Style", lhHide:"Remove from list", lhSaveMine:"Save my design", lhBlank:"Blank page", lhImage:"My own image", lhMine:"My designs", lhAll:"All designs", lhHidden:"Removed designs", lhRestore:"Bring back",
+  lhLogo:"Logo", lhName:"Firm name", lhTagline:"Tagline", lhAddr:"Address", lhContact:"Phone & email", lhIds:"GSTIN & PAN", lhFoot:"Footer line", lhLine:"Line",
+  lhLinesHint:"Switch a line on or off. Tap its name to edit it or move it. You can also drag any line on the page.", lhAddLine:"Add a line (website, FSSAI, licence...)", lhPickLine:"Tap a line on the page or in the Lines tab to edit it.",
+  lhSize:"Size", lhColor:"Colour", lhAlign:"Align", lhA_left:"Left", lhA_center:"Center", lhA_right:"Right", lhBullet:"Bullet", lhPlace:"Place at", lhP_tl:"Top left", lhP_tc:"Top center", lhP_tr:"Top right", lhP_bl:"Bottom left", lhP_bc:"Bottom center", lhP_br:"Bottom right",
+  lhX:"X", lhY:"Y", lhW:"Width", lhMove:"Nudge", lhAnchor:"Centre inside guide", lhNone:"None (whole page)", lhVc:"Also centre up-down",
+  lhGuideHint:"Guides show only while editing. They never appear in preview, print, PDF or images. A line placed on a guide is centred inside that guide's width.", lhGLine:"Vertical line", lhGBox:"Box",
+  lhPalette:"Colours", lhC1:"Main", lhC2:"Accent", lhBg:"Page", lhFont:"Font", lhBodyArea:"Where the document body goes", lhBodyHint:"Quotation and invoice text will be placed between these two lines.", lhUseDocs:"Use this letterhead on my documents",
+  lhApplied:"Design applied", lhMyName:"Name for your design", lhMyDefault:"My design", lhDelMine:"Delete this design?", lhNewLine:"New line", lhDiscard:"You have unsaved changes. Leave without saving?", lhRow:"Letterhead Studio", lhRowSub:"Design letterheads, print or save as PDF/JPEG/PNG" },
+ hi:{ lhTitle:"लेटरहेड स्टूडियो", lhPreview:"प्रीव्यू", lhSave:"सेव करें और डॉक्यूमेंट में लगाएँ", lhSaved:"लेटरहेड सेव हो गया", lhBodyStart:"डॉक्यूमेंट यहाँ से शुरू", lhBodyEnd:"डॉक्यूमेंट यहाँ तक",
+  lhT_design:"डिज़ाइन", lhT_lines:"लाइनें", lhT_edit:"बदलें", lhT_guides:"गाइड", lhT_style:"स्टाइल", lhHide:"सूची से हटाएँ", lhSaveMine:"मेरा डिज़ाइन सेव करें", lhBlank:"खाली पेज", lhImage:"अपनी इमेज", lhMine:"मेरे डिज़ाइन", lhAll:"सभी डिज़ाइन", lhHidden:"हटाए हुए डिज़ाइन", lhRestore:"वापस लाएँ",
+  lhLogo:"लोगो", lhName:"फर्म का नाम", lhTagline:"टैगलाइन", lhAddr:"पता", lhContact:"फ़ोन और ईमेल", lhIds:"GSTIN और PAN", lhFoot:"नीचे की लाइन", lhLine:"लाइन",
+  lhLinesHint:"किसी लाइन को चालू या बंद करें। बदलने या हिलाने के लिए उसके नाम पर दबाएँ। पेज पर किसी भी लाइन को पकड़कर खिसका भी सकते हैं।", lhAddLine:"नई लाइन जोड़ें (वेबसाइट, FSSAI, लाइसेंस...)", lhPickLine:"बदलने के लिए पेज पर या लाइनें टैब में किसी लाइन को दबाएँ।",
+  lhSize:"साइज़", lhColor:"रंग", lhAlign:"अलाइन", lhA_left:"बाएँ", lhA_center:"बीच में", lhA_right:"दाएँ", lhBullet:"बुलेट", lhPlace:"यहाँ रखें", lhP_tl:"ऊपर बाएँ", lhP_tc:"ऊपर बीच", lhP_tr:"ऊपर दाएँ", lhP_bl:"नीचे बाएँ", lhP_bc:"नीचे बीच", lhP_br:"नीचे दाएँ",
+  lhX:"X", lhY:"Y", lhW:"चौड़ाई", lhMove:"खिसकाएँ", lhAnchor:"गाइड के बीच में रखें", lhNone:"कोई नहीं (पूरा पेज)", lhVc:"ऊपर-नीचे भी बीच में",
+  lhGuideHint:"गाइड सिर्फ़ एडिट करते समय दिखते हैं। ये प्रीव्यू, प्रिंट, PDF या इमेज में नहीं आते। गाइड से जुड़ी लाइन उस गाइड की चौड़ाई के बीच में आती है।", lhGLine:"खड़ी लाइन", lhGBox:"डिब्बा",
+  lhPalette:"रंग", lhC1:"मुख्य", lhC2:"दूसरा", lhBg:"पेज", lhFont:"फ़ॉन्ट", lhBodyArea:"डॉक्यूमेंट का मैटर कहाँ आएगा", lhBodyHint:"कोटेशन और इनवॉइस का मैटर इन दो लाइनों के बीच आएगा।", lhUseDocs:"यह लेटरहेड मेरे डॉक्यूमेंट में लगाएँ",
+  lhApplied:"डिज़ाइन लग गया", lhMyName:"अपने डिज़ाइन का नाम", lhMyDefault:"मेरा डिज़ाइन", lhDelMine:"यह डिज़ाइन हटाएँ?", lhNewLine:"नई लाइन", lhDiscard:"बदलाव सेव नहीं हुए हैं। बिना सेव किए बाहर जाएँ?", lhRow:"लेटरहेड स्टूडियो", lhRowSub:"लेटरहेड बनाएँ, प्रिंट करें या PDF/JPEG/PNG में सेव करें" }
+};
+Object.assign(T.en, LHT.en); Object.assign(T.hi, LHT.hi);
+
+/* =====================================================================
+   LETTERHEAD STUDIO
+   ===================================================================== */
+const LH_PAL = [['Navy + Gold','#14213d','#c9a227'],['Maroon + Gold','#7f1d1d','#d4a017'],['Forest + Lime','#14532d','#65a30d'],['Teal + Coral','#0f766e','#f43f5e'],['Saffron + Brown','#c2410c','#78350f'],['Royal + Sky','#1d4ed8','#38bdf8'],['Purple + Pink','#6d28d9','#ec4899'],['Charcoal + Red','#1f2937','#dc2626'],['Chocolate + Cream','#4a2c1a','#d9a066'],['Rose + Plum','#be185d','#581c87'],['Slate + Amber','#334155','#f59e0b'],['Emerald + Gold','#065f46','#eab308']];
+const LH_HN = ['Band','Side Bar','Double Line','Corners','Wave','Circle','Split','Gradient','Frame','Ribbon','Blocks','Minimal'];
+const LH_FN = ['Line','Band','Wave','Slant','Corner','Dots'];
+const LH_FONTS = [['Noto Sans','Noto Sans'],['Noto Serif','Noto Serif'],['Playfair Display','Playfair Display'],['Poppins','Poppins'],['Cinzel','Cinzel'],['Merriweather','Merriweather'],['Pacifico','Pacifico'],['Tiro Devanagari Hindi','Tiro (हिन्दी)'],['Yatra One','Yatra One (हिन्दी)'],['Georgia','Georgia']];
+const LH_BULLETS = ['•','✓','★','➤','◆','–','○'];
+const LH_TOKENS = ['{name}','{addr}','{phone}','{email}','{gstin}','{pan}','{state}','{contactline}','{idsline}'];
+const lhT = (x,y,w,size,align,color,bold) => ({x,y,w,size,align,color,bold:!!bold});
+const lhL = (x,y,w) => ({x,y,w});
+const LH_H = [
+  (a,b)=>({ svg:`<rect width="794" height="150" fill="${a}"/><rect y="150" width="794" height="5" fill="${b}"/>`, top:182,
+    els:{logo:lhL(36,26,92), name:lhT(150,30,610,30,'left','w',1), tagline:lhT(150,72,610,14,'left','w'), addr:lhT(150,98,610,13,'left','w')} }),
+  (a,b)=>({ svg:`<rect width="26" height="1123" fill="${a}"/><rect x="26" width="8" height="1123" fill="${b}"/><rect x="60" y="150" width="674" height="2" fill="${b}"/>`, top:175,
+    els:{logo:lhL(60,30,84), name:lhT(160,36,580,30,'left','c1',1), tagline:lhT(160,80,580,14,'left','c2'), addr:lhT(160,104,580,13,'left','k')} }),
+  (a,b)=>({ svg:`<rect x="40" y="140" width="714" height="4" fill="${a}"/><rect x="40" y="148" width="714" height="1.5" fill="${b}"/>`, top:172,
+    els:{logo:lhL(44,28,76), name:lhT(0,32,794,30,'center','c1',1), tagline:lhT(0,74,794,14,'center','c2'), addr:lhT(0,100,794,13,'center','k')} }),
+  (a,b)=>({ svg:`<polygon points="0,0 250,0 0,130" fill="${a}"/><polygon points="794,0 594,0 794,90" fill="${b}"/>`, top:165,
+    els:{logo:lhL(24,18,56), name:lhT(210,34,380,28,'center','c1',1), tagline:lhT(210,76,380,14,'center','c2'), addr:lhT(210,102,380,13,'center','k')} }),
+  (a,b)=>({ svg:`<path d="M0,0H794V96C640,150 520,60 360,100C220,136 100,150 0,112Z" fill="${a}"/><path d="M0,112C100,150 220,136 360,100C520,60 640,150 794,96V120C640,176 520,86 360,126C220,162 100,176 0,138Z" fill="${b}" opacity=".55"/>`, top:208,
+    els:{logo:lhL(668,22,92), name:lhT(40,24,560,30,'left','w',1), tagline:lhT(40,66,500,14,'left','w'), addr:lhT(40,178,560,13,'left','k')} }),
+  (a,b)=>({ svg:`<circle cx="730" cy="-20" r="200" fill="${a}"/><circle cx="730" cy="-20" r="140" fill="${b}" opacity=".6"/><rect x="40" y="150" width="714" height="2" fill="${a}"/>`, top:175,
+    els:{logo:lhL(664,22,92), name:lhT(40,36,560,32,'left','c1',1), tagline:lhT(40,82,560,14,'left','c2'), addr:lhT(40,108,540,13,'left','k')} }),
+  (a,b)=>({ svg:`<rect width="300" height="150" fill="${a}"/><rect y="150" width="794" height="5" fill="${b}"/>`, top:182,
+    els:{logo:lhL(330,28,80), name:lhT(24,34,252,26,'left','w',1), tagline:lhT(24,104,252,13,'left','w'), addr:lhT(430,40,330,13,'left','k')} }),
+  (a,b,u)=>({ svg:`<defs><linearGradient id="gH${u}" x1="0" x2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="794" height="150" fill="url(#gH${u})"/>`, top:178,
+    els:{logo:lhL(36,26,86), name:lhT(0,30,794,28,'center','w',1), tagline:lhT(0,72,794,14,'center','w'), addr:lhT(0,98,794,13,'center','w')} }),
+  (a,b)=>({ svg:`<rect x="16" y="16" width="762" height="1091" fill="none" stroke="${a}" stroke-width="3"/><rect x="24" y="24" width="746" height="1075" fill="none" stroke="${b}" stroke-width="1"/><rect x="40" y="148" width="714" height="1.5" fill="${b}"/>`, top:172,
+    els:{logo:lhL(44,40,76), name:lhT(0,46,794,30,'center','c1',1), tagline:lhT(0,88,794,14,'center','c2'), addr:lhT(0,112,794,13,'center','k')} }),
+  (a,b)=>({ svg:`<polygon points="0,26 520,26 566,72 520,118 0,118" fill="${a}"/><polygon points="0,118 24,118 0,138" fill="${b}"/>`, top:170,
+    els:{logo:lhL(660,24,92), name:lhT(28,40,480,28,'left','w',1), tagline:lhT(28,84,480,13,'left','w'), addr:lhT(28,132,700,13,'left','k')} }),
+  (a,b)=>({ svg:`<rect width="120" height="120" fill="${a}"/><rect x="120" width="50" height="50" fill="${b}"/><rect y="120" width="50" height="50" fill="${b}" opacity=".6"/>`, top:185,
+    els:{logo:lhL(20,20,80), name:lhT(196,34,560,30,'left','c1',1), tagline:lhT(196,78,560,14,'left','c2'), addr:lhT(196,104,560,13,'left','k')} }),
+  (a,b)=>({ svg:`<rect x="40" y="138" width="714" height="2" fill="${a}"/><rect x="40" y="136" width="70" height="6" fill="${b}"/>`, top:165,
+    els:{logo:lhL(40,28,72), name:lhT(130,34,620,30,'left','c1',1), tagline:lhT(130,76,620,14,'left','c2'), addr:lhT(130,100,620,13,'left','k')} })
+];
+const LH_F = [
+  (a,b)=>({ svg:`<rect x="40" y="1052" width="714" height="2" fill="${a}"/>`, bottom:105,
+    els:{contact:lhT(0,1064,794,13,'center','k'), ids:lhT(0,1086,794,12,'center','g'), foot:lhT(0,1022,794,14,'center','c2',1)} }),
+  (a,b)=>({ svg:`<rect y="1050" width="794" height="73" fill="${a}"/><rect y="1046" width="794" height="4" fill="${b}"/>`, bottom:90,
+    els:{contact:lhT(0,1064,794,13,'center','w'), ids:lhT(0,1088,794,12,'center','w'), foot:lhT(0,1018,794,14,'center','c1',1)} }),
+  (a,b)=>({ svg:`<path d="M0,1123V1058C130,1038 260,1066 400,1052C540,1038 660,1066 794,1046V1123Z" fill="${a}"/><path d="M0,1123V1080C150,1064 270,1088 400,1076C540,1064 660,1088 794,1070V1123Z" fill="${b}" opacity=".35"/>`, bottom:100,
+    els:{contact:lhT(0,1074,794,13,'center','w'), ids:lhT(0,1096,794,12,'center','w'), foot:lhT(0,1022,794,14,'center','c1',1)} }),
+  (a,b)=>({ svg:`<polygon points="0,1123 0,1074 794,1040 794,1123" fill="${a}"/><polygon points="0,1074 794,1040 794,1050 0,1084" fill="${b}"/>`, bottom:95,
+    els:{contact:lhT(0,1088,794,13,'center','w'), ids:lhT(0,1104,794,11,'center','w'), foot:lhT(0,1020,794,14,'center','c1',1)} }),
+  (a,b)=>({ svg:`<polygon points="794,1123 794,990 650,1123" fill="${a}"/><polygon points="0,1123 0,1060 90,1123" fill="${b}"/><rect x="40" y="1050" width="560" height="1.5" fill="${a}"/>`, bottom:105,
+    els:{contact:lhT(40,1062,560,13,'left','k'), ids:lhT(40,1084,560,12,'left','g'), foot:lhT(40,1022,560,14,'left','c2',1)} }),
+  (a,b)=>({ svg:Array.from({length:33},(_,k)=>`<circle cx="${40+k*22.2}" cy="1048" r="4" fill="${k%2?b:a}"/>`).join(''), bottom:108,
+    els:{contact:lhT(0,1064,794,13,'center','k'), ids:lhT(0,1086,794,12,'center','g'), foot:lhT(0,1020,794,14,'center','c1',1)} })
+];
+const LH_DESIGNS = [];
+for (let i=0;i<LH_H.length;i++) for (let j=0;j<LH_F.length;j++) LH_DESIGNS.push({ id:`d${i}_${j}`, name:`${LH_HN[i]} + ${LH_FN[j]}`, pal:(i*5+j*7)%12 });
+function lhPalFor(id){ const d = LH_DESIGNS.find(x=>x.id===id); return d ? d.pal : 0; }
+function lhSpec(id, col, u){
+  const m = /^d(\d+)_(\d+)$/.exec(id||'');
+  const hi = m ? +m[1] : 11, fj = m ? +m[2] : 0;
+  const H = LH_H[hi](col.c1, col.c2, u||'p'), F = LH_F[fj](col.c1, col.c2, u||'p');
+  return { svg: m ? `<svg width="794" height="1123" viewBox="0 0 794 1123" style="position:absolute;left:0;top:0" xmlns="http://www.w3.org/2000/svg">${H.svg}${F.svg}</svg>` : '', els:Object.assign({}, H.els, F.els), top:H.top, bottom:F.bottom };
+}
+function lhDefaultEls(spec, hasLogo){
+  const mk = (key,type,text,on) => Object.assign({ id:key, key, type, text, on, x:0, y:0, w:300, size:14, bold:false, italic:false, color:'k', align:'left', bullet:false, bchar:'•', anchor:'', dy:0, vcenter:false }, spec.els[key]||{});
+  return [ mk('logo','logo','',hasLogo), mk('name','text','{name}',true), mk('tagline','text','Your tagline here',false), mk('addr','text','{addr}',true),
+           mk('contact','text','{contactline}',true), mk('ids','text','{idsline}',true), mk('foot','text','Thank you for your business',false) ];
+}
+function lhNewState(id){
+  const pi = lhPalFor(id), col = { c1:LH_PAL[pi][1], c2:LH_PAL[pi][2] }, spec = lhSpec(id, col, 'n');
+  return { v:1, design:id, colors:col, font:'Noto Sans', bg:'#ffffff', bgImage:'', bodyTop:spec.top, bodyBottom:spec.bottom, useDocs:true, els:lhDefaultEls(spec, !!biz().logo), guides:[] };
+}
+function lhApplyDesign(st, id){
+  const pi = lhPalFor(id), col = { c1:LH_PAL[pi][1], c2:LH_PAL[pi][2] }, spec = lhSpec(id, col, 'n');
+  st.design = id; st.colors = col; st.bodyTop = spec.top; st.bodyBottom = spec.bottom;
+  st.els.forEach(el=>{ const L = spec.els[el.key]; if (el.key && L) Object.assign(el, L, { anchor:'', dy:0 }); });
+}
+function lhTok(b){
+  const addr = [b.addr1, b.addr2].filter(Boolean).join(', ');
+  const contact = [b.phone?('Ph: '+b.phone):'', b.email||''].filter(Boolean).join('   |   ');
+  const ids = [b.gstin?('GSTIN: '+b.gstin):'', b.pan?('PAN: '+b.pan):''].filter(Boolean).join('    ');
+  return { name:b.name||'', addr, addr1:b.addr1||'', addr2:b.addr2||'', phone:b.phone||'', email:b.email||'', gstin:b.gstin||'', pan:b.pan||'', state:b.state||'', contact:b.contact||'', contactline:contact, idsline:ids, bank:b.bankName||'', acc:b.accNo||'', ifsc:b.ifsc||'', upi:b.upi||'' };
+}
+const lhFill = (s, tk) => String(s||'').replace(/\{(\w+)\}/g, (m,k)=> (k in tk) ? tk[k] : m);
+function lhCol(tok, st){ return ({ c1:st.colors.c1, c2:st.colors.c2, w:'#ffffff', k:'#222222', g:'#555555' })[tok] || tok || '#222222'; }
+function lhElHtml(el, st, tk, gmap, o){
+  if (!el.on) return '';
+  const g = el.anchor ? gmap[el.anchor] : null;
+  let left, top, w;
+  if (g){
+    top = g.y + (+el.dy||0);
+    if (g.kind==='box'){ left = g.x; w = g.w; }
+    else { w = el.w; left = el.align==='center' ? g.x - w/2 : (el.align==='right' ? g.x - w : g.x); }
+  } else { left = el.x; top = el.y; w = el.w; }
+  const edit = !!o.edit, cls = 'lhe' + (edit && o.sel===el.id ? ' lhsel' : ''), attr = edit ? ` data-lhe="${esc(el.id)}"` : '';
+  if (el.type==='logo'){
+    const src = (o.b||biz()).logo; if (!src) return '';
+    return `<img class="${cls}"${attr} src="${esc(src)}" alt="" style="position:absolute;left:${left}px;top:${top}px;width:${w}px;height:auto">`;
+  }
+  const txt = lhFill(el.text, tk); if (!txt.trim()) return '';
+  let lines = txt.split('\n'); if (el.bullet) lines = lines.map(l=> l.trim() ? el.bchar+' '+l : l);
+  const base = `font-size:${+el.size||14}px;font-weight:${el.bold?700:400};font-style:${el.italic?'italic':'normal'};color:${lhCol(el.color, st)};text-align:${el.align||'left'};line-height:1.25;white-space:pre-wrap;word-break:break-word`;
+  const inner = esc(lines.join('\n'));
+  if (g && g.kind==='box' && el.vcenter)
+    return `<div class="${cls}"${attr} style="position:absolute;left:${left}px;top:${g.y}px;width:${w}px;height:${g.h}px;display:flex;align-items:center"><div style="width:100%;${base}">${inner}</div></div>`;
+  return `<div class="${cls}"${attr} style="position:absolute;left:${left}px;top:${top}px;width:${w}px;${base}">${inner}</div>`;
+}
+function lhPageHtml(st, o){
+  o = o || {};
+  const b = o.b || biz(), tk = lhTok(b), spec = lhSpec(st.design, st.colors, o.u||'p'), gmap = {};
+  (st.guides||[]).forEach(g=>{ gmap[g.id] = g; });
+  let h = `<div class="lhpage" style="position:relative;width:794px;height:1123px;overflow:hidden;background:${esc(st.bg||'#fff')};font-family:'${esc(st.font||'Noto Sans')}','Noto Sans Devanagari',sans-serif;color:#222">`;
+  if (st.design==='image' && st.bgImage) h += `<img src="${esc(st.bgImage)}" alt="" style="position:absolute;left:0;top:0;width:794px;height:1123px;object-fit:cover">`;
+  h += spec.svg;
+  st.els.forEach(el=>{ h += lhElHtml(el, st, tk, gmap, Object.assign({}, o, { b })); });
+  if (o.edit){
+    (st.guides||[]).forEach(g=>{
+      const on = o.selG===g.id ? ' on' : '';
+      h += g.kind==='box'
+        ? `<div class="lhg lhbox${on}" data-lhg="${esc(g.id)}" style="left:${g.x}px;top:${g.y}px;width:${g.w}px;height:${g.h}px"><span class="lbl">${esc(g.name)}</span><i class="lhh" data-lhh="${esc(g.id)}"></i></div>`
+        : `<div class="lhg lhline${on}" data-lhg="${esc(g.id)}" style="left:${g.x-14}px;top:${g.y}px;width:28px;height:${g.h}px"><b></b><span class="lbl">${esc(g.name)}</span><i class="lhh" data-lhh="${esc(g.id)}"></i></div>`;
+    });
+    h += `<div class="lhbody" style="top:${st.bodyTop}px"><span>${esc(t('lhBodyStart'))}</span></div><div class="lhbody" style="top:${1123-st.bodyBottom}px"><span>${esc(t('lhBodyEnd'))}</span></div>`;
+  }
+  return h + '</div>';
+}
+
+/* ---------- screen ---------- */
+let LHS = null;   // letterhead studio working copy
+const lhEl = () => LHS && LHS.sel ? LHS.st.els.find(x=>x.id===LHS.sel) : null;
+const lhG = () => LHS && LHS.selG ? LHS.st.guides.find(x=>x.id===LHS.selG) : null;
+function lhFit(){
+  const wrap = $('#lhwrap'), pg = $('#lhpg'); if (!wrap || !pg) return;
+  const s = Math.min(1, (wrap.clientWidth - 4) / 794); LHS.scale = s;
+  pg.style.transform = `scale(${s})`; wrap.style.height = Math.round(1123 * s) + 'px';
+}
+function lhRefreshCanvas(){
+  const pg = $('#lhpg'); if (!pg || !LHS) return;
+  pg.innerHTML = lhPageHtml(LHS.st, { edit:true, sel:LHS.sel, selG:LHS.selG, u:'e' });
+}
+async function viewLhStudio(){
+  await ensure('settings');
+  const fid = S.activeFirm;
+  if (!LHS || LHS.fid!==fid){
+    const d = (S.cache.settings||[]).find(x=>x.id==='lhs_'+fid), lib = (S.cache.settings||[]).find(x=>x.id==='lhs_lib');
+    LHS = { fid, st: d && d.data ? JSON.parse(JSON.stringify(d.data)) : lhNewState('d0_0'), sel:null, selG:null, tab:'design', dirty:false, showHidden:false,
+           lib: lib && lib.data ? JSON.parse(JSON.stringify(lib.data)) : { my:[], hidden:[] }, scale:1 };
+    if (!LHS.lib.my) LHS.lib.my = []; if (!LHS.lib.hidden) LHS.lib.hidden = [];
+  }
+  app.innerHTML = `${bar(t('lhTitle')+(firmIds().length>1?' · '+firmName(fid):''),{back:true})}
+  <div class="shell lhshell"><div class="lhlay"><div id="lhwrap"><div id="lhpg" class="lhedit"></div></div><div class="lhpanel" id="lhpanel"></div></div></div>
+  <div class="tplbar" style="display:flex;gap:10px"><button class="btn ghost" data-act="lhpreview" style="flex:1">${esc(t('lhPreview'))}</button><button class="btn" data-act="lhsave" style="flex:1.4">${esc(t('lhSave'))}</button></div>`;
+  lhFit(); lhRefreshCanvas(); renderLhPanel();
+}
+window.addEventListener('resize', ()=>{ if (LHS && $('#lhwrap')) lhFit(); });
+
+const LH_TABS = ['design','lines','edit','guides','style'];
+function lhTabsHtml(){
+  return `<div class="lhtabs">${LH_TABS.map(k=>`<button data-act="lhtab" data-t="${k}" class="${LHS.tab===k?'on':''}">${esc(t('lhT_'+k))}</button>`).join('')}</div>`;
+}
+function lhThumb(st, id){
+  return `<div class="lhthw"><div style="transform:scale(.19);transform-origin:0 0;width:794px;height:1123px">${lhPageHtml(st,{edit:false,u:'t'+id})}</div></div>`;
+}
+function lhDesignTab(){
+  const hid = new Set(LHS.lib.hidden||[]);
+  const vis = LH_DESIGNS.filter(d=>!hid.has(d.id)), gone = LH_DESIGNS.filter(d=>hid.has(d.id));
+  const tile = (d, cur) => `<div class="lhcell${cur?' cur':''}"><button class="lhtile" data-act="lhdesign" data-id="${d.id}">${lhThumb(lhNewState(d.id), d.id)}</button><div class="cap"><span>${esc(d.name)}</span><button class="x" data-act="lhhide" data-id="${d.id}" aria-label="${esc(t('lhHide'))}">✕</button></div></div>`;
+  const my = LHS.lib.my.map(m=>`<div class="lhcell"><button class="lhtile" data-act="lhmyapply" data-id="${esc(m.id)}">${lhThumb(m.state, 'm'+m.id)}</button><div class="cap"><span>★ ${esc(m.name)}</span><button class="x" data-act="lhmydel" data-id="${esc(m.id)}" aria-label="${esc(t('del'))}">✕</button></div></div>`).join('');
+  return `<div class="lhrow"><button class="lhb" data-act="lhmysave">＋ ${esc(t('lhSaveMine'))}</button><button class="lhb" data-act="lhblank">${esc(t('lhBlank'))}</button><button class="lhb" data-act="lhimage">${esc(t('lhImage'))}</button></div>
+    <input type="file" id="lhfile" accept="image/*" class="hide">
+    ${my?`<div class="lhsub">${esc(t('lhMine'))}</div><div class="lhgrid">${my}</div>`:''}
+    <div class="lhsub">${esc(t('lhAll'))} · ${vis.length}</div><div class="lhgrid">${vis.map(d=>tile(d, LHS.st.design===d.id)).join('')}</div>
+    ${gone.length?`<div class="lhrow" style="margin-top:12px"><button class="lhb" data-act="lhshowhidden">${esc(t('lhHidden'))} (${gone.length}) ${LHS.showHidden?'▲':'▼'}</button></div>`:''}
+    ${LHS.showHidden && gone.length?`<div class="lhgrid">${gone.map(d=>`<div class="lhcell"><div class="lhtile" style="opacity:.55">${lhThumb(lhNewState(d.id), d.id)}</div><div class="cap"><span>${esc(d.name)}</span><button class="x" data-act="lhunhide" data-id="${d.id}" aria-label="${esc(t('lhRestore'))}">＋</button></div></div>`).join('')}</div>`:''}`;
+}
+function lhElLabel(el){
+  if (el.type==='logo') return t('lhLogo');
+  const nm = { name:'lhName', tagline:'lhTagline', addr:'lhAddr', contact:'lhContact', ids:'lhIds', foot:'lhFoot' }[el.key];
+  return nm ? t(nm) : (String(el.text||'').split('\n')[0].slice(0,26) || t('lhLine'));
+}
+function lhLinesTab(){
+  return `<p class="lhhint">${esc(t('lhLinesHint'))}</p>` + LHS.st.els.map(el=>`<div class="lhli${LHS.sel===el.id?' sel':''}"><label class="sw"><input type="checkbox" data-lhk="on" data-id="${esc(el.id)}" ${el.on?'checked':''}><i></i></label><button class="nm" data-act="lhsel" data-id="${esc(el.id)}">${esc(lhElLabel(el))}<small>${esc(el.type==='logo'?'':String(el.text||'').replace(/\n/g,' ').slice(0,38))}</small></button>${el.key?'':`<button class="x" data-act="lhdelline" data-id="${esc(el.id)}" aria-label="${esc(t('del'))}">✕</button>`}</div>`).join('')
+    + `<div class="lhrow"><button class="lhb" data-act="lhaddline">＋ ${esc(t('lhAddLine'))}</button></div>`;
+}
+function lhEditTab(){
+  const el = lhEl();
+  if (!el) return `<p class="lhhint">${esc(t('lhPickLine'))}</p>`;
+  const nb = (k,label,val,step) => `<label class="lhnum"><span>${esc(label)}</span><input type="number" inputmode="numeric" data-lhk="${k}" value="${Math.round(val)}" ${step?`step="${step}"`:''}></label>`;
+  const sw = (tok,css) => `<button class="lhsw${el.color===tok?' on':''}" data-act="lhcolor" data-c="${tok}" style="background:${css}"></button>`;
+  const g = el.anchor ? LHS.st.guides.find(x=>x.id===el.anchor) : null;
+  const logo = el.type==='logo';
+  return `<div class="lhedh">${esc(lhElLabel(el))}</div>
+  ${logo?'':`<label class="fld"><span>${esc(t('termText'))}</span><textarea data-lhk="text" rows="3">${esc(el.text)}</textarea></label>
+  <div class="lhrow tok">${LH_TOKENS.map(k=>`<button class="lhb s" data-act="lhtok" data-tok="${k}">${k}</button>`).join('')}</div>
+  <div class="lhrow"><span class="lhl">${esc(t('lhSize'))}</span><button class="lhb" data-act="lhsize" data-d="-1">A−</button>${nb('size','',el.size)}<button class="lhb" data-act="lhsize" data-d="1">A+</button>
+    <button class="lhb ${el.bold?'on':''}" data-act="lhbold"><b>B</b></button><button class="lhb ${el.italic?'on':''}" data-act="lhital"><i>I</i></button></div>
+  <div class="lhrow"><span class="lhl">${esc(t('lhColor'))}</span>${sw('c1',LHS.st.colors.c1)}${sw('c2',LHS.st.colors.c2)}${sw('w','#fff')}${sw('k','#222')}${sw('g','#777')}<input type="color" class="lhcp" data-lhk="colorx" value="${/^#[0-9a-f]{6}$/i.test(el.color)?el.color:'#222222'}"></div>
+  <div class="lhrow"><span class="lhl">${esc(t('lhAlign'))}</span>${['left','center','right'].map(a=>`<button class="lhb ${el.align===a?'on':''}" data-act="lhalign" data-a="${a}">${esc(t('lhA_'+a))}</button>`).join('')}</div>
+  <div class="lhrow"><label class="lhchk"><input type="checkbox" data-lhk="bullet" ${el.bullet?'checked':''}> ${esc(t('lhBullet'))}</label>${el.bullet?`<select data-lhk="bchar">${LH_BULLETS.map(c=>`<option ${el.bchar===c?'selected':''}>${c}</option>`).join('')}</select>`:''}</div>`}
+  <div class="lhrow"><span class="lhl">${esc(t('lhPlace'))}</span>${[['tl','lhP_tl'],['tc','lhP_tc'],['tr','lhP_tr'],['bl','lhP_bl'],['bc','lhP_bc'],['br','lhP_br']].map(([k,l])=>`<button class="lhb s" data-act="lhpos" data-p="${k}">${esc(t(l))}</button>`).join('')}</div>
+  <div class="lhrow">${g?'':nb('x',t('lhX'),el.x)}${nb(g?'dy':'y',t('lhY'),g?el.dy:el.y)}${nb('w',t('lhW'),el.w)}</div>
+  <div class="lhrow"><span class="lhl">${esc(t('lhMove'))}</span><button class="lhb" data-act="lhmove" data-x="-2" data-y="0">←</button><button class="lhb" data-act="lhmove" data-x="2" data-y="0">→</button><button class="lhb" data-act="lhmove" data-x="0" data-y="-2">↑</button><button class="lhb" data-act="lhmove" data-x="0" data-y="2">↓</button></div>
+  ${LHS.st.guides.length?`<div class="lhrow"><span class="lhl">${esc(t('lhAnchor'))}</span><select data-lhk="anchor"><option value="">${esc(t('lhNone'))}</option>${LHS.st.guides.map(x=>`<option value="${esc(x.id)}" ${el.anchor===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>
+    ${g&&g.kind==='box'?`<label class="lhchk"><input type="checkbox" data-lhk="vcenter" ${el.vcenter?'checked':''}> ${esc(t('lhVc'))}</label>`:''}</div>`:''}
+  ${el.key?'':`<div class="lhrow"><button class="lhb dng" data-act="lhdelline" data-id="${esc(el.id)}">${esc(t('del'))}</button></div>`}`;
+}
+function lhGuidesTab(){
+  const g = lhG();
+  const nb = (k,label,val) => `<label class="lhnum"><span>${esc(label)}</span><input type="number" inputmode="numeric" data-lhk="g.${k}" value="${Math.round(val)}"></label>`;
+  return `<p class="lhhint">${esc(t('lhGuideHint'))}</p>
+  <div class="lhrow"><button class="lhb" data-act="lhaddguide" data-k="line">＋ ${esc(t('lhGLine'))}</button><button class="lhb" data-act="lhaddguide" data-k="box">＋ ${esc(t('lhGBox'))}</button></div>
+  ${LHS.st.guides.map(x=>`<div class="lhli${LHS.selG===x.id?' sel':''}"><button class="nm" data-act="lhgsel" data-id="${esc(x.id)}">${esc(x.name)}<small>${x.kind==='box'?esc(t('lhGBox')):esc(t('lhGLine'))}</small></button><button class="x" data-act="lhgdel" data-id="${esc(x.id)}" aria-label="${esc(t('del'))}">✕</button></div>`).join('')}
+  ${g?`<div class="lhrow">${nb('x','X',g.x)}${nb('y','Y',g.y)}${g.kind==='box'?nb('w','W',g.w):''}${nb('h','H',g.h)}</div>`:''}`;
+}
+function lhStyleTab(){
+  const st = LHS.st, nb = (k,label,val) => `<label class="lhnum"><span>${esc(label)}</span><input type="number" inputmode="numeric" data-lhk="${k}" value="${Math.round(val)}"></label>`;
+  return `<div class="lhsub">${esc(t('lhPalette'))}</div><div class="lhrow">${LH_PAL.map((p,i)=>`<button class="lhpal" data-act="lhpal" data-i="${i}" title="${esc(p[0])}" style="background:linear-gradient(90deg,${p[1]} 50%,${p[2]} 50%)"></button>`).join('')}</div>
+  <div class="lhrow"><label class="lhnum"><span>${esc(t('lhC1'))}</span><input type="color" data-lhk="c1" value="${esc(st.colors.c1)}"></label><label class="lhnum"><span>${esc(t('lhC2'))}</span><input type="color" data-lhk="c2" value="${esc(st.colors.c2)}"></label><label class="lhnum"><span>${esc(t('lhBg'))}</span><input type="color" data-lhk="bg" value="${esc(st.bg||'#ffffff')}"></label></div>
+  <label class="fld"><span>${esc(t('lhFont'))}</span><select data-lhk="font">${LH_FONTS.map(f=>`<option value="${esc(f[0])}" ${st.font===f[0]?'selected':''}>${esc(f[1])}</option>`).join('')}</select></label>
+  <div class="lhsub">${esc(t('lhBodyArea'))}</div><p class="lhhint">${esc(t('lhBodyHint'))}</p>
+  <div class="lhrow">${nb('bodyTop',t('lhBodyStart'),st.bodyTop)}${nb('bodyBottom',t('lhBodyEnd'),st.bodyBottom)}</div>
+  <div class="lhrow"><label class="lhchk"><input type="checkbox" data-lhk="useDocs" ${st.useDocs?'checked':''}> ${esc(t('lhUseDocs'))}</label></div>`;
+}
+function renderLhPanel(){
+  const p = $('#lhpanel'); if (!p || !LHS) return;
+  const body = { design:lhDesignTab, lines:lhLinesTab, edit:lhEditTab, guides:lhGuidesTab, style:lhStyleTab }[LHS.tab]();
+  p.innerHTML = lhTabsHtml() + `<div class="lhbody2">${body}</div>`;
+}
+function lhTouch(){ LHS.dirty = true; lhRefreshCanvas(); }
+function lhCacheSet(id, data){ S.cache.settings = (S.cache.settings||[]).filter(x=>x.id!==id).concat([{ id, data }]); }
+async function lhSaveLib(){
+  try{ await backend.put(S.user, 'settings', 'lhs_lib', { data:LHS.lib }); lhCacheSet('lhs_lib', JSON.parse(JSON.stringify(LHS.lib))); }
+  catch(e){ console.error(e); toast(t('saveFail')); }
+}
+function lhNextId(prefix, arr){ let n = 1; while (arr.some(x=>x.id===prefix+n)) n++; return prefix+n; }
+function lhPos(el, p){
+  const st = LHS.st, ytop = 30, ybot = 1123 - st.bodyBottom + 14;
+  if (el.anchor){ el.anchor = ''; el.dy = 0; }
+  const row = p[0]==='t' ? ytop : ybot, c = p[1];
+  if (c==='l'){ el.x = 40; el.align = 'left'; el.w = Math.min(Math.max(el.w,200), 400); }
+  if (c==='c'){ el.x = 0; el.align = 'center'; el.w = 794; }
+  if (c==='r'){ el.w = Math.min(Math.max(el.w,200), 400); el.x = 754 - el.w; el.align = 'right'; }
+  el.y = row;
+}
+function lhAction(act, el){
+  if (!LHS) return;
+  const sel = lhEl(), g = lhG();
+  switch (act){
+    case 'lhtab': LHS.tab = el.dataset.t; return renderLhPanel();
+    case 'lhdesign': lhApplyDesign(LHS.st, el.dataset.id); LHS.st.bgImage = ''; LHS.dirty = true; lhRefreshCanvas(); renderLhPanel(); return toast(t('lhApplied'));
+    case 'lhblank': LHS.st.design = 'blank'; LHS.st.bgImage = ''; LHS.st.bodyTop = 165; LHS.st.bodyBottom = 105; LHS.dirty = true; lhRefreshCanvas(); return renderLhPanel();
+    case 'lhimage': return $('#lhfile').click();
+    case 'lhhide': LHS.lib.hidden = [...new Set([...(LHS.lib.hidden||[]), el.dataset.id])]; lhSaveLib(); return renderLhPanel();
+    case 'lhunhide': LHS.lib.hidden = (LHS.lib.hidden||[]).filter(x=>x!==el.dataset.id); lhSaveLib(); return renderLhPanel();
+    case 'lhshowhidden': LHS.showHidden = !LHS.showHidden; return renderLhPanel();
+    case 'lhmysave': {
+      const nm = (window.prompt(t('lhMyName'), t('lhMyDefault')+' '+(LHS.lib.my.length+1))||'').trim(); if (!nm) return;
+      LHS.lib.my.push({ id:lhNextId('m', LHS.lib.my), name:nm, state:JSON.parse(JSON.stringify(Object.assign({}, LHS.st, { guides:LHS.st.guides }))) });
+      lhSaveLib(); toast(t('saved')); return renderLhPanel();
+    }
+    case 'lhmyapply': { const m = LHS.lib.my.find(x=>x.id===el.dataset.id); if (!m) return; LHS.st = JSON.parse(JSON.stringify(m.state)); LHS.sel = null; LHS.selG = null; LHS.dirty = true; lhRefreshCanvas(); renderLhPanel(); return toast(t('lhApplied')); }
+    case 'lhmydel': if (!confirm(t('lhDelMine'))) return; LHS.lib.my = LHS.lib.my.filter(x=>x.id!==el.dataset.id); lhSaveLib(); return renderLhPanel();
+    case 'lhsel': LHS.sel = el.dataset.id; LHS.selG = null; LHS.tab = 'edit'; lhRefreshCanvas(); return renderLhPanel();
+    case 'lhaddline': {
+      const id = lhNextId('c', LHS.st.els);
+      LHS.st.els.push({ id, key:'', type:'text', text:t('lhNewLine'), on:true, x:40, y:Math.max(30, LHS.st.bodyTop-30), w:400, size:14, bold:false, italic:false, color:'k', align:'left', bullet:false, bchar:'•', anchor:'', dy:0, vcenter:false });
+      LHS.sel = id; LHS.selG = null; LHS.tab = 'edit'; lhTouch(); return renderLhPanel();
+    }
+    case 'lhdelline': LHS.st.els = LHS.st.els.filter(x=>x.id!==el.dataset.id); if (LHS.sel===el.dataset.id) LHS.sel = null; lhTouch(); return renderLhPanel();
+    case 'lhtok': if (sel && sel.type==='text'){ sel.text += el.dataset.tok; lhTouch(); return renderLhPanel(); } return;
+    case 'lhsize': if (sel){ sel.size = Math.max(6, Math.min(120, (+sel.size||14) + (+el.dataset.d))); lhTouch(); return renderLhPanel(); } return;
+    case 'lhbold': if (sel){ sel.bold = !sel.bold; lhTouch(); return renderLhPanel(); } return;
+    case 'lhital': if (sel){ sel.italic = !sel.italic; lhTouch(); return renderLhPanel(); } return;
+    case 'lhcolor': if (sel){ sel.color = el.dataset.c; lhTouch(); return renderLhPanel(); } return;
+    case 'lhalign': if (sel){ sel.align = el.dataset.a; lhTouch(); return renderLhPanel(); } return;
+    case 'lhpos': if (sel){ lhPos(sel, el.dataset.p); lhTouch(); return renderLhPanel(); } return;
+    case 'lhmove': if (sel){ if (sel.anchor) sel.dy += +el.dataset.y; else { sel.x += +el.dataset.x; sel.y += +el.dataset.y; } lhTouch(); return renderLhPanel(); } return;
+    case 'lhaddguide': {
+      const box = el.dataset.k==='box', id = lhNextId('g', LHS.st.guides), n = LHS.st.guides.filter(x=>x.kind===el.dataset.k).length + 1;
+      LHS.st.guides.push(box ? { id, kind:'box', name:t('lhGBox')+' '+n, x:100, y:300, w:300, h:150 } : { id, kind:'line', name:t('lhGLine')+' '+n, x:397, y:200, w:0, h:400 });
+      LHS.selG = id; LHS.sel = null; LHS.tab = 'guides'; lhTouch(); return renderLhPanel();
+    }
+    case 'lhgsel': LHS.selG = el.dataset.id; LHS.sel = null; lhRefreshCanvas(); return renderLhPanel();
+    case 'lhgdel': LHS.st.guides = LHS.st.guides.filter(x=>x.id!==el.dataset.id); LHS.st.els.forEach(e=>{ if (e.anchor===el.dataset.id){ e.anchor = ''; } }); if (LHS.selG===el.dataset.id) LHS.selG = null; lhTouch(); return renderLhPanel();
+    case 'lhpal': { const p = LH_PAL[+el.dataset.i]; LHS.st.colors = { c1:p[1], c2:p[2] }; lhTouch(); return renderLhPanel(); }
+    case 'lhpreview': return lhPreview();
+    case 'lhprevclose': { const o = $('#lhprev'); if (o) o.remove(); return; }
+    case 'lhprint': return lhPrint();
+    case 'lhpdf': return lhExport('pdf');
+    case 'lhjpeg': return lhExport('jpeg');
+    case 'lhpng': return lhExport('png');
+    case 'lhsave': return lhSave(el);
+  }
+}
+function lhInput(e){
+  const k = e.target.dataset.lhk; if (!k || !LHS) return;
+  const isCb = e.target.type==='checkbox', v = isCb ? e.target.checked : e.target.value;
+  const num = () => { const n = parseFloat(v); return isFinite(n) ? n : 0; };
+  const el = lhEl(), g = lhG();
+  let redo = false;
+  if (k.startsWith('g.')){ if (g){ const f = k.slice(2); g[f] = Math.max(f==='w'||f==='h' ? 10 : 0, Math.round(num())); } }
+  else if (k==='c1' || k==='c2') LHS.st.colors[k] = v;
+  else if (k==='font') LHS.st.font = v;
+  else if (k==='bg') LHS.st.bg = v;
+  else if (k==='bodyTop' || k==='bodyBottom') LHS.st[k] = Math.max(0, Math.round(num()));
+  else if (k==='useDocs') LHS.st.useDocs = v;
+  else if (k==='on'){ const t0 = LHS.st.els.find(x=>x.id===e.target.dataset.id); if (t0) t0.on = v; }
+  else if (el){
+    if (k==='text') el.text = v;
+    else if (k==='size') el.size = Math.max(6, Math.min(120, num()||14));
+    else if (k==='x' || k==='y' || k==='w' || k==='dy') el[k] = Math.round(num());
+    else if (k==='colorx') el.color = v;
+    else if (k==='bullet'){ el.bullet = v; redo = true; }
+    else if (k==='bchar') el.bchar = v;
+    else if (k==='vcenter'){ el.vcenter = v; redo = true; }
+    else if (k==='anchor'){
+      const ng = LHS.st.guides.find(x=>x.id===v), old = el.anchor ? LHS.st.guides.find(x=>x.id===el.anchor) : null;
+      if (old && !ng){ el.y = old.y + el.dy; el.x = old.kind==='box' ? old.x : (el.align==='center' ? old.x - el.w/2 : (el.align==='right' ? old.x - el.w : old.x)); }
+      el.anchor = v; if (ng){ el.dy = Math.round(el.y - ng.y); if (ng.kind==='box'){ el.w = ng.w; } }
+      redo = true;
+    }
+  }
+  lhTouch();
+  if (redo || k==='on' || k==='useDocs') renderLhPanel();
+}
+/* drag on the page: move lines, move guides, resize guides */
+(function(){
+  let D = null, raf = 0;
+  document.addEventListener('pointerdown', e=>{
+    if (!LHS || currentRoute()!=='lhstudio') return;
+    const pg = $('#lhpg'); if (!pg || !pg.contains(e.target)) return;
+    const h = e.target.closest('[data-lhh]'), gE = e.target.closest('[data-lhg]'), eE = e.target.closest('[data-lhe]');
+    if (h){ const g = LHS.st.guides.find(x=>x.id===h.dataset.lhh); if (!g) return; LHS.selG = g.id; LHS.sel = null; D = { kind:'resize', g, x0:e.clientX, y0:e.clientY, w:g.w, h:g.h, moved:false }; }
+    else if (gE){ const g = LHS.st.guides.find(x=>x.id===gE.dataset.lhg); if (!g) return; LHS.selG = g.id; LHS.sel = null; D = { kind:'gmove', g, x0:e.clientX, y0:e.clientY, x:g.x, y:g.y, moved:false }; }
+    else if (eE){ const el = LHS.st.els.find(x=>x.id===eE.dataset.lhe); if (!el) return; LHS.sel = el.id; LHS.selG = null; D = { kind:'emove', el, x0:e.clientX, y0:e.clientY, x:el.x, y:el.y, dy:el.dy, moved:false }; }
+    else { LHS.sel = null; LHS.selG = null; lhRefreshCanvas(); renderLhPanel(); return; }
+    e.preventDefault(); lhRefreshCanvas();
+  });
+  document.addEventListener('pointermove', e=>{
+    if (!D || !LHS) return;
+    const s = LHS.scale || 1, dx = (e.clientX - D.x0) / s, dy = (e.clientY - D.y0) / s;
+    if (Math.abs(dx) + Math.abs(dy) > 3) D.moved = true;
+    if (!D.moved) return;
+    if (D.kind==='emove'){ if (D.el.anchor) D.el.dy = Math.round(D.dy + dy); else { D.el.x = Math.round(D.x + dx); D.el.y = Math.round(D.y + dy); } }
+    else if (D.kind==='gmove'){ D.g.x = Math.max(0, Math.round(D.x + dx)); D.g.y = Math.max(0, Math.round(D.y + dy)); }
+    else { D.g.h = Math.max(10, Math.round(D.h + dy)); if (D.g.kind==='box') D.g.w = Math.max(10, Math.round(D.w + dx)); }
+    LHS.dirty = true;
+    if (!raf) raf = requestAnimationFrame(()=>{ raf = 0; lhRefreshCanvas(); });
+  });
+  const end = ()=>{
+    if (!D || !LHS) return;
+    const d = D; D = null;
+    if (d.kind==='emove') LHS.tab = 'edit'; else LHS.tab = 'guides';
+    lhRefreshCanvas(); renderLhPanel();
+  };
+  document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
+})();
+/* ---------- preview, export, print, save ---------- */
+function lhFileName(ext){ const b = biz(); return 'Letterhead-' + String(b.short||b.name||'firm').replace(/[^\w-]+/g,'_') + '.' + ext; }
+function lhPreview(){
+  const old = $('#lhprev'); if (old) old.remove();
+  const ov = document.createElement('div'); ov.id = 'lhprev'; ov.className = 'lhprev';
+  const btn = (a,l) => `<button data-act="${a}">${l}</button>`;
+  ov.innerHTML = `<div class="lhpbar">${btn('lhprevclose','✕')}<b>${esc(t('lhPreview'))}</b><span class="sp"></span>${btn('lhprint',PRINT_ICON+' '+esc(t('printBtn')))}${btn('lhpdf','PDF')}${btn('lhjpeg','JPEG')}${btn('lhpng','PNG')}</div>
+    <div class="lhpbody" id="lhpbody"><div id="lhpv">${lhPageHtml(LHS.st,{edit:false,u:'v'})}</div></div>`;
+  document.body.appendChild(ov);
+  const body = $('#lhpbody'), s = Math.min(1.2, (body.clientWidth - 24) / 794), pv = $('#lhpv');
+  pv.style.cssText = `transform:scale(${s});transform-origin:top left;width:794px;height:1123px;margin:12px`;
+  body.style.minHeight = Math.round(1123 * s + 40) + 'px';
+}
+async function lhCanvas(st, scale){
+  await pdfLibs();
+  const holder = document.createElement('div');
+  holder.style.cssText = 'position:fixed;left:-12000px;top:0;width:794px;background:#fff;z-index:-1';
+  holder.innerHTML = lhPageHtml(st, { edit:false, u:'x' });
+  document.body.appendChild(holder);
+  try{
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    await Promise.all([...holder.querySelectorAll('img')].map(im => im.complete ? 0 : new Promise(r=>{ im.onload = im.onerror = r; })));
+    await new Promise(r=>setTimeout(r,200));
+    return await window.html2canvas(holder.firstElementChild, { scale, backgroundColor:'#ffffff', useCORS:true, logging:false });
+  } finally { holder.remove(); }
+}
+async function lhExport(kind){
+  toast(t('making'));
+  try{
+    const c = await lhCanvas(LHS.st, 2);
+    if (kind==='png' || kind==='jpeg'){
+      const blob = await new Promise(r=>c.toBlob(r, kind==='png' ? 'image/png' : 'image/jpeg', .93));
+      return downloadBlob(blob, lhFileName(kind==='png' ? 'png' : 'jpg'));
+    }
+    const pdf = new window.jspdf.jsPDF({ unit:'pt', format:'a4' });
+    pdf.addImage(c.toDataURL('image/jpeg', .93), 'JPEG', 0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight());
+    downloadBlob(pdf.output('blob'), lhFileName('pdf'));
+  }catch(e){ console.error(e); toast(t('pdfFail')); }
+}
+function lhPrint(){ return printHtml(lhPageHtml(LHS.st, { edit:false, u:'pr' }), lhFileName('x').replace(/\.x$/,'')); }
+async function lhImage(st){
+  for (const [sc,q] of [[1.6,.88],[1.4,.8],[1.2,.7],[1,.65]]){
+    const c = await lhCanvas(st, sc), d = c.toDataURL('image/jpeg', q);
+    if (d.length < 880000) return d;
+  }
+  throw new Error('letterhead too large');
+}
+async function lhSave(btn){
+  btn.disabled = true; toast(t('making'));
+  try{
+    const st = LHS.st, fid = LHS.fid;
+    await backend.put(S.user, 'settings', 'lhs_'+fid, { data:st });
+    lhCacheSet('lhs_'+fid, JSON.parse(JSON.stringify(st)));
+    if (st.useDocs){
+      const img = await lhImage(st);
+      await backend.put(S.user, 'settings', lhId(fid), { data:img }); lhCacheSet(lhId(fid), img);
+      await saveFirmData(fid, { template:{ useLh:true, lhTop:st.bodyTop, lhBottom:st.bodyBottom } });
+    } else await saveFirmData(fid, { template:{ useLh:false } });
+    LHS.dirty = false; toast(t('lhSaved'));
+  }catch(e){ console.error(e); toast(t('saveFail')); }
+  btn.disabled = false;
+}
+
 /* =====================================================================
    VIEW: settings
    ===================================================================== */
@@ -2132,9 +2591,10 @@ function viewSettings(){
     <button class="srow" data-act="firms"><span>${esc(t('firmsRow'))} <span class="muted">· ${firmIds().length}</span></span>${I.chev()}</button>
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${firmIds().length>1?' <span class="muted">· '+esc(firmName(S.activeFirm))+'</span>':''}${I.chev()}</button>
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
+    <button class="srow" data-act="openlhs">${esc(t('lhRow'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.6 (Multi-firm)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.7 (Letterhead Studio)</div>
   </div>`;
 }
 
@@ -2159,10 +2619,12 @@ document.addEventListener('click', async e=>{
     if (to.startsWith('wizard:')){ startWizard({step:+to.split(':')[1]}); return go('wizard'); }
     return;
   }
+  if (el.dataset.act && /^lh/.test(el.dataset.act)) return lhAction(el.dataset.act, el);
   switch (el.dataset.act){
     case 'signin': return doSignIn(el);
     case 'chlang': { LS.del('qm_lang'); LANG=null; return viewLang(true); }
-    case 'back': return goBack();
+    case 'openlhs': return go('lhstudio');
+    case 'back': if (LHS && LHS.dirty && currentRoute()==='lhstudio' && !confirm(t('lhDiscard'))) return; return goBack();
     case 'wznext': return wzNext();
     case 'gstportal': return gstPortal();
     case 'wzback': return wzGo(WZ.step-1);
@@ -2208,6 +2670,7 @@ document.addEventListener('click', async e=>{
   }
 });
 document.addEventListener('input', e=>{
+  if (e.target.dataset && e.target.dataset.lhk && e.target.type!=='checkbox' && e.target.tagName!=='SELECT') return lhInput(e);
   const k = e.target.dataset && e.target.dataset.k;
   if (k && FM){ FM.d[k] = e.target.value; if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
   else if (k && WZ){ WZ.d[k] = e.target.value; }
@@ -2219,6 +2682,12 @@ document.addEventListener('input', e=>{
   if (k==='gstin' && (FM||WZ)) gstLookup(e.target); else if (k==='ifsc' && WZ) ifscLookup(e.target);
 });
 document.addEventListener('change', async e=>{
+  if (e.target.dataset && e.target.dataset.lhk && (e.target.type==='checkbox' || e.target.tagName==='SELECT')) return lhInput(e);
+  if (e.target.id==='lhfile' && e.target.files[0] && LHS){
+    try{ LHS.st.bgImage = await resizeImage(e.target.files[0], 1000, 1414, 'jpeg'); LHS.st.design = 'image'; LHS.st.bodyTop = 165; LHS.st.bodyBottom = 105; lhTouch(); renderLhPanel(); }
+    catch(err){ toast(t('badImage')); }
+    return;
+  }
   if (e.target.dataset && e.target.dataset.defon){
     const r = (S.cache.terms||[]).find(x=>x.id===e.target.dataset.defon);
     if (r){ r.defOn = !!e.target.checked; r.updatedAt = Date.now(); try{ await backend.put(S.user,'terms',r.id,r); }catch(err){ console.error(err); toast(t('saveFail')); } }
@@ -2259,8 +2728,8 @@ document.addEventListener('change', async e=>{
 /* swipe left / right: between the 4 setup sections, and between the Terms tabs */
 (function(){
   let x0=0,y0=0,on=false;
-  const active = () => !!WZ || (currentRoute()==='terms' && !$('#sheet'));
-  document.addEventListener('touchstart',e=>{ if(!active()||!e.touches[0]) return; if(e.target.closest('input,select,textarea,.btnrow,.tabs')) {on=false;return;} on=true; x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  const active = () => !!WZ || (currentRoute()==='terms' && !$('#sheet')) || (currentRoute()==='lhstudio' && !!LHS && !$('#lhprev'));
+  document.addEventListener('touchstart',e=>{ if(!active()||!e.touches[0]) return; if(e.target.closest('input,select,textarea,.btnrow,.tabs,.lhedit,.lhtabs,.tplbar')) {on=false;return;} on=true; x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
   document.addEventListener('touchend',e=>{
     if(!on||!active()||!e.changedTouches[0]) return; on=false;
     const dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
@@ -2270,6 +2739,9 @@ document.addEventListener('change', async e=>{
       else if (dx>0 && WZ.step>1) wzGo(WZ.step-1);
     } else if (currentRoute()==='terms'){
       setTab(TAB + (dx<0 ? 1 : -1));
+    } else if (currentRoute()==='lhstudio' && LHS){
+      const i = LH_TABS.indexOf(LHS.tab) + (dx<0 ? 1 : -1);
+      if (i>=0 && i<LH_TABS.length){ LHS.tab = LH_TABS[i]; renderLhPanel(); }
     }
   },{passive:true});
 })();
