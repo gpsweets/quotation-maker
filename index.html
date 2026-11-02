@@ -240,6 +240,8 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .firmrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:10px 0 0;padding:10px 14px;background:#f3f4f6;border-radius:12px}.firmrow small{color:#555;font-size:14px}.firmrow select,.firmrow b{font-size:16px;font-weight:700;background:transparent;border:0;color:inherit;max-width:60%;text-align:right}
 .fchips{display:flex;gap:8px;margin:0 0 10px}.fchips button{flex:1;padding:9px 10px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;font-size:15px;color:inherit;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fchips button.on{background:var(--dark);color:#fff;border-color:var(--dark)}
 .frow{display:flex;align-items:center;border-bottom:1px solid #eee}.frow .m{flex:1;text-align:left;padding:14px 16px;background:none;border:0;font-size:17px;color:inherit;cursor:pointer}.frow .m small{display:block;color:#666;font-size:14px;margin-top:2px}.frow .badge{font-size:12px;background:#dcfce7;color:#166534;border-radius:999px;padding:2px 8px;margin-left:6px}.frow .x{background:none;border:0;padding:12px;color:var(--err);cursor:pointer}
+.tick{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin:8px 0;background:#fff;border-radius:12px;border:1px solid #e5e7eb;cursor:pointer}.tick input{width:24px;height:24px;margin-top:1px;accent-color:var(--dark);flex:none}.tick span{flex:1;font-size:15.5px;white-space:pre-wrap;word-break:break-word;color:#222}.tick .ibt{flex:none}
+.term .df{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13.5px;color:#555}
 #printArea{display:none}
 @media print{@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
@@ -318,7 +320,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", tickDef:"Pre-ticked in new documents", termAddHint:"Add a term only for this document", saveTermLater:"Also save it for future documents", noTermsYet:"No saved terms yet. Add them in Terms.", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -395,7 +397,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", tickDef:"नए डॉक्यूमेंट में पहले से टिक", termAddHint:"सिर्फ़ इस डॉक्यूमेंट के लिए नियम जोड़ें", saveTermLater:"आगे के लिए भी सेव करें", noTermsYet:"अभी कोई नियम सेव नहीं है। Terms में जोड़ें।", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -1158,7 +1160,7 @@ async function viewTerms(){
   app.innerHTML = `${bar(t('termsT'),{back:true,right:`<button class="ibtn" data-act="addterm" aria-label="${esc(t('addTerm'))}"><span class="plus-sq">${I.plus(24)}</span></button>`})}
   <div class="shell">
     <div class="tabs" id="tabs">${TERM_TYPES.map((x,i)=>`<button class="tab ${i===TAB?'on':''}" data-tab="${i}">${esc(t(x[1]))}</button>`).join('')}</div>
-    <div class="items" style="padding-top:14px">${rows.length ? rows.map(r=>`<div class="term"><p>${esc(r.text)}</p><div class="acts"><button data-editterm="${esc(r.id)}" aria-label="Edit">${I.pencil(20)}</button><button data-delterm="${esc(r.id)}" aria-label="${esc(t('del'))}">${I.trash(20)}</button></div></div>`).join('') : `<div class="empty">${esc(t('noTerm'))}</div>`}</div>
+    <div class="items" style="padding-top:14px">${rows.length ? rows.map(r=>`<div class="term"><div style="flex:1"><p>${esc(r.text)}</p><label class="df"><label class="sw" style="transform:scale(.75);margin:-4px -6px -4px -8px"><input type="checkbox" data-defon="${esc(r.id)}" ${r.defOn===false?'':'checked'}><i></i></label>${esc(t('tickDef'))}</label></div><div class="acts"><button data-editterm="${esc(r.id)}" aria-label="Edit">${I.pencil(20)}</button><button data-delterm="${esc(r.id)}" aria-label="${esc(t('del'))}">${I.trash(20)}</button></div></div>`).join('') : `<div class="empty">${esc(t('noTerm'))}</div>`}</div>
   </div>`;
   const on = $('.tab.on'); if (on && on.scrollIntoView) on.scrollIntoView({inline:'center',block:'nearest'});
 }
@@ -1437,7 +1439,7 @@ function initQD0(mode, id, key){
   const fidFor = mode==='new' ? S.activeFirm : docFirm(base);
   const cnt = S.owner.counters && S.owner.counters[K.cnt];
   const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
-  const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
+  const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term && x.defOn!==false).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
   const mkNo = seq => ((S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def) + seq;
   if (kind==='receipt'){
     if (mode==='edit'){ QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.kind = kind; QD.oldAmount = +base.amount||0; QD.oldInvoiceId = base.invoiceId||''; }
@@ -1509,6 +1511,14 @@ async function viewQForm(mode, id){
   if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
   renderQForm();
 }
+function termsHtml(){
+  const type = DK[QD.kind||'quotation'].term;
+  const saved = (S.cache.terms||[]).filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+  const set = new Set(saved.map(x=>x.text));
+  const rows = saved.map(x=>`<label class="tick"><input type="checkbox" data-term="${esc(x.text)}" ${QD.terms.includes(x.text)?'checked':''}><span>${esc(x.text)}</span></label>`).join('');
+  const manual = QD.terms.map((x,i)=>[x,i]).filter(([x])=>!set.has(x)).map(([x,i])=>`<div class="tick"><input type="checkbox" checked disabled><span>${esc(x)}</span><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
+  return (rows || manual) ? `<div class="pad-x" style="padding:0 4px">${rows}${manual}</div>` : `<div class="muted" style="padding:6px 18px 10px;font-size:14.5px">${esc(t('noTermsYet'))}</div>`;
+}
 function qTotalText(){ return fmtMoney(QD.kind==='receipt' ? (parseFloat(QD.amount)||0) : calcQ(QD).total, qb().currency||'INR'); }
 function renderQForm(){
   if (QD.kind==='receipt') return renderRForm();
@@ -1521,7 +1531,6 @@ function renderQForm(){
     return `<div class="qcard" data-act="qitem" data-i="${i}"><div class="tx"><b>${esc(it.name)}</b><div class="sp"><small>${esc(nf(it.qty))}${it.unit?' '+esc(it.unit):''}${money?` × ${esc(fmtMoney(+it.rate||0,cur))}${+it.disc?' − '+nf(it.disc)+'%':''}`:''}</small>${money?`<small style="color:#222;font-weight:600">${esc(fmtMoney(amt,cur))}</small>`:''}</div></div><button class="ibt" data-act="qitemdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`;
   }).join('');
   const charges = QD.charges.map((c,i)=>`<div class="qcard" data-act="qchargeedit" data-i="${i}"><div class="tx"><b>${esc(c.label)}</b><small>${esc(fmtMoney(+c.amount||0,cur))}${c.taxable?' · GST '+nf(c.gst)+'%':''}</small></div><button class="ibt" data-act="qchargedel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
-  const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
   const K = DK[QD.kind||'quotation'], isInv = QD.kind==='invoice';
   const invBlock = !isInv ? '' : `${sec(t('secInv'),'qnone').replace('data-act="qnone"','style="cursor:default"').replace(/<span class="add">.*?<\/span>/,'')}<div class="qpay">
       <div class="r"><span>${esc(t('dueDate'))}</span><label class="qdate"><b id="dueTxt">${esc(fmtIso(QD.due, df)||'—')}</b><input type="date" data-qk="due" value="${esc(QD.due||'')}"></label></div>
@@ -1544,7 +1553,7 @@ function renderQForm(){
     </div>`}
     ${!K.money?'':sec(t('secCharges'),'qcharge')+charges}
     ${invBlock}
-    ${sec(t('secTerms'),'qterms')}${terms}
+    ${sec(t('secTerms'),'qterms')}${termsHtml()}
   </div>
   <div class="qbar">${K.money?`<div><small>${esc(t('amountDue'))}</small><b id="qTotal">${esc(qTotalText())}</b></div>`:'<div></div>'}<button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
   window.scrollTo(0, y);
@@ -1608,6 +1617,13 @@ function openItemSheet(i){
     <div class="btnrow" style="position:static;padding:8px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qitemsave" data-i="${i}">${esc(t('save'))}</button></div>`, 'tall');
 }
 function openTermsPicker(){
+  openSheet(`<h3>${esc(t('termAddHint'))}</h3>
+    <label class="fld"><span>${esc(t('termText'))}</span><textarea id="tpCustom" rows="4"></textarea></label>
+    <label class="chk-row"><span>${esc(t('saveTermLater'))}</span><input type="checkbox" id="tpSave"></label>
+    <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qtermadd">${esc(t('add'))}</button></div>`);
+  setTimeout(()=>{ const el=$('#tpCustom'); if (el) el.focus(); }, 80);
+}
+function openTermsPickerOld(){
   const saved = (S.cache.terms||[]).filter(x=>x.type===DK[QD.kind||'quotation'].term).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
   openSheet(`<h3>${esc(t('selTerms'))}</h3>
     <div class="scroll" id="tplist">${saved.length ? saved.map(x=>`<label class="tpick"><input type="checkbox" data-term="${esc(x.text)}" ${QD.terms.includes(x.text)?'checked':''}><span>${esc(x.text)}</span></label>`).join('') : `<div class="empty" style="padding:30px 10px">${esc(t('noTermsSaved'))}</div>`}
@@ -1621,7 +1637,6 @@ function renderRForm(){
   const y = window.scrollY, cur = qb().currency || 'INR', df = qb().dateFormat || 'dd/MM/yyyy', K = DK.receipt;
   const sec = (title, act) => `<button class="qsec" data-act="${act}"><span>${esc(title)}</span><span class="add">${I.plus(24)}</span></button>`;
   const cust = QD.customer ? `<div class="qcard" data-act="qcust"><div class="tx"><b>${esc(QD.customer.name)}</b>${QD.customer.company?`<small>${esc(QD.customer.company)}</small>`:''}${QD.customer.mobile?`<small>${esc(QD.customer.mobile)}</small>`:''}</div><button class="ibt" data-act="qcustdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
-  const terms = QD.terms.map((x,i)=>`<div class="qcard"><div class="tx"><small style="color:#222;font-size:15.5px;white-space:pre-wrap">${esc(x)}</small></div><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
   const inv = QD.invoiceId ? `<div class="qcard" data-act="rinv"><div class="tx"><b>${esc(QD.invoiceNo)}</b></div><button class="ibt" data-act="rinvdel" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>` : '';
   app.innerHTML = `${bar(t(QD.isNew?K.mk:K.ed),{back:true})}
   <div class="shell" style="padding-bottom:130px">
@@ -1638,7 +1653,7 @@ function renderRForm(){
       <div class="r"><span>${esc(t('rMode'))}</span><select data-qk="mode">${PAY_MODES.map(([k,l])=>`<option value="${k}" ${QD.mode===k?'selected':''}>${esc(t(l))}</option>`).join('')}</select></div>
       <div class="r"><span>${esc(t('rRef'))}</span><input class="qno" data-qk="ref" value="${esc(QD.ref)}" style="width:150px"></div>
     </div>
-    ${sec(t('secTerms'),'qterms')}${terms}
+    ${sec(t('secTerms'),'qterms')}${termsHtml()}
   </div>
   <div class="qbar"><div><small>${esc(t('rAmount'))}</small><b id="qTotal">${esc(qTotalText())}</b></div><button class="gen" data-act="qgenerate">${esc(t('generate'))}</button></div>`;
   window.scrollTo(0, y);
@@ -1685,7 +1700,7 @@ async function generateReceipt(btn){
     toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
   }catch(e){ console.error(e); toast(t('saveFail')); btn.disabled = false; }
 }
-function qAction(act, el){
+async function qAction(act, el){
   const i = +el.dataset.i;
   switch (act){
     case 'qcust': return openPicker('customers');
@@ -1727,6 +1742,17 @@ function qAction(act, el){
       closeSheet(); return renderQForm();
     }
     case 'qtermdel': QD.terms.splice(i,1); return renderQForm();
+    case 'qtermadd': {
+      const txt = (($('#tpCustom')||{}).value||'').trim();
+      if (txt){
+        if ($('#tpSave') && $('#tpSave').checked){
+          const rec = { id:uid(), type:DK[QD.kind||'quotation'].term, text:txt, createdAt:Date.now(), updatedAt:Date.now() };
+          try{ await backend.put(S.user,'terms',rec.id,rec); (S.cache.terms||(S.cache.terms=[])).push(rec); await syncCounts('terms'); }catch(e){ console.error(e); toast(t('saveFail')); }
+        }
+        if (!QD.terms.includes(txt)) QD.terms.push(txt);
+      }
+      closeSheet(); return renderQForm();
+    }
     case 'qgenerate': return QD.kind==='receipt' ? generateReceipt(el) : generateQuotation(el);
   }
 }
@@ -2193,6 +2219,19 @@ document.addEventListener('input', e=>{
   if (k==='gstin' && (FM||WZ)) gstLookup(e.target); else if (k==='ifsc' && WZ) ifscLookup(e.target);
 });
 document.addEventListener('change', async e=>{
+  if (e.target.dataset && e.target.dataset.defon){
+    const r = (S.cache.terms||[]).find(x=>x.id===e.target.dataset.defon);
+    if (r){ r.defOn = !!e.target.checked; r.updatedAt = Date.now(); try{ await backend.put(S.user,'terms',r.id,r); }catch(err){ console.error(err); toast(t('saveFail')); } }
+    return;
+  }
+  if (e.target.dataset && e.target.dataset.term!==undefined && QD && !e.target.closest('#sheet')){
+    const type = DK[QD.kind||'quotation'].term;
+    const saved = (S.cache.terms||[]).filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+    const set = new Set(saved.map(x=>x.text));
+    const ticked = new Set([...document.querySelectorAll('input[data-term]')].filter(x=>x.checked).map(x=>x.dataset.term));
+    QD.terms = [...saved.map(x=>x.text).filter(x=>ticked.has(x)), ...QD.terms.filter(x=>!set.has(x))];
+    return;
+  }
   if (e.target.dataset && e.target.dataset.fs){
     const k = e.target.dataset.fs, v = !!e.target.checked; S.owner[k] = v;
     try{ await backend.save(S.user, {[k]:v}); toast(t('saved')); }catch(err){ console.error(err); toast(t('saveFail')); }
