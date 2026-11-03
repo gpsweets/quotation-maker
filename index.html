@@ -337,7 +337,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", termsCommonHint:"Write a term once here. While making any document, tick the ones you need.", tsNum:"1.  2.  3.", tsTick:"✓  Tick", tsDot:"•  Dot", tsDash:"–  Dash", tsArrow:"➤  Arrow", tsStar:"★  Star", tsDiamond:"◆  Diamond", tsNone:"No mark", termStyleLbl:"Bullet style", tickDef:"Pre-ticked in new documents", termAddHint:"Add a term only for this document", saveTermLater:"Also save it for future documents", noTermsYet:"No saved terms yet. Add them in Terms.", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", termsCommonHint:"Write a term once here. While making any document, tick the ones you need.", tsNum:"1.  2.  3.", tsTick:"✓  Tick", tsDot:"•  Dot", tsDash:"–  Dash", tsArrow:"➤  Arrow", tsStar:"★  Star", tsDiamond:"◆  Diamond", tsNone:"No mark", termStyleLbl:"Bullet style", tickDef:"Pre-ticked in new documents", termAddHint:"Add a term only for this document", saveTermLater:"Also save it for future documents", noTermsYet:"No saved terms yet. Add them in Terms.", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (max 3 letters, e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -345,7 +345,7 @@ const T = {
     tplCols:"Column headings", tplColsHint:"Leave empty to use the normal name.", tplShowHsn:"Show HSN column (when products have HSN)", tplShowGst:"Show GST column",
     tplLetter:"Letterhead", tplLetterHint:"Your printed letterhead image. It is used as the page background and the firm name block at the top is hidden.", tplUseLetter:"Use letterhead",
     tplUpload:"Upload letterhead", tplChange:"Change letterhead", tplRemove:"Remove", tplTop:"Top space (px)", tplBottom:"Bottom space (px)",
-    tplNumber:"Quotation number", tplPrefix:"Prefix", tplNext:"First number for a customer", tplNextHint:"Every customer has their own numbering, shown as CustomerName-Prefix+Number. A new customer's first document gets this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
+    tplNumber:"Quotation number", tplPrefix:"Prefix (max 2 letters)", tplNext:"First number for a customer", tplNextHint:"Every customer has their own numbering, shown as FirmShort-CustomerShort-Prefix+Number (for example GP-RSG-QT3). A new customer's first document gets this number.", tplBadNext:"Enter a number 1 or more", tplHdrDate:"Date & currency",
     numUsed:"This quotation number is already used", needNo:"Enter a quotation number", moreTemplate:"Template & Numbering",
     editInvoice:"Edit Invoice", noInvoice:"You don't have any invoice yet", iDate:"Invoice Date", iNo:"Invoice No", iDetail:"Invoice Detail", delIAsk:"Delete this invoice? It cannot be undone.",
     secInv:"Payment", dueDate:"Due Date", payStatus:"Payment status", stUnpaid:"Unpaid", stPartial:"Partly paid", stPaid:"Paid", amtPaid:"Amount received", payBtn:"Payment",
@@ -414,7 +414,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", termsCommonHint:"शर्त यहाँ एक बार लिखें। कोई भी डॉक्यूमेंट बनाते समय जो चाहिए उन पर टिक करें।", tsNum:"1.  2.  3.", tsTick:"✓  टिक", tsDot:"•  बिंदु", tsDash:"–  डैश", tsArrow:"➤  तीर", tsStar:"★  तारा", tsDiamond:"◆  हीरा", tsNone:"कोई निशान नहीं", termStyleLbl:"बुलेट का प्रकार", tickDef:"नए डॉक्यूमेंट में पहले से टिक", termAddHint:"सिर्फ़ इस डॉक्यूमेंट के लिए नियम जोड़ें", saveTermLater:"आगे के लिए भी सेव करें", noTermsYet:"अभी कोई नियम सेव नहीं है। Terms में जोड़ें।", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", termsCommonHint:"शर्त यहाँ एक बार लिखें। कोई भी डॉक्यूमेंट बनाते समय जो चाहिए उन पर टिक करें।", tsNum:"1.  2.  3.", tsTick:"✓  टिक", tsDot:"•  बिंदु", tsDash:"–  डैश", tsArrow:"➤  तीर", tsStar:"★  तारा", tsDiamond:"◆  हीरा", tsNone:"कोई निशान नहीं", termStyleLbl:"बुलेट का प्रकार", tickDef:"नए डॉक्यूमेंट में पहले से टिक", termAddHint:"सिर्फ़ इस डॉक्यूमेंट के लिए नियम जोड़ें", saveTermLater:"आगे के लिए भी सेव करें", noTermsYet:"अभी कोई नियम सेव नहीं है। Terms में जोड़ें।", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (अधिकतम 3 अक्षर, जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -422,7 +422,7 @@ const T = {
     tplCols:"कॉलम के नाम", tplColsHint:"खाली छोड़ेंगे तो सामान्य नाम रहेगा।", tplShowHsn:"HSN कॉलम दिखाएँ (जब प्रोडक्ट में HSN हो)", tplShowGst:"GST कॉलम दिखाएँ",
     tplLetter:"लेटरहेड", tplLetterHint:"आपके छपे लेटरहेड की इमेज। यह पेज के पीछे लगेगी और ऊपर का फ़र्म नाम वाला हिस्सा छिप जाएगा।", tplUseLetter:"लेटरहेड इस्तेमाल करें",
     tplUpload:"लेटरहेड अपलोड करें", tplChange:"लेटरहेड बदलें", tplRemove:"हटाएँ", tplTop:"ऊपर की खाली जगह (px)", tplBottom:"नीचे की खाली जगह (px)",
-    tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स)", tplNext:"ग्राहक का पहला नंबर", tplNextHint:"हर ग्राहक की अपनी अलग नंबरिंग होती है, जैसे ग्राहक-नाम-प्रिफ़िक्स+नंबर। नए ग्राहक का पहला दस्तावेज़ यही नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
+    tplNumber:"कोटेशन नंबर", tplPrefix:"शुरुआती अक्षर (प्रिफ़िक्स, अधिकतम 2)", tplNext:"ग्राहक का पहला नंबर", tplNextHint:"हर ग्राहक की अपनी अलग नंबरिंग होती है, जैसे फर्म-शॉर्ट-ग्राहक-शॉर्ट-प्रिफ़िक्स+नंबर (उदाहरण GP-RSG-QT3)। नए ग्राहक का पहला दस्तावेज़ यही नंबर पाएगा।", tplBadNext:"1 या उससे बड़ा नंबर डालें", tplHdrDate:"तारीख़ व करेंसी",
     numUsed:"यह कोटेशन नंबर पहले से इस्तेमाल हो चुका है", needNo:"कोटेशन नंबर डालें", moreTemplate:"टेम्पलेट व नंबरिंग",
     editInvoice:"इनवॉइस बदलें", noInvoice:"अभी कोई इनवॉइस नहीं है", iDate:"इनवॉइस की तारीख़", iNo:"इनवॉइस नंबर", iDetail:"इनवॉइस विवरण", delIAsk:"यह इनवॉइस हटाएँ? यह वापस नहीं आएगा।",
     secInv:"भुगतान", dueDate:"देय तारीख़", payStatus:"भुगतान की स्थिति", stUnpaid:"बाक़ी", stPartial:"आंशिक भुगतान", stPaid:"भुगतान हो गया", amtPaid:"मिली हुई राशि", payBtn:"भुगतान",
@@ -589,6 +589,7 @@ function firmsInit(){
   Object.values(o.firms||{}).forEach(f=>{ if (f && f.id && !f.deleted) S.firms[f.id] = { id:f.id, business:f.business||{}, template:f.template||{}, starts:f.starts||{}, createdAt:f.createdAt||0 }; });
   S.activeFirm = S.firms[o.activeFirm] ? o.activeFirm : MAIN;
   applyActive();
+  fixFirmShorts();
 }
 async function saveFirmData(fid, parts, extra){
   const patch = Object.assign({}, extra||{}, { updatedAt: Date.now() });
@@ -604,15 +605,57 @@ async function setActiveFirm(id){
   S.activeFirm = id; applyActive(); S.listAll = false;
   try{ await backend.save(S.user, { activeFirm:id }); }catch(e){ console.error(e); }
 }
+const cleanShort = (v,n) => String(v||'').replace(/[^A-Za-z0-9]/g,'').toUpperCase().slice(0,n||3);
 function autoShort(name){
-  const w = String(name||'').replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
-  let sh = w.length>1 ? w.map(x=>x[0]).join('').slice(0,4) : (w[0]||'F').slice(0,3);
-  return sh.toUpperCase();
+  let w = String(name||'').replace(/[^A-Za-z0-9 ]/g,' ').trim().split(/\s+/).filter(Boolean);
+  const w2 = w.filter(x=>!/^(and|of|the|n|co|pvt|ltd)$/i.test(x)); if (w2.length) w = w2;
+  const sh = w.length>1 ? w.map(x=>x[0]).join('') : (w[0]||'F');
+  return cleanShort(sh,3) || 'F';
+}
+function pickShort(base, usedList){
+  const used = new Set([...usedList].map(x=>String(x||'').toLowerCase()));
+  base = cleanShort(base,3) || 'X';
+  let c = base, n = 2;
+  while (used.has(c.toLowerCase())){ const sfx = String(n++); c = base.slice(0, 3-sfx.length) + sfx; }
+  return c;
 }
 function uniqueShort(sh, skipId){
-  const used = new Set(firmIds().filter(id=>id!==skipId).map(id=>String(firmOf(id).business.short||'').toLowerCase()));
-  let c = sh, n = 2; while (used.has(c.toLowerCase())) c = sh + (n++);
-  return c;
+  return pickShort(sh, firmIds().filter(id=>id!==skipId).map(id=>firmOf(id).business.short||''));
+}
+/* firm short names: always 1-3 letters, made automatically and saved so they never change later */
+function fixFirmShorts(){
+  if (!S.user || S.access!=='ok') return;
+  firmIds().forEach(fid=>{
+    const b = firmOf(fid).business || {}, cur = String(b.short||'');
+    if (!b.name && !cur) return;
+    if (cur && cleanShort(cur,3)===cur) return;
+    const sh = uniqueShort(cur ? cleanShort(cur,3) : autoShort(b.name), fid);
+    firmOf(fid).business.short = sh;
+    saveFirmData(fid, { business:{ short:sh } }).catch(e=>console.error(e));
+  });
+}
+const cleanPre = v => String(v||'').replace(/[^A-Za-z]/g,'').toUpperCase().slice(0,2);
+const OLD_PRE = {'quote-':'QT','invoice-':'IN','po-':'PO','proforma-':'PF','dn-':'DN','receipt-':'RC'};
+function preOf(saved, K){
+  if (saved==null || saved==='') return cleanPre(K.def);
+  const old = OLD_PRE[String(saved).toLowerCase()];
+  return old || cleanPre(saved) || cleanPre(K.def);
+}
+function docPre(F, K){ return preOf(F && F.template && F.template[K.pre], K); }
+/* customer short names: made automatically (and saved) when missing */
+function suggestCustShort(name, skipId){
+  return pickShort(autoShort(name), (S.cache.customers||[]).filter(c=>c.id!==skipId).map(c=>c.short||''));
+}
+function custShortFor(c){
+  if (!c) return '';
+  const rec = (S.cache.customers||[]).find(x=>x.id===c.id);
+  if (rec){
+    if (rec.short && cleanShort(rec.short,3)===rec.short) return rec.short;
+    rec.short = suggestCustShort(rec.company||rec.name, rec.id);
+    if (S.user) backend.put(S.user, 'customers', rec.id, rec).catch(e=>console.error(e));
+    return rec.short;
+  }
+  return cleanShort(c.short,3) || autoShort(c.company||c.name);
 }
 function firmScope(col, rows, fid){
   const sep = col==='customers' ? S.owner.sepCust : col==='products' ? S.owner.sepProd : false;
@@ -832,7 +875,7 @@ function viewWizard(){
   if (s===1){
     body = `<h2 class="title">${esc(t('s1Title'))}</h2><p class="sub">${esc(t('s1Sub'))}</p>
       ${fld('name',t('bizName'),{ac:'organization'})}<div id="e_name"></div>
-      ${fld('short',t('firmShort'),{max:8})}
+      ${fld('short',t('firmShort'),{max:3,up:true})}
       ${fld('contact',t('contactName'),{ac:'name'})}
       ${fld('email',t('email'),{type:'email',ac:'email'})}<div id="e_email"></div>
       ${fld('phone',t('phone'),{type:'tel',inputmode:'tel',ac:'tel'})}
@@ -902,8 +945,8 @@ async function wzNext(){
   d.gstin=d.gstin.toUpperCase(); d.pan=d.pan.toUpperCase(); d.ifsc=d.ifsc.toUpperCase();
   d.setupDone = true;
   const isNewFirm = !!WZ.newFirm, selfId = isNewFirm ? null : S.activeFirm;
-  d.short = String(d.short||'').replace(/[^A-Za-z0-9]/g,'').slice(0,8);
-  if (!d.short && (isNewFirm || firmIds().length>1)) d.short = uniqueShort(autoShort(d.name), selfId);
+  d.short = cleanShort(d.short,3);
+  if (!d.short) d.short = uniqueShort(autoShort(d.name), selfId);
   if (d.short && firmIds().some(id=>id!==selfId && String(firmOf(id).business.short||'').toLowerCase()===d.short.toLowerCase())){
     WZ.d.short = d.short; toast(t('shortUsed')); btn.disabled=false; wzGo(1); return;
   }
@@ -913,6 +956,7 @@ async function wzNext(){
       const patch = { firms:{ [fid]:{ id:fid, createdAt:now, business:d, template:{}, starts:{} } }, activeFirm:fid, language:LANG, updatedAt:now };
       const mainB = S.firms[MAIN].business;
       if (!String(mainB.short||'').trim()) patch.business = { short: uniqueShort(autoShort(mainB.name||'Main'), MAIN) };
+      d.short = d.short || uniqueShort(autoShort(d.name), null);
       await backend.save(S.user, patch);
       if (patch.business) S.firms[MAIN].business = Object.assign({}, mainB, patch.business);
       S.firms[fid] = { id:fid, createdAt:now, business:d, template:{}, starts:{} };
@@ -1040,7 +1084,7 @@ async function viewList(col){
 
 function formDefaults(kind){
   return kind==='customer'
-    ? {name:'',company:'',email:'',mobile:'',addr1:'',addr2:'',other:'',gstin:'',state:'',shipping:''}
+    ? {name:'',short:'',company:'',email:'',mobile:'',addr1:'',addr2:'',other:'',gstin:'',state:'',shipping:''}
     : {name:'',price:'',gst:'',description:'',unit:'',hsn:''};
 }
 async function viewForm(kind, id){
@@ -1050,6 +1094,10 @@ async function viewForm(kind, id){
   const rec = isNew ? null : (S.cache[col]||[]).find(x=>x.id===id);
   if (!isNew && !rec) return goReplace(col);
   FM = { kind, col, id: isNew ? uid() : id, isNew, d: Object.assign(formDefaults(kind), rec||{}) };
+  if (kind==='customer'){
+    FM.shortTouched = !!(rec && rec.short);
+    if (!FM.d.short && (FM.d.name||FM.d.company)) FM.d.short = suggestCustShort(FM.d.company||FM.d.name, FM.id);
+  }
   if (FM.d.price===0 || FM.d.price) FM.d.price = String(FM.d.price);
   if (FM.d.gst===0 || FM.d.gst) FM.d.gst = String(FM.d.gst);
   const canPick = kind==='customer' && !!(navigator.contacts && navigator.contacts.select);
@@ -1057,6 +1105,7 @@ async function viewForm(kind, id){
   if (kind==='customer'){
     body = `${fld('name',t('nameLbl'),{pick:canPick})}<div id="e_name"></div>
       ${fld('company',t('companyName'))}
+      ${fld('short',t('custShort'),{max:3,up:true})}<div id="e_short"></div>
       ${fld('email',t('email'),{type:'email'})}<div id="e_email"></div>
       ${fld('mobile',t('mobile'),{type:'tel',inputmode:'tel'})}
       ${fld('addr1',t('addr1'))}
@@ -1104,6 +1153,8 @@ async function saveForm(){
   if (FM.kind==='customer'){
     if (d.email && !/^\S+@\S+\.\S+$/.test(d.email)){ setErr('email', t('badEmail')); ok=false; }
     d.gstin = d.gstin.toUpperCase();
+    d.short = cleanShort(d.short,3) || suggestCustShort(d.company||d.name, FM.id);
+    if ((S.cache.customers||[]).some(c=>c.id!==FM.id && String(c.short||'').toLowerCase()===d.short.toLowerCase())){ setErr('short', t('custShortUsed')); ok=false; }
   } else {
     const p = parseFloat(String(d.price).replace(/,/g,''));
     if (!(p>=0)){ setErr('price', t('needPrice')); ok=false; } else d.price = p;
@@ -1297,12 +1348,12 @@ function calcQ(q){
 
 /* ---------- the printed document ---------- */
 const DK = {
-  quotation:{ col:'quotations', route:'quotation', list:'quotations', cnt:'quotation', pre:'qPrefix', def:'Quote-', mk:'makeQuotation', ed:'editQuotation', ln:'quotationList', empty:'noQuotation', date:'qDate', no:'qNo', det:'qDetail', del:'delQAsk', doc:'docQuotation', pdf:'Quotation-', wa:'waText', term:'quotation', dear:'dThanks', hope:'dHope', money:true, cust:'secCustomer', conv:['proforma','invoice','delivery'] },
-  invoice:{ col:'invoices', route:'invoice', list:'invoices', cnt:'invoice', pre:'iPrefix', def:'Invoice-', mk:'makeInvoice', ed:'editInvoice', ln:'invoiceList', empty:'noInvoice', date:'iDate', no:'iNo', det:'iDetail', del:'delIAsk', doc:'docInvoice', pdf:'Invoice-', wa:'waTextI', term:'invoice', dear:'dThanksI', hope:'dHopeI', money:true, cust:'secCustomer', conv:['receipt','delivery'] },
-  po:{ col:'purchaseorders', route:'po', list:'pos', cnt:'po', pre:'poPrefix', def:'PO-', mk:'makePO', ed:'editPO', ln:'poList', empty:'noPO', date:'poDate', no:'poNo', det:'poDetail', del:'delPAsk', doc:'docPO', pdf:'PO-', wa:'waDoc', term:'po', dear:'dThanksP', hope:'dHopeP', money:true, cust:'secSupplier', conv:[] },
-  proforma:{ col:'proformas', route:'proforma', list:'proformas', cnt:'proforma', pre:'pfPrefix', def:'Proforma-', mk:'makeProforma', ed:'editProforma', ln:'proformaList', empty:'noProforma', date:'pfDate', no:'pfNo', det:'pfDetail', del:'delPFAsk', doc:'docProforma', pdf:'Proforma-', wa:'waDoc', term:'proforma', dear:'dThanksPF', hope:'dHopePF', money:true, cust:'secCustomer', conv:['invoice','delivery'] },
-  delivery:{ col:'deliverynotes', route:'dn', list:'dns', cnt:'delivery', pre:'dnPrefix', def:'DN-', mk:'makeDN', ed:'editDN', ln:'dnList', empty:'noDN', date:'dnDate', no:'dnNo', det:'dnDetail', del:'delDNAsk', doc:'docDelivery', pdf:'DeliveryNote-', wa:'waDoc', term:'delivery', dear:'dThanksD', hope:'dHopeD', money:false, cust:'secCustomer', conv:[] },
-  receipt:{ col:'receipts', route:'receipt', list:'receipts', cnt:'receipt', pre:'rPrefix', def:'Receipt-', mk:'makeReceipt', ed:'editReceipt', ln:'receiptList', empty:'noReceipt', date:'rDate', no:'rNo', det:'rDetail', del:'delRAsk', doc:'docReceipt', pdf:'Receipt-', wa:'waDoc', term:'receipt', dear:'', hope:'', money:true, cust:'secCustomer', conv:[] }
+  quotation:{ col:'quotations', route:'quotation', list:'quotations', cnt:'quotation', pre:'qPrefix', def:'QT', mk:'makeQuotation', ed:'editQuotation', ln:'quotationList', empty:'noQuotation', date:'qDate', no:'qNo', det:'qDetail', del:'delQAsk', doc:'docQuotation', pdf:'Quotation-', wa:'waText', term:'quotation', dear:'dThanks', hope:'dHope', money:true, cust:'secCustomer', conv:['proforma','invoice','delivery'] },
+  invoice:{ col:'invoices', route:'invoice', list:'invoices', cnt:'invoice', pre:'iPrefix', def:'IN', mk:'makeInvoice', ed:'editInvoice', ln:'invoiceList', empty:'noInvoice', date:'iDate', no:'iNo', det:'iDetail', del:'delIAsk', doc:'docInvoice', pdf:'Invoice-', wa:'waTextI', term:'invoice', dear:'dThanksI', hope:'dHopeI', money:true, cust:'secCustomer', conv:['receipt','delivery'] },
+  po:{ col:'purchaseorders', route:'po', list:'pos', cnt:'po', pre:'poPrefix', def:'PO', mk:'makePO', ed:'editPO', ln:'poList', empty:'noPO', date:'poDate', no:'poNo', det:'poDetail', del:'delPAsk', doc:'docPO', pdf:'PO-', wa:'waDoc', term:'po', dear:'dThanksP', hope:'dHopeP', money:true, cust:'secSupplier', conv:[] },
+  proforma:{ col:'proformas', route:'proforma', list:'proformas', cnt:'proforma', pre:'pfPrefix', def:'PF', mk:'makeProforma', ed:'editProforma', ln:'proformaList', empty:'noProforma', date:'pfDate', no:'pfNo', det:'pfDetail', del:'delPFAsk', doc:'docProforma', pdf:'Proforma-', wa:'waDoc', term:'proforma', dear:'dThanksPF', hope:'dHopePF', money:true, cust:'secCustomer', conv:['invoice','delivery'] },
+  delivery:{ col:'deliverynotes', route:'dn', list:'dns', cnt:'delivery', pre:'dnPrefix', def:'DN', mk:'makeDN', ed:'editDN', ln:'dnList', empty:'noDN', date:'dnDate', no:'dnNo', det:'dnDetail', del:'delDNAsk', doc:'docDelivery', pdf:'DeliveryNote-', wa:'waDoc', term:'delivery', dear:'dThanksD', hope:'dHopeD', money:false, cust:'secCustomer', conv:[] },
+  receipt:{ col:'receipts', route:'receipt', list:'receipts', cnt:'receipt', pre:'rPrefix', def:'RC', mk:'makeReceipt', ed:'editReceipt', ln:'receiptList', empty:'noReceipt', date:'rDate', no:'rNo', det:'rDetail', del:'delRAsk', doc:'docReceipt', pdf:'Receipt-', wa:'waDoc', term:'receipt', dear:'', hope:'', money:true, cust:'secCustomer', conv:[] }
 };
 const EN1 = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'];
 const EN10 = ['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
@@ -1534,9 +1585,9 @@ function nextNo(kind, cust, fid){
   const same = cust ? list.filter(x=>x.customer && (x.customer.id && cust.id ? x.customer.id===cust.id : (x.customer.name||'')===(cust.name||''))) : [];
   const start = Math.max(1, parseInt(F.starts && F.starts[kind], 10) || 1);
   const seq = same.length ? Math.max(...same.map(x=>+x.seq||0)) + 1 : start;
-  const pre = (F.template && F.template[K.pre]!=null) ? F.template[K.pre] : K.def;
-  const nm = cust ? String(cust.company||cust.name||'').trim() : '';
-  const sh = String((F.business&&F.business.short)||'').trim();
+  const pre = docPre(F, K);
+  const nm = cust ? (cust.short && cleanShort(cust.short,3)===cust.short ? cust.short : custShortFor(cust)) : '';
+  const sh = cleanShort((F.business&&F.business.short)||'', 3);
   return { seq, no: [sh, nm, pre + seq].filter(Boolean).join('-') };
 }
 function applyAutoNo(){
@@ -1550,7 +1601,7 @@ function autoTax(){
   QD.taxType = (a && c && a !== c) ? 'igst' : 'cgst_sgst';
 }
 function setQCustomer(r){
-  QD.customer = { id:r.id, name:r.name, company:r.company||'', email:r.email||'', mobile:r.mobile||'', addr1:r.addr1||'', addr2:r.addr2||'', gstin:r.gstin||'', state:r.state||'' };
+  QD.customer = { id:r.id, short:custShortFor(r), name:r.name, company:r.company||'', email:r.email||'', mobile:r.mobile||'', addr1:r.addr1||'', addr2:r.addr2||'', gstin:r.gstin||'', state:r.state||'' };
   autoTax();
   applyAutoNo();
 }
@@ -2005,7 +2056,7 @@ async function qViewAction(act, el){
     case 'qshare': return sharePdf(q, false);
     case 'qwa': return window.open(whatsappLink(q), '_blank');
     case 'qmore':
-      return openSheet(`${K.conv.map(k=>`<button class="mrow2" data-act="qconv" data-k="${k}">${INV_ICON} ${esc(t(DK[k].mk))}</button>`).join('')}<button class="mrow2" data-act="qprint">${PRINT_ICON} ${esc(t('printBtn'))}</button><button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
+      return openSheet(`${K.conv.map(k=>`<button class="mrow2" data-act="qconv" data-k="${k}">${INV_ICON} ${esc(t(DK[k].mk))}</button>`).join('')}${kind!=='receipt'?`<button class="mrow2" data-act="qmulti">${SHARE_ICON} ${esc(t('multiSend'))}</button>`:''}<button class="mrow2" data-act="qmail">${SHARE_ICON} ${esc(t('emailBtn'))}</button><button class="mrow2" data-act="qprint">${PRINT_ICON} ${esc(t('printBtn'))}</button><button class="mrow2" data-act="qpdf">${I.cloud(24)} ${esc(t('downloadPdf'))}</button><button class="mrow2" data-act="qdelete" style="color:var(--err);border-bottom:0">${I.trash(24)} ${esc(t('del'))}</button>`);
     case 'qpdf': closeSheet(); return sharePdf(q, true);
     case 'qprint': closeSheet(); return printDoc(q);
     case 'qdelete': {
@@ -2021,6 +2072,92 @@ async function qViewAction(act, el){
     }
   }
 }
+
+
+/* =====================================================================
+   SEND ONE DOCUMENT TO MANY CUSTOMERS  +  EMAIL
+   ===================================================================== */
+Object.assign(T.en, { custShortUsed:"This short name is already used by another customer", custShort:"Short name (max 3 letters, used in document number)", multiSend:"Send to many customers", multiHint:"A separate copy with its own number is saved for every customer you tick.", multiAll:"Select all", multiGo:"Create copies", multiNone:"Tick at least one customer", multiDone:"copies saved. Send each one below.", multiNoCust:"No other customers saved yet.", emailBtn:"Email", mailCopied:"Customer's email copied. Paste it in the To box.", mOpen:"Open", mPdf:"PDF", mWa:"WhatsApp", mMail:"Email", multiBusy:"Making copies..." });
+Object.assign(T.hi, { custShortUsed:"यह छोटा नाम दूसरे ग्राहक में लग चुका है", custShort:"छोटा नाम (अधिकतम 3 अक्षर, डॉक्यूमेंट नंबर में लगेगा)", multiSend:"कई ग्राहकों को भेजें", multiHint:"जिन ग्राहकों पर टिक करेंगे, हर एक के लिए अपने अलग नंबर वाली अलग कॉपी सेव होगी।", multiAll:"सभी चुनें", multiGo:"कॉपी बनाएँ", multiNone:"कम से कम एक ग्राहक चुनें", multiDone:"कॉपी सेव हुईं। नीचे से हर एक को भेजें।", multiNoCust:"अभी कोई और ग्राहक सेव नहीं है।", emailBtn:"ईमेल", mailCopied:"ग्राहक का ईमेल कॉपी हो गया। To में पेस्ट कर दें।", mOpen:"खोलें", mPdf:"PDF", mWa:"WhatsApp", mMail:"ईमेल", multiBusy:"कॉपी बन रही हैं..." });
+
+const docMsg = q => { const K = DK[DK[q.kind]?q.kind:'quotation']; return t(K.wa,{doc:t(K.doc), no:q.no, firm:bizOf(q).name||'', amt:fmtMoney(q.total||0, bizOf(q).currency||'INR')}); };
+async function emailDoc(q){
+  const K = DK[DK[q.kind]?q.kind:'quotation'], to = String((q.customer&&q.customer.email)||'').trim();
+  const subject = `${t(K.doc)} ${q.no} - ${bizOf(q).name||''}`, body = docMsg(q);
+  if (to && navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(to).catch(()=>{}); }
+  toast(t('making'));
+  let blob; try{ blob = await makePdf(q); }catch(e){ console.error(e); return toast(t('pdfFail')); }
+  const name = pdfName(q), file = new File([blob], name, {type:'application/pdf'});
+  if (navigator.canShare && navigator.canShare({files:[file]})){
+    try{ await navigator.share({ files:[file], title:subject, text:body }); if (to) toast(t('mailCopied')); return; }
+    catch(e){ if (e && e.name==='AbortError') return; console.error(e); }
+  }
+  downloadBlob(blob, name);
+  location.href = `mailto:${encodeURIComponent(to).replace(/%40/g,'@')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+async function openMulti(q){
+  await ensure('customers');
+  const K = DK[q.kind||'quotation'];
+  const rows = firmScope('customers', S.cache.customers||[], docFirm(q)).filter(c=>!(q.customer && q.customer.id===c.id)).sort((a,b)=>String(a.company||a.name).localeCompare(String(b.company||b.name)));
+  closeSheet();
+  openSheet(`<h3>${esc(t('multiSend'))}</h3><p class="muted" style="margin:0 0 8px;font-size:14px">${esc(t('multiHint'))}</p>
+    ${rows.length ? `<label class="tpick"><input type="checkbox" id="mcAll"><span><b>${esc(t('multiAll'))}</b></span></label>
+    <div class="scroll" id="mclist">${rows.map(c=>`<label class="tpick"><input type="checkbox" data-mc="${esc(c.id)}"><span>${esc(c.company||c.name)}${c.company&&c.name?` <small class="muted">· ${esc(c.name)}</small>`:''}</span></label>`).join('')}</div>
+    <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn ghost" data-act="sheetclose" style="flex:.6">${esc(t('cancel'))}</button><button class="btn" data-act="qmgo">${esc(t('multiGo'))}</button></div>`
+    : `<div class="muted" style="padding:14px 4px">${esc(t('multiNoCust'))}</div>`}`, 'tall');
+}
+async function multiCreate(q, ids){
+  const K = DK[q.kind||'quotation'], F = docFirm(q), out = [];
+  const list = S.cache[K.col] || (S.cache[K.col] = []);
+  for (const id of ids){
+    const c = (S.cache.customers||[]).find(x=>x.id===id); if (!c) continue;
+    const snap = { id:c.id, short:custShortFor(c), name:c.name, company:c.company||'', email:c.email||'', mobile:c.mobile||'', addr1:c.addr1||'', addr2:c.addr2||'', gstin:c.gstin||'', state:c.state||'' };
+    const r = nextNo(q.kind||'quotation', snap, F);
+    const rec = JSON.parse(JSON.stringify(q));
+    rec.id = uid(); rec.customer = snap; rec.seq = r.seq; rec.no = r.no; rec.createdAt = Date.now(); rec.updatedAt = Date.now();
+    while (list.some(x=>String(x.no).toLowerCase()===rec.no.toLowerCase())){ rec.seq++; rec.no = rec.no.replace(/\d+$/, String(rec.seq)); }
+    delete rec.refNo; delete rec.refId;
+    if ((q.kind||'quotation')==='invoice'){ rec.payStatus = 'unpaid'; rec.paid = 0; }
+    const a = norm(bizOf(q).state), b = norm(snap.state);
+    if (rec.taxType && rec.taxType!=='none' && a && b) rec.taxType = a!==b ? 'igst' : 'cgst_sgst';
+    rec.total = calcQ(rec).total;
+    await backend.put(S.user, K.col, rec.id, rec);
+    list.push(rec); out.push(rec);
+  }
+  await syncCounts(K.col);
+  return out;
+}
+function multiResult(docs){
+  const K = DK[docs[0].kind||'quotation'];
+  openSheet(`<h3>${docs.length} ${esc(t('multiDone'))}</h3>
+    <div class="scroll">${docs.map(d=>`<div style="padding:10px 2px;border-bottom:1px solid #eee"><div style="margin-bottom:6px"><b>${esc(d.customer.company||d.customer.name)}</b><br><small class="muted">${esc(d.no)}</small></div>
+      <div class="btnrow" style="position:static;padding:0;gap:6px"><button class="btn ghost" style="padding:10px 6px;font-size:14px" data-act="qmwa" data-id="${esc(d.id)}">${esc(t('mWa'))}</button><button class="btn ghost" style="padding:10px 6px;font-size:14px" data-act="qmmail" data-id="${esc(d.id)}">${esc(t('mMail'))}</button><button class="btn ghost" style="padding:10px 6px;font-size:14px" data-act="qmpdf" data-id="${esc(d.id)}">${esc(t('mPdf'))}</button><button class="btn ghost" style="padding:10px 6px;font-size:14px" data-act="qmopen" data-id="${esc(d.id)}">${esc(t('mOpen'))}</button></div></div>`).join('')}</div>
+    <div class="btnrow" style="position:static;padding:10px 0 0"><button class="btn" data-act="sheetclose">${esc(t('done'))}</button></div>`, 'tall');
+}
+async function multiAction(act, el){
+  const q = curQuotation();
+  if (act==='qmulti'){ return q && openMulti(q); }
+  if (act==='qmail'){ closeSheet(); return q && emailDoc(q); }
+  if (act==='qmall'){ return; }
+  if (act==='qmgo'){
+    const ids = [...document.querySelectorAll('#sheet input[data-mc]')].filter(x=>x.checked).map(x=>x.dataset.mc);
+    if (!ids.length) return toast(t('multiNone'));
+    if (!q) return;
+    el.disabled = true; toast(t('multiBusy'));
+    try{ const docs = await multiCreate(q, ids); closeSheet(); if (docs.length) multiResult(docs); }
+    catch(e){ console.error(e); toast(t('saveFail')); el.disabled = false; }
+    return;
+  }
+  const find = id => { for (const k of DOC_KINDS){ const d = (S.cache[DK[k].col]||[]).find(x=>x.id===id); if (d){ if (!d.kind) d.kind = k; return d; } } return null; };
+  const d = find(el.dataset.id); if (!d) return;
+  if (act==='qmwa') return window.open(whatsappLink(d), '_blank');
+  if (act==='qmmail') return emailDoc(d);
+  if (act==='qmpdf') return sharePdf(d, false);
+  if (act==='qmopen'){ closeSheet(); return go(DK[d.kind].route+'/view/'+d.id); }
+}
+document.addEventListener('change', e=>{
+  if (e.target.id==='mcAll') document.querySelectorAll('#sheet input[data-mc]').forEach(x=>{ x.checked = e.target.checked; });
+});
 
 /* =====================================================================
    VIEW: profile score
@@ -2064,7 +2201,7 @@ async function viewTemplate(){
     await Promise.all(DOC_COLS.map(c=>ensure(c)));
     const nums = {};
     DOC_KINDS.forEach(k=>{ const K = DK[k];
-      nums[k] = { pre: t0[K.pre]!=null ? t0[K.pre] : K.def, next: Math.max(1, parseInt(S.owner.starts && S.owner.starts[k],10) || 1) }; });
+      nums[k] = { pre: preOf(t0[K.pre], K), next: Math.max(1, parseInt(S.owner.starts && S.owner.starts[k],10) || 1) }; });
     TP = { t:t0, lh:getLetterhead(), lhChanged:false, nums,
            dateFormat: biz().dateFormat || 'dd/MM/yyyy', currency: biz().currency || 'INR' };
   }
@@ -2096,7 +2233,7 @@ function renderTemplate(){
     <h3>${esc(t('tplNumber'))}</h3>
     <div class="hint">${esc(t('tplNextHint'))}</div>
     ${DOC_KINDS.map(k=>`<div class="gh" style="margin:10px 0 6px;font-size:16px">${esc(t(DK[k].doc))}</div>
-    <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="pre.${k}" value="${esc(TP.nums[k].pre)}"></label>
+    <label class="fld"><span>${esc(t('tplPrefix'))}</span><input data-tk="pre.${k}" value="${esc(TP.nums[k].pre)}" maxlength="2" style="text-transform:uppercase"></label>
     <label class="fld" id="next_${k}"><span>${esc(t('tplNext'))}</span><input data-tk="next.${k}" inputmode="numeric" value="${esc(TP.nums[k].next)}"></label>`).join('')}
     <h3>${esc(t('tplHdrDate'))}</h3>
     <label class="fld ico">${I.cal(30)}<div class="col"><span>${esc(t('dateFormat'))}</span><select data-tk="dateFormat">${DATE_FORMATS.map(f=>`<option value="${f}" ${TP.dateFormat===f?'selected':''}>${f} (${fmtDate(now,f)})</option>`).join('')}</select></div></label>
@@ -2110,7 +2247,7 @@ function onTplInput(e){
   const k = e.target.dataset.tk; if (!k || !TP) return;
   const isCb = e.target.type==='checkbox', v = isCb ? e.target.checked : e.target.value;
   if (k.startsWith('h.')) TP.t.h[k.slice(2)] = v;
-  else if (k.startsWith('pre.')) TP.nums[k.slice(4)].pre = v;
+  else if (k.startsWith('pre.')){ const c = cleanPre(v); if (e.target.value!==c) e.target.value = c; TP.nums[k.slice(4)].pre = c; }
   else if (k.startsWith('next.')) TP.nums[k.slice(5)].next = v;
   else if (k==='dateFormat' || k==='currency') TP[k] = v;
   else TP.t[k] = (k==='lhTop'||k==='lhBottom') ? (String(v).trim()===''?'':Math.max(0,parseInt(v,10)||0)) : v;
@@ -2129,7 +2266,7 @@ async function tplSave(btn){
     ['desc','hsn','qty','price','gst','total'].forEach(k=>h[k]=String(tp.h[k]||'').trim());
     const tpl = { color: tp.color||'#14213d', style: tp.style||'classic', h, showHsn: tp.showHsn!==false, showGst: tp.showGst!==false,
       useLh: !!(tp.useLh && TP.lh), lhTop: tp.lhTop===''||tp.lhTop==null ? 150 : +tp.lhTop, lhBottom: tp.lhBottom===''||tp.lhBottom==null ? 80 : +tp.lhBottom, };
-    DOC_KINDS.forEach(k=>{ tpl[DK[k].pre] = String(TP.nums[k].pre); });
+    DOC_KINDS.forEach(k=>{ tpl[DK[k].pre] = cleanPre(TP.nums[k].pre) || DK[k].def; });
     if (TP.lhChanged){
       if (TP.lh) await backend.put(S.user, 'settings', lhId(S.activeFirm), { data: TP.lh });
       else await backend.remove(S.user, 'settings', lhId(S.activeFirm));
@@ -2829,7 +2966,7 @@ function viewSettings(){
     <button class="srow" data-act="openlhs">${esc(t('lhRow'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 2.0 (Live letterhead preview)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 2.1 (Short names, send to many)</div>
   </div>`;
   refreshPending();
 }
@@ -2907,6 +3044,7 @@ document.addEventListener('click', async e=>{
     case 'dns': return go('dns');
     case 'receipts': return go('receipts');
     case 'invoices': return go('invoices');
+    case 'qmulti': case 'qmail': case 'qmgo': case 'qmwa': case 'qmmail': case 'qmpdf': case 'qmopen': return multiAction(el.dataset.act, el);
     case 'qdup': case 'qedit': case 'qinv': case 'qpay': case 'qpaysave': case 'qshare': case 'qwa': case 'qmore': case 'qpdf': case 'qprint': case 'qdelete': case 'qconv':
       return qViewAction(el.dataset.act, el);
     case 'logout': if (confirm(t('logoutAsk'))){ WZ=null; await backend.signOut(); } return;
@@ -2916,7 +3054,9 @@ document.addEventListener('click', async e=>{
 document.addEventListener('input', e=>{
   if (e.target.dataset && e.target.dataset.lhk && e.target.type!=='checkbox' && e.target.tagName!=='SELECT') return lhInput(e);
   const k = e.target.dataset && e.target.dataset.k;
-  if (k && FM){ FM.d[k] = e.target.value; if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
+  if (k && FM && FM.kind==='customer' && k==='short'){ e.target.value = cleanShort(e.target.value,3); FM.shortTouched = true; }
+  if (k && FM){ FM.d[k] = e.target.value;
+    if (FM.kind==='customer' && (k==='name' || k==='company') && !FM.shortTouched){ FM.d.short = suggestCustShort(FM.d.company||FM.d.name, FM.id); const si = $('[data-k=short]'); if (si) si.value = FM.d.short; } if (k==='description'){ const c=$('#cnt'); if (c) c.textContent = e.target.value.length+'/2000'; } }
   else if (k && WZ){ WZ.d[k] = e.target.value; }
   if (e.target.id==='q'){ const box=$('#items'); if (box) box.innerHTML = (e.target.dataset.col==='quotations'||e.target.dataset.col==='invoices') ? qItemsHtml(e.target.value, e.target.dataset.col==='invoices'?'invoice':'quotation') : itemsHtml(e.target.dataset.col, e.target.value); }
   if (e.target.id==='psearch'){ const box=$('#plist'); if (box) box.innerHTML = pickListHtml(e.target.dataset.kind, e.target.value); }
