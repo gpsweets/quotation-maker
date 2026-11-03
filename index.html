@@ -242,7 +242,7 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .frow{display:flex;align-items:center;border-bottom:1px solid #eee}.frow .m{flex:1;text-align:left;padding:14px 16px;background:none;border:0;font-size:17px;color:inherit;cursor:pointer}.frow .m small{display:block;color:#666;font-size:14px;margin-top:2px}.frow .badge{font-size:12px;background:#dcfce7;color:#166534;border-radius:999px;padding:2px 8px;margin-left:6px}.frow .x{background:none;border:0;padding:12px;color:var(--err);cursor:pointer}
 .tick{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin:8px 0;background:#fff;border-radius:12px;border:1px solid #e5e7eb;cursor:pointer}.tick input{width:24px;height:24px;margin-top:1px;accent-color:var(--dark);flex:none}.tick span{flex:1;font-size:15.5px;white-space:pre-wrap;word-break:break-word;color:#222}.tick .ibt{flex:none}
 .term .df{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:13.5px;color:#555}
-.lhshell{padding-bottom:90px}.lhlay{display:block}#lhwrap{position:relative;overflow:hidden;background:#e5e7eb;margin:8px 0}#lhpg{transform-origin:top left;width:794px;height:1123px}
+.lhshell{padding-bottom:90px}.lhlay{display:block}.lhstick{position:sticky;top:var(--lhtop,56px);z-index:15;background:#f1f5f9;padding:6px 0;border-bottom:1px solid #cbd5e1;box-shadow:0 3px 8px #0002}.lhzoom{position:absolute;right:8px;bottom:10px;z-index:3;background:#111c;color:#fff;border-radius:16px;padding:6px 12px;font-size:13px}#lhwrap{position:relative;overflow:hidden;background:#e5e7eb;margin:0 auto}#lhpg{transform-origin:top left;width:794px;height:1123px}
 .lhedit .lhe{cursor:move;touch-action:none;pointer-events:auto}.lhedit .lhe.lhsel{outline:2px dashed #2563eb;outline-offset:2px}
 .lhg{position:absolute;touch-action:none;cursor:move;z-index:5}.lhg .lbl{position:absolute;left:4px;top:2px;font:600 13px 'Noto Sans',sans-serif;color:#e11d48;background:#fff8;padding:0 4px;border-radius:4px}
 .lhbox{border:2px dashed #e11d48;background:rgba(225,29,72,.07)}.lhbox.on{background:rgba(225,29,72,.15)}.lhline b{position:absolute;left:12px;top:0;bottom:0;width:0;border-left:3px dashed #e11d48}.lhline.on b{border-left-color:#be123c}
@@ -258,7 +258,7 @@ p.sub{color:var(--muted);margin:0 0 18px}
 .lhgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}.lhcell{display:flex;flex-direction:column;gap:4px;content-visibility:auto;contain-intrinsic-size:260px}.lhcell.cur .lhtile{outline:3px solid var(--dark)}.lhtile{display:block;border:1px solid #d1d5db;border-radius:8px;overflow:hidden;background:#fff;padding:0;cursor:pointer}
 .lhthw{width:151px;height:213px;overflow:hidden;position:relative;margin:0 auto}.lhcell .cap{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:#444;gap:4px}.lhcell .cap span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lhcell .cap .x{background:none;border:0;color:#888;font-size:16px;padding:2px 6px}
 .lhprev{position:fixed;inset:0;background:#cfd4da;z-index:90;display:flex;flex-direction:column}.lhpbar{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#111;color:#fff;flex-wrap:wrap}.lhpbar .sp{flex:1}.lhpbar button{color:#fff;background:#333;border-radius:10px;padding:9px 12px;font-size:14px;display:inline-flex;gap:6px;align-items:center}.lhpbody{flex:1;overflow:auto}#lhpv{box-shadow:0 2px 14px #0005;background:#fff}
-@media(min-width:1000px){.lhshell{max-width:1180px}.lhlay{display:grid;grid-template-columns:minmax(0,800px) 1fr;gap:16px;align-items:start}.lhpanel{position:sticky;top:70px;max-height:calc(100vh - 150px);overflow:auto;margin:8px 0}}
+@media(min-width:1000px){.lhstick{position:static;background:none;border:0;box-shadow:none;padding:0}.lhzoom{display:none}.lhshell{max-width:1180px}.lhlay{display:grid;grid-template-columns:minmax(0,800px) 1fr;gap:16px;align-items:start}.lhpanel{position:sticky;top:70px;max-height:calc(100vh - 150px);overflow:auto;margin:8px 0}}
 #printArea{display:none}
 @media print{#printArea .lhpage{height:1122px!important}@page{size:A4;margin:0}html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto!important;overflow:visible!important}body.printing>*:not(#printArea){display:none!important}body.printing #printArea{display:block!important;width:794px;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.printing #printArea tr{break-inside:avoid;page-break-inside:avoid}}
 </style>
@@ -2177,7 +2177,7 @@ async function deleteFirm(id){
 
 const LHT = {
  en:{ lhTitle:"Letterhead Studio", lhPreview:"Preview", lhSave:"Save & use on documents", lhSaved:"Letterhead saved", lhBodyStart:"Document starts here", lhBodyEnd:"Document ends here",
-  lhT_design:"Designs", lhT_lines:"Lines", lhT_edit:"Edit", lhT_guides:"Guides", lhT_style:"Style", lhHide:"Remove from list", lhSaveMine:"Save my design", lhBlank:"Blank page", lhImage:"Add my design (image / PDF)", lhPdfFail:"Could not read this PDF. Save its first page as an image and add that.", lhImgBig:"This design is too large. Please use a smaller image.", lhOwnAdded:"Design added to My designs", lhFontSame:"Same as page font", lhFontHi:"Hindi fonts", lhFontEn:"English fonts", lhFontLine:"Font for this line", lhMine:"My designs", lhAll:"All designs", lhHidden:"Removed designs", lhRestore:"Bring back",
+  lhT_design:"Designs", lhT_lines:"Lines", lhT_edit:"Edit", lhT_guides:"Guides", lhT_style:"Style", lhHide:"Remove from list", lhSaveMine:"Save my design", lhBlank:"Blank page", lhImage:"Add my design (image / PDF)", lhPdfFail:"Could not read this PDF. Save its first page as an image and add that.", lhImgBig:"This design is too large. Please use a smaller image.", lhOwnAdded:"Design added to My designs", lhBigger:"🔍 Bigger", lhSmaller:"🔍 Smaller", lhFontSame:"Same as page font", lhFontHi:"Hindi fonts", lhFontEn:"English fonts", lhFontLine:"Font for this line", lhMine:"My designs", lhAll:"All designs", lhHidden:"Removed designs", lhRestore:"Bring back",
   lhLogo:"Logo", lhName:"Firm name", lhTagline:"Tagline", lhAddr:"Address", lhContact:"Phone & email", lhIds:"GSTIN & PAN", lhFoot:"Footer line", lhLine:"Line",
   lhLinesHint:"Switch a line on or off. Tap its name to edit it or move it. You can also drag any line on the page.", lhAddLine:"Add a line (website, FSSAI, licence...)", lhPickLine:"Tap a line on the page or in the Lines tab to edit it.",
   lhSize:"Size", lhColor:"Colour", lhAlign:"Align", lhA_left:"Left", lhA_center:"Center", lhA_right:"Right", lhBullet:"Bullet", lhPlace:"Place at", lhP_tl:"Top left", lhP_tc:"Top center", lhP_tr:"Top right", lhP_bl:"Bottom left", lhP_bc:"Bottom center", lhP_br:"Bottom right",
@@ -2186,7 +2186,7 @@ const LHT = {
   lhPalette:"Colours", lhC1:"Main", lhC2:"Accent", lhBg:"Page", lhFont:"Font", lhBodyArea:"Where the document body goes", lhBodyHint:"Quotation and invoice text will be placed between these two lines.", lhUseDocs:"Use this letterhead on my documents",
   lhApplied:"Design applied", lhMyName:"Name for your design", lhMyDefault:"My design", lhDelMine:"Delete this design?", lhNewLine:"New line", lhDiscard:"You have unsaved changes. Leave without saving?", lhRow:"Letterhead Studio", lhRowSub:"Design letterheads, print or save as PDF/JPEG/PNG" },
  hi:{ lhTitle:"लेटरहेड स्टूडियो", lhPreview:"प्रीव्यू", lhSave:"सेव करें और डॉक्यूमेंट में लगाएँ", lhSaved:"लेटरहेड सेव हो गया", lhBodyStart:"डॉक्यूमेंट यहाँ से शुरू", lhBodyEnd:"डॉक्यूमेंट यहाँ तक",
-  lhT_design:"डिज़ाइन", lhT_lines:"लाइनें", lhT_edit:"बदलें", lhT_guides:"गाइड", lhT_style:"स्टाइल", lhHide:"सूची से हटाएँ", lhSaveMine:"मेरा डिज़ाइन सेव करें", lhBlank:"खाली पेज", lhImage:"अपनी डिज़ाइन जोड़ें (इमेज / PDF)", lhPdfFail:"यह PDF नहीं पढ़ पाए। उसका पहला पन्ना इमेज बनाकर जोड़ें।", lhImgBig:"यह डिज़ाइन बहुत बड़ी है। छोटी इमेज लें।", lhOwnAdded:"डिज़ाइन आपकी डिज़ाइनों में जुड़ गई", lhFontSame:"पन्ने वाला फ़ॉन्ट", lhFontHi:"हिन्दी फ़ॉन्ट", lhFontEn:"अंग्रेज़ी फ़ॉन्ट", lhFontLine:"इस लाइन का फ़ॉन्ट", lhMine:"मेरे डिज़ाइन", lhAll:"सभी डिज़ाइन", lhHidden:"हटाए हुए डिज़ाइन", lhRestore:"वापस लाएँ",
+  lhT_design:"डिज़ाइन", lhT_lines:"लाइनें", lhT_edit:"बदलें", lhT_guides:"गाइड", lhT_style:"स्टाइल", lhHide:"सूची से हटाएँ", lhSaveMine:"मेरा डिज़ाइन सेव करें", lhBlank:"खाली पेज", lhImage:"अपनी डिज़ाइन जोड़ें (इमेज / PDF)", lhPdfFail:"यह PDF नहीं पढ़ पाए। उसका पहला पन्ना इमेज बनाकर जोड़ें।", lhImgBig:"यह डिज़ाइन बहुत बड़ी है। छोटी इमेज लें।", lhOwnAdded:"डिज़ाइन आपकी डिज़ाइनों में जुड़ गई", lhBigger:"🔍 बड़ा", lhSmaller:"🔍 छोटा", lhFontSame:"पन्ने वाला फ़ॉन्ट", lhFontHi:"हिन्दी फ़ॉन्ट", lhFontEn:"अंग्रेज़ी फ़ॉन्ट", lhFontLine:"इस लाइन का फ़ॉन्ट", lhMine:"मेरे डिज़ाइन", lhAll:"सभी डिज़ाइन", lhHidden:"हटाए हुए डिज़ाइन", lhRestore:"वापस लाएँ",
   lhLogo:"लोगो", lhName:"फर्म का नाम", lhTagline:"टैगलाइन", lhAddr:"पता", lhContact:"फ़ोन और ईमेल", lhIds:"GSTIN और PAN", lhFoot:"नीचे की लाइन", lhLine:"लाइन",
   lhLinesHint:"किसी लाइन को चालू या बंद करें। बदलने या हिलाने के लिए उसके नाम पर दबाएँ। पेज पर किसी भी लाइन को पकड़कर खिसका भी सकते हैं।", lhAddLine:"नई लाइन जोड़ें (वेबसाइट, FSSAI, लाइसेंस...)", lhPickLine:"बदलने के लिए पेज पर या लाइनें टैब में किसी लाइन को दबाएँ।",
   lhSize:"साइज़", lhColor:"रंग", lhAlign:"अलाइन", lhA_left:"बाएँ", lhA_center:"बीच में", lhA_right:"दाएँ", lhBullet:"बुलेट", lhPlace:"यहाँ रखें", lhP_tl:"ऊपर बाएँ", lhP_tc:"ऊपर बीच", lhP_tr:"ऊपर दाएँ", lhP_bl:"नीचे बाएँ", lhP_bc:"नीचे बीच", lhP_br:"नीचे दाएँ",
@@ -2468,10 +2468,16 @@ function lhPageHtml(st, o){
 let LHS = null;   // letterhead studio working copy
 const lhEl = () => LHS && LHS.sel ? LHS.st.els.find(x=>x.id===LHS.sel) : null;
 const lhG = () => LHS && LHS.selG ? LHS.st.guides.find(x=>x.id===LHS.selG) : null;
+let LH_VH = 0;
 function lhFit(){
-  const wrap = $('#lhwrap'), pg = $('#lhpg'); if (!wrap || !pg) return;
-  const s = Math.min(1, (wrap.clientWidth - 4) / 794); LHS.scale = s;
-  pg.style.transform = `scale(${s})`; wrap.style.height = Math.round(1123 * s) + 'px';
+  const wrap = $('#lhwrap'), pg = $('#lhpg'), st = $('#lhstick'); if (!wrap || !pg || !st) return;
+  LH_VH = Math.max(LH_VH, window.innerHeight);
+  const bar = $('.bar'); st.style.setProperty('--lhtop', (bar ? bar.offsetHeight : 56) + 'px');
+  const wide = window.innerWidth >= 1000;
+  let s = Math.min(1, (st.clientWidth - 4) / 794);
+  if (!wide) s = Math.min(s, (LH_VH * (LHS.big ? 0.6 : 0.4)) / 1123);
+  LHS.scale = s;
+  pg.style.transform = `scale(${s})`; wrap.style.height = Math.round(1123 * s) + 'px'; wrap.style.width = Math.round(794 * s) + 'px';
 }
 function lhRefreshCanvas(){
   const pg = $('#lhpg'); if (!pg || !LHS) return;
@@ -2487,7 +2493,7 @@ async function viewLhStudio(){
     if (!LHS.lib.my) LHS.lib.my = []; if (!LHS.lib.hidden) LHS.lib.hidden = [];
   }
   app.innerHTML = `${bar(t('lhTitle')+(firmIds().length>1?' · '+firmName(fid):''),{back:true})}
-  <div class="shell lhshell"><div class="lhlay"><div id="lhwrap"><div id="lhpg" class="lhedit"></div></div><div class="lhpanel" id="lhpanel"></div></div></div>
+  <div class="shell lhshell"><div class="lhlay"><div class="lhstick" id="lhstick"><div id="lhwrap"><div id="lhpg" class="lhedit"></div></div><button class="lhzoom" id="lhzoom" data-act="lhzoom">${esc(t(LHS.big?'lhSmaller':'lhBigger'))}</button></div><div class="lhpanel" id="lhpanel"></div></div></div>
   <div class="tplbar" style="display:flex;gap:10px"><button class="btn ghost" data-act="lhpreview" style="flex:1">${esc(t('lhPreview'))}</button><button class="btn" data-act="lhsave" style="flex:1.4">${esc(t('lhSave'))}</button></div>`;
   lhFit(); lhRefreshCanvas(); renderLhPanel();
 }
@@ -2616,6 +2622,7 @@ function lhAction(act, el){
     }
     case 'lhdelline': LHS.st.els = LHS.st.els.filter(x=>x.id!==el.dataset.id); if (LHS.sel===el.dataset.id) LHS.sel = null; lhTouch(); return renderLhPanel();
     case 'lhtok': if (sel && sel.type==='text'){ sel.text += el.dataset.tok; lhTouch(); return renderLhPanel(); } return;
+    case 'lhzoom': LHS.big = !LHS.big; { const b = $('#lhzoom'); if (b) b.textContent = t(LHS.big ? 'lhSmaller' : 'lhBigger'); } return lhFit();
     case 'lhsizeset': if (sel){ sel.size = +el.dataset.n; lhTouch(); return renderLhPanel(); } return;
     case 'lhsize': if (sel){ const cs = +sel.size||14, stp = (cs>=24 ? 2 : 1) * (+el.dataset.d); sel.size = Math.max(6, Math.min(120, cs + stp)); lhTouch(); return renderLhPanel(); } return;
     case 'lhbold': if (sel){ sel.bold = !sel.bold; lhTouch(); return renderLhPanel(); } return;
@@ -2822,7 +2829,7 @@ function viewSettings(){
     <button class="srow" data-act="openlhs">${esc(t('lhRow'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.9 (Common terms)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 2.0 (Live letterhead preview)</div>
   </div>`;
   refreshPending();
 }
