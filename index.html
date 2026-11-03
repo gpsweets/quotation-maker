@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif:wght@400;700&family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Cinzel:wght@400;700&family=Merriweather:wght@400;700&family=Pacifico&family=Tiro+Devanagari+Hindi&family=Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f3f3f3; --ink:#262626; --muted:#6b6b6b; --field:#f2f2f2; --line:#e3e3e3;
@@ -337,7 +337,7 @@ const T = {
     chargeTitle:"Other Charge Info", chargeLabel:"Other Charge Label", chargeAmount:"Other Charge Amount", isTaxable:"Is Taxable?", defCharge:"Other Charges",
     selTerms:"Select Terms and Conditions", done:"Done", customTerm:"Write a term for this quotation only", addBtn:"Add", noTermsSaved:"No saved terms for quotation.",
     needCustomer:"Please select a customer.", needProduct:"Please add at least one product.", searchQ:"Search by number, name or company", noQuotation:"You don't have any quotation yet",
-    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", tickDef:"Pre-ticked in new documents", termAddHint:"Add a term only for this document", saveTermLater:"Also save it for future documents", noTermsYet:"No saved terms yet. Add them in Terms.", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
+    qDetail:"Quotation Detail", editQuotation:"Edit Quotation", duplicate:"Duplicate", edit:"Edit", invoiceBtn:"Invoice", share:"Share", more:"More", downloadPdf:"Download PDF", printBtn:"Print", tsNum:"1.  2.  3.", tsTick:"✓  Tick", tsDot:"•  Dot", tsDash:"–  Dash", tsArrow:"➤  Arrow", tsStar:"★  Star", tsDiamond:"◆  Diamond", tsNone:"No mark", termStyleLbl:"Bullet style", tickDef:"Pre-ticked in new documents", termAddHint:"Add a term only for this document", saveTermLater:"Also save it for future documents", noTermsYet:"No saved terms yet. Add them in Terms.", firmLbl:"Firm", allFirms:"All firms", newFirm:"New Firm", addFirm:"+ Add new firm", firmsRow:"Firms", firmsT:"Firms", firmShort:"Short name for document numbers (e.g. GP)", shortUsed:"This short name is already used by another firm", firmHasDocs:"This firm has documents. Delete them first.", delFirmAsk:"Delete this firm? Its letterhead will be removed too.", sepCust:"Separate customers for each firm", sepCustH:"Off = every firm uses the same customer list", sepProd:"Separate products for each firm", sepProdH:"Off = every firm uses the same product list", firmActive:"Active", manageFirms:"Manage firms", firmUnnamed:"Firm", switchFirm:"Choose firm", gstOk:"GSTIN is valid", gstBad:"GSTIN looks wrong - please check", gstPortal:"Check on GST portal", gstCopied:"GSTIN copied. Fill the captcha on the portal, then copy name and address back here.", ifscOk:"Bank details filled", ifscNo:"IFSC not found - check the code", ifscOff:"No internet - fill bank details by hand", ifscWait:"Looking up bank...", bankBranch:"Branch", bankAddr:"Bank Address", gstState:"State", gstPan:"PAN",
     making:"Preparing PDF…", pdfFail:"Could not make the PDF. Please check internet and try again.", delQAsk:"Delete this quotation? It cannot be undone.",
     dTo:"To,", dDear:"Dear Sir/Mam,", dThanks:"Thank you for your valuable inquiry. We are pleased to quote as below", dHope:"We hope you find our offer to be in line with your requirement.",
     dDesc:"DESCRIPTION", dQty:"QTY", dPrice:"PRICE", dTotal:"TOTAL", dSub:"SUB TOTAL", dGrand:"GRAND TOTAL", dTerms:"TERMS & CONDITIONS:", dFor:"For,", dAuth:"AUTHORIZED SIGNATURE",
@@ -414,7 +414,7 @@ const T = {
     chargeTitle:"अन्य खर्च की जानकारी", chargeLabel:"खर्च का नाम", chargeAmount:"खर्च की राशि", isTaxable:"क्या इस पर टैक्स लगेगा?", defCharge:"अन्य खर्च",
     selTerms:"नियम व शर्तें चुनें", done:"हो गया", customTerm:"सिर्फ़ इस कोटेशन के लिए शर्त लिखें", addBtn:"जोड़ें", noTermsSaved:"कोटेशन के लिए कोई सेव शर्त नहीं है।",
     needCustomer:"कृपया ग्राहक चुनें।", needProduct:"कृपया कम से कम एक प्रोडक्ट जोड़ें।", searchQ:"नंबर, नाम या कंपनी से खोजें", noQuotation:"अभी कोई कोटेशन नहीं है",
-    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", tickDef:"नए डॉक्यूमेंट में पहले से टिक", termAddHint:"सिर्फ़ इस डॉक्यूमेंट के लिए नियम जोड़ें", saveTermLater:"आगे के लिए भी सेव करें", noTermsYet:"अभी कोई नियम सेव नहीं है। Terms में जोड़ें।", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
+    qDetail:"कोटेशन विवरण", editQuotation:"कोटेशन बदलें", duplicate:"कॉपी बनाएँ", edit:"बदलें", invoiceBtn:"इनवॉइस", share:"शेयर", more:"और", downloadPdf:"PDF डाउनलोड", printBtn:"प्रिंट", tsNum:"1.  2.  3.", tsTick:"✓  टिक", tsDot:"•  बिंदु", tsDash:"–  डैश", tsArrow:"➤  तीर", tsStar:"★  तारा", tsDiamond:"◆  हीरा", tsNone:"कोई निशान नहीं", termStyleLbl:"बुलेट का प्रकार", tickDef:"नए डॉक्यूमेंट में पहले से टिक", termAddHint:"सिर्फ़ इस डॉक्यूमेंट के लिए नियम जोड़ें", saveTermLater:"आगे के लिए भी सेव करें", noTermsYet:"अभी कोई नियम सेव नहीं है। Terms में जोड़ें।", firmLbl:"फर्म", allFirms:"सभी फर्म", newFirm:"नई फर्म", addFirm:"+ नई फर्म जोड़ें", firmsRow:"फर्में", firmsT:"फर्में", firmShort:"डॉक्यूमेंट नंबर के लिए छोटा नाम (जैसे GP)", shortUsed:"यह छोटा नाम दूसरी फर्म में लग चुका है", firmHasDocs:"इस फर्म के डॉक्यूमेंट हैं। पहले उन्हें हटाएँ।", delFirmAsk:"यह फर्म हटाएँ? इसका लेटरहेड भी हट जाएगा।", sepCust:"हर फर्म के अलग-अलग कस्टमर", sepCustH:"बंद = सभी फर्मों में एक ही कस्टमर सूची", sepProd:"हर फर्म के अलग-अलग प्रोडक्ट", sepProdH:"बंद = सभी फर्मों में एक ही प्रोडक्ट सूची", firmActive:"चालू", manageFirms:"फर्में सँभालें", firmUnnamed:"फर्म", switchFirm:"फर्म चुनें", gstOk:"GSTIN सही है", gstBad:"GSTIN गलत लग रहा है - जाँच लें", gstPortal:"GST पोर्टल पर देखें", gstCopied:"GSTIN कॉपी हो गया। पोर्टल पर कैप्चा भरें, फिर नाम और पता यहाँ कॉपी करें।", ifscOk:"बैंक की जानकारी भर गई", ifscNo:"IFSC नहीं मिला - कोड जाँच लें", ifscOff:"इंटरनेट नहीं है - बैंक की जानकारी खुद भरें", ifscWait:"बैंक खोज रहे हैं...", bankBranch:"ब्रांच", bankAddr:"बैंक का पता", gstState:"राज्य", gstPan:"PAN",
     making:"PDF बन रही है…", pdfFail:"PDF नहीं बन पाई। इंटरनेट जाँचकर फिर कोशिश करें।", delQAsk:"यह कोटेशन हटाएँ? यह वापस नहीं आएगा।",
     dTo:"प्रति,", dDear:"महोदय/महोदया,", dThanks:"आपकी पूछताछ के लिए धन्यवाद। हमें नीचे दिए अनुसार कोटेशन देते हुए खुशी है।", dHope:"हमें आशा है कि हमारा प्रस्ताव आपकी आवश्यकता के अनुरूप होगा।",
     dDesc:"विवरण", dQty:"मात्रा", dPrice:"दर", dTotal:"कुल", dSub:"उप-योग", dGrand:"कुल योग", dTerms:"नियम व शर्तें:", dFor:"की ओर से,", dAuth:"अधिकृत हस्ताक्षर",
@@ -502,6 +502,7 @@ async function makeBackend(){
     const listeners=[];
     const read = ()=>{ try{ return JSON.parse(LS.get('qm_demo_owner')||'null'); }catch(e){ return null; } };
     const cols = ()=>{ try{ return JSON.parse(LS.get('qm_demo_cols')||'{}'); }catch(e){ return {}; } };
+    const top = ()=>{ try{ return JSON.parse(LS.get('qm_demo_top')||'{}'); }catch(e){ return {}; } };
     backend = {
       demo:true,
       onAuth(cb){ listeners.push(cb); const u = LS.get('qm_demo_user'); setTimeout(()=>cb(u?JSON.parse(u):null),50); },
@@ -509,9 +510,13 @@ async function makeBackend(){
       async signOut(){ LS.del('qm_demo_user'); listeners.forEach(f=>f(null)); },
       async load(){ return read(); },
       async save(user, patch){ const cur=read()||{}; LS.set('qm_demo_owner', JSON.stringify(deepMerge(cur, patch))); },
-      async list(user, col){ return Object.values(cols()[col]||{}); },
+      async list(user, col){ const c=cols()[col]||{}; return Object.keys(c).map(k=>Object.assign({id:k}, c[k])); },
       async put(user, col, id, data){ const c=cols(); (c[col]=c[col]||{})[id]=data; LS.set('qm_demo_cols', JSON.stringify(c)); },
-      async remove(user, col, id){ const c=cols(); if (c[col]) delete c[col][id]; LS.set('qm_demo_cols', JSON.stringify(c)); }
+      async remove(user, col, id){ const c=cols(); if (c[col]) delete c[col][id]; LS.set('qm_demo_cols', JSON.stringify(c)); },
+      async tget(col,id){ const c=top(); return (c[col]||{})[id]||null; },
+      async tset(col,id,data){ const c=top(); (c[col]=c[col]||{}); c[col][id]=deepMerge(c[col][id]||{}, data); LS.set('qm_demo_top', JSON.stringify(c)); },
+      async tdel(col,id){ const c=top(); if (c[col]) delete c[col][id]; LS.set('qm_demo_top', JSON.stringify(c)); },
+      async tlist(col){ const c=top(); return Object.keys(c[col]||{}).map(k=>Object.assign({id:k}, c[col][k])); }
     };
     return;
   }
@@ -539,7 +544,11 @@ async function makeBackend(){
     async save(user, patch){ await Fs.setDoc(Fs.doc(db,'owners',user.uid), patch, {merge:true}); },
     async list(user, col){ const s = await Fs.getDocs(Fs.collection(db,'owners',user.uid,col)); return s.docs.map(d=>Object.assign({id:d.id}, d.data())); },
     async put(user, col, id, data){ await Fs.setDoc(Fs.doc(db,'owners',user.uid,col,id), data); },
-    async remove(user, col, id){ await Fs.deleteDoc(Fs.doc(db,'owners',user.uid,col,id)); }
+    async remove(user, col, id){ await Fs.deleteDoc(Fs.doc(db,'owners',user.uid,col,id)); },
+    async tget(col,id){ const d = await Fs.getDoc(Fs.doc(db,col,id)); return d.exists() ? Object.assign({id:d.id}, d.data()) : null; },
+    async tset(col,id,data){ await Fs.setDoc(Fs.doc(db,col,id), data, {merge:true}); },
+    async tdel(col,id){ await Fs.deleteDoc(Fs.doc(db,col,id)); },
+    async tlist(col){ const q = await Fs.getDocs(Fs.collection(db,col)); return q.docs.map(d=>Object.assign({id:d.id}, d.data())); }
   };
 }
 function deepMerge(a,b){
@@ -647,8 +656,10 @@ function currentRoute(){ return (location.hash||'').replace(/^#\/?/,'') || 'home
 function route(){
   if (!S.ready){ return; }
   window.scrollTo(0,0);
+  if (!(S.user && S.access!=='ok')) { clearInterval(AXPOLL); AXPOLL = null; }
   if (!LANG) return viewLang(true);
   if (!S.user) return viewLogin();
+  if (S.access!=='ok') return viewPending();
   const r = currentRoute();
   const setupDone = !!(biz().setupDone);
   if (!setupDone){ if (!WZ || !WZ.setup) startWizard({setup:true}); return viewWizard(); }
@@ -664,6 +675,7 @@ function route(){
   if (r==='products') return viewList('products');
   if (r.startsWith('customer/')) return viewForm('customer', r.split('/')[1]);
   if (r.startsWith('product/')) return viewForm('product', r.split('/')[1]);
+  if (r==='access' && isAdmin(S.user)) return viewAccess();
   if (r==='firms') return viewFirms();
   if (r==='lhstudio') return viewLhStudio();
   if (r==='terms') return viewTerms();
@@ -689,6 +701,7 @@ function goReplace(h){ location.replace('#'+h); }
 function bar(title, o={}){
   return `<div class="bar"><div class="bar-in">
     ${o.back ? `<button class="ibtn" data-act="back" aria-label="${esc(t('back'))}">${I.back()}</button>` : '<span class="pad"></span>'}
+    ${(o.back && currentRoute()!=='home' && S.access==='ok' && biz().setupDone) ? `<button class="ibtn" data-act="gohome" aria-label="${esc(t('homeBtn'))}">${I.home(24)}</button>` : ''}
     <h1>${esc(title)}</h1>${o.right||''}
   </div></div>${DEMO?`<div class="banner">${esc(t('demoBanner'))}</div>`:''}`;
 }
@@ -949,6 +962,7 @@ function viewHome(){
   <div class="shell">
     <div class="home-top"><div class="hello"><h1>${esc(t('welcome'))}</h1><button class="firmchip" data-act="firmsheet"><span>${esc(b.name||t('firmUnnamed'))}</span> ▾</button></div>
       <button class="gear" data-act="settings" aria-label="${esc(t('settings'))}">${I.gear(28)}</button></div>
+    <div id="pendBanner"></div>
     <div class="manage"><h3>${esc(t('manage'))}</h3>
       <div class="mrow">
         <button class="mbtn" data-act="bizinfo"><span class="sq">${I.building(34)}</span>${esc(t('business'))}</button>
@@ -972,6 +986,7 @@ function viewHome(){
       </div>
     </div>
   </div>`;
+  refreshPending();
 }
 
 /* =====================================================================
@@ -1328,6 +1343,17 @@ function termLines(list){
   });
   return out;
 }
+const TERM_STYLES = [['num','tsNum'],['tick','tsTick'],['dot','tsDot'],['dash','tsDash'],['arrow','tsArrow'],['star','tsStar'],['diamond','tsDiamond'],['none','tsNone']];
+const termMark = (style,i) => style==='num' ? (i+1)+'.' : ({tick:'✓',dot:'•',dash:'–',arrow:'➤',star:'★',diamond:'◆'}[style]||'');
+const stripNo = x => String(x).replace(/^\d{1,2}\s*[-–.)]\s*/,'').trim();
+function termClauses(text){ return termLines([text]).map(x=>x.n ? stripNo(x.t) : x.t).filter(Boolean); }
+function finishTerms(q, base, mode){
+  if (mode==='new' || !base){ q.termStyle = (S.owner.prefs && S.owner.prefs.termStyle) || 'num'; return; }
+  if (base.termStyle){ q.termStyle = base.termStyle; return; }
+  let numbered = false; const arr = [];
+  (q.terms||[]).forEach(txt=>{ termLines([txt]).forEach(x=>{ if (x.n) numbered = true; arr.push(x.n ? stripNo(x.t) : x.t); }); });
+  q.terms = arr.filter(Boolean); q.termStyle = numbered ? 'num' : 'dot';
+}
 function hexTint(h, a){ const m = /^#?([0-9a-f]{6})$/i.exec(h||''); if (!m) return 'rgba(20,33,61,'+a+')'; const n = parseInt(m[1],16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
 function getLetterhead(fid){ const d = (S.cache.settings||[]).find(x=>x.id===lhId(fid||S.activeFirm)); return d ? d.data : ''; }
 function docHtml(q, opt){
@@ -1426,6 +1452,7 @@ function docHtml(q, opt){
     .qd .bk{flex:none;width:262px;font-size:12.5px;line-height:1.5;word-break:break-word}
     .qd .bk h4{margin:22px 0 4px}
     .qd li.nb{list-style:none;margin-left:-18px}
+    .qd li.mk{list-style:none;margin-left:-18px;display:flex;gap:7px}.qd li.mk .m{flex:none;min-width:15px}
     .qd table.rc{width:100%;border-collapse:collapse;margin-top:10px}
     .qd table.rc td{padding:10px 8px;border-bottom:1px dotted #aaa;vertical-align:top}
     .qd table.rc td:first-child{width:36%;font-weight:600}
@@ -1441,7 +1468,7 @@ function docHtml(q, opt){
       ${custAddr.map(a=>`<div>${esc(a)}</div>`).join('')}${cu.state?`<div>${esc(cu.state)}</div>`:''}${cu.mobile?`<div>${esc(t('dPhone'))}: ${esc(cu.mobile)}</div>`:''}${cu.email?`<div>${esc(cu.email)}</div>`:''}${cu.gstin?`<div>GSTIN: ${esc(cu.gstin)}</div>`:''}</div>
       <table class="meta"><tr><td><b>${esc(t(K.no))}#</b></td><td>${esc(q.no)}</td></tr><tr><td><b>${esc(t('dDate'))}</b></td><td>${esc(fmtIso(q.date, df))}</td></tr>${kind==='invoice'&&q.due?`<tr><td><b>${esc(t('dDue'))}</b></td><td>${esc(fmtIso(q.due, df))}</td></tr>`:''}${q.refNo?`<tr><td><b>${esc(t('dRef'))}</b></td><td>${esc(q.refNo)}</td></tr>`:''}${q.other?`<tr><td colspan="2" style="padding-top:6px">${esc(q.other)}</td></tr>`:''}</table></div>
     ${mainBody}
-    ${(terms.length || (bank.length && !noMoney && !isRc)) ? `<div class="tb"><div class="tl">${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${termLines(terms).map(x=>`<li${x.n?' class="nb"':''}>${esc(x.t)}</li>`).join('')}</ul>`:''}</div>
+    ${(terms.length || (bank.length && !noMoney && !isRc)) ? `<div class="tb"><div class="tl">${terms.length?`<h4>${esc(t('dTerms'))}</h4><ul>${q.termStyle ? terms.map((x,i)=>`<li class="mk">${q.termStyle==='none'?'':`<span class="m">${esc(termMark(q.termStyle,i))}</span>`}<span>${esc(x)}</span></li>`).join('') : termLines(terms).map(x=>`<li${x.n?' class="nb"':''}>${esc(x.t)}</li>`).join('')}</ul>`:''}</div>
       ${bank.length && !noMoney && !isRc?`<div class="bk"><h4>${esc(t('dBank'))}:</h4>${bank.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`:''}</div>` : ''}
     ${noMoney?`<div class="recv"><div class="ln"></div>${esc(t('dRecvd'))}</div>`:''}
     <div class="sign"><b>${esc(t('dFor'))} ${esc(String(b.name||'').toUpperCase())}</b>${b.signature?`<img src="${esc(b.signature)}" alt="">`:'<div style="height:56px"></div>'}<div class="au">${esc(t('dAuth'))}</div></div>
@@ -1458,7 +1485,7 @@ function initQD0(mode, id, key){
   const fidFor = mode==='new' ? S.activeFirm : docFirm(base);
   const cnt = S.owner.counters && S.owner.counters[K.cnt];
   const maxSeq = (cnt!=null && cnt!=='') ? (+cnt||0) : Math.max(0, ...list.map(x=>x.seq||0));
-  const savedTerms = (S.cache.terms||[]).filter(x=>x.type===K.term && x.defOn!==false).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).map(x=>x.text);
+  const savedTerms = [...new Set((S.cache.terms||[]).filter(x=>x.type===K.term && x.defOn!==false).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).flatMap(x=>termClauses(x.text)))];
   const mkNo = seq => ((S.owner.template && S.owner.template[K.pre]!=null) ? S.owner.template[K.pre] : K.def) + seq;
   if (kind==='receipt'){
     if (mode==='edit'){ QD = JSON.parse(JSON.stringify(base)); QD.isNew = false; QD.kind = kind; QD.oldAmount = +base.amount||0; QD.oldInvoiceId = base.invoiceId||''; }
@@ -1470,6 +1497,7 @@ function initQD0(mode, id, key){
         QD.customer = base.customer; QD.invoiceId = base.id; QD.invoiceNo = base.no; QD.amount = bal>0 ? String(bal) : '';
       }
     }
+    finishTerms(QD, base, mode==='dup'||mode==='edit' ? mode : 'new');
     QD.firmId = fidFor; QD.key = key; return true;
   }
   if (mode==='edit'){
@@ -1486,6 +1514,7 @@ function initQD0(mode, id, key){
       if (mode==='from'){ QD.refNo = base.no; QD.refId = base.id; }
     }
   }
+  finishTerms(QD, base, mode==='dup'||mode==='edit' ? mode : 'new');
   QD.firmId = fidFor; QD.key = key;
   return true;
 }
@@ -1530,13 +1559,16 @@ async function viewQForm(mode, id){
   if (!QD || QD.key !== key){ if (!initQD(mode, id, key)) return; }
   renderQForm();
 }
-function termsHtml(){
+function savedClauses(){
   const type = DK[QD.kind||'quotation'].term;
-  const saved = (S.cache.terms||[]).filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
-  const set = new Set(saved.map(x=>x.text));
-  const rows = saved.map(x=>`<label class="tick"><input type="checkbox" data-term="${esc(x.text)}" ${QD.terms.includes(x.text)?'checked':''}><span>${esc(x.text)}</span></label>`).join('');
+  return [...new Set((S.cache.terms||[]).filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0)).flatMap(x=>termClauses(x.text)))];
+}
+function termsHtml(){
+  const saved = savedClauses(), set = new Set(saved);
+  const sel = `<div class="firmrow" style="margin:4px 4px 6px"><small>${esc(t('termStyleLbl'))}</small><select data-qk="termStyle">${TERM_STYLES.map(([k,l])=>`<option value="${k}" ${QD.termStyle===k?'selected':''}>${esc(t(l))}</option>`).join('')}</select></div>`;
+  const rows = saved.map(x=>`<label class="tick"><input type="checkbox" data-cl="${esc(x)}" ${QD.terms.includes(x)?'checked':''}><span>${esc(x)}</span></label>`).join('');
   const manual = QD.terms.map((x,i)=>[x,i]).filter(([x])=>!set.has(x)).map(([x,i])=>`<div class="tick"><input type="checkbox" checked disabled><span>${esc(x)}</span><button class="ibt" data-act="qtermdel" data-i="${i}" aria-label="${esc(t('del'))}">${I.trash(22)}</button></div>`).join('');
-  return (rows || manual) ? `<div class="pad-x" style="padding:0 4px">${rows}${manual}</div>` : `<div class="muted" style="padding:6px 18px 10px;font-size:14.5px">${esc(t('noTermsYet'))}</div>`;
+  return `<div class="pad-x" style="padding:0 4px">${sel}${(rows || manual) ? rows+manual : `<div class="muted" style="padding:6px 14px 10px;font-size:14.5px">${esc(t('noTermsYet'))}</div>`}</div>`;
 }
 function qTotalText(){ return fmtMoney(QD.kind==='receipt' ? (parseFloat(QD.amount)||0) : calcQ(QD).total, qb().currency||'INR'); }
 function renderQForm(){
@@ -1706,7 +1738,7 @@ async function generateReceipt(btn){
   if ((S.cache[K.col]||[]).some(x=>x.id!==QD.id && String(x.no).toLowerCase()===QD.no.toLowerCase())){ toast(t('numUsed')); return; }
   btn.disabled = true;
   const rec = { id:QD.id, kind:'receipt', firmId:docFirm(QD), no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, amount:amt, mode:QD.mode||'cash', ref:(QD.ref||'').trim(),
-    invoiceId:QD.invoiceId||'', invoiceNo:QD.invoiceNo||'', terms:QD.terms, total:amt, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
+    invoiceId:QD.invoiceId||'', invoiceNo:QD.invoiceNo||'', terms:QD.terms, termStyle:QD.termStyle||'num', total:amt, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
   try{
     if (!QD.isNew && QD.oldInvoiceId) await adjustInvoicePaid(QD.oldInvoiceId, -(QD.oldAmount||0));
     if (rec.invoiceId) await adjustInvoicePaid(rec.invoiceId, amt);
@@ -1768,7 +1800,7 @@ async function qAction(act, el){
           const rec = { id:uid(), type:DK[QD.kind||'quotation'].term, text:txt, createdAt:Date.now(), updatedAt:Date.now() };
           try{ await backend.put(S.user,'terms',rec.id,rec); (S.cache.terms||(S.cache.terms=[])).push(rec); await syncCounts('terms'); }catch(e){ console.error(e); toast(t('saveFail')); }
         }
-        if (!QD.terms.includes(txt)) QD.terms.push(txt);
+        termClauses(txt).forEach(c=>{ if (!QD.terms.includes(c)) QD.terms.push(c); });
       }
       closeSheet(); return renderQForm();
     }
@@ -1786,7 +1818,7 @@ async function generateQuotation(btn){
   if (isInv && QD.payStatus==='partial' && !(parseFloat(QD.paid)>0)){ toast(t('badPaid')); return; }
   btn.disabled = true;
   const rec = { id:QD.id, kind:QD.kind||'quotation', firmId:docFirm(QD), no:QD.no, seq:QD.seq, date:QD.date||isoToday(), other:(QD.other||'').trim(), customer:QD.customer, items:QD.items, charges:QD.charges,
-    terms:QD.terms, gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
+    terms:QD.terms, termStyle:QD.termStyle||'num', gstMode:QD.gstMode, taxType:QD.taxType, total:c.total, createdAt: QD.createdAt || Date.now(), updatedAt: Date.now() };
   if (isInv){ rec.due = QD.due||''; rec.payStatus = QD.payStatus||'unpaid'; rec.paid = rec.payStatus==='partial' ? (parseFloat(QD.paid)||0) : 0; }
   if (QD.refNo){ rec.refNo = QD.refNo; rec.refId = QD.refId||''; }
   try{
@@ -1795,7 +1827,8 @@ async function generateQuotation(btn){
     const k = list.findIndex(x=>x.id===rec.id);
     if (k>=0) list[k] = rec; else list.push(rec);
     S.owner.prefs = Object.assign({}, S.owner.prefs, {gstMode: rec.gstMode});
-    await backend.save(S.user, {prefs:{gstMode:rec.gstMode}});
+    S.owner.prefs.termStyle = rec.termStyle;
+    await backend.save(S.user, {prefs:{gstMode:rec.gstMode, termStyle:rec.termStyle}});
     await syncCounts(K.col);
     QD = null;
     toast(t('saved')); goReplace(K.route+'/view/'+rec.id);
@@ -2140,7 +2173,7 @@ async function deleteFirm(id){
 
 const LHT = {
  en:{ lhTitle:"Letterhead Studio", lhPreview:"Preview", lhSave:"Save & use on documents", lhSaved:"Letterhead saved", lhBodyStart:"Document starts here", lhBodyEnd:"Document ends here",
-  lhT_design:"Designs", lhT_lines:"Lines", lhT_edit:"Edit", lhT_guides:"Guides", lhT_style:"Style", lhHide:"Remove from list", lhSaveMine:"Save my design", lhBlank:"Blank page", lhImage:"My own image", lhMine:"My designs", lhAll:"All designs", lhHidden:"Removed designs", lhRestore:"Bring back",
+  lhT_design:"Designs", lhT_lines:"Lines", lhT_edit:"Edit", lhT_guides:"Guides", lhT_style:"Style", lhHide:"Remove from list", lhSaveMine:"Save my design", lhBlank:"Blank page", lhImage:"Add my design (image / PDF)", lhPdfFail:"Could not read this PDF. Save its first page as an image and add that.", lhImgBig:"This design is too large. Please use a smaller image.", lhOwnAdded:"Design added to My designs", lhFontSame:"Same as page font", lhFontHi:"Hindi fonts", lhFontEn:"English fonts", lhFontLine:"Font for this line", lhMine:"My designs", lhAll:"All designs", lhHidden:"Removed designs", lhRestore:"Bring back",
   lhLogo:"Logo", lhName:"Firm name", lhTagline:"Tagline", lhAddr:"Address", lhContact:"Phone & email", lhIds:"GSTIN & PAN", lhFoot:"Footer line", lhLine:"Line",
   lhLinesHint:"Switch a line on or off. Tap its name to edit it or move it. You can also drag any line on the page.", lhAddLine:"Add a line (website, FSSAI, licence...)", lhPickLine:"Tap a line on the page or in the Lines tab to edit it.",
   lhSize:"Size", lhColor:"Colour", lhAlign:"Align", lhA_left:"Left", lhA_center:"Center", lhA_right:"Right", lhBullet:"Bullet", lhPlace:"Place at", lhP_tl:"Top left", lhP_tc:"Top center", lhP_tr:"Top right", lhP_bl:"Bottom left", lhP_bc:"Bottom center", lhP_br:"Bottom right",
@@ -2149,7 +2182,7 @@ const LHT = {
   lhPalette:"Colours", lhC1:"Main", lhC2:"Accent", lhBg:"Page", lhFont:"Font", lhBodyArea:"Where the document body goes", lhBodyHint:"Quotation and invoice text will be placed between these two lines.", lhUseDocs:"Use this letterhead on my documents",
   lhApplied:"Design applied", lhMyName:"Name for your design", lhMyDefault:"My design", lhDelMine:"Delete this design?", lhNewLine:"New line", lhDiscard:"You have unsaved changes. Leave without saving?", lhRow:"Letterhead Studio", lhRowSub:"Design letterheads, print or save as PDF/JPEG/PNG" },
  hi:{ lhTitle:"लेटरहेड स्टूडियो", lhPreview:"प्रीव्यू", lhSave:"सेव करें और डॉक्यूमेंट में लगाएँ", lhSaved:"लेटरहेड सेव हो गया", lhBodyStart:"डॉक्यूमेंट यहाँ से शुरू", lhBodyEnd:"डॉक्यूमेंट यहाँ तक",
-  lhT_design:"डिज़ाइन", lhT_lines:"लाइनें", lhT_edit:"बदलें", lhT_guides:"गाइड", lhT_style:"स्टाइल", lhHide:"सूची से हटाएँ", lhSaveMine:"मेरा डिज़ाइन सेव करें", lhBlank:"खाली पेज", lhImage:"अपनी इमेज", lhMine:"मेरे डिज़ाइन", lhAll:"सभी डिज़ाइन", lhHidden:"हटाए हुए डिज़ाइन", lhRestore:"वापस लाएँ",
+  lhT_design:"डिज़ाइन", lhT_lines:"लाइनें", lhT_edit:"बदलें", lhT_guides:"गाइड", lhT_style:"स्टाइल", lhHide:"सूची से हटाएँ", lhSaveMine:"मेरा डिज़ाइन सेव करें", lhBlank:"खाली पेज", lhImage:"अपनी डिज़ाइन जोड़ें (इमेज / PDF)", lhPdfFail:"यह PDF नहीं पढ़ पाए। उसका पहला पन्ना इमेज बनाकर जोड़ें।", lhImgBig:"यह डिज़ाइन बहुत बड़ी है। छोटी इमेज लें।", lhOwnAdded:"डिज़ाइन आपकी डिज़ाइनों में जुड़ गई", lhFontSame:"पन्ने वाला फ़ॉन्ट", lhFontHi:"हिन्दी फ़ॉन्ट", lhFontEn:"अंग्रेज़ी फ़ॉन्ट", lhFontLine:"इस लाइन का फ़ॉन्ट", lhMine:"मेरे डिज़ाइन", lhAll:"सभी डिज़ाइन", lhHidden:"हटाए हुए डिज़ाइन", lhRestore:"वापस लाएँ",
   lhLogo:"लोगो", lhName:"फर्म का नाम", lhTagline:"टैगलाइन", lhAddr:"पता", lhContact:"फ़ोन और ईमेल", lhIds:"GSTIN और PAN", lhFoot:"नीचे की लाइन", lhLine:"लाइन",
   lhLinesHint:"किसी लाइन को चालू या बंद करें। बदलने या हिलाने के लिए उसके नाम पर दबाएँ। पेज पर किसी भी लाइन को पकड़कर खिसका भी सकते हैं।", lhAddLine:"नई लाइन जोड़ें (वेबसाइट, FSSAI, लाइसेंस...)", lhPickLine:"बदलने के लिए पेज पर या लाइनें टैब में किसी लाइन को दबाएँ।",
   lhSize:"साइज़", lhColor:"रंग", lhAlign:"अलाइन", lhA_left:"बाएँ", lhA_center:"बीच में", lhA_right:"दाएँ", lhBullet:"बुलेट", lhPlace:"यहाँ रखें", lhP_tl:"ऊपर बाएँ", lhP_tc:"ऊपर बीच", lhP_tr:"ऊपर दाएँ", lhP_bl:"नीचे बाएँ", lhP_bc:"नीचे बीच", lhP_br:"नीचे दाएँ",
@@ -2161,12 +2194,153 @@ const LHT = {
 Object.assign(T.en, LHT.en); Object.assign(T.hi, LHT.hi);
 
 /* =====================================================================
+   ACCESS CONTROL  (only the owner Gmail can approve other users)
+   ===================================================================== */
+const ADMINS = ['gaya.prasad.sweets@gmail.com'];
+const isAdmin = u => !!u && (ADMINS.includes(String(u.email||'').toLowerCase()) || (DEMO && LS.get('qm_demo_admin')==='1'));
+I.home = s=>ic('<path d="M3 11.5 12 4l9 7.5M5.5 10v10h4.5v-6h4v6h4.5V10"/>',s||24);
+const AXT = {
+  en:{ homeBtn:"Home", axTitle:"Access Requests", axWaitT:"Waiting for permission", axAskT:"Permission needed", axAskS:"This app is private. Fill the details below and send a request. The owner will approve you.", axName:"Your name", axMobile:"Mobile number", axFirm:"Your firm / shop name", axSend:"Send request", axSent:"Request sent. Please wait for the owner to approve.", axWait:"Your request has been sent to the owner. This screen opens the app by itself once you are approved.", axCheck:"Check again", axRejT:"Request not approved", axRej:"The owner did not approve this request.", axAgain:"Ask again", axNeed:"Please enter your name and a 10-digit mobile number", axErrT:"Could not check permission", axErr:"Please check your internet and try again.", axNone:"No requests yet", axPend:"Waiting", axApproved:"Approved", axRejected:"Rejected", axRevoked:"Removed", axApprove:"Approve", axReject:"Reject", axRevoke:"Remove access", axRevAsk:"Remove this user's access?", axNew:"new access request(s)", axTap:"Tap to review", axSigned:"Signed in as", axTime:"Requested" },
+  hi:{ homeBtn:"होम", axTitle:"इजाज़त की रिक्वेस्ट", axWaitT:"इजाज़त का इंतज़ार", axAskT:"इजाज़त चाहिए", axAskS:"यह ऐप निजी है। नीचे जानकारी भरकर रिक्वेस्ट भेजें। मालिक इजाज़त देंगे।", axName:"आपका नाम", axMobile:"मोबाइल नंबर", axFirm:"आपकी फर्म / दुकान का नाम", axSend:"रिक्वेस्ट भेजें", axSent:"रिक्वेस्ट भेज दी गई। मालिक की इजाज़त का इंतज़ार करें।", axWait:"आपकी रिक्वेस्ट मालिक को भेज दी गई है। इजाज़त मिलते ही यह स्क्रीन अपने-आप ऐप खोल देगी।", axCheck:"फिर से देखें", axRejT:"रिक्वेस्ट मंज़ूर नहीं हुई", axRej:"मालिक ने यह रिक्वेस्ट मंज़ूर नहीं की।", axAgain:"दोबारा माँगें", axNeed:"कृपया नाम और 10 अंकों का मोबाइल नंबर भरें", axErrT:"इजाज़त जाँच नहीं पाए", axErr:"इंटरनेट जाँचकर फिर कोशिश करें।", axNone:"अभी कोई रिक्वेस्ट नहीं", axPend:"इंतज़ार में", axApproved:"मंज़ूर", axRejected:"नामंज़ूर", axRevoked:"हटाया गया", axApprove:"मंज़ूर करें", axReject:"नामंज़ूर करें", axRevoke:"इजाज़त हटाएँ", axRevAsk:"इस यूज़र की इजाज़त हटाएँ?", axNew:"नई इजाज़त रिक्वेस्ट", axTap:"देखने के लिए दबाएँ", axSigned:"लॉगिन", axTime:"रिक्वेस्ट का समय" }
+};
+Object.assign(T.en, AXT.en); Object.assign(T.hi, AXT.hi);
+
+async function checkAccess(user){
+  if (isAdmin(user)) return 'ok';
+  try{
+    if (await backend.tget('approved', user.uid)) return 'ok';
+    S.req = await backend.tget('requests', user.uid);
+    return 'pending';
+  }catch(e){ console.error(e); return 'error'; }
+}
+let AXPOLL = null;
+function viewPending(){
+  const u = S.user||{}, r = S.req;
+  clearInterval(AXPOLL); AXPOLL = null;
+  let body;
+  if (S.access==='error'){
+    body = `<h2 class="title" style="margin:0 0 8px">${esc(t('axErrT'))}</h2><p class="sub">${esc(t('axErr'))}</p><button class="btn" data-act="axcheck">${esc(t('axCheck'))}</button>`;
+  } else if (r && r.status==='rejected'){
+    body = `<h2 class="title" style="margin:0 0 8px">${esc(t('axRejT'))}</h2><p class="sub">${esc(t('axRej'))}</p><button class="btn" data-act="axagain">${esc(t('axAgain'))}</button>`;
+  } else if (r){
+    body = `<h2 class="title" style="margin:0 0 8px">${esc(t('axWaitT'))}</h2><p class="sub">${esc(t('axWait'))}</p><button class="btn" data-act="axcheck">${esc(t('axCheck'))}</button>`;
+    AXPOLL = setInterval(async()=>{ try{ if (await backend.tget('approved', S.user.uid)) location.reload(); }catch(e){} }, 6000);
+  } else {
+    body = `<h2 class="title" style="margin:0 0 8px">${esc(t('axAskT'))}</h2><p class="sub">${esc(t('axAskS'))}</p>
+      <label class="fld"><span>${esc(t('axName'))}</span><input id="axName" value="${esc(u.displayName||'')}" autocomplete="off"></label>
+      <label class="fld"><span>${esc(t('axMobile'))}</span><input id="axMobile" inputmode="numeric" maxlength="10" autocomplete="off"></label>
+      <label class="fld"><span>${esc(t('axFirm'))}</span><input id="axFirm" autocomplete="off"></label>
+      <div id="axErr" class="err-msg"></div>
+      <button class="btn" data-act="axsend" style="margin-top:12px">${esc(t('axSend'))}</button>`;
+  }
+  app.innerHTML = `<div class="center" style="text-align:left;max-width:460px;margin:0 auto">
+    <div class="brand"><img src="icon-192.png" alt=""><b>${esc(t('appName'))}</b></div>
+    ${body}
+    <p class="muted" style="font-size:14px;margin-top:20px">${esc(t('axSigned'))}: ${esc(u.email||'')}</p>
+    <button class="link" data-act="logout">${esc(t('logout'))}</button>
+  </div>`;
+}
+async function sendNotify(text){
+  const N = window.QM_NOTIFY||{};
+  if (!N.token || !N.chatId || String(N.token).startsWith('PASTE')) return;
+  try{ await fetch(`https://api.telegram.org/bot${N.token}/sendMessage`, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams({chat_id:N.chatId, text}).toString()}); }catch(e){ console.warn(e); }
+}
+async function axSend(btn){
+  const name = ($('#axName').value||'').trim(), mobile = ($('#axMobile').value||'').replace(/\D/g,''), firm = ($('#axFirm').value||'').trim();
+  if (!name || mobile.length!==10){ $('#axErr').textContent = t('axNeed'); return; }
+  btn.disabled = true;
+  const u = S.user;
+  const rec = { uid:u.uid, name, email:u.email||'', photo:u.photoURL||'', mobile, firm, createdAt:Date.now(), status:'pending', ua:(navigator.userAgent||'').slice(0,120) };
+  try{
+    await backend.tset('requests', u.uid, rec);
+    S.req = rec;
+    sendNotify(`🔔 Quotation Maker - naya user ijazat maang raha hai\nNaam: ${name}\nGmail: ${rec.email}\nMobile: ${mobile}\nFirm: ${firm||'-'}\nSamay: ${new Date().toLocaleString('en-IN')}\n\nApprove karne ke liye app kholein: Settings > Access Requests\n${location.origin}${location.pathname}`);
+    toast(t('axSent')); viewPending();
+  }catch(e){ console.error(e); $('#axErr').textContent = t('axErr'); btn.disabled = false; }
+}
+async function axRecheck(){
+  S.access = await checkAccess(S.user);
+  if (S.access==='ok') return location.reload();
+  viewPending();
+}
+async function refreshPending(){
+  if (!isAdmin(S.user)) return;
+  try{
+    const [rq, ap] = await Promise.all([backend.tlist('requests'), backend.tlist('approved')]);
+    const aps = new Set(ap.map(x=>x.id));
+    const n = rq.filter(x=>x.status==='pending' && !aps.has(x.id) && !ADMINS.includes(String(x.email||'').toLowerCase())).length;
+    S.pendingCount = n;
+    const b = $('#pendBadge'); if (b) b.innerHTML = n ? `<span style="background:#d93025;color:#fff;border-radius:12px;padding:2px 9px;font-size:14px;margin-left:6px">${n}</span>` : '';
+    const nb = $('#pendBanner'); if (nb) nb.innerHTML = n ? `<div style="padding:0 14px 12px"><button class="setup" data-act="access"><div class="tx"><b>${n} ${esc(t('axNew'))}</b><small>${esc(t('axTap'))}</small></div>${I.chev(22)}</button></div>` : '';
+  }catch(e){ console.warn(e); }
+}
+async function viewAccess(){
+  app.innerHTML = `${bar(t('axTitle'),{back:true})}<div class="shell page-white"><div class="muted" style="padding:20px">...</div></div>`;
+  let rq = [], ap = [];
+  try{ [rq, ap] = await Promise.all([backend.tlist('requests'), backend.tlist('approved')]); }catch(e){ console.error(e); toast(t('axErr')); }
+  const aps = new Set(ap.map(x=>x.id));
+  const rows = rq.filter(x=>!ADMINS.includes(String(x.email||'').toLowerCase())).map(x=>Object.assign({}, x, {st: aps.has(x.id) ? 'approved' : (x.status==='approved' ? 'revoked' : x.status)}));
+  const order = {pending:0, approved:1, rejected:2, revoked:3};
+  rows.sort((a,b)=>(order[a.st]-order[b.st]) || ((b.createdAt||0)-(a.createdAt||0)));
+  const lbl = {pending:'axPend', approved:'axApproved', rejected:'axRejected', revoked:'axRevoked'};
+  const col = {pending:'#b26a00', approved:'#188038', rejected:'#d93025', revoked:'#6b7280'};
+  const card = x=>`<div class="profilecard" style="display:block;border-bottom:1px solid #e5e7eb">
+    <div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(x.name||'')}</b><span style="color:${col[x.st]};font-weight:700;font-size:14px">${esc(t(lbl[x.st]))}</span></div>
+    <small>${esc(x.email||'')}</small><br><small>${esc(x.mobile||'')}${x.firm?' · '+esc(x.firm):''}</small><br><small class="muted">${esc(t('axTime'))}: ${esc(new Date(x.createdAt||0).toLocaleString(LANG==='hi'?'hi-IN':'en-IN'))}</small>
+    <div class="btnrow" style="position:static;padding:10px 0 0;gap:8px">
+      ${x.st==='approved' ? `<button class="btn ghost" data-act="axrevoke" data-u="${esc(x.id)}">${esc(t('axRevoke'))}</button>` : `<button class="btn" data-act="axapprove" data-u="${esc(x.id)}">${esc(t('axApprove'))}</button>${x.st==='pending'?`<button class="btn ghost" data-act="axreject" data-u="${esc(x.id)}">${esc(t('axReject'))}</button>`:''}`}
+    </div></div>`;
+  app.innerHTML = `${bar(t('axTitle'),{back:true})}<div class="shell page-white">${rows.length ? rows.map(card).join('') : `<div class="muted" style="padding:24px">${esc(t('axNone'))}</div>`}</div>`;
+  refreshPending();
+}
+async function axDecide(kind, uid){
+  try{
+    const rq = (await backend.tget('requests', uid)) || {};
+    if (kind==='approve'){
+      await backend.tset('approved', uid, {uid, email:rq.email||'', name:rq.name||'', at:Date.now()});
+      await backend.tset('requests', uid, {status:'approved'});
+    } else if (kind==='reject'){
+      await backend.tset('requests', uid, {status:'rejected'});
+    } else if (kind==='revoke'){
+      if (!confirm(t('axRevAsk'))) return;
+      await backend.tdel('approved', uid);
+      await backend.tset('requests', uid, {status:'revoked'});
+    }
+    toast(t('saved'));
+  }catch(e){ console.error(e); toast(t('axErr')); }
+  viewAccess();
+}
+
+
+/* =====================================================================
    LETTERHEAD STUDIO
    ===================================================================== */
 const LH_PAL = [['Navy + Gold','#14213d','#c9a227'],['Maroon + Gold','#7f1d1d','#d4a017'],['Forest + Lime','#14532d','#65a30d'],['Teal + Coral','#0f766e','#f43f5e'],['Saffron + Brown','#c2410c','#78350f'],['Royal + Sky','#1d4ed8','#38bdf8'],['Purple + Pink','#6d28d9','#ec4899'],['Charcoal + Red','#1f2937','#dc2626'],['Chocolate + Cream','#4a2c1a','#d9a066'],['Rose + Plum','#be185d','#581c87'],['Slate + Amber','#334155','#f59e0b'],['Emerald + Gold','#065f46','#eab308']];
 const LH_HN = ['Band','Side Bar','Double Line','Corners','Wave','Circle','Split','Gradient','Frame','Ribbon','Blocks','Minimal'];
 const LH_FN = ['Line','Band','Wave','Slant','Corner','Dots'];
-const LH_FONTS = [['Noto Sans','Noto Sans'],['Noto Serif','Noto Serif'],['Playfair Display','Playfair Display'],['Poppins','Poppins'],['Cinzel','Cinzel'],['Merriweather','Merriweather'],['Pacifico','Pacifico'],['Tiro Devanagari Hindi','Tiro (हिन्दी)'],['Yatra One','Yatra One (हिन्दी)'],['Georgia','Georgia']];
+const LH_FONTS_HI = [["Hind",1],["Poppins",1],["Kalam",1],["Mukta",1],["Yatra One",0],["Rozha One",0],["Tiro Devanagari Hindi",0],["Tiro Devanagari Marathi",0],["Tiro Devanagari Sanskrit",0],["Noto Sans Devanagari",1],["Noto Serif Devanagari",1],["Amita",1],["Arya",1],["Asar",0],["Baloo 2",1],["Biryani",1],["Cambay",1],["Dekko",0],["Eczar",1],["Glegoo",1],["Gotu",0],["Halant",1],["Inknut Antiqua",1],["Jaldi",1],["Kadwa",1],["Karma",1],["Khand",1],["Khula",1],["Kurale",0],["Laila",1],["Martel",1],["Martel Sans",1],["Modak",0],["Palanquin",1],["Palanquin Dark",1],["Pragati Narrow",1],["Rajdhani",1],["Rhodium Libre",0],["Sahitya",1],["Sarala",1],["Sarpanch",1],["Teko",1],["Tillana",1],["Vesper Libre",1],["Yantramanav",1],["Jaini",0],["Jaini Purva",0],["Anek Devanagari",1],["Ranga",1],["Sura",1]];
+const LH_FONTS_EN = [["Roboto",1],["Open Sans",1],["Lato",1],["Montserrat",1],["Raleway",1],["Nunito",1],["Inter",1],["DM Sans",1],["Work Sans",1],["Rubik",1],["Quicksand",1],["Josefin Sans",1],["Barlow",1],["Karla",1],["Mulish",1],["Manrope",1],["Fira Sans",1],["Source Sans 3",1],["PT Sans",1],["Libre Franklin",1],["Playfair Display",1],["Merriweather",1],["Lora",1],["Libre Baskerville",1],["Cormorant Garamond",1],["EB Garamond",1],["Crimson Text",1],["Bitter",1],["Domine",1],["Vollkorn",1],["Cardo",1],["Prata",0],["Marcellus",0],["Spectral",1],["Cinzel",1],["Abril Fatface",0],["Great Vibes",0],["Dancing Script",1],["Pacifico",0],["Satisfy",0],["Sacramento",0],["Lobster",0],["Allura",0],["Alex Brush",0],["Playball",0],["Bebas Neue",0],["Anton",0],["Oswald",1],["Yeseva One",0],["Parisienne",0]];
+const LH_FMAP = {}; LH_FONTS_HI.concat(LH_FONTS_EN).forEach(f=>{ LH_FMAP[f[0]] = f[1]; });
+const LH_FLOADED = {};
+function lhFontUse(name){
+  if (!name || LH_FLOADED[name] || name==='Georgia') return;
+  LH_FLOADED[name] = 1;
+  const l = document.createElement('link'); l.rel = 'stylesheet';
+  l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(name).replace(/%20/g,'+') + (LH_FMAP[name] ? ':wght@400;700' : '') + '&display=swap';
+  document.head.appendChild(l);
+}
+async function lhEnsureFonts(st){
+  const names = new Set([st.font||'Noto Sans']); (st.els||[]).forEach(e=>{ if (e.font) names.add(e.font); });
+  names.forEach(lhFontUse);
+  if (!document.fonts || !document.fonts.load) return;
+  try{ await Promise.race([ Promise.all([...names].flatMap(n=>[document.fonts.load(`16px "${n}"`, 'अआकAa'), document.fonts.load(`700 16px "${n}"`, 'अआकAa')])), new Promise(r=>setTimeout(r,6000)) ]); }catch(e){}
+}
+function lhFontOpts(cur, withSame){
+  const o = f=>`<option value="${esc(f[0])}" ${cur===f[0]?'selected':''}>${esc(f[0])}</option>`;
+  return (withSame?`<option value="" ${!cur?'selected':''}>${esc(t('lhFontSame'))}</option>`:'')
+    + `<optgroup label="${esc(t('lhFontHi'))}">${LH_FONTS_HI.map(o).join('')}</optgroup><optgroup label="${esc(t('lhFontEn'))}">${LH_FONTS_EN.map(o).join('')}</optgroup>`;
+}
+const lhImgOf = id => { const d = (S.cache.settings||[]).find(x=>x.id==='lhimg_'+id); return d ? d.data : ''; };
 const LH_BULLETS = ['•','✓','★','➤','◆','–','○'];
 const LH_TOKENS = ['{name}','{addr}','{phone}','{email}','{gstin}','{pan}','{state}','{contactline}','{idsline}'];
 const lhT = (x,y,w,size,align,color,bold) => ({x,y,w,size,align,color,bold:!!bold});
@@ -2258,7 +2432,7 @@ function lhElHtml(el, st, tk, gmap, o){
   }
   const txt = lhFill(el.text, tk); if (!txt.trim()) return '';
   let lines = txt.split('\n'); if (el.bullet) lines = lines.map(l=> l.trim() ? el.bchar+' '+l : l);
-  const base = `font-size:${+el.size||14}px;font-weight:${el.bold?700:400};font-style:${el.italic?'italic':'normal'};color:${lhCol(el.color, st)};text-align:${el.align||'left'};line-height:1.25;white-space:pre-wrap;word-break:break-word`;
+  const base = `${el.font?`font-family:'${esc(el.font)}','Noto Sans Devanagari',sans-serif;`:''}font-size:${+el.size||14}px;font-weight:${el.bold?700:400};font-style:${el.italic?'italic':'normal'};color:${lhCol(el.color, st)};text-align:${el.align||'left'};line-height:1.25;white-space:pre-wrap;word-break:break-word`;
   const inner = esc(lines.join('\n'));
   if (g && g.kind==='box' && el.vcenter)
     return `<div class="${cls}"${attr} style="position:absolute;left:${left}px;top:${g.y}px;width:${w}px;height:${g.h}px;display:flex;align-items:center"><div style="width:100%;${base}">${inner}</div></div>`;
@@ -2267,9 +2441,11 @@ function lhElHtml(el, st, tk, gmap, o){
 function lhPageHtml(st, o){
   o = o || {};
   const b = o.b || biz(), tk = lhTok(b), spec = lhSpec(st.design, st.colors, o.u||'p'), gmap = {};
+  lhFontUse(st.font||'Noto Sans'); (st.els||[]).forEach(e=>{ if (e.font) lhFontUse(e.font); });
   (st.guides||[]).forEach(g=>{ gmap[g.id] = g; });
   let h = `<div class="lhpage" style="position:relative;width:794px;height:1123px;overflow:hidden;background:${esc(st.bg||'#fff')};font-family:'${esc(st.font||'Noto Sans')}','Noto Sans Devanagari',sans-serif;color:#222">`;
-  if (st.design==='image' && st.bgImage) h += `<img src="${esc(st.bgImage)}" alt="" style="position:absolute;left:0;top:0;width:794px;height:1123px;object-fit:cover">`;
+  const bgi = st.bgImage || (st.imgId ? lhImgOf(st.imgId) : '');
+  if (st.design==='image' && bgi) h += `<img src="${esc(bgi)}" alt="" style="position:absolute;left:0;top:0;width:794px;height:1123px;object-fit:cover">`;
   h += spec.svg;
   st.els.forEach(el=>{ h += lhElHtml(el, st, tk, gmap, Object.assign({}, o, { b })); });
   if (o.edit){
@@ -2324,9 +2500,9 @@ function lhDesignTab(){
   const hid = new Set(LHS.lib.hidden||[]);
   const vis = LH_DESIGNS.filter(d=>!hid.has(d.id)), gone = LH_DESIGNS.filter(d=>hid.has(d.id));
   const tile = (d, cur) => `<div class="lhcell${cur?' cur':''}"><button class="lhtile" data-act="lhdesign" data-id="${d.id}">${lhThumb(lhNewState(d.id), d.id)}</button><div class="cap"><span>${esc(d.name)}</span><button class="x" data-act="lhhide" data-id="${d.id}" aria-label="${esc(t('lhHide'))}">✕</button></div></div>`;
-  const my = LHS.lib.my.map(m=>`<div class="lhcell"><button class="lhtile" data-act="lhmyapply" data-id="${esc(m.id)}">${lhThumb(m.state, 'm'+m.id)}</button><div class="cap"><span>★ ${esc(m.name)}</span><button class="x" data-act="lhmydel" data-id="${esc(m.id)}" aria-label="${esc(t('del'))}">✕</button></div></div>`).join('');
+  const my = LHS.lib.my.map(m=>`<div class="lhcell"><button class="lhtile" data-act="lhmyapply" data-id="${esc(m.id)}">${lhThumb(m.state, 'm'+m.id)}</button><div class="cap"><span>${m.state&&m.state.imgId?'🖼':'★'} ${esc(m.name)}</span><button class="x" data-act="lhmydel" data-id="${esc(m.id)}" aria-label="${esc(t('del'))}">✕</button></div></div>`).join('');
   return `<div class="lhrow"><button class="lhb" data-act="lhmysave">＋ ${esc(t('lhSaveMine'))}</button><button class="lhb" data-act="lhblank">${esc(t('lhBlank'))}</button><button class="lhb" data-act="lhimage">${esc(t('lhImage'))}</button></div>
-    <input type="file" id="lhfile" accept="image/*" class="hide">
+    <input type="file" id="lhfile" accept="image/*,application/pdf,.pdf" class="hide">
     ${my?`<div class="lhsub">${esc(t('lhMine'))}</div><div class="lhgrid">${my}</div>`:''}
     <div class="lhsub">${esc(t('lhAll'))} · ${vis.length}</div><div class="lhgrid">${vis.map(d=>tile(d, LHS.st.design===d.id)).join('')}</div>
     ${gone.length?`<div class="lhrow" style="margin-top:12px"><button class="lhb" data-act="lhshowhidden">${esc(t('lhHidden'))} (${gone.length}) ${LHS.showHidden?'▲':'▼'}</button></div>`:''}
@@ -2351,6 +2527,7 @@ function lhEditTab(){
   return `<div class="lhedh">${esc(lhElLabel(el))}</div>
   ${logo?'':`<label class="fld"><span>${esc(t('termText'))}</span><textarea data-lhk="text" rows="3">${esc(el.text)}</textarea></label>
   <div class="lhrow tok">${LH_TOKENS.map(k=>`<button class="lhb s" data-act="lhtok" data-tok="${k}">${k}</button>`).join('')}</div>
+  <label class="fld"><span>${esc(t('lhFontLine'))}</span><select data-lhk="efont">${lhFontOpts(el.font||'', true)}</select></label>
   <div class="lhrow"><span class="lhl">${esc(t('lhSize'))}</span><button class="lhb" data-act="lhsize" data-d="-1">A−</button>${nb('size','',el.size)}<button class="lhb" data-act="lhsize" data-d="1">A+</button>
     <button class="lhb ${el.bold?'on':''}" data-act="lhbold"><b>B</b></button><button class="lhb ${el.italic?'on':''}" data-act="lhital"><i>I</i></button></div>
   <div class="lhrow"><span class="lhl">${esc(t('lhColor'))}</span>${sw('c1',LHS.st.colors.c1)}${sw('c2',LHS.st.colors.c2)}${sw('w','#fff')}${sw('k','#222')}${sw('g','#777')}<input type="color" class="lhcp" data-lhk="colorx" value="${/^#[0-9a-f]{6}$/i.test(el.color)?el.color:'#222222'}"></div>
@@ -2375,7 +2552,7 @@ function lhStyleTab(){
   const st = LHS.st, nb = (k,label,val) => `<label class="lhnum"><span>${esc(label)}</span><input type="number" inputmode="numeric" data-lhk="${k}" value="${Math.round(val)}"></label>`;
   return `<div class="lhsub">${esc(t('lhPalette'))}</div><div class="lhrow">${LH_PAL.map((p,i)=>`<button class="lhpal" data-act="lhpal" data-i="${i}" title="${esc(p[0])}" style="background:linear-gradient(90deg,${p[1]} 50%,${p[2]} 50%)"></button>`).join('')}</div>
   <div class="lhrow"><label class="lhnum"><span>${esc(t('lhC1'))}</span><input type="color" data-lhk="c1" value="${esc(st.colors.c1)}"></label><label class="lhnum"><span>${esc(t('lhC2'))}</span><input type="color" data-lhk="c2" value="${esc(st.colors.c2)}"></label><label class="lhnum"><span>${esc(t('lhBg'))}</span><input type="color" data-lhk="bg" value="${esc(st.bg||'#ffffff')}"></label></div>
-  <label class="fld"><span>${esc(t('lhFont'))}</span><select data-lhk="font">${LH_FONTS.map(f=>`<option value="${esc(f[0])}" ${st.font===f[0]?'selected':''}>${esc(f[1])}</option>`).join('')}</select></label>
+  <label class="fld"><span>${esc(t('lhFont'))}</span><select data-lhk="font">${lhFontOpts(st.font, false)}</select></label>
   <div class="lhsub">${esc(t('lhBodyArea'))}</div><p class="lhhint">${esc(t('lhBodyHint'))}</p>
   <div class="lhrow">${nb('bodyTop',t('lhBodyStart'),st.bodyTop)}${nb('bodyBottom',t('lhBodyEnd'),st.bodyBottom)}</div>
   <div class="lhrow"><label class="lhchk"><input type="checkbox" data-lhk="useDocs" ${st.useDocs?'checked':''}> ${esc(t('lhUseDocs'))}</label></div>`;
@@ -2418,7 +2595,13 @@ function lhAction(act, el){
       lhSaveLib(); toast(t('saved')); return renderLhPanel();
     }
     case 'lhmyapply': { const m = LHS.lib.my.find(x=>x.id===el.dataset.id); if (!m) return; LHS.st = JSON.parse(JSON.stringify(m.state)); LHS.sel = null; LHS.selG = null; LHS.dirty = true; lhRefreshCanvas(); renderLhPanel(); return toast(t('lhApplied')); }
-    case 'lhmydel': if (!confirm(t('lhDelMine'))) return; LHS.lib.my = LHS.lib.my.filter(x=>x.id!==el.dataset.id); lhSaveLib(); return renderLhPanel();
+    case 'lhmydel': {
+      if (!confirm(t('lhDelMine'))) return;
+      const m = LHS.lib.my.find(x=>x.id===el.dataset.id);
+      LHS.lib.my = LHS.lib.my.filter(x=>x.id!==el.dataset.id); lhSaveLib();
+      if (m && m.state && m.state.imgId){ const iid = m.state.imgId; backend.remove(S.user,'settings','lhimg_'+iid).catch(()=>{}); S.cache.settings = (S.cache.settings||[]).filter(x=>x.id!=='lhimg_'+iid); }
+      return renderLhPanel();
+    }
     case 'lhsel': LHS.sel = el.dataset.id; LHS.selG = null; LHS.tab = 'edit'; lhRefreshCanvas(); return renderLhPanel();
     case 'lhaddline': {
       const id = lhNextId('c', LHS.st.els);
@@ -2460,6 +2643,7 @@ function lhInput(e){
   if (k.startsWith('g.')){ if (g){ const f = k.slice(2); g[f] = Math.max(f==='w'||f==='h' ? 10 : 0, Math.round(num())); } }
   else if (k==='c1' || k==='c2') LHS.st.colors[k] = v;
   else if (k==='font') LHS.st.font = v;
+  else if (k==='efont'){ if (el) el.font = v; }
   else if (k==='bg') LHS.st.bg = v;
   else if (k==='bodyTop' || k==='bodyBottom') LHS.st[k] = Math.max(0, Math.round(num()));
   else if (k==='useDocs') LHS.st.useDocs = v;
@@ -2514,9 +2698,45 @@ function lhInput(e){
   };
   document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
 })();
+
+/* ---------- designs made outside (image / PDF first page) ---------- */
+async function lhPdfFirstPage(file){
+  if (!window.pdfjsLib) await loadScript(['https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js','https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js']);
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const buf = await file.arrayBuffer();
+  const pdf = await window.pdfjsLib.getDocument({ data:buf, disableWorker:true }).promise;
+  const pg = await pdf.getPage(1), v0 = pg.getViewport({ scale:1 });
+  const sc = Math.min(1000/v0.width, 1414/v0.height), v = pg.getViewport({ scale:sc });
+  const c = document.createElement('canvas'); c.width = Math.round(v.width); c.height = Math.round(v.height);
+  const cx = c.getContext('2d'); cx.fillStyle = '#fff'; cx.fillRect(0,0,c.width,c.height);
+  await pg.render({ canvasContext:cx, viewport:v }).promise;
+  return c.toDataURL('image/jpeg', .85);
+}
+async function lhAddOwn(file){
+  const isPdf = /pdf/i.test(file.type) || /\.pdf$/i.test(file.name);
+  toast(t('making'));
+  let img;
+  try{ img = isPdf ? await lhPdfFirstPage(file) : await resizeImage(file, 1000, 1414, 'jpeg'); }
+  catch(err){ console.error(err); return toast(t(isPdf ? 'lhPdfFail' : 'badImage')); }
+  if (img.length > 900000){ toast(t('lhImgBig')); return; }
+  const base = file.name.replace(/\.[^.]+$/,'').slice(0,30) || (t('lhMyDefault')+' '+(LHS.lib.my.length+1));
+  const nm = (window.prompt(t('lhMyName'), base)||'').trim(); if (!nm) return;
+  const id = lhNextId('i', LHS.lib.my);
+  try{
+    await backend.put(S.user, 'settings', 'lhimg_'+id, { data:img }); lhCacheSet('lhimg_'+id, img);
+  }catch(err){ console.error(err); return toast(t('saveFail')); }
+  const st = JSON.parse(JSON.stringify(LHS.st));
+  st.design = 'image'; st.bgImage = ''; st.imgId = id; st.bodyTop = 165; st.bodyBottom = 105; st.bg = '#ffffff';
+  st.els.forEach(x=>{ if (x.key) x.on = false; });
+  LHS.lib.my.push({ id, name:nm, state:st });
+  await lhSaveLib();
+  LHS.st = JSON.parse(JSON.stringify(st)); LHS.sel = null; LHS.selG = null; LHS.dirty = true; LHS.tab = 'design';
+  lhRefreshCanvas(); renderLhPanel(); toast(t('lhOwnAdded'));
+}
 /* ---------- preview, export, print, save ---------- */
 function lhFileName(ext){ const b = biz(); return 'Letterhead-' + String(b.short||b.name||'firm').replace(/[^\w-]+/g,'_') + '.' + ext; }
-function lhPreview(){
+async function lhPreview(){
+  await lhEnsureFonts(LHS.st);
   const old = $('#lhprev'); if (old) old.remove();
   const ov = document.createElement('div'); ov.id = 'lhprev'; ov.className = 'lhprev';
   const btn = (a,l) => `<button data-act="${a}">${l}</button>`;
@@ -2528,7 +2748,7 @@ function lhPreview(){
   body.style.minHeight = Math.round(1123 * s + 40) + 'px';
 }
 async function lhCanvas(st, scale){
-  await pdfLibs();
+  await pdfLibs(); await lhEnsureFonts(st);
   const holder = document.createElement('div');
   holder.style.cssText = 'position:fixed;left:-12000px;top:0;width:794px;background:#fff;z-index:-1';
   holder.innerHTML = lhPageHtml(st, { edit:false, u:'x' });
@@ -2553,7 +2773,7 @@ async function lhExport(kind){
     downloadBlob(pdf.output('blob'), lhFileName('pdf'));
   }catch(e){ console.error(e); toast(t('pdfFail')); }
 }
-function lhPrint(){ return printHtml(lhPageHtml(LHS.st, { edit:false, u:'pr' }), lhFileName('x').replace(/\.x$/,'')); }
+async function lhPrint(){ await lhEnsureFonts(LHS.st); return printHtml(lhPageHtml(LHS.st, { edit:false, u:'pr' }), lhFileName('x').replace(/\.x$/,'')); }
 async function lhImage(st){
   for (const [sc,q] of [[1.6,.88],[1.4,.8],[1.2,.7],[1,.65]]){
     const c = await lhCanvas(st, sc), d = c.toDataURL('image/jpeg', q);
@@ -2588,14 +2808,16 @@ function viewSettings(){
     <div class="gh">${esc(t('account'))}</div>
     <div class="profilecard">${u.photoURL?`<img src="${esc(u.photoURL)}" alt="" referrerpolicy="no-referrer">`:`<div class="avatar">${esc(((u.displayName||u.email||'?').trim()[0]||'?').toUpperCase())}</div>`}
       <div><b>${esc(u.displayName||'')}</b><small>${esc(u.email||'')}</small><br><small>${esc(t('signedInAs'))}</small></div></div>
+    ${isAdmin(S.user)?`<button class="srow" data-act="access"><span>${esc(t('axTitle'))} <span id="pendBadge"></span></span>${I.chev()}</button>`:''}
     <button class="srow" data-act="firms"><span>${esc(t('firmsRow'))} <span class="muted">· ${firmIds().length}</span></span>${I.chev()}</button>
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${firmIds().length>1?' <span class="muted">· '+esc(firmName(S.activeFirm))+'</span>':''}${I.chev()}</button>
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="openlhs">${esc(t('lhRow'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.7 (Letterhead Studio)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 1.8 (Access control)</div>
   </div>`;
+  refreshPending();
 }
 
 /* =====================================================================
@@ -2636,6 +2858,14 @@ document.addEventListener('click', async e=>{
     case 'firmsheet': return firmSheet();
     case 'firmpick': await setActiveFirm(el.dataset.f); closeSheet(); return route();
     case 'firmnew': closeSheet(); startWizard({newFirm:true}); return go('wizard');
+    case 'gohome': if (LHS && LHS.dirty && currentRoute()==='lhstudio' && !confirm(t('lhDiscard'))) return; return go('home');
+    case 'access': return go('access');
+    case 'axsend': return axSend(el);
+    case 'axcheck': return axRecheck();
+    case 'axagain': S.req = null; return viewPending();
+    case 'axapprove': return axDecide('approve', el.dataset.u);
+    case 'axreject': return axDecide('reject', el.dataset.u);
+    case 'axrevoke': return axDecide('revoke', el.dataset.u);
     case 'firms': closeSheet(); return go('firms');
     case 'firmedit': await setActiveFirm(el.dataset.f); startWizard({}); return go('wizard');
     case 'firmdel': return deleteFirm(el.dataset.f);
@@ -2684,8 +2914,8 @@ document.addEventListener('input', e=>{
 document.addEventListener('change', async e=>{
   if (e.target.dataset && e.target.dataset.lhk && (e.target.type==='checkbox' || e.target.tagName==='SELECT')) return lhInput(e);
   if (e.target.id==='lhfile' && e.target.files[0] && LHS){
-    try{ LHS.st.bgImage = await resizeImage(e.target.files[0], 1000, 1414, 'jpeg'); LHS.st.design = 'image'; LHS.st.bodyTop = 165; LHS.st.bodyBottom = 105; lhTouch(); renderLhPanel(); }
-    catch(err){ toast(t('badImage')); }
+    const f = e.target.files[0]; e.target.value = '';
+    lhAddOwn(f);
     return;
   }
   if (e.target.dataset && e.target.dataset.defon){
@@ -2693,12 +2923,10 @@ document.addEventListener('change', async e=>{
     if (r){ r.defOn = !!e.target.checked; r.updatedAt = Date.now(); try{ await backend.put(S.user,'terms',r.id,r); }catch(err){ console.error(err); toast(t('saveFail')); } }
     return;
   }
-  if (e.target.dataset && e.target.dataset.term!==undefined && QD && !e.target.closest('#sheet')){
-    const type = DK[QD.kind||'quotation'].term;
-    const saved = (S.cache.terms||[]).filter(x=>x.type===type).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
-    const set = new Set(saved.map(x=>x.text));
-    const ticked = new Set([...document.querySelectorAll('input[data-term]')].filter(x=>x.checked).map(x=>x.dataset.term));
-    QD.terms = [...saved.map(x=>x.text).filter(x=>ticked.has(x)), ...QD.terms.filter(x=>!set.has(x))];
+  if (e.target.dataset && e.target.dataset.cl!==undefined && QD){
+    const saved = savedClauses(), set = new Set(saved);
+    const ticked = new Set([...document.querySelectorAll('input[data-cl]')].filter(x=>x.checked).map(x=>x.dataset.cl));
+    QD.terms = [...saved.filter(x=>ticked.has(x)), ...QD.terms.filter(x=>!set.has(x))];
     return;
   }
   if (e.target.dataset && e.target.dataset.fs){
@@ -2758,8 +2986,9 @@ document.addEventListener('change', async e=>{
     return;
   }
   backend.onAuth(async user=>{
-    S.user = user; S.cache = {}; FM = null;
-    if (user){
+    S.user = user; S.cache = {}; FM = null; S.req = null; S.access = null;
+    if (user) S.access = await checkAccess(user);
+    if (user && S.access==='ok'){
       try{ S.owner = (await backend.load(user)) || {}; }catch(e){ console.error(e); S.owner = {}; }
       if (!LANG && S.owner.language) setLang(S.owner.language);
       else if (LANG && S.owner.language !== LANG){ try{ await backend.save(user,{language:LANG}); S.owner.language=LANG; }catch(e){} }
