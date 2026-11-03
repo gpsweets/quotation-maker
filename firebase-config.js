@@ -8,3 +8,9 @@ window.QM_FIREBASE = {
   messagingSenderId: "110583386835",
   appId: "1:110583386835:web:1b5a5f8a19b0d4e7e67a26"
 };
+
+// Naye user ki ijazat ka message Telegram par aane ke liye (bot token aur chat id yahan likhein)
+window.QM_NOTIFY = {
+  token: "9274998441:AAH0Yfgz8pzGYQDaxXwdSvXzE2Ds9ixwccQ",
+  chatId: "8801423969"
+};
