@@ -317,6 +317,44 @@ body{background:linear-gradient(180deg,#eceafe 0,#f6f5ff 260px,#f6f5ff 100%) fix
 .dschip.on{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff}
 .hd summary{color:#312e81}.hb h4{color:#4f46e5}.hcard{background:linear-gradient(120deg,#ede9fe,#fce7f3)}
 .lhtabs button.on{color:#4f46e5;border-bottom-color:#4f46e5}
+
+/* ---------- extra polish, press feel, ripple ---------- */
+.bar{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #ffffff2e}
+.bar h1{text-shadow:0 1px 2px #0003}
+.ov{backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);background:#1e1b4b66}
+.sheet{box-shadow:0 -12px 34px #3b1d8f38;border-top:3px solid #a5b4fc}
+.sheet .grab{background:linear-gradient(90deg,#a5b4fc,#f0abfc)}
+.sheet h3{color:#312e81}
+.fld{border:1.5px solid transparent;transition:border-color .2s,box-shadow .2s,background .2s}
+.fld:focus-within{outline:0;border-color:#6366f1;box-shadow:0 0 0 4px #6366f12e;background:#fff}
+.fld.err{outline:0;border-color:var(--err)}
+.fld>span{color:#6d6a9c}
+.sw i{background:#cfcde8}.sw input:checked+i{background:linear-gradient(135deg,#4f46e5,#7c3aed)}
+.btn{border-radius:18px}
+.tab{transition:color .2s}.tab.on{border-bottom-width:4px}
+.item{border-radius:20px;transition:transform .12s,box-shadow .12s}
+.panel{border-radius:40px 40px 0 0}
+.tile b{color:#1e1b4b}
+.center h2.title,.brand b{background:linear-gradient(90deg,#3730a3,#be185d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand img{box-shadow:0 6px 16px #4f46e540}
+.gbtn{border-color:#c7c3f3;box-shadow:0 3px 10px #4f46e51a}
+.langcard.sel{border-color:#4f46e5;background:#f5f3ff}.langcard.sel .radio{border-color:#4f46e5;background:#4f46e5}
+.stepper .line.on{background:linear-gradient(90deg,#4f46e5,#c026d3)}
+#toast{background:linear-gradient(120deg,#312e81,#5b21b6);box-shadow:0 8px 22px #3b1d8f55}
+.qbar .gen{background:linear-gradient(135deg,#4f46e5,#7c3aed)!important;box-shadow:0 5px 14px #4f46e54d}
+@keyframes qmPop{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:none}}
+.tile,.mbtn{animation:qmPop .42s cubic-bezier(.2,.8,.3,1) both}
+.tile:nth-child(2){animation-delay:.04s}.tile:nth-child(3){animation-delay:.08s}.tile:nth-child(4){animation-delay:.12s}.tile:nth-child(5){animation-delay:.16s}.tile:nth-child(6){animation-delay:.2s}.tile:nth-child(n+7){animation-delay:.24s}
+.mbtn:nth-child(2){animation-delay:.05s}.mbtn:nth-child(3){animation-delay:.1s}.mbtn:nth-child(4){animation-delay:.15s}.mbtn:nth-child(5){animation-delay:.2s}
+/* press feel */
+button,.tile,.item,.srow,.mbtn,.dschip,.tab,a.hbtn,.langcard,.qsec,.mrow2,.tpick{transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s,filter .12s;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+button:not(:disabled):active,.tile:active,.item:active,.srow:active,.mbtn:active,.dschip:active,a.hbtn:active,.langcard:active,.qsec:active,.mrow2:active{transform:scale(.955);filter:brightness(.94)}
+.btn:not(:disabled):active,.gen:active{transform:scale(.965) translateY(1px);box-shadow:0 2px 5px #4f46e540;filter:brightness(.93)}
+.tile:active{box-shadow:0 2px 6px #0002}
+.mbtn:active .sq{box-shadow:0 1px 3px #0002}
+.rpl{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.22;transform:scale(0);animation:qmRpl .55s ease-out forwards}
+@keyframes qmRpl{to{transform:scale(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.rpl{display:none}.tile,.mbtn{animation:none}}
 </style>
 </head>
 <body>
@@ -2273,8 +2311,8 @@ document.addEventListener('input', ()=>{ if (LHS && currentRoute()==='lhstudio')
 /* =====================================================================
    SEND ONE DOCUMENT TO MANY CUSTOMERS  +  EMAIL
    ===================================================================== */
-Object.assign(T.en, { undoBtn:"Undo", redoBtn:"Redo", lhShort:"Letterhead", dsLabel:"Design", dsClassic:"Classic", dsModern:"Modern", dsSimple:"Simple", dsExecutive:"Executive", dsElegant:"Elegant", dsCorporate:"Corporate", dsBold:"Bold", dsMinimal:"Minimal", dsBoxed:"Boxed", dsStripe:"Side stripe", dsPremium:"Premium", custShortUsed:"This short name is already used by another customer", custShort:"Short name (max 3 letters, used in document number)", multiSend:"Send to many customers", multiHint:"A separate copy with its own number is saved for every customer you tick.", multiAll:"Select all", multiGo:"Create copies", multiNone:"Tick at least one customer", multiDone:"copies saved. Send each one below.", multiNoCust:"No other customers saved yet.", emailBtn:"Email", mailCopied:"Customer's email copied. Paste it in the To box.", mOpen:"Open", mPdf:"PDF", mWa:"WhatsApp", mMail:"Email", multiBusy:"Making copies..." });
-Object.assign(T.hi, { undoBtn:"वापस (Undo)", redoBtn:"फिर से (Redo)", lhShort:"लेटरहेड", dsLabel:"डिज़ाइन", dsClassic:"क्लासिक", dsModern:"मॉडर्न", dsSimple:"सादा", dsExecutive:"एग्ज़ीक्यूटिव", dsElegant:"एलिगेंट", dsCorporate:"कॉर्पोरेट", dsBold:"बोल्ड", dsMinimal:"मिनिमल", dsBoxed:"बॉक्स", dsStripe:"साइड पट्टी", dsPremium:"प्रीमियम", custShortUsed:"यह छोटा नाम दूसरे ग्राहक में लग चुका है", custShort:"छोटा नाम (अधिकतम 3 अक्षर, डॉक्यूमेंट नंबर में लगेगा)", multiSend:"कई ग्राहकों को भेजें", multiHint:"जिन ग्राहकों पर टिक करेंगे, हर एक के लिए अपने अलग नंबर वाली अलग कॉपी सेव होगी।", multiAll:"सभी चुनें", multiGo:"कॉपी बनाएँ", multiNone:"कम से कम एक ग्राहक चुनें", multiDone:"कॉपी सेव हुईं। नीचे से हर एक को भेजें।", multiNoCust:"अभी कोई और ग्राहक सेव नहीं है।", emailBtn:"ईमेल", mailCopied:"ग्राहक का ईमेल कॉपी हो गया। To में पेस्ट कर दें।", mOpen:"खोलें", mPdf:"PDF", mWa:"WhatsApp", mMail:"ईमेल", multiBusy:"कॉपी बन रही हैं..." });
+Object.assign(T.en, { hapticLbl:"Haptic feedback", hapticHint:"A light vibration when you tap a button (Android phones)", undoBtn:"Undo", redoBtn:"Redo", lhShort:"Letterhead", dsLabel:"Design", dsClassic:"Classic", dsModern:"Modern", dsSimple:"Simple", dsExecutive:"Executive", dsElegant:"Elegant", dsCorporate:"Corporate", dsBold:"Bold", dsMinimal:"Minimal", dsBoxed:"Boxed", dsStripe:"Side stripe", dsPremium:"Premium", custShortUsed:"This short name is already used by another customer", custShort:"Short name (max 3 letters, used in document number)", multiSend:"Send to many customers", multiHint:"A separate copy with its own number is saved for every customer you tick.", multiAll:"Select all", multiGo:"Create copies", multiNone:"Tick at least one customer", multiDone:"copies saved. Send each one below.", multiNoCust:"No other customers saved yet.", emailBtn:"Email", mailCopied:"Customer's email copied. Paste it in the To box.", mOpen:"Open", mPdf:"PDF", mWa:"WhatsApp", mMail:"Email", multiBusy:"Making copies..." });
+Object.assign(T.hi, { hapticLbl:"हैप्टिक फ़ीडबैक", hapticHint:"बटन दबाने पर हल्का कंपन (एंड्रॉइड फ़ोन में)", undoBtn:"वापस (Undo)", redoBtn:"फिर से (Redo)", lhShort:"लेटरहेड", dsLabel:"डिज़ाइन", dsClassic:"क्लासिक", dsModern:"मॉडर्न", dsSimple:"सादा", dsExecutive:"एग्ज़ीक्यूटिव", dsElegant:"एलिगेंट", dsCorporate:"कॉर्पोरेट", dsBold:"बोल्ड", dsMinimal:"मिनिमल", dsBoxed:"बॉक्स", dsStripe:"साइड पट्टी", dsPremium:"प्रीमियम", custShortUsed:"यह छोटा नाम दूसरे ग्राहक में लग चुका है", custShort:"छोटा नाम (अधिकतम 3 अक्षर, डॉक्यूमेंट नंबर में लगेगा)", multiSend:"कई ग्राहकों को भेजें", multiHint:"जिन ग्राहकों पर टिक करेंगे, हर एक के लिए अपने अलग नंबर वाली अलग कॉपी सेव होगी।", multiAll:"सभी चुनें", multiGo:"कॉपी बनाएँ", multiNone:"कम से कम एक ग्राहक चुनें", multiDone:"कॉपी सेव हुईं। नीचे से हर एक को भेजें।", multiNoCust:"अभी कोई और ग्राहक सेव नहीं है।", emailBtn:"ईमेल", mailCopied:"ग्राहक का ईमेल कॉपी हो गया। To में पेस्ट कर दें।", mOpen:"खोलें", mPdf:"PDF", mWa:"WhatsApp", mMail:"ईमेल", multiBusy:"कॉपी बन रही हैं..." });
 
 const docMsg = q => { const K = DK[DK[q.kind]?q.kind:'quotation']; return t(K.wa,{doc:t(K.doc), no:q.no, firm:bizOf(q).name||'', amt:fmtMoney(q.total||0, bizOf(q).currency||'INR')}); };
 async function emailDoc(q){
@@ -3202,10 +3240,11 @@ function viewSettings(){
     <button class="srow" data-act="bizinfo">${esc(t('businessInfo'))}${firmIds().length>1?' <span class="muted">· '+esc(firmName(S.activeFirm))+'</span>':''}${I.chev()}</button>
     <button class="srow" data-act="template">${esc(t('tplTitle'))}${I.chev()}</button>
     <button class="srow" data-act="language"><span>${esc(t('language'))} <span class="muted">· ${LANG==='hi'?'हिन्दी':'English'}</span></span>${I.chev()}</button>
+    <div class="srow"><span>${esc(t('hapticLbl'))}<br><small class="muted">${esc(t('hapticHint'))}</small></span><label class="sw"><input type="checkbox" data-hap ${HAP_ON()?'checked':''}><i></i></label></div>
     <button class="srow" data-act="help">${esc(t('helpTitle'))}${I.chev()}</button>
     <div style="padding:6px 14px 0">${helpContactHtml()}</div>
     <button class="srow" data-act="logout">${esc(t('logout'))}${I.chev()}</button>
-    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 2.3 (Colours, designs, undo)</div>
+    <div class="muted" style="text-align:right;padding:18px 24px;font-size:14px">${esc(t('appVersion'))}: 2.4 (Polish, haptic)</div>
   </div>`;
   refreshPending();
 }
@@ -3332,6 +3371,7 @@ document.addEventListener('change', async e=>{
     try{ await backend.save(S.user, {[k]:v}); toast(t('saved')); }catch(err){ console.error(err); toast(t('saveFail')); }
     return;
   }
+  if (e.target.dataset && e.target.dataset.hap!==undefined){ LS.set('qm_haptic', e.target.checked?'1':'0'); if (e.target.checked && navigator.vibrate){ try{ navigator.vibrate(30); }catch(x){} } return; }
   if (e.target.id==='pyStatus'){ const w=$('#pyAmtW'); if (w) w.classList.toggle('hide', e.target.value!=='partial'); return; }
   if (e.target.dataset && e.target.dataset.tk && TP && (e.target.type==='checkbox' || e.target.tagName==='SELECT')){ onTplInput(e); if (e.target.dataset.tk==='useLh') renderTemplate(); return; }
   if (e.target.id==='lhpick' && e.target.files[0] && TP){
@@ -3371,6 +3411,37 @@ document.addEventListener('change', async e=>{
     }
   },{passive:true});
 })();
+
+
+/* =====================================================================
+   PRESS FEEL: ripple + haptic feedback
+   ===================================================================== */
+const HAP_ON = () => LS.get('qm_haptic') !== '0';
+const HAP_STRONG = /^(saveform|tplsave|lhsave|lhmysave|qgenerate|axsend|axapprove|saveterm|qtermadd|qmgo|wznext|qpaysave)$/;
+const HAP_WARN = /(del|delete|remove|revoke|reject|logout)/i;
+function haptic(act){
+  if (!HAP_ON() || !navigator.vibrate) return;
+  try{ navigator.vibrate(HAP_WARN.test(act||'') ? [18,40,18] : HAP_STRONG.test(act||'') ? 26 : 11); }catch(e){}
+}
+const PRESS_SEL = 'button,a.hbtn,.tile,.item,.srow,.mbtn,.dschip,.tab,.langcard,.qsec,.mrow2';
+document.addEventListener('pointerdown', e=>{
+  const el = e.target.closest && e.target.closest(PRESS_SEL);
+  if (!el || el.disabled || el.closest('.lhedit')) return;
+  const host = el.classList.contains('mbtn') ? (el.querySelector('.sq') || el) : el;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cs = getComputedStyle(host);
+  if (cs.position==='static') host.style.position = 'relative';
+  if (cs.overflow!=='hidden') host.style.overflow = 'hidden';
+  const r = host.getBoundingClientRect(), size = Math.max(r.width, r.height) * 2.2;
+  const d = document.createElement('span'); d.className = 'rpl';
+  d.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size/2}px;top:${e.clientY - r.top - size/2}px`;
+  host.appendChild(d); setTimeout(()=>d.remove(), 650);
+}, {passive:true});
+document.addEventListener('click', e=>{
+  const el = e.target.closest && e.target.closest(PRESS_SEL);
+  if (!el || el.disabled) return;
+  haptic(el.dataset.act || '');
+}, true);
 
 /* =====================================================================
    BOOT
